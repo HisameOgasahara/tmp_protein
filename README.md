@@ -1,4 +1,10 @@
-# GFP binder design · v0.1.5
+# GFP binder design · v0.1.6
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Benchmark_Followup_T4.ipynb?v=0.1.6)
+
+[실행 04 분석](docs/2026-11-17-gfp-run04-analysis.md): enhancer는 3/3에서 자세를 회복했고 minimizer는 0/3입니다. **후속 실험 v0.1.6**은 minimizer의 `both`·시드 0–9와 enhancer의 `target`·시드 0·1·2를 각각 recycle 10회로 실행합니다. 실험별 결과를 하나의 ZIP으로 내려받습니다.
+
+## 기존 설계·대조군 노트북 · v0.1.5
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Binder_T4.ipynb?v=0.1.5)
 
@@ -8,6 +14,4 @@ Colab에서 T4 GPU를 선택하고 전체 셀을 실행하면 각 대조군의 G
 
 `BENCHMARK_ONLY`를 해제하면 GFP 구조에서 결합체 뼈대와 서열을 설계하고, 복합체 예측과 형광 평가를 실행합니다. 형광 배율은 구조와 교차 검증 조건을 통과한 후보에 표시합니다.
 
-[실행 04 분석](docs/2026-11-17-gfp-run04-analysis.md): enhancer는 3/3에서 자세를 회복했고 minimizer는 0/3입니다. [후속 실험 Colab](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Benchmark_Followup_T4.ipynb)은 minimizer의 `both`·시드 0–9와 enhancer의 `target`·시드 0·1·2를 각각 recycle 10회로 실행합니다. 실험별 결과를 하나의 ZIP으로 내려받습니다.
-
-버전을 올릴 때 노트북 첫 제목, 이 제목과 배지 URL의 `v` 값을 함께 갱신합니다.
+버전을 올릴 때 해당 노트북의 첫 제목, README의 버전 표시와 해당 배지 URL의 `v` 값을 함께 갱신합니다.
