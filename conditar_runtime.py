@@ -10,6 +10,14 @@ import time
 from types import SimpleNamespace
 
 
+def command_error(label, status, log_path):
+    with log_path.open('rb') as log:
+        log.seek(max(0, log_path.stat().st_size - 32768))
+        lines = log.read().decode('utf-8', errors='replace').splitlines()
+    tail = '\n'.join(lines[-40:])
+    return RuntimeError(f'{label} 실패 (종료 코드 {status})\n{tail}\n전체 로그 {log_path}')
+
+
 def install(num_samples=5, batch_size=1):
     if not Path('/content').is_dir() or not shutil.which('nvidia-smi'):
         raise RuntimeError('Google Colab GPU 런타임에서 실행하세요.')
@@ -34,7 +42,14 @@ def install(num_samples=5, batch_size=1):
                PYTHONUNBUFFERED='1', MPLBACKEND='Agg')
 
     def run(args, **kwargs):
-        subprocess.run([str(arg) for arg in args], env=ENV, check=True, **kwargs)
+        log_path = RUNTIME / 'commands.log'
+        with log_path.open('ab') as log:
+            log.write(('\n$ ' + ' '.join(map(str, args)) + '\n').encode('utf-8'))
+            log.flush()
+            result = subprocess.run([str(arg) for arg in args], env=ENV,
+                                    stdout=log, stderr=subprocess.STDOUT, **kwargs)
+        if result.returncode:
+            raise command_error(str(args[0]), result.returncode, log_path)
 
     def download(url, path):
         partial = path.with_name(path.name + '.part')
@@ -44,7 +59,6 @@ def install(num_samples=5, batch_size=1):
 
     gpu = subprocess.check_output(['nvidia-smi', '--query-gpu=name,driver_version,memory.total',
                                    '--format=csv'], text=True)
-    print(gpu)
     (RUNTIME / 'host.txt').write_text(platform.python_version() + '\n' + gpu)
     if not (REPO / '.git').is_dir():
         run(['git', 'clone', 'https://github.com/ninglab/conDitar-dev.git', REPO])
@@ -74,15 +88,16 @@ def install(num_samples=5, batch_size=1):
     for name, command in probes.items():
         probe = subprocess.run([str(PYTHON), '-u', '-c', command], env=ENV, cwd=REPO,
                                text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        (RUNTIME / f'{name}.log').write_text(probe.stdout, encoding='utf-8')
-        print(f'[{name}] {probe.stdout}', flush=True)
+        log_path = RUNTIME / f'{name}.log'
+        log_path.write_text(probe.stdout, encoding='utf-8')
         if probe.returncode:
-            raise RuntimeError(f'검증 실패 [{name}]\n{probe.stdout.rstrip()}')
+            raise command_error(name, probe.returncode, log_path)
     (RUNTIME / 'packages.txt').write_text(subprocess.check_output(
         [str(PYTHON), '-m', 'pip', 'freeze'], text=True, env=ENV))
 
     CONFIG = OUTPUT / 'sample.yml'
     TARGET = INPUTS / '8w1l'
+    print(f'설치 및 검증 완료 · {gpu.splitlines()[-1]}')
     return SimpleNamespace(BASE=BASE, RUN=RUN, OUTPUT=OUTPUT, INPUTS=INPUTS,
                            SAMPLE_ROOT=SAMPLE_ROOT, SAMPLES=SAMPLES, RUNTIME=RUNTIME,
                            REPO=REPO, REVISION=REVISION, PYTHON=PYTHON, ENV=ENV,

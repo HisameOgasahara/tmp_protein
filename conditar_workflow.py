@@ -5,23 +5,21 @@ import subprocess
 from textwrap import dedent
 import time
 
+from conditar_runtime import command_error
+
 
 def stage(context, name, args):
     RUNTIME, REPO, ENV = context.RUNTIME, context.REPO, context.ENV
     start = time.perf_counter()
     monitor_path = RUNTIME / f'{name}_gpu.csv'
-    with monitor_path.open('w') as gpu_log, (RUNTIME / f'{name}.log').open('w') as log:
+    log_path = RUNTIME / f'{name}.log'
+    with monitor_path.open('w') as gpu_log, log_path.open('wb') as log:
         monitor = subprocess.Popen(
             ['nvidia-smi', '--query-gpu=timestamp,memory.used', '--format=csv,noheader,nounits', '-l', '1'],
             stdout=gpu_log)
         try:
-            process = subprocess.Popen([str(arg) for arg in args], cwd=REPO, env=ENV,
-                                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                                       text=True, errors='replace')
-            for line in process.stdout:
-                print(line, end='')
-                log.write(line)
-            status = process.wait()
+            status = subprocess.run([str(arg) for arg in args], cwd=REPO, env=ENV,
+                                    stdout=log, stderr=subprocess.STDOUT).returncode
         finally:
             monitor.terminate()
             monitor.wait()
@@ -30,9 +28,10 @@ def stage(context, name, args):
     stats = {'seconds': round(time.perf_counter() - start, 2),
              'device_peak_sampled_mib': max(measurements, default=None), 'exit_code': status}
     (RUNTIME / f'{name}.json').write_text(json.dumps(stats, indent=2))
-    print(stats)
     if status:
-        raise subprocess.CalledProcessError(status, args)
+        raise command_error(name, status, log_path)
+    peak = stats['device_peak_sampled_mib']
+    print(f"{name} 완료 · {stats['seconds']}초 · GPU 최대 {str(peak) + ' MiB' if peak is not None else '미측정'}")
 
 
 def prepare_inputs(context):
@@ -225,5 +224,5 @@ def download_zip(context):
     OUTPUT = context.OUTPUT
     from google.colab import files
 
-    archive = shutil.make_archive(str(RUN / 'conditar_v003_results'), 'zip', root_dir=OUTPUT)
+    archive = shutil.make_archive(str(RUN / 'conditar_v004_results'), 'zip', root_dir=OUTPUT)
     files.download(archive)
