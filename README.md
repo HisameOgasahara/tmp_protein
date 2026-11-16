@@ -1,6 +1,6 @@
-# GFP binder design · v0.1.0
+# GFP binder design · v0.1.1
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Binder_T4.ipynb?v=0.1.0)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Binder_T4.ipynb?v=0.1.1)
 
 Colab에서 T4 GPU를 선택하고 전체 셀을 실행합니다.
 

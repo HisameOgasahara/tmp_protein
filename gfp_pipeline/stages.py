@@ -124,7 +124,7 @@ def generate_backbones():
 
     with measure("RFD3", "generation", "gfp"):
         config = RFD3InferenceConfig(
-            diffusion_batch_size=1, low_memory_mode=True, compile_model=False,
+            diffusion_batch_size=1, low_memory_mode=False, compile_model=False,
             compile_cuda_graphs=False, inference_kernel_backend="torch", seed=0,
             inference_sampler={"num_timesteps": 200, "step_scale": 3.0, "gamma_0": 0.2},
         )
