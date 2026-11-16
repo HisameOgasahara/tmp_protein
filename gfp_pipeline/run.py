@@ -11,6 +11,7 @@ from tempfile import mkdtemp
 
 FOUNDRY_REV = "0d0b0ba44fab7ca76aa4b625c014ce5964c7d284"
 SOURCE = Path(__file__).resolve().parent
+BENCHMARK_SEEDS = (0, 1, 2)
 
 
 def run_logged(args, log, env):
@@ -24,7 +25,7 @@ def run_logged(args, log, env):
         raise RuntimeError(f"Exit {result.returncode}. Full log: {log}")
 
 
-def prepare_runtime(root):
+def prepare_runtime(root, benchmark_only):
     state = Path("/content") / ("gfp_foundry_" + FOUNDRY_REV[:8])
     state.mkdir(exist_ok=True)
     weights = state / "weights"
@@ -59,7 +60,8 @@ def prepare_runtime(root):
                     "atomworks[ml]==3.0.1", "biopython", "scikit-learn"], log, env)
         run_logged([uv, "pip", "check", "--python", python], log, env)
         (state / "installed").touch()
-    run_logged([python, "-u", SOURCE / "checkpoints.py", weights],
+    models = ["rf3"] if benchmark_only else []
+    run_logged([python, "-u", SOURCE / "checkpoints.py", weights, *models],
                root / "runtime/checkpoints.log", env)
     return python, env
 
@@ -68,7 +70,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--assays", type=Path, default=SOURCE / "controls.csv")
     parser.add_argument("--revision", required=True)
+    parser.add_argument("--benchmark-only", action="store_true")
     args = parser.parse_args()
+    if args.benchmark_only and args.assays != SOURCE / "controls.csv":
+        parser.error("--assays is available in the full pipeline.")
     root = Path(mkdtemp(prefix="gfp_binder_", dir="/content"))
     for folder in ("config", "runtime", "structures", "metrics"):
         (root / folder).mkdir()
@@ -77,15 +82,23 @@ def main():
     (root / "config/source.json").write_text(json.dumps({
         "revision": args.revision, "foundry_revision": FOUNDRY_REV,
         "assay_file": args.assays.name,
+        "mode": "benchmark" if args.benchmark_only else "full",
+        "rf3_seeds": BENCHMARK_SEEDS if args.benchmark_only else (0,),
     }))
-    python, env = prepare_runtime(root)
-    stages = (("prepare", "preparing GFP and assay data"), ("backbones", "1/4 RFD3"),
-              ("sequences", "2/4 LigandMPNN"), ("complexes", "3/4 RF3"),
-              ("fluorescence", "4/4 Ridge"))
-    for stage, label in stages:
+    python, env = prepare_runtime(root, args.benchmark_only)
+    stages = [("preparing GFP and assay data", "prepare")]
+    if args.benchmark_only:
+        stages.extend((f"RF3 controls: seed {seed}", "benchmark", str(seed))
+                      for seed in BENCHMARK_SEEDS)
+        stages.append(("comparing poses with crystal structures", "benchmark_report"))
+    else:
+        stages.extend([("1/4 RFD3", "backbones"), ("2/4 LigandMPNN", "sequences"),
+                       ("3/4 RF3", "complexes"), ("4/4 Ridge", "fluorescence")])
+    for label, stage, *parameters in stages:
         print(label, flush=True)
-        run_logged([python, "-u", SOURCE / "stages.py", stage],
-                   root / "runtime" / f"{stage}.log", env)
+        log_name = "_".join((stage, *parameters))
+        run_logged([python, "-u", SOURCE / "stages.py", stage, *parameters],
+                   root / "runtime" / f"{log_name}.log", env)
     archive = shutil.make_archive(str(root), "zip", root_dir=root)
     print(archive, flush=True)
 

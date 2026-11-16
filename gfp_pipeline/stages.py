@@ -259,16 +259,17 @@ def target_rmsd(atoms, template):
     return float(np.sqrt(np.mean(np.sum((mobile @ rotation - reference) ** 2, axis=1))))
 
 
-def predict_complexes():
+def predict_complexes(benchmark_seed=None):
     from rf3.inference_engines.rf3 import RF3InferenceEngine
     from rf3.model.layers.af3_diffusion_transformer import AttentionPairBiasDiffusion
     from rf3.model.layers.pairformer_layers import AttentionPairBiasPairformerDeepspeed
     from rf3.utils.inference import InferenceInput
 
+    seed = 0 if benchmark_seed is None else benchmark_seed
     model = RF3InferenceEngine(
         ckpt_path="rf3", num_steps=50, n_recycles=3, diffusion_batch_size=1,
         triangle_attention_backend="vanilla", dense_attention_backend="vanilla",
-        early_stopping_plddt_threshold=None, trainer_overrides={"precision": "32-true"}, seed=0,
+        early_stopping_plddt_threshold=None, trainer_overrides={"precision": "32-true"}, seed=seed,
     )
     model.initialize()
     layers = [layer for layer in model.trainer.state["model"].modules()
@@ -282,11 +283,13 @@ def predict_complexes():
     template = read_target_template(target)
     benchmarks = read_json("config/benchmarks.json")
     benchmark_by_id = {row["id"]: row for row in benchmarks}
-    inputs = {row["id"]: row for row in
-              read_json("config/designs.json") + read_json("config/controls.json") + benchmarks}
+    inputs = {row["id"]: row for row in benchmarks}
+    if benchmark_seed is None:
+        for row in read_json("config/designs.json") + read_json("config/controls.json"):
+            inputs.setdefault(row["id"], row)
+    suffix = "" if benchmark_seed is None else f"_seed{seed}"
     rows = []
-    ordered = sorted(inputs.values(), key=lambda row: row["id"] not in benchmark_by_id)
-    for item in ordered:
+    for item in inputs.values():
         ident = item["id"]
         payload = {"name": ident, "components": [
             {"chain_id": "A", "seq": target["sequence"]},
@@ -299,7 +302,7 @@ def predict_complexes():
         prediction, = predictions[ident]
         if atom_sequence(prediction.atom_array, "B") != item["sequence"]:
             raise ValueError(f"RF3 binder chain does not match {ident}.")
-        path = f"structures/{ident}.cif"
+        path = f"structures/{ident}{suffix}.cif"
         save_cif(prediction.atom_array, ROOT / path)
         summary = prediction.summary_confidences
         features = interface_features(prediction.atom_array, target)
@@ -316,8 +319,65 @@ def predict_complexes():
             "has_clash": bool(summary.get("has_clash", False)),
             "target_ca_rmsd_angstrom": rmsd, "benchmark_contact_jaccard": jaccard, **features,
         })
-        write_csv(ROOT / "metrics/complexes.csv", rows)
-    write_json(ROOT / "metrics/complexes.json", rows)
+        write_csv(ROOT / f"metrics/complexes{suffix}.csv", rows)
+    write_json(ROOT / f"metrics/complexes{suffix}.json", rows)
+
+
+def benchmark_pose_passed(row):
+    return (
+        row["target_ca_rmsd_angstrom"] <= MAX_TARGET_RMSD
+        and row["benchmark_contact_jaccard"] >= MIN_BENCHMARK_CONTACT_JACCARD
+        and not row["has_clash"]
+    )
+
+
+def summarize_benchmark():
+    seeds = read_json("config/source.json")["rf3_seeds"]
+    benchmarks = read_json("config/benchmarks.json")
+    expected = {row["id"] for row in benchmarks}
+    predictions = {ident: [] for ident in expected}
+    for seed in seeds:
+        rows = read_json(f"metrics/complexes_seed{seed}.json")
+        if len(rows) != len(expected) or {row["id"] for row in rows} != expected:
+            raise ValueError(f"Unexpected structural controls in RF3 output for seed {seed}.")
+        for row in rows:
+            if row["iptm"] is None or not math.isfinite(row["iptm"]):
+                raise ValueError(f"Missing finite ipTM for {row['id']} at seed {seed}.")
+            predictions[row["id"]].append({"seed": seed, **row})
+
+    summary = []
+    poses = []
+    for control in benchmarks:
+        ranked = sorted(predictions[control["id"]], key=lambda row: (-row["iptm"], row["seed"]))
+        top = ranked[0]
+        passing_ranks = []
+        for rank, row in enumerate(ranked, 1):
+            passed = benchmark_pose_passed(row)
+            poses.append({"iptm_rank": rank, "reference_pose_recovered": passed, **row})
+            if passed:
+                passing_ranks.append(rank)
+        if not passing_ranks:
+            status = "no_pose_recovered"
+        elif passing_ranks[0] == 1:
+            status = "top_pose_recovered"
+        else:
+            status = "pose_ranked_lower"
+        best_contact = max(ranked, key=lambda row: row["benchmark_contact_jaccard"])
+        summary.append({
+            "control": control["name"], "reference_pdb": control["pdb"],
+            "status": status, "poses_tested": len(ranked), "poses_recovered": len(passing_ranks),
+            "top_iptm_seed": top["seed"], "top_iptm": top["iptm"],
+            "top_iptm_contact_jaccard": top["benchmark_contact_jaccard"],
+            "best_contact_seed": best_contact["seed"],
+            "best_contact_jaccard": best_contact["benchmark_contact_jaccard"],
+            "best_recovered_iptm_rank": passing_ranks[0] if passing_ranks else None,
+        })
+    write_csv(ROOT / "metrics/benchmark_poses.csv", poses)
+    write_csv(ROOT / "metrics/benchmark_summary.csv", summary)
+    write_json(ROOT / "metrics/benchmark_summary.json", {
+        "seeds": seeds, "max_target_ca_rmsd_angstrom": MAX_TARGET_RMSD,
+        "min_contact_jaccard": MIN_BENCHMARK_CONTACT_JACCARD, "controls": summary,
+    })
 
 
 def predict_fluorescence():
@@ -331,12 +391,7 @@ def predict_fluorescence():
     controls = read_json("config/controls.json")
     designs = read_json("config/designs.json")
     benchmarks = read_json("config/benchmarks.json")
-    benchmark_passed = all(
-        complexes[row["id"]]["target_ca_rmsd_angstrom"] <= MAX_TARGET_RMSD
-        and complexes[row["id"]]["benchmark_contact_jaccard"] >= MIN_BENCHMARK_CONTACT_JACCARD
-        and not complexes[row["id"]]["has_clash"]
-        for row in benchmarks
-    )
+    benchmark_passed = all(benchmark_pose_passed(complexes[row["id"]]) for row in benchmarks)
     valid_controls = [row for row in controls
                       if complexes[row["id"]]["target_ca_rmsd_angstrom"] <= MAX_TARGET_RMSD
                       and not complexes[row["id"]]["has_clash"]]
@@ -402,5 +457,6 @@ def predict_fluorescence():
 
 if __name__ == "__main__":
     handlers = {"prepare": prepare, "backbones": generate_backbones, "sequences": design_sequences,
-                "complexes": predict_complexes, "fluorescence": predict_fluorescence}
-    handlers[sys.argv[1]]()
+                "complexes": predict_complexes, "fluorescence": predict_fluorescence,
+                "benchmark": predict_complexes, "benchmark_report": summarize_benchmark}
+    handlers[sys.argv[1]](*map(int, sys.argv[2:]))

@@ -58,10 +58,10 @@ def download_checkpoint(name, info, directory):
         temporary.unlink(missing_ok=True)
 
 
-def install_checkpoints(registry, directory):
-    with ThreadPoolExecutor(max_workers=len(MODELS)) as pool:
+def install_checkpoints(registry, directory, models=MODELS):
+    with ThreadPoolExecutor(max_workers=len(models)) as pool:
         downloads = [pool.submit(download_checkpoint, name, registry[name], directory)
-                     for name in MODELS]
+                     for name in models]
         for download in downloads:
             download.result()
 
@@ -69,4 +69,4 @@ def install_checkpoints(registry, directory):
 if __name__ == "__main__":
     from foundry_cli.checkpoints import REGISTERED_CHECKPOINTS
 
-    install_checkpoints(REGISTERED_CHECKPOINTS, Path(sys.argv[1]))
+    install_checkpoints(REGISTERED_CHECKPOINTS, Path(sys.argv[1]), sys.argv[2:] or MODELS)
