@@ -1,0 +1,3 @@
+id,file,iptm,ranking_score,has_clash,target_ca_rmsd_angstrom,benchmark_contact_jaccard,hotspot_contact_fraction,target_contact_fraction,binder_contact_fraction,chromophore_ca_distance
+control_enhancer,structures/control_enhancer_seed1.cif,0.20842412114143372,0.307,False,0.07902211899415479,0.2,0.0,0.07563025210084033,0.15384615384615385,15.443096160888672
+control_minimizer,structures/control_minimizer_seed1.cif,0.2228558212518692,0.3152,False,0.08210497693588946,0.08333333333333333,0.3333333333333333,0.09243697478991597,0.11278195488721804,16.099864959716797

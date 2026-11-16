@@ -1,0 +1,60 @@
+> /content/gfp_foundry_0d0b0ba4/venv/bin/python -u /content/gfp_main_a1wi0q0u/repo/gfp_pipeline/stages.py backbones
+Environment variable CCD_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+Environment variable PDB_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+Seed set to 0
+15:57:13 INFO rfd3.engine: [rank: 0] Prevalidating design specification for example: rfd3_gfp
+15:57:13 WARNING atomworks.io: PDB files always build all assemblies; ignoring build_assembly=('1',)
+15:57:36 INFO rfd3.engine: [rank: 0] RFD3 inference: mode=fast, policy=torch, kernels=torch, compile_model=False, token_and_atom_cuda_graph=False, low_memory_mode=False
+15:57:36 WARNING atomworks.io: PDB files always build all assemblies; ignoring build_assembly=('1',)
+15:57:37 WARNING atomworks.ml: Cached data not found for ALA at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/A/ALA/ALA.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for ARG at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/A/ARG/ARG.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for ASN at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/A/ASN/ASN.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for ASP at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/A/ASP/ASP.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for CYS at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/C/CYS/CYS.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for GLN at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/G/GLN/GLN.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for GLU at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/G/GLU/GLU.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for GLY at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/G/GLY/GLY.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for HIS at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/H/HIS/HIS.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for ILE at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/I/ILE/ILE.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for LEU at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/L/LEU/LEU.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for LYS at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/L/LYS/LYS.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for MET at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/M/MET/MET.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for PHE at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/P/PHE/PHE.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for PRO at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/P/PRO/PRO.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for SER at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/S/SER/SER.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for THR at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/T/THR/THR.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for TRP at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/T/TRP/TRP.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for TYR at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/T/TYR/TYR.pt
+15:57:37 WARNING atomworks.ml: Cached data not found for VAL at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/V/VAL/VAL.pt
+15:58:49 INFO rfd3.engine: [rank: 0] Finished inference batch in 72.44 seconds.
+15:58:50 WARNING atomworks.io: PDB files always build all assemblies; ignoring build_assembly=('1',)
+15:58:50 WARNING atomworks.ml: Cached data not found for ALA at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/A/ALA/ALA.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for ARG at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/A/ARG/ARG.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for ASN at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/A/ASN/ASN.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for ASP at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/A/ASP/ASP.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for CYS at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/C/CYS/CYS.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for GLN at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/G/GLN/GLN.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for GLU at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/G/GLU/GLU.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for GLY at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/G/GLY/GLY.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for HIS at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/H/HIS/HIS.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for ILE at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/I/ILE/ILE.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for LEU at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/L/LEU/LEU.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for LYS at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/L/LYS/LYS.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for MET at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/M/MET/MET.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for PHE at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/P/PHE/PHE.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for PRO at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/P/PRO/PRO.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for SER at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/S/SER/SER.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for THR at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/T/THR/THR.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for TRP at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/T/TRP/TRP.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for TYR at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/T/TYR/TYR.pt
+15:58:50 WARNING atomworks.ml: Cached data not found for VAL at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/V/VAL/VAL.pt
+16:00:10 INFO rfd3.engine: [rank: 0] Finished inference batch in 79.51 seconds.
+{'model': 'RFD3', 'operation': 'generation', 'input_id': 'gfp', 'status': 'success', 'seconds': 177.15954634100012, 'baseline_allocated_mib': 0.0, 'peak_allocated_mib': 6697.41064453125, 'peak_reserved_mib': 7138.0}
+16:00:10 WARNING atomworks.io: Writing chem_comp with chem_comp_source='ccd' from a plain AtomArray. A plain AtomArray has no preserved CCD context, so known component codes resolve to the bundled CCD. If this structure came from a CIF, parse it with return_atom_array_plus=True to preserve its CCD registry. If it was constructed or modified and a component slice is the complete intended CCD definition, write it with ccd_entries={code: component_template}; run any earlier CCD-dependent processing inside `with custom_ccd_residues(ccd_entries):`. Silence this warning with CIFWriteConfig(warn_on_ccd_without_registry=False).
+16:00:10 WARNING atomworks.io: Writing chem_comp with chem_comp_source='ccd' from a plain AtomArray. A plain AtomArray has no preserved CCD context, so known component codes resolve to the bundled CCD. If this structure came from a CIF, parse it with return_atom_array_plus=True to preserve its CCD registry. If it was constructed or modified and a component slice is the complete intended CCD definition, write it with ccd_entries={code: component_template}; run any earlier CCD-dependent processing inside `with custom_ccd_residues(ccd_entries):`. Silence this warning with CIFWriteConfig(warn_on_ccd_without_registry=False).

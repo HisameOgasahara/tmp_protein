@@ -1,0 +1,17 @@
+> /content/gfp_foundry_0d0b0ba4/venv/bin/python -u /content/gfp_main_a1wi0q0u/repo/gfp_pipeline/stages.py sequences
+Environment variable CCD_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+Environment variable PDB_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+/content/gfp_foundry_0d0b0ba4/venv/lib/python3.12/site-packages/mpnn/utils/inference.py:1602: DeprecationWarning: Passing processing kwargs directly is deprecated; use config instead.
+  data = parse(
+Found 1 bonds exceeding distance thresholds (CHNO: 1.7A, CHNOPS: 2.4A, other: 3.6A)
+/content/gfp_foundry_0d0b0ba4/venv/lib/python3.12/site-packages/mpnn/utils/inference.py:2231: DeprecationWarning: Use get_annotation_categories(n_body=2) instead of get_annotation_2d_categories().
+  "mpnn_pair_bias" in atom_array_plus.get_annotation_2d_categories()
+{'model': 'LigandMPNN', 'operation': 'design', 'input_id': 'backbone_01', 'status': 'success', 'seconds': 4.819390355999985, 'baseline_allocated_mib': 9.99267578125, 'peak_allocated_mib': 104.31591796875, 'peak_reserved_mib': 160.0}
+Found 1 bonds exceeding distance thresholds (CHNO: 1.7A, CHNOPS: 2.4A, other: 3.6A)
+{'model': 'LigandMPNN', 'operation': 'design', 'input_id': 'backbone_02', 'status': 'success', 'seconds': 1.6542930250000154, 'baseline_allocated_mib': 19.11767578125, 'peak_allocated_mib': 104.31591796875, 'peak_reserved_mib': 160.0}

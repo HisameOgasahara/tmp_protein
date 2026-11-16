@@ -1,0 +1,62 @@
+[
+  {
+    "id": "backbone_01_seq01",
+    "file": "structures/backbone_01_seq01.cif",
+    "iptm": 0.13375712931156158,
+    "ranking_score": 0.1621,
+    "hotspot_contact_fraction": 0.0,
+    "target_contact_fraction": 0.08403361344537816,
+    "binder_contact_fraction": 0.32727272727272727,
+    "chromophore_ca_distance": 21.411928176879883
+  },
+  {
+    "id": "backbone_01_seq02",
+    "file": "structures/backbone_01_seq02.cif",
+    "iptm": 0.16624534130096436,
+    "ranking_score": -99.806,
+    "hotspot_contact_fraction": 0.0,
+    "target_contact_fraction": 0.037815126050420166,
+    "binder_contact_fraction": 0.16363636363636364,
+    "chromophore_ca_distance": 21.227619171142578
+  },
+  {
+    "id": "backbone_02_seq01",
+    "file": "structures/backbone_02_seq01.cif",
+    "iptm": 0.14056821167469025,
+    "ranking_score": 0.1664,
+    "hotspot_contact_fraction": 0.0,
+    "target_contact_fraction": 0.09663865546218488,
+    "binder_contact_fraction": 0.36363636363636365,
+    "chromophore_ca_distance": 13.483284950256348
+  },
+  {
+    "id": "backbone_02_seq02",
+    "file": "structures/backbone_02_seq02.cif",
+    "iptm": 0.14431405067443848,
+    "ranking_score": 0.1697,
+    "hotspot_contact_fraction": 0.0,
+    "target_contact_fraction": 0.058823529411764705,
+    "binder_contact_fraction": 0.2909090909090909,
+    "chromophore_ca_distance": 12.567435264587402
+  },
+  {
+    "id": "control_enhancer",
+    "file": "structures/control_enhancer.cif",
+    "iptm": 0.1806979775428772,
+    "ranking_score": 0.2053,
+    "hotspot_contact_fraction": 0.0,
+    "target_contact_fraction": 0.16806722689075632,
+    "binder_contact_fraction": 0.3247863247863248,
+    "chromophore_ca_distance": 13.16940975189209
+  },
+  {
+    "id": "control_minimizer",
+    "file": "structures/control_minimizer.cif",
+    "iptm": 0.15533354878425598,
+    "ranking_score": 0.1738,
+    "hotspot_contact_fraction": 0.6666666666666666,
+    "target_contact_fraction": 0.20168067226890757,
+    "binder_contact_fraction": 0.3233082706766917,
+    "chromophore_ca_distance": 5.763848781585693
+  }
+]

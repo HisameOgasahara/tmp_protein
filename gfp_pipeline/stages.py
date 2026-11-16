@@ -123,6 +123,7 @@ def prepare():
         row.update(sequence=seq, ratio=ratio, group=row["group"].strip())
     write_json(ROOT / "config/controls.json", assays)
     benchmarks = []
+    benchmark_only = read_json("config/source.json").get("mode") == "benchmark"
     for name, pdb, binder_chain in (("enhancer", "3K1K", "C"), ("minimizer", TARGET_PDB, "B")):
         lines = crystal if pdb == TARGET_PDB else fetch(f"https://files.rcsb.org/download/{pdb}.pdb").splitlines()
         gfp = points_from_pdb(lines, TARGET_CHAIN)
@@ -132,13 +133,25 @@ def prepare():
                                   - binder[None, :, :], axis=2)
         sequence = pdb_sequence(pdb, "2").removesuffix("HHHHHH")
         shared = next((row["id"] for row in assays if row["sequence"] == sequence), None)
-        benchmarks.append({
+        benchmark = {
             "id": shared or f"benchmark_{name}", "name": name, "pdb": pdb, "sequence": sequence,
             "reference_indices": [mapped_positions[index] for index in comparable],
             "contact_indices": [mapped_positions[index] for index, hit in
                                 zip(comparable, (contacts <= CONTACT_RADIUS).any(axis=1), strict=True)
                                 if hit],
-        })
+        }
+        if benchmark_only:
+            from benchmark import make_reference
+
+            reference_sequence = pdb_sequence(pdb, "1")
+            if reference_sequence.count("X") != 1 or "TTFXVQ" not in reference_sequence:
+                raise ValueError(f"Unexpected GFP chromophore sequence in {pdb}.")
+            reference = make_reference(lines, TARGET_CHAIN, binder_chain,
+                                       reference_sequence.replace("X", "SYG"), sequence)
+            reference_path = f"config/reference_{name}.json"
+            write_json(ROOT / reference_path, reference)
+            benchmark["reference_file"] = reference_path
+        benchmarks.append(benchmark)
     write_json(ROOT / "config/benchmarks.json", benchmarks)
 
 
@@ -266,12 +279,21 @@ def predict_complexes(benchmark_seed=None):
     from rf3.utils.inference import InferenceInput
 
     seed = 0 if benchmark_seed is None else benchmark_seed
+    source = read_json("config/source.json")
+    settings = source.get("rf3", {"num_steps": 50, "n_recycles": 3, "diffusion_batch_size": 1})
     model = RF3InferenceEngine(
-        ckpt_path="rf3", num_steps=50, n_recycles=3, diffusion_batch_size=1,
+        ckpt_path="rf3", **settings,
         triangle_attention_backend="vanilla", dense_attention_backend="vanilla",
         early_stopping_plddt_threshold=None, trainer_overrides={"precision": "32-true"}, seed=seed,
     )
+    if benchmark_seed is not None:
+        model.transform_overrides["p_provide_inter_molecule_distances"] = 0.0
     model.initialize()
+    if benchmark_seed is not None:
+        from benchmark import apply_chain_templates, guard_template_pipeline, measure_pose
+
+        template_mode = source["benchmark_template"]
+        model.pipeline = guard_template_pipeline(model.pipeline, template_mode)
     layers = [layer for layer in model.trainer.state["model"].modules()
               if isinstance(layer, (AttentionPairBiasPairformerDeepspeed, AttentionPairBiasDiffusion))]
     if not layers or any(layer.use_deepspeed_evo for layer in layers):
@@ -291,13 +313,18 @@ def predict_complexes(benchmark_seed=None):
     rows = []
     for item in inputs.values():
         ident = item["id"]
+        reference = read_json(item["reference_file"]) if benchmark_seed is not None else None
+        target_sequence = reference["target"]["sequence"] if reference else target["sequence"]
         payload = {"name": ident, "components": [
-            {"chain_id": "A", "seq": target["sequence"]},
+            {"chain_id": "A", "seq": target_sequence},
             {"chain_id": "B", "seq": item["sequence"]},
         ]}
         with measure("RF3", "complex", ident):
             input_spec = InferenceInput.from_json_dict(payload)
-            apply_target_template(input_spec.atom_array, target["sequence"], template)
+            if reference:
+                apply_chain_templates(input_spec.atom_array, reference, template_mode, seed)
+            else:
+                apply_target_template(input_spec.atom_array, target["sequence"], template)
             predictions = model.run(inputs=input_spec, out_dir=None)
         prediction, = predictions[ident]
         if atom_sequence(prediction.atom_array, "B") != item["sequence"]:
@@ -305,6 +332,20 @@ def predict_complexes(benchmark_seed=None):
         path = f"structures/{ident}{suffix}.cif"
         save_cif(prediction.atom_array, ROOT / path)
         summary = prediction.summary_confidences
+        if reference:
+            if atom_sequence(prediction.atom_array, "A") != target_sequence:
+                raise ValueError(f"RF3 GFP chain does not match reference for {ident}.")
+            rows.append({
+                "id": ident, "file": path, "reference_pdb": item["pdb"],
+                "template_mode": template_mode, **settings,
+                "iptm": summary.get("iptm"), "ranking_score": summary.get("ranking_score"),
+                "has_clash": bool(summary.get("has_clash", False)),
+                **measure_pose(ca_array(prediction.atom_array, "A").coord,
+                               ca_array(prediction.atom_array, "B").coord,
+                               reference, CONTACT_RADIUS),
+            })
+            write_csv(ROOT / f"metrics/complexes{suffix}.csv", rows)
+            continue
         features = interface_features(prediction.atom_array, target)
         contacts = set(features.pop("target_contact_indices"))
         rmsd = target_rmsd(prediction.atom_array, template)
@@ -332,7 +373,8 @@ def benchmark_pose_passed(row):
 
 
 def summarize_benchmark():
-    seeds = read_json("config/source.json")["rf3_seeds"]
+    source = read_json("config/source.json")
+    seeds = source["rf3_seeds"]
     benchmarks = read_json("config/benchmarks.json")
     expected = {row["id"] for row in benchmarks}
     predictions = {ident: [] for ident in expected}
@@ -370,12 +412,23 @@ def summarize_benchmark():
             "top_iptm_contact_jaccard": top["benchmark_contact_jaccard"],
             "best_contact_seed": best_contact["seed"],
             "best_contact_jaccard": best_contact["benchmark_contact_jaccard"],
+            "top_iptm_binder_rmsd_angstrom": top.get("binder_ca_rmsd_after_target_alignment_angstrom"),
+            "top_iptm_native_ca_contact_pair_recovery": top.get("native_ca_contact_pair_recovery"),
+            "best_binder_rmsd_angstrom": min(
+                (row["binder_ca_rmsd_after_target_alignment_angstrom"] for row in ranked
+                 if "binder_ca_rmsd_after_target_alignment_angstrom" in row), default=None),
+            "best_native_ca_contact_pair_recovery": max(
+                (row["native_ca_contact_pair_recovery"] for row in ranked
+                 if "native_ca_contact_pair_recovery" in row), default=None),
             "best_recovered_iptm_rank": passing_ranks[0] if passing_ranks else None,
         })
     write_csv(ROOT / "metrics/benchmark_poses.csv", poses)
     write_csv(ROOT / "metrics/benchmark_summary.csv", summary)
     write_json(ROOT / "metrics/benchmark_summary.json", {
         "seeds": seeds, "max_target_ca_rmsd_angstrom": MAX_TARGET_RMSD,
+        "template_mode": source.get("benchmark_template"), "rf3": source.get("rf3"),
+        "contact_radius_angstrom": CONTACT_RADIUS,
+        "recovery_criterion": "target_rmsd_and_target_contact_jaccard_without_clash",
         "min_contact_jaccard": MIN_BENCHMARK_CONTACT_JACCARD, "controls": summary,
     })
 

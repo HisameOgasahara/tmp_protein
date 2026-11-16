@@ -1,0 +1,13 @@
+{
+  "n_controls": 2,
+  "n_groups": 2,
+  "assay": "kirchhofer_fig1",
+  "feature_names": [
+    "target_contact_fraction",
+    "binder_contact_fraction",
+    "chromophore_ca_distance"
+  ],
+  "label": "log2(GFP with binder fluorescence / reference fluorescence)",
+  "scope": "Exploratory extrapolation from measured controls; validate new designs experimentally.",
+  "validation": "Too few independent control groups for meaningful evaluation."
+}

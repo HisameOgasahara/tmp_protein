@@ -71,9 +71,14 @@ def main():
     parser.add_argument("--assays", type=Path, default=SOURCE / "controls.csv")
     parser.add_argument("--revision", required=True)
     parser.add_argument("--benchmark-only", action="store_true")
+    parser.add_argument("--benchmark-template", choices=("target", "both"), default="both")
+    parser.add_argument("--benchmark-recycles", type=int, choices=(3, 10), default=10)
+    parser.add_argument("--benchmark-seeds", type=int, nargs="+", default=list(BENCHMARK_SEEDS))
     args = parser.parse_args()
     if args.benchmark_only and args.assays != SOURCE / "controls.csv":
         parser.error("--assays is available in the full pipeline.")
+    if any(seed < 0 or seed >= 2**32 for seed in args.benchmark_seeds) or len(set(args.benchmark_seeds)) != len(args.benchmark_seeds):
+        parser.error("Benchmark seeds must be unique integers in [0, 2**32).")
     root = Path(mkdtemp(prefix="gfp_binder_", dir="/content"))
     for folder in ("config", "runtime", "structures", "metrics"):
         (root / folder).mkdir()
@@ -83,13 +88,16 @@ def main():
         "revision": args.revision, "foundry_revision": FOUNDRY_REV,
         "assay_file": args.assays.name,
         "mode": "benchmark" if args.benchmark_only else "full",
-        "rf3_seeds": BENCHMARK_SEEDS if args.benchmark_only else (0,),
+        "rf3_seeds": args.benchmark_seeds if args.benchmark_only else (0,),
+        "benchmark_template": args.benchmark_template if args.benchmark_only else None,
+        "rf3": {"num_steps": 50, "diffusion_batch_size": 1,
+                "n_recycles": args.benchmark_recycles if args.benchmark_only else 3},
     }))
     python, env = prepare_runtime(root, args.benchmark_only)
     stages = [("preparing GFP and assay data", "prepare")]
     if args.benchmark_only:
         stages.extend((f"RF3 controls: seed {seed}", "benchmark", str(seed))
-                      for seed in BENCHMARK_SEEDS)
+                      for seed in args.benchmark_seeds)
         stages.append(("comparing poses with crystal structures", "benchmark_report"))
     else:
         stages.extend([("1/4 RFD3", "backbones"), ("2/4 LigandMPNN", "sequences"),

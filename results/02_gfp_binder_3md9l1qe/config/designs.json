@@ -1,0 +1,22 @@
+[
+  {
+    "id": "backbone_01_seq01",
+    "sequence": "SLRQEARDAIERTEAAADMTDPAVMNAVTALREAAVNEDAEAFAAAKARLDALVA",
+    "backbone": "structures/backbone_01.cif"
+  },
+  {
+    "id": "backbone_01_seq02",
+    "sequence": "ALRQAALDAYEEAAAKADLTDPAVMEALTALFEAAVAEDAAAFAAARARLDALVA",
+    "backbone": "structures/backbone_01.cif"
+  },
+  {
+    "id": "backbone_02_seq01",
+    "sequence": "EYKLDPELVALVERVEELARAKPLSLAEIAEALGTTREELEEARNAYNAQLVAQG",
+    "backbone": "structures/backbone_02.cif"
+  },
+  {
+    "id": "backbone_02_seq02",
+    "sequence": "TFELDPELVALVEQVEALMRAEPLSLEEVAERLGTTREELEEARDAYNAQLVAQG",
+    "backbone": "structures/backbone_02.cif"
+  }
+]

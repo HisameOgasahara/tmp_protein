@@ -1,0 +1,37 @@
+{
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "max_target_ca_rmsd_angstrom": 3.0,
+  "min_contact_jaccard": 0.5,
+  "controls": [
+    {
+      "control": "enhancer",
+      "reference_pdb": "3K1K",
+      "status": "no_pose_recovered",
+      "poses_tested": 3,
+      "poses_recovered": 0,
+      "top_iptm_seed": 1,
+      "top_iptm": 0.20842412114143372,
+      "top_iptm_contact_jaccard": 0.2,
+      "best_contact_seed": 0,
+      "best_contact_jaccard": 0.2222222222222222,
+      "best_recovered_iptm_rank": null
+    },
+    {
+      "control": "minimizer",
+      "reference_pdb": "3G9A",
+      "status": "no_pose_recovered",
+      "poses_tested": 3,
+      "poses_recovered": 0,
+      "top_iptm_seed": 0,
+      "top_iptm": 0.2318466305732727,
+      "top_iptm_contact_jaccard": 0.0,
+      "best_contact_seed": 1,
+      "best_contact_jaccard": 0.08333333333333333,
+      "best_recovered_iptm_rank": null
+    }
+  ]
+}
