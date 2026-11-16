@@ -74,6 +74,8 @@ def main():
     parser.add_argument("--benchmark-template", choices=("target", "both"), default="both")
     parser.add_argument("--benchmark-recycles", type=int, choices=(3, 10), default=10)
     parser.add_argument("--benchmark-seeds", type=int, nargs="+", default=list(BENCHMARK_SEEDS))
+    parser.add_argument("--benchmark-controls", nargs="+", choices=("enhancer", "minimizer"),
+                        default=["enhancer", "minimizer"])
     args = parser.parse_args()
     if args.benchmark_only and args.assays != SOURCE / "controls.csv":
         parser.error("--assays is available in the full pipeline.")
@@ -90,6 +92,7 @@ def main():
         "mode": "benchmark" if args.benchmark_only else "full",
         "rf3_seeds": args.benchmark_seeds if args.benchmark_only else (0,),
         "benchmark_template": args.benchmark_template if args.benchmark_only else None,
+        "benchmark_controls": list(dict.fromkeys(args.benchmark_controls)) if args.benchmark_only else None,
         "rf3": {"num_steps": 50, "diffusion_batch_size": 1,
                 "n_recycles": args.benchmark_recycles if args.benchmark_only else 3},
     }))

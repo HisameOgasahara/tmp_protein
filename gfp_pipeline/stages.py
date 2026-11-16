@@ -123,8 +123,12 @@ def prepare():
         row.update(sequence=seq, ratio=ratio, group=row["group"].strip())
     write_json(ROOT / "config/controls.json", assays)
     benchmarks = []
-    benchmark_only = read_json("config/source.json").get("mode") == "benchmark"
+    source = read_json("config/source.json")
+    benchmark_only = source.get("mode") == "benchmark"
+    selected_controls = source.get("benchmark_controls", ["enhancer", "minimizer"])
     for name, pdb, binder_chain in (("enhancer", "3K1K", "C"), ("minimizer", TARGET_PDB, "B")):
+        if benchmark_only and name not in selected_controls:
+            continue
         lines = crystal if pdb == TARGET_PDB else fetch(f"https://files.rcsb.org/download/{pdb}.pdb").splitlines()
         gfp = points_from_pdb(lines, TARGET_CHAIN)
         binder = np.array(list(points_from_pdb(lines, binder_chain).values()))

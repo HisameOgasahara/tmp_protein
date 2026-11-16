@@ -1,0 +1,7 @@
+iptm_rank,reference_pose_recovered,seed,id,file,reference_pdb,template_mode,num_steps,diffusion_batch_size,n_recycles,iptm,ranking_score,has_clash,target_ca_rmsd_angstrom,binder_ca_rmsd_after_target_alignment_angstrom,benchmark_contact_jaccard,native_ca_contact_pair_recovery,native_ca_contact_pairs,target_reference_ca_count,binder_reference_ca_count
+1,True,0,control_enhancer,structures/control_enhancer_seed0.cif,3K1K,both,50,1,10,0.9356712698936462,0.9358,False,0.08113060483176696,0.8737487395550136,1.0,0.9583333333333334,48,221,114
+2,True,2,control_enhancer,structures/control_enhancer_seed2.cif,3K1K,both,50,1,10,0.9356278777122498,0.9357,False,0.07806191720094989,0.6973041508492357,1.0,0.9375,48,221,114
+3,True,1,control_enhancer,structures/control_enhancer_seed1.cif,3K1K,both,50,1,10,0.9354692697525024,0.9355,False,0.07906910130950415,0.8531228309511699,1.0,0.9583333333333334,48,221,114
+1,False,1,control_minimizer,structures/control_minimizer_seed1.cif,3G9A,both,50,1,10,0.25859907269477844,0.3466,False,0.07704708811932127,35.814375641172916,0.08695652173913043,0.08571428571428572,35,226,128
+2,False,0,control_minimizer,structures/control_minimizer_seed0.cif,3G9A,both,50,1,10,0.2535257637500763,0.3425,False,0.07470961800142671,37.66384483005428,0.034482758620689655,0.0,35,226,128
+3,False,2,control_minimizer,structures/control_minimizer_seed2.cif,3G9A,both,50,1,10,0.22847624123096466,0.3204,False,0.07725250209627689,38.75018797879443,0.0,0.0,35,226,128

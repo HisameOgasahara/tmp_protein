@@ -1,0 +1,36 @@
+{
+  "baseline_summary": "results/04_gfp_binder_1tsmdhg9/metrics/benchmark_summary.json",
+  "experiments": [
+    {
+      "id": "minimizer_seed_search",
+      "label": "Minimizer: 두 구조 제공, 시드 확대",
+      "control": "minimizer",
+      "template": "both",
+      "recycles": 10,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "enhancer_target_only",
+      "label": "Enhancer: GFP 구조만 제공",
+      "control": "enhancer",
+      "template": "target",
+      "recycles": 10,
+      "seeds": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}
