@@ -1,17 +1,48 @@
-# GFP binder design · v0.1.6
+# GFP 결합체 설계와 형광 변화 평가 · v0.1.6
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Benchmark_Followup_T4.ipynb?v=0.1.6)
+GFP에 결합하는 단백질 후보를 설계하고, 결합 구조와 형광 변화 가능성을 평가한다. 후보 서열·복합체 구조·평가 지표를 함께 남겨 후속 실험 대상을 고르는 것이 목표다. 형광 변화의 방향과 배율은 구조 예측만으로 확정할 수 없으며, 실험 데이터에 기반한 평가가 필요하다.
 
-[실행 04 분석](docs/2026-11-17-gfp-run04-analysis.md): enhancer는 3/3에서 자세를 회복했고 minimizer는 0/3입니다. **후속 실험 v0.1.6**은 minimizer의 `both`·시드 0–9와 enhancer의 `target`·시드 0·1·2를 각각 recycle 10회로 실행합니다. 실험별 결과를 하나의 ZIP으로 내려받습니다.
+## 전체 흐름
 
-## 기존 설계·대조군 노트북 · v0.1.5
+| 단계 | 입력과 처리 | 산출물 |
+| --- | --- | --- |
+| GFP와 대조군 준비 | GFP 결정 구조, 알려진 결합체, 형광 측정 데이터 준비 | 표적 구조·접촉 위치·대조군 설정 |
+| 결합체 뼈대 생성 | RFD3로 지정 접촉 위치에 접근하는 구조 생성 | 결합체 뼈대 |
+| 서열 설계 | LigandMPNN으로 뼈대에 맞는 아미노산 서열 설계 | 후보 서열 |
+| 복합체 평가 | RF3로 GFP와 후보의 결합 구조 예측 | 구조 보존·접촉·충돌·신뢰도 지표 |
+| 형광 변화 평가 | 구조와 실험 데이터 검증 조건을 통과한 입력으로 회귀 | 조건 충족 시 형광 배율, 그 외 보류 사유 |
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Binder_T4.ipynb?v=0.1.5)
+알려진 결합체의 결정 구조를 재현하는 대조군 실험은 복합체 평가의 신뢰도를 확인하는 단계다. 여기서 확보한 평가 조건을 새 설계 후보에 적용하고, 독립적인 형광 측정 데이터를 확보해 형광 평가로 연결한다.
 
-Colab에서 T4 GPU를 선택하고 전체 셀을 실행하면 각 대조군의 GFP와 결합체 구조를 독립적으로 제공하고, recycle 10회와 시드 0·1·2로 결합 자세를 예측합니다. 체인 간 정답 거리는 가립니다. GFP 정렬 후 결합체 RMSD, 잔기 쌍 접촉 회복률, 기존 접촉면 기준 통과 여부와 ipTM 순위를 함께 확인합니다.
+## 현재 상태
 
-비교 조건은 `BENCHMARK_TEMPLATE=target`·`BENCHMARK_RECYCLES=3`, `target`·`10`, `both`·`10` 순서입니다. 개선이 확인되면 `BENCHMARK_SEEDS`를 `0,1,2,3,4,5,6,7,8,9`로 늘립니다. [원인 분석과 개선 방향](docs/2026-11-17-gfp-benchmark-improvement.md), [기존 실행 결과](results)
+- 뼈대 생성·서열 설계·복합체 예측·형광 평가를 연결한 전체 파이프라인이 있다. 현재 기본 생성 규모는 뼈대 2개와 뼈대당 서열 2개다.
+- 실행 04에서 개별 구조를 제공한 enhancer는 3/3에서 기준 결합 자세에 가깝게 예측됐다. Minimizer는 0/3이며, 개별 형태가 보존돼도 상대 위치·방향이 크게 달랐다. 새 후보를 신뢰성 있게 선별할 조건은 아직 확보되지 않았다.
+- 기본 형광 데이터는 2그룹이고 코드의 최소 요구는 3그룹이다. 구조 대조군 통과와 독립 실험 데이터 확보가 형광 배율 산출의 선행 조건이다.
 
-`BENCHMARK_ONLY`를 해제하면 GFP 구조에서 결합체 뼈대와 서열을 설계하고, 복합체 예측과 형광 평가를 실행합니다. 형광 배율은 구조와 교차 검증 조건을 통과한 후보에 표시합니다.
+현재 진행할 비교는 minimizer의 탐색 시드 확대와 enhancer의 결합체 템플릿 제거다. 결과에 따라 결합 자세 탐색과 결합체 구조 정보의 영향을 구분한다. [실행 04 분석](docs/2026-11-17-gfp-run04-analysis.md) · [원인 분석과 개선 방향](docs/2026-11-17-gfp-benchmark-improvement.md)
 
-버전을 올릴 때 해당 노트북의 첫 제목, README의 버전 표시와 해당 배지 URL의 `v` 값을 함께 갱신합니다.
+## Colab 실행
+
+두 노트북 모두 현재 프로젝트 버전 `v0.1.6`을 사용하며 T4 GPU 런타임에서 실행한다.
+
+| 용도 | 노트북 | 실행 방법 |
+| --- | --- | --- |
+| 전체 설계와 기본 대조군 평가 | [GFP_Binder_T4.ipynb](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Binder_T4.ipynb?v=0.1.6) | 기본값 `BENCHMARK_ONLY=True`는 대조군 평가. `False`로 바꾸면 뼈대 생성부터 형광 평가까지 실행 |
+| 현재 병목을 구분하는 후속 대조군 실험 | [GFP_Benchmark_Followup_T4.ipynb](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Benchmark_Followup_T4.ipynb?v=0.1.6) | 기본값 `EXPERIMENT=all`로 minimizer와 enhancer 비교를 순서대로 실행 |
+
+후속 실험은 minimizer에 두 구조를 제공하는 `both` 조건으로 시드 0–9, enhancer에 GFP 구조만 제공하는 `target` 조건으로 시드 0·1·2를 실행한다. 두 실험 모두 recycle 10회다. 개별 결과를 실행 04와 비교하고 실험별 하위 폴더를 하나의 ZIP으로 내려받는다.
+
+전체 설계 모드에서 자체 형광 측정 CSV가 있으면 `ASSAY_CSV`에 경로를 지정한다. 실행 결과의 형광 배율이 보류된 경우 함께 출력되는 구조·실험 데이터 검증 사유를 확인한다.
+
+## 파일과 결과
+
+```text
+GFP_Binder_T4.ipynb              전체 설계·기본 대조군 실행
+GFP_Benchmark_Followup_T4.ipynb  후속 대조군 비교 실행
+gfp_pipeline/                  입력 준비·설계·예측·평가 코드와 실험 설정
+docs/                          원인 분석·실행 결과·개선 방향
+results/                       실행별 원본 ZIP·설정·구조·지표·로그
+```
+
+[실행 04 전용 폴더](results/04_gfp_binder_1tsmdhg9)에는 원본 ZIP과 분석에 사용한 출력이 함께 있다. 각 실행의 `config/source.json`으로 실제 코드 커밋과 예측 조건을 확인할 수 있다. 과거 실행의 버전과 결과는 당시 기록을 유지한다.
