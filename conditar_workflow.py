@@ -225,5 +225,5 @@ def download_zip(context):
     OUTPUT = context.OUTPUT
     from google.colab import files
 
-    archive = shutil.make_archive(str(RUN / 'conditar_v002_results'), 'zip', root_dir=OUTPUT)
+    archive = shutil.make_archive(str(RUN / 'conditar_v003_results'), 'zip', root_dir=OUTPUT)
     files.download(archive)

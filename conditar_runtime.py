@@ -29,7 +29,9 @@ def install(num_samples=5, batch_size=1):
     ENV_DIR = BASE / 'env'
     PYTHON = ENV_DIR / 'bin/python'
     MAMBA = BASE / 'bin/micromamba'
-    ENV = dict(os.environ, MAMBA_ROOT_PREFIX=str(BASE / 'mamba'), PYTHONUNBUFFERED='1')
+    # The isolated subprocess has no Colab inline Matplotlib backend.
+    ENV = dict(os.environ, MAMBA_ROOT_PREFIX=str(BASE / 'mamba'),
+               PYTHONUNBUFFERED='1', MPLBACKEND='Agg')
 
     def run(args, **kwargs):
         subprocess.run([str(arg) for arg in args], env=ENV, check=True, **kwargs)
