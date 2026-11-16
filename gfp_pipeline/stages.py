@@ -13,6 +13,10 @@ from common import AA, ROOT, measure, save_cif, write_csv, write_json
 TARGET_PDB = "3G9A"
 TARGET_CHAIN = "A"
 CONTACT_RADIUS = 8.0
+MAX_TARGET_RMSD = 3.0
+MIN_BENCHMARK_CONTACT_JACCARD = 0.5
+MIN_DESIGN_HOTSPOT_FRACTION = 2 / 3
+MIN_FLUORESCENCE_GROUPS = 3
 BACKBONES = 2
 SEQUENCES_PER_BACKBONE = 2
 BINDER_LENGTH = 55
@@ -91,6 +95,7 @@ def prepare():
         "chromophore_indices": list(range(chromophore_index, chromophore_index + 3)),
         "hotspots": closest.tolist(),
         "hotspot_indices": [mapped_positions[int(index)] for index in closest],
+        "observed_indices": {str(index): mapped_positions[index] for index in target_points},
     })
 
     with (ROOT / "config/assays.csv").open(encoding="utf-8-sig", newline="") as handle:
@@ -117,6 +122,24 @@ def prepare():
         sequences.add(seq)
         row.update(sequence=seq, ratio=ratio, group=row["group"].strip())
     write_json(ROOT / "config/controls.json", assays)
+    benchmarks = []
+    for name, pdb, binder_chain in (("enhancer", "3K1K", "C"), ("minimizer", TARGET_PDB, "B")):
+        lines = crystal if pdb == TARGET_PDB else fetch(f"https://files.rcsb.org/download/{pdb}.pdb").splitlines()
+        gfp = points_from_pdb(lines, TARGET_CHAIN)
+        binder = np.array(list(points_from_pdb(lines, binder_chain).values()))
+        comparable = sorted(gfp.keys() & mapped_positions.keys())
+        contacts = np.linalg.norm(np.array([gfp[index] for index in comparable])[:, None, :]
+                                  - binder[None, :, :], axis=2)
+        sequence = pdb_sequence(pdb, "2").removesuffix("HHHHHH")
+        shared = next((row["id"] for row in assays if row["sequence"] == sequence), None)
+        benchmarks.append({
+            "id": shared or f"benchmark_{name}", "name": name, "pdb": pdb, "sequence": sequence,
+            "reference_indices": [mapped_positions[index] for index in comparable],
+            "contact_indices": [mapped_positions[index] for index, hit in
+                                zip(comparable, (contacts <= CONTACT_RADIUS).any(axis=1), strict=True)
+                                if hit],
+        })
+    write_json(ROOT / "config/benchmarks.json", benchmarks)
 
 
 def generate_backbones():
@@ -181,6 +204,8 @@ def interface_features(atoms, target):
         raise ValueError("Expected two complex chains with C-alpha coordinates.")
     if atom_sequence(atoms, "A") != target["sequence"]:
         raise ValueError("RF3 GFP chain does not match the target sequence.")
+    if not (np.isfinite(target_ca.coord).all() and np.isfinite(binder_ca.coord).all()):
+        raise ValueError("RF3 complex has unresolved C-alpha coordinates.")
     distances = np.linalg.norm(target_ca.coord[:, None] - binder_ca.coord[None, :], axis=2)
     contacts = distances <= CONTACT_RADIUS
     return {
@@ -188,7 +213,50 @@ def interface_features(atoms, target):
         "target_contact_fraction": float(np.mean(contacts.any(axis=1))),
         "binder_contact_fraction": float(np.mean(contacts.any(axis=0))),
         "chromophore_ca_distance": float(distances[target["chromophore_indices"]].min()),
+        "target_contact_indices": np.flatnonzero(contacts.any(axis=1)).tolist(),
     }
+
+
+def read_target_template(target):
+    mapping = target["observed_indices"]
+    lines = (ROOT / "structures/target.pdb").read_text().splitlines()
+    coords = {(mapping[line[22:26].strip()], line[12:16].strip()):
+              [float(line[start:start + 8]) for start in (30, 38, 46)]
+              for line in lines if line.startswith("ATOM") and line[22:26].strip() in mapping}
+    return coords
+
+
+def apply_target_template(atoms, target_sequence, template):
+    if atom_sequence(atoms, "A") != target_sequence:
+        raise ValueError("RF3 input GFP chain does not match the full target sequence.")
+    positions = {int(res_id): index for index, res_id in enumerate(ca_array(atoms, "A").res_id)}
+    selected = np.zeros(len(atoms), dtype=bool)
+    for i in np.flatnonzero(atoms.chain_id == "A"):
+        key = (positions[int(atoms.res_id[i])], str(atoms.atom_name[i]))
+        if key in template:
+            atoms.coord[i] = template[key]
+            selected[i] = True
+    if np.count_nonzero(selected & (atoms.atom_name == "CA")) != sum(
+        atom == "CA" for _, atom in template
+    ):
+        raise ValueError("RF3 template lost observed GFP C-alpha positions.")
+    # RF3 builds its template distances from observed, occupied atoms.
+    atoms.occupancy[selected] = 1.0
+    atoms.set_annotation("is_input_file_templated", selected)
+
+
+def target_rmsd(atoms, template):
+    reference_by_index = {index: coord for (index, atom), coord in template.items() if atom == "CA"}
+    indices = sorted(reference_by_index)
+    reference = np.array([reference_by_index[index] for index in indices])
+    mobile = ca_array(atoms, "A").coord[indices].astype(np.float64)
+    if not np.isfinite(mobile).all():
+        raise ValueError("RF3 GFP chain contains unresolved coordinates.")
+    mobile = mobile - mobile.mean(axis=0)
+    reference -= reference.mean(axis=0)
+    u, _, vt = np.linalg.svd(mobile.T @ reference)
+    rotation = u @ np.diag([1, 1, np.linalg.det(u @ vt)]) @ vt
+    return float(np.sqrt(np.mean(np.sum((mobile @ rotation - reference) ** 2, axis=1))))
 
 
 def predict_complexes():
@@ -211,24 +279,43 @@ def predict_complexes():
         layer.force_bfloat16 = False
 
     target = read_json("config/target.json")
+    template = read_target_template(target)
+    benchmarks = read_json("config/benchmarks.json")
+    benchmark_by_id = {row["id"]: row for row in benchmarks}
+    inputs = {row["id"]: row for row in
+              read_json("config/designs.json") + read_json("config/controls.json") + benchmarks}
     rows = []
-    for item in read_json("config/designs.json") + read_json("config/controls.json"):
+    ordered = sorted(inputs.values(), key=lambda row: row["id"] not in benchmark_by_id)
+    for item in ordered:
         ident = item["id"]
         payload = {"name": ident, "components": [
             {"chain_id": "A", "seq": target["sequence"]},
             {"chain_id": "B", "seq": item["sequence"]},
         ]}
         with measure("RF3", "complex", ident):
-            predictions = model.run(inputs=InferenceInput.from_json_dict(payload), out_dir=None)
+            input_spec = InferenceInput.from_json_dict(payload)
+            apply_target_template(input_spec.atom_array, target["sequence"], template)
+            predictions = model.run(inputs=input_spec, out_dir=None)
         prediction, = predictions[ident]
         if atom_sequence(prediction.atom_array, "B") != item["sequence"]:
             raise ValueError(f"RF3 binder chain does not match {ident}.")
         path = f"structures/{ident}.cif"
         save_cif(prediction.atom_array, ROOT / path)
         summary = prediction.summary_confidences
-        rows.append({"id": ident, "file": path, "iptm": summary.get("iptm"),
-                     "ranking_score": summary.get("ranking_score"),
-                     **interface_features(prediction.atom_array, target)})
+        features = interface_features(prediction.atom_array, target)
+        contacts = set(features.pop("target_contact_indices"))
+        rmsd = target_rmsd(prediction.atom_array, template)
+        jaccard = None
+        if benchmark := benchmark_by_id.get(ident):
+            native = set(benchmark["contact_indices"])
+            comparable_contacts = contacts & set(benchmark["reference_indices"])
+            jaccard = len(native & comparable_contacts) / len(native | comparable_contacts)
+        rows.append({
+            "id": ident, "file": path, "iptm": summary.get("iptm"),
+            "ranking_score": summary.get("ranking_score"),
+            "has_clash": bool(summary.get("has_clash", False)),
+            "target_ca_rmsd_angstrom": rmsd, "benchmark_contact_jaccard": jaccard, **features,
+        })
         write_csv(ROOT / "metrics/complexes.csv", rows)
     write_json(ROOT / "metrics/complexes.json", rows)
 
@@ -243,30 +330,72 @@ def predict_fluorescence():
     complexes = {row["id"]: row for row in read_json("metrics/complexes.json")}
     controls = read_json("config/controls.json")
     designs = read_json("config/designs.json")
-    train = np.array([[complexes[row["id"]][key] for key in features] for row in controls])
-    target = np.log2([row["ratio"] for row in controls])
-    groups = [row["group"] for row in controls]
+    benchmarks = read_json("config/benchmarks.json")
+    benchmark_passed = all(
+        complexes[row["id"]]["target_ca_rmsd_angstrom"] <= MAX_TARGET_RMSD
+        and complexes[row["id"]]["benchmark_contact_jaccard"] >= MIN_BENCHMARK_CONTACT_JACCARD
+        and not complexes[row["id"]]["has_clash"]
+        for row in benchmarks
+    )
+    valid_controls = [row for row in controls
+                      if complexes[row["id"]]["target_ca_rmsd_angstrom"] <= MAX_TARGET_RMSD
+                      and not complexes[row["id"]]["has_clash"]]
+    groups = [row["group"] for row in valid_controls]
     model = make_pipeline(StandardScaler(), Ridge(alpha=1.0))
     report = {
-        "n_controls": len(controls), "n_groups": len(set(groups)),
+        "n_controls": len(controls), "n_valid_controls": len(valid_controls),
+        "n_groups": len(set(groups)), "benchmarks_passed": benchmark_passed,
         "assay": controls[0]["assay"], "feature_names": features,
+        "max_target_ca_rmsd_angstrom": MAX_TARGET_RMSD,
+        "min_benchmark_contact_jaccard": MIN_BENCHMARK_CONTACT_JACCARD,
+        "min_candidate_hotspot_fraction": MIN_DESIGN_HOTSPOT_FRACTION,
+        "min_fluorescence_groups": MIN_FLUORESCENCE_GROUPS,
         "label": "log2(GFP with binder fluorescence / reference fluorescence)",
-        "scope": "Exploratory extrapolation from measured controls; validate new designs experimentally.",
+        "scope": "In-range estimates from experimentally measured controls.",
     }
-    if len(set(groups)) >= 3:
+    status = "insufficient_control_groups"
+    if not benchmark_passed:
+        status = "structural_benchmark_failed"
+    elif len(set(groups)) >= MIN_FLUORESCENCE_GROUPS:
+        train = np.array([[complexes[row["id"]][key] for key in features] for row in valid_controls])
+        target = np.log2([row["ratio"] for row in valid_controls])
         held_out = cross_val_predict(model, train, target, groups=groups, cv=LeaveOneGroupOut())
         report["held_out_mae_log2"] = float(np.mean(np.abs(held_out - target)))
         report["no_effect_mae_log2"] = float(np.mean(np.abs(target)))
-    else:
-        report["validation"] = "Too few independent control groups for meaningful evaluation."
-    model.fit(train, target)
-    candidates = [[complexes[row["id"]][key] for key in features] for row in designs]
+        status = "baseline_not_improved"
+        if report["held_out_mae_log2"] < report["no_effect_mae_log2"]:
+            model.fit(train, target)
+            lower, upper = train.min(axis=0), train.max(axis=0)
+            minimum_score, maximum_score = target.min(), target.max()
+            report["training_feature_range"] = {
+                key: [low, high] for key, low, high in zip(features, lower, upper, strict=True)
+            }
+            report["training_log2_effect_range"] = [minimum_score, maximum_score]
+            status = "ready"
+    report["validation"] = status
     results = []
-    for design, score in zip(designs, model.predict(candidates), strict=True):
+    for design in designs:
         result = complexes[design["id"]]
-        results.append({"id": design["id"], "sequence": design["sequence"], "complex": result["file"],
-                        "iptm": result["iptm"], "predicted_log2_ratio": float(score),
-                        "predicted_fluorescence_ratio": float(2 ** score)})
+        reason = status
+        score = None
+        if (result["has_clash"] or result["target_ca_rmsd_angstrom"] > MAX_TARGET_RMSD
+                or result["hotspot_contact_fraction"] < MIN_DESIGN_HOTSPOT_FRACTION):
+            reason = "candidate_structure_failed"
+        elif status == "ready":
+            vector = np.array([result[key] for key in features])
+            reason = "outside_training_range"
+            if np.all((lower <= vector) & (vector <= upper)):
+                estimate = float(model.predict(vector[None, :])[0])
+                reason = "outside_observed_effect_range"
+                if minimum_score <= estimate <= maximum_score:
+                    score = estimate
+                    reason = "predicted"
+        results.append({
+            "id": design["id"], "sequence": design["sequence"], "complex": result["file"],
+            "iptm": result["iptm"], "prediction_status": reason,
+            "predicted_log2_ratio": score,
+            "predicted_fluorescence_ratio": None if score is None else float(2 ** score),
+        })
     write_json(ROOT / "metrics/fluorescence_model.json", report)
     write_csv(ROOT / "metrics/fluorescence_predictions.csv", results)
 
