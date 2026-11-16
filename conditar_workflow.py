@@ -1,5 +1,6 @@
 from hashlib import file_digest
 import json
+from pathlib import Path
 import shutil
 import subprocess
 from textwrap import dedent
@@ -190,33 +191,17 @@ def score_vina(context):
     display(pd.read_csv(OUTPUT / 'vina_scores.csv'))
 
 
-def show_paper_assays(context):
-    OUTPUT = context.OUTPUT
+def predict_potency(context):
     import pandas as pd
     from IPython.display import display
 
-    import matplotlib.pyplot as plt
-
-    PAPER = 'https://arxiv.org/html/2607.12349v1#S5'
-    assays = pd.DataFrame([
-        ('CL-0', '8W1L reference ligand', 20, 'measured'),
-        ('CL-1', 'shape search hit', 200, 'measured'),
-        ('CL-2', 'shape search hit', 309, 'measured'),
-        ('CL-10', 'direct model generation', None, 'inactive'),
-        ('CL-11', 'direct model generation', None, 'inactive'),
-        ('CL-12', 'direct model generation', None, 'not determined'),
-    ], columns=['paper_candidate', 'origin', 'ic50_nm', 'assay_status'])
-    assays['source'] = PAPER
-    assays.to_csv(OUTPUT / 'paper_csf1r_table6.csv', index=False)
-    display(assays)
-    measured = assays.dropna(subset=['ic50_nm'])
-    fig, ax = plt.subplots(figsize=(6, 3))
-    ax.scatter(measured['ic50_nm'], measured['paper_candidate'], s=55)
-    ax.set(xscale='log', xlabel='Measured CSF1R IC50 (nM)', title='Published CSF1R assay, Table 6')
-    ax.grid(axis='x', alpha=.3)
-    fig.tight_layout()
-    fig.savefig(OUTPUT / 'paper_csf1r_ic50.png', dpi=160)
-    plt.show()
+    script = Path(__file__).with_name('conditar_potency.py')
+    context.run([context.PYTHON, script, context.OUTPUT])
+    metrics = json.loads((context.OUTPUT / 'csf1r_model_validation.json').read_text())
+    print(f"분자 {metrics['molecule_count']}개 · 독립 골격 평가 MAE "
+          f"{metrics['holdout_mae_pIC50']:.2f} pIC50 · "
+          f"중앙값 기준 MAE {metrics['holdout_median_baseline_mae_pIC50']:.2f}")
+    display(pd.read_csv(context.OUTPUT / 'csf1r_predicted_ic50.csv').drop(columns='smiles'))
 
 
 def download_zip(context):
@@ -224,5 +209,5 @@ def download_zip(context):
     OUTPUT = context.OUTPUT
     from google.colab import files
 
-    archive = shutil.make_archive(str(RUN / 'conditar_v004_results'), 'zip', root_dir=OUTPUT)
+    archive = shutil.make_archive(str(RUN / 'conditar_v005_results'), 'zip', root_dir=OUTPUT)
     files.download(archive)
