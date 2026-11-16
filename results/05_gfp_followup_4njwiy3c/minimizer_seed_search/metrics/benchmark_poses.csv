@@ -1,0 +1,11 @@
+iptm_rank,reference_pose_recovered,seed,id,file,reference_pdb,template_mode,num_steps,diffusion_batch_size,n_recycles,iptm,ranking_score,has_clash,target_ca_rmsd_angstrom,binder_ca_rmsd_after_target_alignment_angstrom,benchmark_contact_jaccard,native_ca_contact_pair_recovery,native_ca_contact_pairs,target_reference_ca_count,binder_reference_ca_count
+1,False,8,control_minimizer,structures/control_minimizer_seed8.cif,3G9A,both,50,1,10,0.25924092531204224,0.3472,False,0.07301957925523003,37.05110214872823,0.04,0.02857142857142857,35,226,128
+2,False,4,control_minimizer,structures/control_minimizer_seed4.cif,3G9A,both,50,1,10,0.2583790719509125,0.3465,False,0.07467491187262262,37.55901141970856,0.06666666666666667,0.02857142857142857,35,226,128
+3,False,9,control_minimizer,structures/control_minimizer_seed9.cif,3G9A,both,50,1,10,0.2540867030620575,0.3427,False,0.07443053033648363,36.405089025856604,0.08333333333333333,0.08571428571428572,35,226,128
+4,False,5,control_minimizer,structures/control_minimizer_seed5.cif,3G9A,both,50,1,10,0.2529612183570862,-99.658,True,0.07600411558812079,39.258714437820124,0.0,0.0,35,226,128
+5,False,0,control_minimizer,structures/control_minimizer_seed0.cif,3G9A,both,50,1,10,0.2529316842556,0.342,False,0.0723110273155609,39.370675869496154,0.0,0.0,35,226,128
+6,False,7,control_minimizer,structures/control_minimizer_seed7.cif,3G9A,both,50,1,10,0.2527410089969635,0.3417,False,0.07851182852055091,38.374689585204855,0.038461538461538464,0.0,35,226,128
+7,False,6,control_minimizer,structures/control_minimizer_seed6.cif,3G9A,both,50,1,10,0.2476126253604889,0.3372,False,0.07356211726190194,38.08468325338186,0.03571428571428571,0.02857142857142857,35,226,128
+8,False,1,control_minimizer,structures/control_minimizer_seed1.cif,3G9A,both,50,1,10,0.24703267216682434,0.3368,False,0.06963347164234553,29.986048249951658,0.04,0.0,35,226,128
+9,False,3,control_minimizer,structures/control_minimizer_seed3.cif,3G9A,both,50,1,10,0.24634481966495514,0.3363,False,0.07484929560837739,40.17784917928807,0.0,0.0,35,226,128
+10,False,2,control_minimizer,structures/control_minimizer_seed2.cif,3G9A,both,50,1,10,0.2419406920671463,0.3322,False,0.07236036395834924,34.26949187754565,0.07407407407407407,0.0,35,226,128

@@ -1,0 +1,2 @@
+> /content/gfp_foundry_0d0b0ba4/venv/bin/python -u /content/gfp_main_tnri7eer/repo/gfp_pipeline/checkpoints.py /content/gfp_foundry_0d0b0ba4/weights rf3
+rf3: using cached rf3_foundry_01_24_latest_remapped.ckpt

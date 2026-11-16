@@ -1,0 +1,2 @@
+id,file,reference_pdb,template_mode,num_steps,diffusion_batch_size,n_recycles,iptm,ranking_score,has_clash,target_ca_rmsd_angstrom,binder_ca_rmsd_after_target_alignment_angstrom,benchmark_contact_jaccard,native_ca_contact_pair_recovery,native_ca_contact_pairs,target_reference_ca_count,binder_reference_ca_count
+control_minimizer,structures/control_minimizer_seed3.cif,3G9A,both,50,1,10,0.24634481966495514,0.3363,False,0.07484929560837739,40.17784917928807,0.0,0.0,35,226,128

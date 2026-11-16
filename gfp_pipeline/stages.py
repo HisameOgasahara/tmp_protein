@@ -277,33 +277,16 @@ def target_rmsd(atoms, template):
 
 
 def predict_complexes(benchmark_seed=None):
-    from rf3.inference_engines.rf3 import RF3InferenceEngine
-    from rf3.model.layers.af3_diffusion_transformer import AttentionPairBiasDiffusion
-    from rf3.model.layers.pairformer_layers import AttentionPairBiasPairformerDeepspeed
     from rf3.utils.inference import InferenceInput
+    from rf3_runtime import create_model
 
     seed = 0 if benchmark_seed is None else benchmark_seed
     source = read_json("config/source.json")
     settings = source.get("rf3", {"num_steps": 50, "n_recycles": 3, "diffusion_batch_size": 1})
-    model = RF3InferenceEngine(
-        ckpt_path="rf3", **settings,
-        triangle_attention_backend="vanilla", dense_attention_backend="vanilla",
-        early_stopping_plddt_threshold=None, trainer_overrides={"precision": "32-true"}, seed=seed,
-    )
+    template_mode = source["benchmark_template"] if benchmark_seed is not None else None
+    model = create_model(settings, seed, template_mode)
     if benchmark_seed is not None:
-        model.transform_overrides["p_provide_inter_molecule_distances"] = 0.0
-    model.initialize()
-    if benchmark_seed is not None:
-        from benchmark import apply_chain_templates, guard_template_pipeline, measure_pose
-
-        template_mode = source["benchmark_template"]
-        model.pipeline = guard_template_pipeline(model.pipeline, template_mode)
-    layers = [layer for layer in model.trainer.state["model"].modules()
-              if isinstance(layer, (AttentionPairBiasPairformerDeepspeed, AttentionPairBiasDiffusion))]
-    if not layers or any(layer.use_deepspeed_evo for layer in layers):
-        raise RuntimeError("Expected native RF3 attention layers on T4.")
-    for layer in layers:
-        layer.force_bfloat16 = False
+        from benchmark import apply_chain_templates, measure_pose
 
     target = read_json("config/target.json")
     template = read_target_template(target)

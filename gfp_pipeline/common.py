@@ -8,12 +8,9 @@ from time import perf_counter
 
 import numpy as np
 import torch
+from residues import AA
 
 ROOT = Path(os.environ["DESIGN_RUN"])
-AA = dict(zip(
-    "ALA ARG ASN ASP CYS GLU GLN GLY HIS ILE LEU LYS MET PHE PRO SER THR TRP TYR VAL".split(),
-    "ARNDCEQGHILKMFPSTWYV",
-))
 
 def json_ready(value):
     if isinstance(value, (np.generic, np.ndarray)):

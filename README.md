@@ -1,4 +1,4 @@
-# GFP 결합체 설계와 형광 변화 평가 · v0.1.6
+# GFP 결합체 설계와 형광 변화 평가 · v0.1.7
 
 GFP에 결합하는 단백질 후보를 설계하고, 결합 구조와 형광 변화 가능성을 평가한다. 후보 서열·복합체 구조·평가 지표를 함께 남겨 후속 실험 대상을 고르는 것이 목표다. 형광 변화의 방향과 배율은 구조 예측만으로 확정할 수 없으며, 실험 데이터에 기반한 평가가 필요하다.
 
@@ -14,35 +14,36 @@ GFP에 결합하는 단백질 후보를 설계하고, 결합 구조와 형광 �
 
 알려진 결합체의 결정 구조를 재현하는 대조군 실험은 복합체 평가의 신뢰도를 확인하는 단계다. 여기서 확보한 평가 조건을 새 설계 후보에 적용하고, 독립적인 형광 측정 데이터를 확보해 형광 평가로 연결한다.
 
-## 현재 상태 · v0.1.6
+## 현재 상태 · v0.1.7
 
 - 뼈대 생성·서열 설계·복합체 예측·형광 평가를 연결한 전체 파이프라인이 있다. 현재 기본 생성 규모는 뼈대 2개와 뼈대당 서열 2개다.
-- 실행 04에서 개별 구조를 제공한 enhancer는 3/3에서 기준 결합 자세에 가깝게 예측됐다. Minimizer는 0/3이며, 개별 형태가 보존돼도 상대 위치·방향이 크게 달랐다. 새 후보를 신뢰성 있게 선별할 조건은 아직 확보되지 않았다.
+- 실행 05에서 minimizer는 개별 구조를 제공해도 0/10이며 상대 배치 오류가 남았다. Enhancer는 결합체 템플릿을 제거하자 0/3이고 자체 접힘 오차도 6.84–8.71 Å로 커졌다. 두 구조를 제공한 실행 04의 enhancer는 3/3 성공했다. 새 후보를 신뢰성 있게 선별할 조건은 아직 확보되지 않았다.
 - 기본 형광 데이터는 2그룹이고 코드의 최소 요구는 3그룹이다. 구조 대조군 통과와 독립 실험 데이터 확보가 형광 배율 산출의 선행 조건이다.
 
-현재 진행할 비교는 minimizer의 탐색 시드 확대와 enhancer의 결합체 템플릿 제거다. 결과에 따라 결합 자세 탐색과 결합체 구조 정보의 영향을 구분한다. [실행 04 분석](docs/2026-11-17-gfp-run04-analysis.md) · [원인 분석과 개선 방향](docs/2026-11-17-gfp-benchmark-improvement.md)
+다음 비교는 minimizer의 LightDock 강체 도킹과 enhancer의 단독 접힘·복합체 배치 분리다. v0.1.7에 실행 경로를 구현했으며 실제 GPU·전체 도킹 결과는 아직 없다. [실행 05 분석과 실험 조건](docs/2026-11-17-gfp-run05-analysis.md) · [전체 개선 방향](docs/2026-11-17-gfp-benchmark-improvement.md)
 
 ## Colab 실행
 
-[GFP_Binder_T4.ipynb · v0.1.6](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Binder_T4.ipynb?v=0.1.6)을 T4 GPU 런타임에서 열고 `RUN_MODE`를 선택한다.
+[GFP_Binder_T4.ipynb · v0.1.7](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Binder_T4.ipynb?v=0.1.7)을 T4 GPU 런타임에서 열고 `RUN_MODE`를 선택한다.
 
 | RUN_MODE | 용도 | 실행 방법 |
 | --- | --- | --- |
 | `full` | 전체 설계·형광 평가 | 뼈대 생성부터 형광 평가까지 실행 |
 | `benchmark` | 기본 대조군 평가 | 템플릿·recycle 수·시드를 지정해 두 대조군 평가 |
-| `followup` (기본값) | 현재 병목을 구분하는 후속 비교 | `EXPERIMENT=all`로 minimizer와 enhancer 비교를 순서대로 실행 |
+| `followup` | 실행 05 조건의 재실행 | `FOLLOWUP_EXPERIMENT=all`로 시드 확대와 템플릿 제거 비교 |
+| `diagnostics` (기본값) | 접힘과 결합 자세 탐색의 분리 | `DIAGNOSTIC_EXPERIMENT=all`로 enhancer 분리 실험과 minimizer 도킹 실행 |
 
-후속 실험은 minimizer에 두 구조를 제공하는 `both` 조건으로 시드 0–9, enhancer에 GFP 구조만 제공하는 `target` 조건으로 시드 0·1·2를 실행한다. 두 실험 모두 recycle 10회다. 개별 결과를 실행 04와 비교하고 실험별 하위 폴더를 하나의 ZIP으로 내려받는다.
+진단 실험에서 enhancer는 세 시드 각각 단독 접힘과 두 구조 조건의 복합체 예측을 수행한다. Minimizer는 접촉 제한 없는 LightDock 탐색·군집화 후 점수 상위 최대 100개 자세를 평가한다. LightDock은 CPU를 사용하므로 RF3 실험과 소요시간이 다를 수 있다. 실험별 로그·패키지 목록·구조·지표를 하나의 ZIP으로 내려받는다.
 
 전체 설계 모드에서 자체 형광 측정 CSV가 있으면 `ASSAY_CSV`에 경로를 지정한다. 실행 결과의 형광 배율이 보류된 경우 함께 출력되는 구조·실험 데이터 검증 사유를 확인한다.
 
 ## 파일과 결과
 
 ```text
-GFP_Binder_T4.ipynb             전체 설계·기본 대조군·후속 비교 실행
+GFP_Binder_T4.ipynb             전체 설계·대조군·후속 비교·진단 실행
 gfp_pipeline/                  입력 준비·설계·예측·평가 코드와 실험 설정
 docs/                          원인 분석·실행 결과·개선 방향
 results/                       실행별 원본 ZIP·설정·구조·지표·로그
 ```
 
-[실행 04 전용 폴더](results/04_gfp_binder_1tsmdhg9)에는 원본 ZIP과 분석에 사용한 출력이 함께 있다. 각 실행의 `config/source.json`으로 실제 코드 커밋과 예측 조건을 확인할 수 있다. 과거 실행의 버전과 결과는 당시 기록을 유지한다.
+[실행 05 전용 폴더](results/05_gfp_followup_4njwiy3c)에는 원본 ZIP과 두 실험의 출력이 함께 있다. 각 실행의 `config/source.json`으로 실제 코드 커밋과 예측 조건을 확인할 수 있다. 과거 실행의 버전과 결과는 당시 기록을 유지한다.

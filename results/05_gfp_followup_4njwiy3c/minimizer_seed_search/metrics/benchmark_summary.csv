@@ -1,0 +1,2 @@
+control,reference_pdb,status,poses_tested,poses_recovered,top_iptm_seed,top_iptm,top_iptm_contact_jaccard,best_contact_seed,best_contact_jaccard,top_iptm_binder_rmsd_angstrom,top_iptm_native_ca_contact_pair_recovery,best_binder_rmsd_angstrom,best_native_ca_contact_pair_recovery,best_recovered_iptm_rank
+minimizer,3G9A,no_pose_recovered,10,0,8,0.25924092531204224,0.04,9,0.08333333333333333,37.05110214872823,0.02857142857142857,29.986048249951658,0.08571428571428572,

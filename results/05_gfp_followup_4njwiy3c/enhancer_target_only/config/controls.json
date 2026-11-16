@@ -1,0 +1,22 @@
+[
+  {
+    "id": "control_enhancer",
+    "pdb": "3K1K",
+    "entity": "2",
+    "ratio": 4.0,
+    "group": "enhancer",
+    "assay": "kirchhofer_fig1",
+    "source": "https://www.nature.com/articles/nsmb.1727",
+    "sequence": "MAQVQLVESGGALVQPGGSLRLSCAASGFPVNRYSMRWYRQAPGKEREWVAGMSSAGDRSSYEDSVKGRFTISRDDARNTVYLQMNSLKPEDTAVYYCNVNVGFEYWGQGTQVTVSS"
+  },
+  {
+    "id": "control_minimizer",
+    "pdb": "3G9A",
+    "entity": "2",
+    "ratio": 0.2,
+    "group": "minimizer",
+    "assay": "kirchhofer_fig1",
+    "source": "https://www.nature.com/articles/nsmb.1727",
+    "sequence": "MADVQLQESGGGSVQAGGSLRLSCAASGDTFSSYSMAWFRQAPGKECELVSNILRDGTTTYAGSVKGRFTISRDDAKNTVYLQMVNLKSEDTARYYCAADSGTQLGYVGAVGLSCLDYVMDYWGKGTQVTVSS"
+  }
+]

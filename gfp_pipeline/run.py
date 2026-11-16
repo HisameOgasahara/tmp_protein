@@ -14,15 +14,34 @@ SOURCE = Path(__file__).resolve().parent
 BENCHMARK_SEEDS = (0, 1, 2)
 
 
-def run_logged(args, log, env):
+def run_logged(args, log, env, cwd=None):
     args = [str(arg) for arg in args]
     with log.open("a", encoding="utf-8") as handle:
         print(">", *args, file=handle, flush=True)
-        result = subprocess.run(args, env=env, stdout=handle, stderr=subprocess.STDOUT)
+        result = subprocess.run(args, env=env, cwd=cwd, stdout=handle, stderr=subprocess.STDOUT)
     if result.returncode:
         with log.open(encoding="utf-8", errors="replace") as handle:
             print("".join(deque(handle, maxlen=60)), file=sys.stderr)
         raise RuntimeError(f"Exit {result.returncode}. Full log: {log}")
+
+
+def ensure_uv(state, log, env):
+    uv = shutil.which("uv")
+    if uv is None:
+        uv = state / "tools/uv"
+        if not uv.is_file():
+            run_logged(["bash", "-o", "pipefail", "-c",
+                        'curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="$1" UV_NO_MODIFY_PATH=1 sh',
+                        "uv-bootstrap", uv.parent], log, env)
+    return uv
+
+
+def save_environment(uv, python, root, env):
+    with (root / "runtime/packages.json").open("w", encoding="utf-8") as handle:
+        subprocess.run([str(uv), "pip", "list", "--python", str(python), "--format", "json"],
+                       env=env, stdout=handle, check=True)
+    run_logged([python, "-c", "import sys,platform; print(sys.version); print(platform.platform())"],
+               root / "runtime/environment.log", env)
 
 
 def prepare_runtime(root, benchmark_only):
@@ -41,13 +60,7 @@ def prepare_runtime(root, benchmark_only):
     if gpu.returncode or not any("T4" in name for name in gpu.stdout.splitlines()):
         raise RuntimeError("Select a Google Colab T4 GPU runtime.")
     if not (state / "installed").exists():
-        uv = shutil.which("uv")
-        if uv is None:
-            tools = state / "tools"
-            run_logged(["bash", "-o", "pipefail", "-c",
-                        'curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="$1" UV_NO_MODIFY_PATH=1 sh',
-                        "uv-bootstrap", tools], log, env)
-            uv = tools / "uv"
+        uv = ensure_uv(state, log, env)
         run_logged([uv, "venv", "--allow-existing", "--python", "3.12", venv], log, env)
         index = "https://download.pytorch.org/whl/cu128"
         install = [uv, "pip", "install", "--python", python]
@@ -60,6 +73,9 @@ def prepare_runtime(root, benchmark_only):
                     "atomworks[ml]==3.0.1", "biopython", "scikit-learn"], log, env)
         run_logged([uv, "pip", "check", "--python", python], log, env)
         (state / "installed").touch()
+    save_environment(ensure_uv(state, log, env), python, root, env)
+    run_logged([python, "-c", "import torch; print('torch',torch.__version__); print('CUDA',torch.version.cuda); print('GPU',torch.cuda.get_device_name())"],
+               root / "runtime/environment.log", env)
     models = ["rf3"] if benchmark_only else []
     run_logged([python, "-u", SOURCE / "checkpoints.py", weights, *models],
                root / "runtime/checkpoints.log", env)

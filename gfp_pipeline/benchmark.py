@@ -1,6 +1,6 @@
 import numpy as np
 
-from common import AA
+from residues import AA
 
 
 def build_chain_reference(lines, chain, sequence):
