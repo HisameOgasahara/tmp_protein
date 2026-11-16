@@ -14,7 +14,7 @@ GFP에 결합하는 단백질 후보를 설계하고, 결합 구조와 형광 �
 
 알려진 결합체의 결정 구조를 재현하는 대조군 실험은 복합체 평가의 신뢰도를 확인하는 단계다. 여기서 확보한 평가 조건을 새 설계 후보에 적용하고, 독립적인 형광 측정 데이터를 확보해 형광 평가로 연결한다.
 
-## 현재 상태
+## 현재 상태 · v0.1.6
 
 - 뼈대 생성·서열 설계·복합체 예측·형광 평가를 연결한 전체 파이프라인이 있다. 현재 기본 생성 규모는 뼈대 2개와 뼈대당 서열 2개다.
 - 실행 04에서 개별 구조를 제공한 enhancer는 3/3에서 기준 결합 자세에 가깝게 예측됐다. Minimizer는 0/3이며, 개별 형태가 보존돼도 상대 위치·방향이 크게 달랐다. 새 후보를 신뢰성 있게 선별할 조건은 아직 확보되지 않았다.
@@ -24,12 +24,13 @@ GFP에 결합하는 단백질 후보를 설계하고, 결합 구조와 형광 �
 
 ## Colab 실행
 
-두 노트북 모두 현재 프로젝트 버전 `v0.1.6`을 사용하며 T4 GPU 런타임에서 실행한다.
+[GFP_Binder_T4.ipynb · v0.1.6](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Binder_T4.ipynb?v=0.1.6)을 T4 GPU 런타임에서 열고 `RUN_MODE`를 선택한다.
 
-| 용도 | 노트북 | 실행 방법 |
+| RUN_MODE | 용도 | 실행 방법 |
 | --- | --- | --- |
-| 전체 설계와 기본 대조군 평가 | [GFP_Binder_T4.ipynb](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Binder_T4.ipynb?v=0.1.6) | 기본값 `BENCHMARK_ONLY=True`는 대조군 평가. `False`로 바꾸면 뼈대 생성부터 형광 평가까지 실행 |
-| 현재 병목을 구분하는 후속 대조군 실험 | [GFP_Benchmark_Followup_T4.ipynb](https://colab.research.google.com/github/HisameOgasahara/tmp_protein/blob/main/GFP_Benchmark_Followup_T4.ipynb?v=0.1.6) | 기본값 `EXPERIMENT=all`로 minimizer와 enhancer 비교를 순서대로 실행 |
+| `full` | 전체 설계·형광 평가 | 뼈대 생성부터 형광 평가까지 실행 |
+| `benchmark` | 기본 대조군 평가 | 템플릿·recycle 수·시드를 지정해 두 대조군 평가 |
+| `followup` (기본값) | 현재 병목을 구분하는 후속 비교 | `EXPERIMENT=all`로 minimizer와 enhancer 비교를 순서대로 실행 |
 
 후속 실험은 minimizer에 두 구조를 제공하는 `both` 조건으로 시드 0–9, enhancer에 GFP 구조만 제공하는 `target` 조건으로 시드 0·1·2를 실행한다. 두 실험 모두 recycle 10회다. 개별 결과를 실행 04와 비교하고 실험별 하위 폴더를 하나의 ZIP으로 내려받는다.
 
@@ -38,8 +39,7 @@ GFP에 결합하는 단백질 후보를 설계하고, 결합 구조와 형광 �
 ## 파일과 결과
 
 ```text
-GFP_Binder_T4.ipynb              전체 설계·기본 대조군 실행
-GFP_Benchmark_Followup_T4.ipynb  후속 대조군 비교 실행
+GFP_Binder_T4.ipynb             전체 설계·기본 대조군·후속 비교 실행
 gfp_pipeline/                  입력 준비·설계·예측·평가 코드와 실험 설정
 docs/                          원인 분석·실행 결과·개선 방향
 results/                       실행별 원본 ZIP·설정·구조·지표·로그
