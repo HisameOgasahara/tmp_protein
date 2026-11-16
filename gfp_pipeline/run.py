@@ -59,8 +59,8 @@ def prepare_runtime(root):
                     "atomworks[ml]==3.0.1", "biopython", "scikit-learn"], log, env)
         run_logged([uv, "pip", "check", "--python", python], log, env)
         (state / "installed").touch()
-    run_logged([venv / "bin/foundry", "install", "rfd3", "ligandmpnn", "rf3",
-                "--checkpoint-dir", weights], root / "runtime/checkpoints.log", env)
+    run_logged([python, "-u", SOURCE / "checkpoints.py", weights],
+               root / "runtime/checkpoints.log", env)
     return python, env
 
 
