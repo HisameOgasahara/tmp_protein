@@ -10,7 +10,7 @@ from tempfile import mkdtemp
 from time import perf_counter
 
 
-VERSION = "0.3.3"
+VERSION = "0.3.4"
 AF2_REVISION = "cafa3853ac94dceb1b908c8d9e6954d71749871a"
 SOURCE = Path(__file__).resolve().parent
 
@@ -93,8 +93,8 @@ def prepare_runtime(root):
     env["TF_NUM_INTEROP_THREADS"] = "1"
     run_logged([python, "-c", "from alphafold.model import model; import pyrosetta; print('Original AF2 and PyRosetta imports succeeded.')"],
                root / "runtime/environment.log", env)
-    model_weights = upstream / "af2_initial_guess/model_weights"
-    model_weights.mkdir(exist_ok=True)
+    model_weights = upstream / "af2_initial_guess/model_weights/params"
+    model_weights.mkdir(parents=True, exist_ok=True)
     weight_link = model_weights / "params_model_1_ptm.npz"
     if not weight_link.exists():
         weight_link.symlink_to(parameters / "params_model_1_ptm.npz")
