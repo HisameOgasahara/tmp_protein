@@ -10,7 +10,7 @@ from tempfile import mkdtemp
 from time import perf_counter
 
 
-VERSION = "0.3.1"
+VERSION = "0.3.2"
 COLABDESIGN_REVISION = "27b15b11e39e0b99383975895bca9e0b0e907da1"
 SOURCE = Path(__file__).resolve().parent
 
@@ -30,7 +30,8 @@ def run_logged(arguments, log, env):
 def prepare_runtime(root):
     state = Path("/content/trka88_af2_v0_3_0")
     state.mkdir(exist_ok=True)
-    env = dict(os.environ, PYTHONUNBUFFERED="1", XLA_PYTHON_CLIENT_PREALLOCATE="false")
+    env = dict(os.environ, PYTHONUNBUFFERED="1", XLA_PYTHON_CLIENT_PREALLOCATE="false",
+               MPLBACKEND="Agg")
     log = root / "runtime/installation.log"
     uv = shutil.which("uv")
     if uv is None:
