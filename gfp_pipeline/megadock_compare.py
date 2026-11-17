@@ -8,6 +8,7 @@ from time import perf_counter
 import numpy as np
 
 from benchmark import measure_pose, pose_failure_reasons, recovery_criteria
+from docking_selection import rank_docking_candidates
 from lightdock_compare import read_pose, write_partner
 from run import run_logged
 
@@ -63,6 +64,9 @@ def run_docking(root):
         rows.append({"rank": rank, "megadock_score": float(record[-1]),
                      "file": str(pose.relative_to(root)), "contact_criterion_passed": passed, "pose_failure_reasons": failures,
                      **clash, **metrics})
+    ranked, selection = rank_docking_candidates(rows, config["heavy_atom_clash_distance_angstrom"])
+    for row in rows:
+        row.update(ranked[row["rank"]])
     with (root / "metrics/docking_poses.csv").open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()
@@ -72,7 +76,7 @@ def run_docking(root):
                "poses_evaluated": count, "contact_criterion_passed": sum(row["contact_criterion_passed"] for row in rows),
                "evaluation_scope": "top scoring poses without clustering",
                "clash_rule": f"minimum interchain heavy-atom distance < {config['heavy_atom_clash_distance_angstrom']} angstrom",
-               "rows": rows}
+               "candidate_selection": selection, "rows": rows}
     (root / "metrics/diagnostic_summary.json").write_text(json.dumps(summary, indent=2))
 
 
