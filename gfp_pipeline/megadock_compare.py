@@ -13,17 +13,35 @@ from lightdock_compare import read_pose, write_partner
 from run import run_logged
 
 
-def run_docking(root):
+def read_score_components(path):
+    with path.open(newline="") as handle:
+        rows = csv.DictReader(handle, skipinitialspace=True)
+        scores = [
+            {"rank": int(row["Rank"]), "total": float(row["total"]),
+             "rpsc": float(row["rPSC"]), "electrostatic": float(row["ELEC "]),
+             "receptor_ace": float(row["RecACE"])}
+            for row in rows if row["Rank"].strip() in {"1", "2"}
+        ]
+    if [row["rank"] for row in scores] != [1, 2]:
+        raise ValueError("MEGADOCK detail output is missing ranks 1 and 2.")
+    return scores
+
+
+def run_docking(root, experiment="minimizer_docking"):
     root = Path(root).resolve()
     settings = json.loads((root / "config/diagnostics.json").read_text())
     config = settings["docking"]
-    reference = json.loads((root / "config/reference_minimizer.json").read_text())
+    control = experiment.removesuffix("_docking")
+    reference = json.loads((root / f"config/reference_{control}.json").read_text())
+    binder_input = reference["binder"]
+    if control == "enhancer":
+        binder_input = json.loads((root / "config/predicted_binder.json").read_text())
     work = root / "docking"
     work.mkdir()
     rng = np.random.default_rng(config["seed"])
     receptor, ligand = work / "receptor.pdb", work / "ligand.pdb"
     write_partner(receptor, reference["target"], "A", rng)
-    write_partner(ligand, reference["binder"], "B", rng)
+    write_partner(ligand, binder_input, "B", rng)
     binaries = Path(os.environ["MEGADOCK_BIN"])
     env = dict(os.environ)
 
@@ -40,9 +58,12 @@ def run_docking(root):
 
     output = work / "dock.out"
     print("MEGADOCK GPU search started", flush=True)
-    command([binaries / "megadock-gpu", "-R", receptor, "-L", ligand, "-o", output,
-             "-r", config["rotations"], "-v", config["voxel_spacing_angstrom"],
-             "-N", config["output_poses"], "-f", config["score_function"]], "docking_search")
+    arguments = [binaries / "megadock-gpu", "-R", receptor, "-L", ligand, "-o", output,
+                 "-r", config["rotations"], "-v", config["voxel_spacing_angstrom"],
+                 "-N", config["output_poses"], "-f", config["score_function"]]
+    if control == "minimizer":
+        arguments.append("-O")
+    command(arguments, "docking_search")
     # MEGADOCK writes four header lines followed by seven fields per ranked pose.
     records = [line.split() for line in output.read_text().splitlines()[4:] if line.strip()]
     if not records or any(len(record) != 7 for record in records):
@@ -71,14 +92,16 @@ def run_docking(root):
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
-    summary = {"experiment": "minimizer_docking", "recovery_criteria": recovery_criteria(settings), "backend": "MEGADOCK",
+    summary = {"experiment": experiment, "recovery_criteria": recovery_criteria(settings), "backend": "MEGADOCK",
                "revision": config["revision"], "ranked_poses": len(records),
                "poses_evaluated": count, "contact_criterion_passed": sum(row["contact_criterion_passed"] for row in rows),
                "evaluation_scope": "top scoring poses without clustering",
                "clash_rule": f"minimum interchain heavy-atom distance < {config['heavy_atom_clash_distance_angstrom']} angstrom",
                "candidate_selection": selection, "rows": rows}
+    if control == "minimizer":
+        summary["score_components_top_two"] = read_score_components(output.with_suffix(".csv"))
     (root / "metrics/diagnostic_summary.json").write_text(json.dumps(summary, indent=2))
 
 
 if __name__ == "__main__":
-    run_docking(sys.argv[1])
+    run_docking(*sys.argv[1:])

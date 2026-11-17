@@ -1,9 +1,11 @@
 {
   "version": "0.1.9",
   "reference_run": "results/05_gfp_followup_4njwiy3c",
+  "enhancer_monomer_archive": "results/07_gfp_diagnostics_1wx_7cqz/gfp_diagnostics_1wx_7cqz.zip",
   "experiments": [
     "enhancer_split",
-    "minimizer_docking"
+    "minimizer_docking",
+    "enhancer_docking"
   ],
   "rf3": {
     "num_steps": 50,

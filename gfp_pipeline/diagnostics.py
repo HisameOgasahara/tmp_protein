@@ -4,6 +4,7 @@ import shutil
 import sys
 from pathlib import Path
 from tempfile import mkdtemp
+from zipfile import ZipFile
 
 from run import FOUNDRY_REV, SOURCE, prepare_runtime, run_logged
 from megadock_runtime import prepare_megadock
@@ -13,7 +14,7 @@ from nanobody_fold import prepare_nanobody
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--revision", required=True)
-    parser.add_argument("--experiment", choices=("minimizer_docking", "enhancer_split"), required=True)
+    parser.add_argument("--experiment", choices=("minimizer_docking", "enhancer_split", "enhancer_docking"), required=True)
     args = parser.parse_args()
     settings = json.loads((SOURCE / "diagnostic_experiments.json").read_text(encoding="utf-8"))
     root = Path(mkdtemp(prefix=f"gfp_{args.experiment}_", dir="/content"))
@@ -25,16 +26,26 @@ def main():
         "revision": args.revision, "version": settings["version"], "mode": "diagnostics",
         "experiment": args.experiment, "foundry_revision": FOUNDRY_REV,
         "reference_run": settings["reference_run"],
+        "binder_input": (
+            "run07_predicted_monomer" if args.experiment == "enhancer_docking" else
+            "crystal_monomer" if args.experiment == "minimizer_docking" else "predicted_and_crystal_monomers"
+        ),
     }, indent=2))
     control = "minimizer" if args.experiment == "minimizer_docking" else "enhancer"
     previous = "minimizer_seed_search" if control == "minimizer" else "enhancer_target_only"
     baseline = SOURCE.parent / settings["reference_run"] / previous
     shutil.copyfile(baseline / f"config/reference_{control}.json", root / f"config/reference_{control}.json")
     shutil.copyfile(baseline / "metrics/benchmark_summary.json", root / "config/baseline_summary.json")
-    if control == "minimizer":
+    if args.experiment == "enhancer_docking":
+        archive = SOURCE.parent / settings["enhancer_monomer_archive"]
+        with ZipFile(archive) as bundle:
+            (root / "config/predicted_binder.json").write_bytes(
+                bundle.read("enhancer_split/config/predicted_binder.json")
+            )
+    if args.experiment.endswith("_docking"):
         python, env = prepare_megadock(root, settings)
         print("MEGADOCK: GPU global search, pose generation, evaluation", flush=True)
-        run_logged([python, SOURCE / "megadock_compare.py", root], root / "runtime/docking.log", env)
+        run_logged([python, SOURCE / "megadock_compare.py", root, args.experiment], root / "runtime/docking.log", env)
     else:
         fold_python, fold_env = prepare_nanobody(root, settings)
         print("Enhancer: NanoBodyBuilder2 monomer prediction and refinement", flush=True)

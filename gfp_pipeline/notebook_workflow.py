@@ -87,8 +87,11 @@ def display_results(checkout, mode, completed_runs):
             display(pd.DataFrame(baseline["controls"])[[
                 "control", "poses_tested", "poses_recovered", "top_iptm_binder_rmsd_angstrom",
                 "best_binder_rmsd_angstrom", "best_native_ca_contact_pair_recovery"]].round(3))
-            if summary["experiment"] == "minimizer_docking":
+            if summary["experiment"].endswith("_docking"):
                 print(f"도킹 상위 {summary['poses_evaluated']}개 평가 · 구조 회복 기준 통과 {summary['contact_criterion_passed']}개")
+                print("후보 선택", summary["candidate_selection"])
+                if "score_components_top_two" in summary:
+                    display(pd.DataFrame(summary["score_components_top_two"]).round(3))
                 print("상위 10개 표시. 전체 평가는 metrics/docking_poses.csv에 저장됩니다.")
                 display(pd.DataFrame(summary["rows"]).head(10).round(3))
             else:
