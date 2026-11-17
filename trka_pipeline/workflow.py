@@ -10,7 +10,7 @@ from tempfile import mkdtemp
 from time import perf_counter
 
 
-VERSION = "0.3.0"
+VERSION = "0.3.1"
 COLABDESIGN_REVISION = "27b15b11e39e0b99383975895bca9e0b0e907da1"
 SOURCE = Path(__file__).resolve().parent
 
@@ -47,6 +47,19 @@ def prepare_runtime(root):
         ], log, env)
         run_logged([uv, "pip", "check", "--python", python], log, env)
         (state / "installed").touch()
+    cuda_root = subprocess.check_output([
+        str(python), "-c",
+        "import importlib.util,pathlib; "
+        "spec=importlib.util.find_spec('nvidia.cuda_nvcc'); "
+        "root=pathlib.Path(next(iter(spec.submodule_search_locations))); "
+        "assert (root/'bin/ptxas').is_file(), root; "
+        "assert (root/'nvvm/libdevice/libdevice.10.bc').is_file(), root; "
+        "print(root)",
+    ], env=env, text=True).strip()
+    env["CUDA_ROOT"] = cuda_root
+    env["PATH"] = str(Path(cuda_root) / "bin") + os.pathsep + env.get("PATH", "")
+    run_logged([python, "-c", "import sys,jax; print(sys.version); print(jax.__version__); print(jax.devices()); assert any(d.platform == 'gpu' for d in jax.devices())"],
+               root / "runtime/environment.log", env)
     parameters = state / "params"
     parameters.mkdir(exist_ok=True)
     if not (parameters / "params_model_1_ptm.npz").is_file():
@@ -63,8 +76,6 @@ def prepare_runtime(root):
         archive.unlink()
     run_logged([uv, "pip", "list", "--python", python], root / "runtime/packages.log", env)
     run_logged(["nvidia-smi"], root / "runtime/environment.log", env)
-    run_logged([python, "-c", "import sys,jax; print(sys.version); print(jax.__version__); print(jax.devices())"],
-               root / "runtime/environment.log", env)
     return python, parameters, env
 
 
