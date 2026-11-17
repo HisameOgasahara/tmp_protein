@@ -1,0 +1,18 @@
+{
+  "revision": "5530873f01219ebe9fa432713ece058c54d812fc",
+  "mode": "diagnostics",
+  "runs": [
+    {
+      "experiment": {
+        "id": "minimizer_docking"
+      },
+      "original_zip": "gfp_minimizer_docking_wv6cvo0t.zip"
+    },
+    {
+      "experiment": {
+        "id": "enhancer_docking"
+      },
+      "original_zip": "gfp_enhancer_docking_la5au6fe.zip"
+    }
+  ]
+}

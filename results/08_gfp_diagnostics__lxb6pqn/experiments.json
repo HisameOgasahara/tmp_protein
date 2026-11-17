@@ -1,0 +1,12 @@
+{
+  "revision": "8ab1920f39940bcc9da5976d37ece69d5704e705",
+  "mode": "diagnostics",
+  "runs": [
+    {
+      "experiment": {
+        "id": "minimizer_docking"
+      },
+      "original_zip": "gfp_minimizer_docking_lftmpw4w.zip"
+    }
+  ]
+}

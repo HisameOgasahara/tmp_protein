@@ -1,0 +1,10 @@
+{
+  "revision": "060cd39f0daffdcbf08fd15f9de5f1262b97a8e5",
+  "version": "0.1.9",
+  "mode": "diagnostics",
+  "diagnostic_version": "0.1.0",
+  "experiment": "minimizer_docking",
+  "foundry_revision": "0d0b0ba44fab7ca76aa4b625c014ce5964c7d284",
+  "reference_run": "results/05_gfp_followup_4njwiy3c",
+  "binder_input": "crystal_monomer"
+}
