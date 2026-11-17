@@ -1,5 +1,6 @@
 {
   "version": "0.1.9",
+  "diagnostic_version": "0.1.0",
   "reference_run": "results/05_gfp_followup_4njwiy3c",
   "enhancer_monomer_archive": "results/07_gfp_diagnostics_1wx_7cqz/gfp_diagnostics_1wx_7cqz.zip",
   "experiments": [

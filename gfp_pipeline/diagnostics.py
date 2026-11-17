@@ -24,6 +24,7 @@ def main():
     (root / "config/diagnostics.json").write_text(json.dumps(settings, indent=2))
     (root / "config/source.json").write_text(json.dumps({
         "revision": args.revision, "version": settings["version"], "mode": "diagnostics",
+        "diagnostic_version": settings["diagnostic_version"],
         "experiment": args.experiment, "foundry_revision": FOUNDRY_REV,
         "reference_run": settings["reference_run"],
         "binder_input": (
