@@ -8,6 +8,7 @@ from urllib.request import urlopen
 import numpy as np
 
 from common import AA, ROOT, measure, save_cif, write_csv, write_json
+from benchmark import measure_pose, pose_failure_reasons, recovery_criteria
 
 
 TARGET_PDB = "3G9A"
@@ -144,17 +145,16 @@ def prepare():
                                 zip(comparable, (contacts <= CONTACT_RADIUS).any(axis=1), strict=True)
                                 if hit],
         }
-        if benchmark_only:
-            from benchmark import make_reference
+        from benchmark import make_reference
 
-            reference_sequence = pdb_sequence(pdb, "1")
-            if reference_sequence.count("X") != 1 or "TTFXVQ" not in reference_sequence:
-                raise ValueError(f"Unexpected GFP chromophore sequence in {pdb}.")
-            reference = make_reference(lines, TARGET_CHAIN, binder_chain,
-                                       reference_sequence.replace("X", "SYG"), sequence)
-            reference_path = f"config/reference_{name}.json"
-            write_json(ROOT / reference_path, reference)
-            benchmark["reference_file"] = reference_path
+        reference_sequence = pdb_sequence(pdb, "1")
+        if reference_sequence.count("X") != 1 or "TTFXVQ" not in reference_sequence:
+            raise ValueError(f"Unexpected GFP chromophore sequence in {pdb}.")
+        reference = make_reference(lines, TARGET_CHAIN, binder_chain,
+                                   reference_sequence.replace("X", "SYG"), sequence)
+        reference_path = f"config/reference_{name}.json"
+        write_json(ROOT / reference_path, reference)
+        benchmark["reference_file"] = reference_path
         benchmarks.append(benchmark)
     write_json(ROOT / "config/benchmarks.json", benchmarks)
 
@@ -336,27 +336,32 @@ def predict_complexes(benchmark_seed=None):
         features = interface_features(prediction.atom_array, target)
         contacts = set(features.pop("target_contact_indices"))
         rmsd = target_rmsd(prediction.atom_array, template)
-        jaccard = None
+        pose_metrics = {}
         if benchmark := benchmark_by_id.get(ident):
-            native = set(benchmark["contact_indices"])
-            comparable_contacts = contacts & set(benchmark["reference_indices"])
-            jaccard = len(native & comparable_contacts) / len(native | comparable_contacts)
+            from Bio.Align import PairwiseAligner
+            native = read_json(benchmark["reference_file"])
+            aligner = PairwiseAligner(match_score=2, mismatch_score=-3, open_gap_score=-5, extend_gap_score=-0.5)
+            mapping = next(iter(aligner.align(native["target"]["sequence"], target_sequence)))
+            native_target = np.full((len(native["target"]["sequence"]), 3), np.nan)
+            current_target = ca_array(prediction.atom_array, "A").coord
+            for native_index, current_index in zip(*mapping.indices):
+                if native_index >= 0 and current_index >= 0:
+                    native_target[native_index] = current_target[current_index]
+            pose_metrics = measure_pose(native_target, ca_array(prediction.atom_array, "B").coord,
+                                        native, CONTACT_RADIUS)
         rows.append({
             "id": ident, "file": path, "iptm": summary.get("iptm"),
             "ranking_score": summary.get("ranking_score"),
             "has_clash": bool(summary.get("has_clash", False)),
-            "target_ca_rmsd_angstrom": rmsd, "benchmark_contact_jaccard": jaccard, **features,
+            "target_ca_rmsd_angstrom": rmsd, "benchmark_contact_jaccard": None,
+            **features, **pose_metrics,
         })
         write_csv(ROOT / f"metrics/complexes{suffix}.csv", rows)
     write_json(ROOT / f"metrics/complexes{suffix}.json", rows)
 
 
 def benchmark_pose_passed(row):
-    return (
-        row["target_ca_rmsd_angstrom"] <= MAX_TARGET_RMSD
-        and row["benchmark_contact_jaccard"] >= MIN_BENCHMARK_CONTACT_JACCARD
-        and not row["has_clash"]
-    )
+    return not pose_failure_reasons(row)
 
 
 def summarize_benchmark():
@@ -381,7 +386,8 @@ def summarize_benchmark():
         top = ranked[0]
         passing_ranks = []
         for rank, row in enumerate(ranked, 1):
-            passed = benchmark_pose_passed(row)
+            row["pose_failure_reasons"] = pose_failure_reasons(row)
+            passed = not row["pose_failure_reasons"]
             poses.append({"iptm_rank": rank, "reference_pose_recovered": passed, **row})
             if passed:
                 passing_ranks.append(rank)
@@ -415,7 +421,8 @@ def summarize_benchmark():
         "seeds": seeds, "max_target_ca_rmsd_angstrom": MAX_TARGET_RMSD,
         "template_mode": source.get("benchmark_template"), "rf3": source.get("rf3"),
         "contact_radius_angstrom": CONTACT_RADIUS,
-        "recovery_criterion": "target_rmsd_and_target_contact_jaccard_without_clash",
+        "recovery_criterion": "target_and_binder_structure_contacts_without_clash",
+        "recovery_criteria": recovery_criteria(),
         "min_contact_jaccard": MIN_BENCHMARK_CONTACT_JACCARD, "controls": summary,
     })
 
@@ -440,6 +447,7 @@ def predict_fluorescence():
     report = {
         "n_controls": len(controls), "n_valid_controls": len(valid_controls),
         "n_groups": len(set(groups)), "benchmarks_passed": benchmark_passed,
+        "recovery_criteria": recovery_criteria(),
         "assay": controls[0]["assay"], "feature_names": features,
         "max_target_ca_rmsd_angstrom": MAX_TARGET_RMSD,
         "min_benchmark_contact_jaccard": MIN_BENCHMARK_CONTACT_JACCARD,

@@ -1,3 +1,7 @@
+import json
+import math
+from pathlib import Path
+
 import numpy as np
 
 from residues import AA
@@ -122,6 +126,8 @@ def measure_pose(target_ca, binder_ca, reference, contact_radius):
     rotation, mobile_center, reference_center = align_target(target, native_target)
     aligned_target = (target - mobile_center) @ rotation + reference_center
     aligned_binder = (binder - mobile_center) @ rotation + reference_center
+    binder_rotation, binder_center, native_binder_center = align_target(binder, native_binder)
+    self_aligned_binder = (binder - binder_center) @ binder_rotation + native_binder_center
     native_contacts = np.linalg.norm(native_target[:, None] - native_binder[None, :], axis=2) <= contact_radius
     predicted_contacts = np.linalg.norm(target[:, None] - binder[None, :], axis=2) <= contact_radius
     native_sites = native_contacts.any(axis=1)
@@ -131,6 +137,7 @@ def measure_pose(target_ca, binder_ca, reference, contact_radius):
     return {
         "target_ca_rmsd_angstrom": float(np.sqrt(np.mean(np.sum((aligned_target - native_target) ** 2, axis=1)))),
         "binder_ca_rmsd_after_target_alignment_angstrom": float(np.sqrt(np.mean(np.sum((aligned_binder - native_binder) ** 2, axis=1)))),
+        "binder_self_rmsd_angstrom": float(np.sqrt(np.mean(np.sum((self_aligned_binder - native_binder) ** 2, axis=1)))),
         "benchmark_contact_jaccard": float(np.count_nonzero(native_sites & predicted_sites)
                                             / np.count_nonzero(native_sites | predicted_sites)),
         "native_ca_contact_pair_recovery": float(np.count_nonzero(native_contacts & predicted_contacts)
@@ -139,3 +146,32 @@ def measure_pose(target_ca, binder_ca, reference, contact_radius):
         "target_reference_ca_count": len(target_indices),
         "binder_reference_ca_count": len(binder_indices),
     }
+
+
+def recovery_criteria(settings=None):
+    defaults = json.loads(Path(__file__).with_name("diagnostic_experiments.json").read_text())
+    defaults.update(settings or {})
+    return {key: defaults[key] for key in (
+        "max_target_rmsd_angstrom", "max_binder_pose_rmsd_angstrom", "max_binder_self_rmsd_angstrom",
+        "min_contact_jaccard", "min_native_contact_pair_recovery",
+    )}
+
+
+def pose_failure_reasons(row, settings=None):
+    criteria = recovery_criteria(settings)
+    reasons = []
+    for metric, threshold, upper_bound in (
+        ("target_ca_rmsd_angstrom", "max_target_rmsd_angstrom", True),
+        ("binder_ca_rmsd_after_target_alignment_angstrom", "max_binder_pose_rmsd_angstrom", True),
+        ("binder_self_rmsd_angstrom", "max_binder_self_rmsd_angstrom", True),
+        ("benchmark_contact_jaccard", "min_contact_jaccard", False),
+        ("native_ca_contact_pair_recovery", "min_native_contact_pair_recovery", False),
+    ):
+        value = row.get(metric)
+        if not isinstance(value, (int, float)) or not math.isfinite(value):
+            reasons.append(f"missing_or_nonfinite:{metric}")
+        elif (upper_bound and value > criteria[threshold]) or (not upper_bound and value < criteria[threshold]):
+            reasons.append(metric)
+    if row.get("has_clash") is not False:
+        reasons.append("clash_or_missing_clash_assessment")
+    return reasons

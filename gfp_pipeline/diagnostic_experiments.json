@@ -1,5 +1,5 @@
 {
-  "version": "0.1.8",
+  "version": "0.1.9",
   "reference_run": "results/05_gfp_followup_4njwiy3c",
   "experiments": [
     "enhancer_split",
@@ -35,5 +35,28 @@
     "top_poses": 100,
     "heavy_atom_clash_distance_angstrom": 2.0,
     "tutorial": "https://github.com/akiyamalab/MEGADOCK/blob/master/doc/README.md"
+  },
+  "max_binder_pose_rmsd_angstrom": 5.0,
+  "max_binder_self_rmsd_angstrom": 2.0,
+  "min_native_contact_pair_recovery": 0.5,
+  "nanobody": {
+    "python_version": "3.12",
+    "torch_index": "https://download.pytorch.org/whl/cu128",
+    "torch_package": "torch==2.11.0+cu128",
+    "packages": [
+      "ImmuneBuilder==1.2",
+      "anarci==2026.2.13.2",
+      "openmm==8.6.1",
+      "pdbfixer==1.12.0",
+      "numpy==1.26.4",
+      "scipy==1.13.1",
+      "biopython==1.85"
+    ],
+    "model_ids": [
+      1,
+      2,
+      3,
+      4
+    ]
   }
 }

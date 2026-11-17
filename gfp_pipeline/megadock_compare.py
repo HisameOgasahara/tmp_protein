@@ -7,7 +7,7 @@ from time import perf_counter
 
 import numpy as np
 
-from benchmark import measure_pose
+from benchmark import measure_pose, pose_failure_reasons, recovery_criteria
 from lightdock_compare import read_pose, write_partner
 from run import run_logged
 
@@ -58,17 +58,16 @@ def run_docking(root):
         pose.write_text("\n".join([*receptor_lines, "TER", *ligand_lines, "TER", "END", ""]))
         target, binder, clash = read_pose(pose, reference, config["heavy_atom_clash_distance_angstrom"])
         metrics = measure_pose(target, binder, reference, settings["contact_radius_angstrom"])
-        passed = (metrics["target_ca_rmsd_angstrom"] <= settings["max_target_rmsd_angstrom"]
-                  and metrics["benchmark_contact_jaccard"] >= settings["min_contact_jaccard"]
-                  and not clash["has_clash"])
+        failures = pose_failure_reasons({**metrics, **clash}, settings)
+        passed = not failures
         rows.append({"rank": rank, "megadock_score": float(record[-1]),
-                     "file": str(pose.relative_to(root)), "contact_criterion_passed": passed,
+                     "file": str(pose.relative_to(root)), "contact_criterion_passed": passed, "pose_failure_reasons": failures,
                      **clash, **metrics})
     with (root / "metrics/docking_poses.csv").open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
-    summary = {"experiment": "minimizer_docking", "backend": "MEGADOCK",
+    summary = {"experiment": "minimizer_docking", "recovery_criteria": recovery_criteria(settings), "backend": "MEGADOCK",
                "revision": config["revision"], "ranked_poses": len(records),
                "poses_evaluated": count, "contact_criterion_passed": sum(row["contact_criterion_passed"] for row in rows),
                "evaluation_scope": "top scoring poses without clustering",

@@ -1,0 +1,40 @@
+[
+  {
+    "stage": "monomer",
+    "seed": 0,
+    "binder_self_rmsd_angstrom": 8.66713760085013,
+    "file": "structures/enhancer_monomer_seed0.cif"
+  },
+  {
+    "stage": "predicted_binder",
+    "seed": 0,
+    "file": "structures/enhancer_predicted_binder_seed0.cif",
+    "input_monomer_rmsd_angstrom": 8.66713760085013,
+    "binder_self_rmsd_angstrom": 8.697475654071129,
+    "iptm": 0.3918001353740692,
+    "has_clash": false,
+    "target_ca_rmsd_angstrom": 0.08165628497242032,
+    "binder_ca_rmsd_after_target_alignment_angstrom": 13.358375992821744,
+    "benchmark_contact_jaccard": 0.5263157894736842,
+    "native_ca_contact_pair_recovery": 0.3958333333333333,
+    "native_ca_contact_pairs": 48,
+    "target_reference_ca_count": 221,
+    "binder_reference_ca_count": 114
+  },
+  {
+    "stage": "crystal_binder",
+    "seed": 0,
+    "file": "structures/enhancer_crystal_binder_seed0.cif",
+    "input_monomer_rmsd_angstrom": 0.0,
+    "binder_self_rmsd_angstrom": 0.08704120729760438,
+    "iptm": 0.93537837266922,
+    "has_clash": false,
+    "target_ca_rmsd_angstrom": 0.07360629289328219,
+    "binder_ca_rmsd_after_target_alignment_angstrom": 0.6662105331476219,
+    "benchmark_contact_jaccard": 1.0,
+    "native_ca_contact_pair_recovery": 0.9583333333333334,
+    "native_ca_contact_pairs": 48,
+    "target_reference_ca_count": 221,
+    "binder_reference_ca_count": 114
+  }
+]

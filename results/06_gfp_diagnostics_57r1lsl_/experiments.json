@@ -1,0 +1,18 @@
+{
+  "revision": "8e8a6d79a5f2ed2cba2be52ad1e1c36c428ec520",
+  "mode": "diagnostics",
+  "runs": [
+    {
+      "experiment": {
+        "id": "enhancer_split"
+      },
+      "original_zip": "gfp_enhancer_split_64akfpy9.zip"
+    },
+    {
+      "experiment": {
+        "id": "minimizer_docking"
+      },
+      "original_zip": "gfp_minimizer_docking_7nxo9vfz.zip"
+    }
+  ]
+}

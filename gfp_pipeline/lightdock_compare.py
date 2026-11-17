@@ -8,7 +8,7 @@ from time import perf_counter
 
 import numpy as np
 
-from benchmark import measure_pose
+from benchmark import measure_pose, pose_failure_reasons, recovery_criteria
 from residues import AA
 from run import run_logged
 
@@ -123,17 +123,16 @@ def run_docking(root):
         metrics = measure_pose(target, binder, reference, settings["contact_radius_angstrom"])
         destination = root / "structures" / path.name
         shutil.move(path, destination)
-        passed = (metrics["target_ca_rmsd_angstrom"] <= settings["max_target_rmsd_angstrom"]
-                  and metrics["benchmark_contact_jaccard"] >= settings["min_contact_jaccard"]
-                  and not clash["has_clash"])
+        failures = pose_failure_reasons({**metrics, **clash}, settings)
+        passed = not failures
         rows.append({"rank": rank, "lightdock_score": float(ranked_lines[rank - 1].split()[-1]),
-                     "file": str(destination.relative_to(root)), "contact_criterion_passed": passed,
+                     "file": str(destination.relative_to(root)), "contact_criterion_passed": passed, "pose_failure_reasons": failures,
                      **clash, **metrics})
     with (root / "metrics/docking_poses.csv").open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
-    summary = {"experiment": "minimizer_docking", "swarms": len(swarms), "ranked_representatives": len(ranked_lines),
+    summary = {"experiment": "minimizer_docking", "recovery_criteria": recovery_criteria(settings), "swarms": len(swarms), "ranked_representatives": len(ranked_lines),
                "poses_evaluated": count, "contact_criterion_passed": sum(row["contact_criterion_passed"] for row in rows),
                "evaluation_scope": "top scoring cluster representatives only",
                "clash_rule": f"minimum interchain heavy-atom distance < {config['heavy_atom_clash_distance_angstrom']} angstrom",

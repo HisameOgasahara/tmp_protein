@@ -82,11 +82,13 @@ def display_results(checkout, mode, completed_runs):
             summary = json.loads((root / "metrics/diagnostic_summary.json").read_text(encoding="utf-8"))
             baseline = json.loads((root / "config/baseline_summary.json").read_text(encoding="utf-8"))
             print(summary["experiment"], "· 실행 05 비교 기준")
+            if "recovery_criteria" in summary:
+                print("현재 구조 회복 판정 조건", summary["recovery_criteria"])
             display(pd.DataFrame(baseline["controls"])[[
                 "control", "poses_tested", "poses_recovered", "top_iptm_binder_rmsd_angstrom",
                 "best_binder_rmsd_angstrom", "best_native_ca_contact_pair_recovery"]].round(3))
             if summary["experiment"] == "minimizer_docking":
-                print(f"도킹 상위 {summary['poses_evaluated']}개 평가 · 접촉 기준 통과 {summary['contact_criterion_passed']}개")
+                print(f"도킹 상위 {summary['poses_evaluated']}개 평가 · 구조 회복 기준 통과 {summary['contact_criterion_passed']}개")
                 print("상위 10개 표시. 전체 평가는 metrics/docking_poses.csv에 저장됩니다.")
                 display(pd.DataFrame(summary["rows"]).head(10).round(3))
             else:
