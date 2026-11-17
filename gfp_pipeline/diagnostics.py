@@ -1,32 +1,12 @@
 import argparse
 import json
-import os
 import shutil
 import sys
 from pathlib import Path
 from tempfile import mkdtemp
 
-from run import FOUNDRY_REV, SOURCE, ensure_uv, prepare_runtime, run_logged, save_environment
-
-
-def prepare_lightdock(root, settings):
-    config = settings["docking"]
-    state = Path("/content") / f"gfp_lightdock_{settings['version']}"
-    state.mkdir(exist_ok=True)
-    env = dict(os.environ, PYTHONUNBUFFERED="1")
-    log = root / "runtime/installation.log"
-    uv = ensure_uv(state, log, env)
-    venv = state / "venv"
-    python = venv / "bin/python"
-    if not (state / "installed").exists():
-        run_logged([uv, "venv", "--allow-existing", "--python", config["python_version"], venv], log, env)
-        install = [uv, "pip", "install", "--python", python]
-        run_logged([*install, *config["build_packages"]], log, env)
-        run_logged([*install, "--no-build-isolation", *config["packages"]], log, env)
-        run_logged([uv, "pip", "check", "--python", python], log, env)
-        (state / "installed").touch()
-    save_environment(uv, python, root, env)
-    return python, env
+from run import FOUNDRY_REV, SOURCE, prepare_runtime, run_logged
+from megadock_runtime import prepare_megadock
 
 
 def main():
@@ -51,9 +31,9 @@ def main():
     shutil.copyfile(baseline / f"config/reference_{control}.json", root / f"config/reference_{control}.json")
     shutil.copyfile(baseline / "metrics/benchmark_summary.json", root / "config/baseline_summary.json")
     if control == "minimizer":
-        python, env = prepare_lightdock(root, settings)
-        print("LightDock: setup, global search, clustering, ranking", flush=True)
-        run_logged([python, SOURCE / "lightdock_compare.py", root], root / "runtime/docking.log", env)
+        python, env = prepare_megadock(root, settings)
+        print("MEGADOCK: GPU global search, pose generation, evaluation", flush=True)
+        run_logged([python, SOURCE / "megadock_compare.py", root], root / "runtime/docking.log", env)
     else:
         python, env = prepare_runtime(root, benchmark_only=True)
         for seed in settings["seeds"]:

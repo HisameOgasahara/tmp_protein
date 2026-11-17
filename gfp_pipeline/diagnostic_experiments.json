@@ -1,23 +1,39 @@
 {
-  "version": "0.1.7",
+  "version": "0.1.8",
   "reference_run": "results/05_gfp_followup_4njwiy3c",
-  "experiments": ["enhancer_split", "minimizer_docking"],
-  "rf3": {"num_steps": 50, "n_recycles": 10, "diffusion_batch_size": 1},
-  "seeds": [0, 1, 2],
+  "experiments": [
+    "enhancer_split",
+    "minimizer_docking"
+  ],
+  "rf3": {
+    "num_steps": 50,
+    "n_recycles": 10,
+    "diffusion_batch_size": 1
+  },
+  "seeds": [
+    0,
+    1,
+    2
+  ],
   "contact_radius_angstrom": 8.0,
   "max_target_rmsd_angstrom": 3.0,
   "min_contact_jaccard": 0.5,
   "docking": {
-    "python_version": "3.10",
-    "build_packages": ["numpy==1.23.5", "scipy==1.10.1", "cython==0.29.37", "setuptools==69.5.1", "wheel==0.43.0", "nose==1.3.7", "biopython==1.81"],
-    "packages": ["lightdock==0.9.4", "prody==2.4.1", "freesasa==2.2.1"],
-    "steps": 100,
-    "glowworms": 200,
-    "swarms": null,
+    "backend": "MEGADOCK",
+    "revision": "87c8432494e0b05daaa17f191c15a56a6840a42d",
+    "cuda_samples_revision": "3559ca4d088e12db33d6918621cab5c998ccecf1",
+    "python_version": "3.12",
+    "packages": [
+      "numpy==1.26.4",
+      "scipy==1.13.1"
+    ],
+    "rotations": 3600,
+    "voxel_spacing_angstrom": 1.2,
+    "output_poses": 2000,
+    "score_function": 3,
     "seed": 0,
-    "scoring": "fastdfire",
     "top_poses": 100,
     "heavy_atom_clash_distance_angstrom": 2.0,
-    "tutorial": "https://lightdock.org/tutorials/0.9.3/basics"
+    "tutorial": "https://github.com/akiyamalab/MEGADOCK/blob/master/doc/README.md"
   }
 }
