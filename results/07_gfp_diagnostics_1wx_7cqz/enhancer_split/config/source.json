@@ -1,0 +1,8 @@
+{
+  "revision": "de92f4f9f982faf5988b5675e8358acff605fedf",
+  "version": "0.1.9",
+  "mode": "diagnostics",
+  "experiment": "enhancer_split",
+  "foundry_revision": "0d0b0ba44fab7ca76aa4b625c014ce5964c7d284",
+  "reference_run": "results/05_gfp_followup_4njwiy3c"
+}

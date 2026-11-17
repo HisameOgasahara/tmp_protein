@@ -1,0 +1,37 @@
+[
+  {
+    "minimum_distance_cutoff_angstrom": 1.2,
+    "remaining_in_top100": 90,
+    "first_original_rank": 1
+  },
+  {
+    "minimum_distance_cutoff_angstrom": 1.5,
+    "remaining_in_top100": 68,
+    "first_original_rank": 2
+  },
+  {
+    "minimum_distance_cutoff_angstrom": 1.8,
+    "remaining_in_top100": 47,
+    "first_original_rank": 2
+  },
+  {
+    "minimum_distance_cutoff_angstrom": 2.0,
+    "remaining_in_top100": 27,
+    "first_original_rank": 2
+  },
+  {
+    "minimum_distance_cutoff_angstrom": 2.05,
+    "remaining_in_top100": 20,
+    "first_original_rank": 10
+  },
+  {
+    "minimum_distance_cutoff_angstrom": 2.2,
+    "remaining_in_top100": 14,
+    "first_original_rank": 31
+  },
+  {
+    "minimum_distance_cutoff_angstrom": 2.5,
+    "remaining_in_top100": 6,
+    "first_original_rank": 31
+  }
+]
