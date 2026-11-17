@@ -1,8 +1,0 @@
-{
-  "backend": "MEGADOCK",
-  "revision": "87c8432494e0b05daaa17f191c15a56a6840a42d",
-  "cuda_samples_revision": "3559ca4d088e12db33d6918621cab5c998ccecf1",
-  "gpu": "Tesla T4",
-  "architecture": "sm_75",
-  "cpu_threads": "2"
-}

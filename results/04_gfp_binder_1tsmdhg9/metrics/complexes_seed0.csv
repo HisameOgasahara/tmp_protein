@@ -1,3 +1,0 @@
-id,file,reference_pdb,template_mode,num_steps,diffusion_batch_size,n_recycles,iptm,ranking_score,has_clash,target_ca_rmsd_angstrom,binder_ca_rmsd_after_target_alignment_angstrom,benchmark_contact_jaccard,native_ca_contact_pair_recovery,native_ca_contact_pairs,target_reference_ca_count,binder_reference_ca_count
-control_enhancer,structures/control_enhancer_seed0.cif,3K1K,both,50,1,10,0.9356712698936462,0.9358,False,0.08113060483176696,0.8737487395550136,1.0,0.9583333333333334,48,221,114
-control_minimizer,structures/control_minimizer_seed0.cif,3G9A,both,50,1,10,0.2535257637500763,0.3425,False,0.07470961800142671,37.66384483005428,0.034482758620689655,0.0,35,226,128

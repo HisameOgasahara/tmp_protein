@@ -1,4 +1,0 @@
-iptm_rank,reference_pose_recovered,seed,id,file,reference_pdb,template_mode,num_steps,diffusion_batch_size,n_recycles,iptm,ranking_score,has_clash,target_ca_rmsd_angstrom,binder_ca_rmsd_after_target_alignment_angstrom,benchmark_contact_jaccard,native_ca_contact_pair_recovery,native_ca_contact_pairs,target_reference_ca_count,binder_reference_ca_count
-1,False,2,control_enhancer,structures/control_enhancer_seed2.cif,3K1K,target,50,1,10,0.1974261999130249,0.2973,False,0.08488412914427637,29.095589841240905,0.13636363636363635,0.0,48,221,114
-2,False,1,control_enhancer,structures/control_enhancer_seed1.cif,3K1K,target,50,1,10,0.19722460210323334,0.2972,False,0.07936031620701875,33.89178854175472,0.08333333333333333,0.0,48,221,114
-3,False,0,control_enhancer,structures/control_enhancer_seed0.cif,3K1K,target,50,1,10,0.1959933638572693,0.2963,False,0.08273449546499433,24.45914235565381,0.08333333333333333,0.0,48,221,114

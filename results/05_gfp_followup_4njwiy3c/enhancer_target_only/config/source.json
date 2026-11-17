@@ -1,1 +1,0 @@
-{"revision": "a6926ef47b9b018690d99a47cd211d1a9004e35e", "foundry_revision": "0d0b0ba44fab7ca76aa4b625c014ce5964c7d284", "assay_file": "controls.csv", "mode": "benchmark", "rf3_seeds": [0, 1, 2], "benchmark_template": "target", "benchmark_controls": ["enhancer"], "rf3": {"num_steps": 50, "diffusion_batch_size": 1, "n_recycles": 10}}
