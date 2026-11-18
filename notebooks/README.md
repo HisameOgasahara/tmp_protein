@@ -19,6 +19,7 @@ Colab T4에서 실행한다. 로컬 PC에 모델이나 가중치를 설치하지
 | [01_af2_filter_T4.ipynb](01_af2_filter_T4.ipynb) | TrkA_88 한 건을 채점 (재현 확인) | [workflow.py](../src/af2_filter/workflow.py) | 설치 포함 약 7분 |
 | [02_calibrate_filter_T4.ipynb](02_calibrate_filter_T4.ipynb) | 실험 라벨이 붙은 설계 20개를 채점 (지표 교정) | [calibration_workflow.py](../src/af2_filter/calibration_workflow.py) | AF2 20회, 약 40분 |
 | [03_design_trka_T4.ipynb](03_design_trka_T4.ipynb) | TrkA에 새 결합여 160개를 설계하고 채점 | [trka_workflow.py](../src/rfd3_design/trka_workflow.py) | 약 1.75시간 |
+| [04_focus_design04_T4.ipynb](04_focus_design04_T4.ipynb) | 백본 `design_04` 하나에 서열 50개를 다시 뽑아 채점 | [focus_workflow.py](../src/rfd3_design/focus_workflow.py) | 약 30분 |
 
 진단용 노트북은 [diagnostics/](../diagnostics/)에 있다.
 

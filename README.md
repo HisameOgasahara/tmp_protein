@@ -67,6 +67,7 @@ GPU 가속이 필요하므로 Colab T4에서 실행한다. 로컬 PC에는 모�
 | [01_af2_filter_T4](notebooks/01_af2_filter_T4.ipynb) | TrkA_88 한 건을 채점 — 재현 확인 | 설치 포함 약 7분 |
 | [02_calibrate_filter_T4](notebooks/02_calibrate_filter_T4.ipynb) | 라벨된 설계 20개 채점 — 지표 교정 | 약 40분 |
 | [03_design_trka_T4](notebooks/03_design_trka_T4.ipynb) | 새 결합여 160개 설계 후 채점 | 약 1.75시간 |
+| [04_focus_design04_T4](notebooks/04_focus_design04_T4.ipynb) | 백본 1개에 서열 50개 재추출 — 백본의 한계인지 서열의 한계인지 가름 | 약 30분 |
 | [90_af2_conditions_T4](diagnostics/90_af2_conditions_T4.ipynb) | 12개 조건 비교로 실패 원인 분리 | 약 25분 |
 
 실행하면 설정·입력 해시·지표·구조·로그를 담은 ZIP 하나가 나온다. 그 ZIP을 `results/` 아래

@@ -46,6 +46,8 @@
 | `trka_workflow.py` | **TrkA 설계 전체 진행.** 설계 환경과 AF2 환경을 차례로 띄운다 |
 | `trka_design.py` | 표적 준비 → RFD3 백본 → MPNN 서열. 결합여 길이를 고정 집합으로 뽑는다 |
 | `check_interface.py` | 생성된 백본이 지정한 hotspot에 붙었는지 확인 (실행 후 점검) |
+| `focus_workflow.py` | **백본 1개 집중 재추출 진행.** 백본 생성을 건너뛴다 |
+| `focus_design.py` | 저장된 백본을 가져와 서열 50개 설계, MPNN 점수도 기록 |
 | `workflow.py` | 과거 PD-L1 실행 (채점 방법이 부적절해 결론에 쓰지 않음) |
 
 ### 환경이 두 개인 이유
