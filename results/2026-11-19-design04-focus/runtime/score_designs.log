@@ -1,0 +1,823 @@
+["/content/trka88_af2_v0_3_0/original_venv/bin/python", "-u", "/content/trka_focus_main_btfwnb86/repo/src/af2_filter/score_designs.py", "/content/trka_focus_oq3ruiii", "/content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a"]
+┌───────────────────────────────────────────────────────────────────────────────┐
+│                                  PyRosetta-4                                  │
+│               Created in JHU by Sergey Lyskov and PyRosetta Team              │
+│               (C) Copyright Rosetta Commons Member Institutions               │
+│                                                                               │
+│ NOTE: USE OF PyRosetta FOR COMMERCIAL PURPOSES REQUIRES PURCHASE OF A LICENSE │
+│          See LICENSE.PyRosetta.md or email license@uw.edu for details         │
+└───────────────────────────────────────────────────────────────────────────────┘
+PyRosetta-4 2026 [Rosetta PyRosetta4.Release.python311.ubuntu 2026.03+releasequarterly.5e498f1409c68ade56c8ce5842bf79e1b02e8db4 2026-01-13T13:24:11] retrieved from: http://www.pyrosetta.org
+복합체 51개 준비 (양성 대조군 1개 포함)
+  1/51 design_04_r01 (73잔기) 준비됨
+  2/51 design_04_r02 (73잔기) 준비됨
+  3/51 design_04_r03 (73잔기) 준비됨
+  4/51 design_04_r04 (73잔기) 준비됨
+  5/51 design_04_r05 (73잔기) 준비됨
+  6/51 design_04_r06 (73잔기) 준비됨
+  7/51 design_04_r07 (73잔기) 준비됨
+  8/51 design_04_r08 (73잔기) 준비됨
+  9/51 design_04_r09 (73잔기) 준비됨
+  10/51 design_04_r10 (73잔기) 준비됨
+  11/51 design_04_r11 (73잔기) 준비됨
+  12/51 design_04_r12 (73잔기) 준비됨
+  13/51 design_04_r13 (73잔기) 준비됨
+  14/51 design_04_r14 (73잔기) 준비됨
+  15/51 design_04_r15 (73잔기) 준비됨
+  16/51 design_04_r16 (73잔기) 준비됨
+  17/51 design_04_r17 (73잔기) 준비됨
+  18/51 design_04_r18 (73잔기) 준비됨
+  19/51 design_04_r19 (73잔기) 준비됨
+  20/51 design_04_r20 (73잔기) 준비됨
+  21/51 design_04_r21 (73잔기) 준비됨
+  22/51 design_04_r22 (73잔기) 준비됨
+  23/51 design_04_r23 (73잔기) 준비됨
+  24/51 design_04_r24 (73잔기) 준비됨
+  25/51 design_04_r25 (73잔기) 준비됨
+  26/51 design_04_r26 (73잔기) 준비됨
+  27/51 design_04_r27 (73잔기) 준비됨
+  28/51 design_04_r28 (73잔기) 준비됨
+  29/51 design_04_r29 (73잔기) 준비됨
+  30/51 design_04_r30 (73잔기) 준비됨
+  31/51 design_04_r31 (73잔기) 준비됨
+  32/51 design_04_r32 (73잔기) 준비됨
+  33/51 design_04_r33 (73잔기) 준비됨
+  34/51 design_04_r34 (73잔기) 준비됨
+  35/51 design_04_r35 (73잔기) 준비됨
+  36/51 design_04_r36 (73잔기) 준비됨
+  37/51 design_04_r37 (73잔기) 준비됨
+  38/51 design_04_r38 (73잔기) 준비됨
+  39/51 design_04_r39 (73잔기) 준비됨
+  40/51 design_04_r40 (73잔기) 준비됨
+  41/51 design_04_r41 (73잔기) 준비됨
+  42/51 design_04_r42 (73잔기) 준비됨
+  43/51 design_04_r43 (73잔기) 준비됨
+  44/51 design_04_r44 (73잔기) 준비됨
+  45/51 design_04_r45 (73잔기) 준비됨
+  46/51 design_04_r46 (73잔기) 준비됨
+  47/51 design_04_r47 (73잔기) 준비됨
+  48/51 design_04_r48 (73잔기) 준비됨
+  49/51 design_04_r49 (73잔기) 준비됨
+  50/51 design_04_r50 (73잔기) 준비됨
+  51/51 control_TrkA_88 (93잔기) 준비됨
+AF2 51회 실행
+/content/trka88_af2_v0_3_0/original_venv/lib/python3.11/site-packages/Bio/Data/SCOPData.py:18: BiopythonDeprecationWarning: The 'Bio.Data.SCOPData' module will be deprecated in a future release of Biopython in favor of 'Bio.Data.PDBData.
+  warnings.warn(
+/content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a/af2_initial_guess/af2_util.py:14: UserWarning: Import of 'rosetta' as a top-level module is deprecated and may be removed in 2018, import via 'pyrosetta.rosetta'.
+  from rosetta import *
+┌───────────────────────────────────────────────────────────────────────────────┐
+│                                  PyRosetta-4                                  │
+│               Created in JHU by Sergey Lyskov and PyRosetta Team              │
+│               (C) Copyright Rosetta Commons Member Institutions               │
+│                                                                               │
+│ NOTE: USE OF PyRosetta FOR COMMERCIAL PURPOSES REQUIRES PURCHASE OF A LICENSE │
+│          See LICENSE.PyRosetta.md or email license@uw.edu for details         │
+└───────────────────────────────────────────────────────────────────────────────┘
+PyRosetta-4 2026 [Rosetta PyRosetta4.Release.python311.ubuntu 2026.03+releasequarterly.5e498f1409c68ade56c8ce5842bf79e1b02e8db4 2026-01-13T13:24:11] retrieved from: http://www.pyrosetta.org
+/content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a/af2_initial_guess/predict.py:537: DeprecationWarning: jax.lib.xla_bridge.get_backend is deprecated; use jax.extend.backend.get_backend.
+  device = xla_bridge.get_backend().platform
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+Found GPU and will use it to run AF2
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r19.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r19.pdb
+Processing struct with tag: design_04_r19
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:From /content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a/af2_initial_guess/alphafold/model/tf/input_pipeline.py:151: calling map_fn (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15fc26ec00> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795029739.968802    4388 mlir_graph_optimization_pass.cc:401] MLIR V1 optimization pass is not enabled
+Running model_1_ptm
+Tag: design_04_r19 finished AF2 prediction in 98.27706687299997 seconds
+{'plddt_total': 93.40784879148295, 'plddt_binder': 92.77466400210298, 'plddt_target': 93.86549720360905, 'pae_binder': 2.9333858, 'pae_target': 3.5275843, 'pae_interaction': 25.737102508544922, 'binder_aligned_rmsd': 0.72980267, 'target_aligned_rmsd': 11.511337, 'time': 108.18589783800007}
+Tag: design_04_r19_af2pred reported success in 108.18589783800007 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r42.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r42.pdb
+Processing struct with tag: design_04_r42
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed6480> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r42 finished AF2 prediction in 8.50176413700001 seconds
+{'plddt_total': 92.59198011167442, 'plddt_binder': 92.26126825917041, 'plddt_target': 92.83100947041494, 'pae_binder': 2.416506, 'pae_target': 3.521712, 'pae_interaction': 18.151493072509766, 'binder_aligned_rmsd': 0.6334282, 'target_aligned_rmsd': 1.5877386, 'time': 17.780914497999902}
+Tag: design_04_r42_af2pred reported success in 17.780914497999902 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r05.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r05.pdb
+Processing struct with tag: design_04_r05
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed6700> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r05 finished AF2 prediction in 8.535970228999986 seconds
+{'plddt_total': 93.15200122682552, 'plddt_binder': 92.94183497591519, 'plddt_target': 93.30390356659237, 'pae_binder': 2.5241666, 'pae_target': 3.5469122, 'pae_interaction': 20.864200592041016, 'binder_aligned_rmsd': 0.6692848, 'target_aligned_rmsd': 2.5248644, 'time': 16.155625680999947}
+Tag: design_04_r05_af2pred reported success in 16.155625680999947 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r40.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r40.pdb
+Processing struct with tag: design_04_r40
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed6700> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r40 finished AF2 prediction in 8.596063894000054 seconds
+{'plddt_total': 92.75242658111516, 'plddt_binder': 91.6322975109577, 'plddt_target': 93.56202481994187, 'pae_binder': 3.076855, 'pae_target': 3.5148208, 'pae_interaction': 22.0356388092041, 'binder_aligned_rmsd': 0.65112954, 'target_aligned_rmsd': 1.8680581, 'time': 16.27206379900008}
+Tag: design_04_r40_af2pred reported success in 16.27206379900008 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r16.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r16.pdb
+Processing struct with tag: design_04_r16
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed6d40> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r16 finished AF2 prediction in 8.660929101999955 seconds
+{'plddt_total': 91.326507627965, 'plddt_binder': 90.30882104791112, 'plddt_target': 92.06206327493462, 'pae_binder': 2.5110312, 'pae_target': 3.5355139, 'pae_interaction': 14.43110466003418, 'binder_aligned_rmsd': 0.6630726, 'target_aligned_rmsd': 1.6776314, 'time': 17.995455966999998}
+Tag: design_04_r16_af2pred reported success in 17.995455966999998 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r07.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r07.pdb
+Processing struct with tag: design_04_r07
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed72e0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r07 finished AF2 prediction in 8.73869108100007 seconds
+{'plddt_total': 93.12043229642164, 'plddt_binder': 92.23445635470416, 'plddt_target': 93.76079114538575, 'pae_binder': 3.0172126, 'pae_target': 3.536232, 'pae_interaction': 24.59591293334961, 'binder_aligned_rmsd': 0.67572236, 'target_aligned_rmsd': 9.920132, 'time': 17.629885705000106}
+Tag: design_04_r07_af2pred reported success in 17.629885705000106 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r04.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r04.pdb
+Processing struct with tag: design_04_r04
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed7e20> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r04 finished AF2 prediction in 8.784991204000107 seconds
+{'plddt_total': 93.59946560366008, 'plddt_binder': 93.19822675674848, 'plddt_target': 93.88946991875463, 'pae_binder': 2.8363838, 'pae_target': 3.5232499, 'pae_interaction': 25.43765640258789, 'binder_aligned_rmsd': 0.6861515, 'target_aligned_rmsd': 12.10719, 'time': 17.548790274000112}
+Tag: design_04_r04_af2pred reported success in 17.548790274000112 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r44.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r44.pdb
+Processing struct with tag: design_04_r44
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15a0de8ea0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r44 finished AF2 prediction in 8.925633743000162 seconds
+{'plddt_total': 92.472230101173, 'plddt_binder': 92.06412161573448, 'plddt_target': 92.76719960054936, 'pae_binder': 2.6082158, 'pae_target': 3.5854347, 'pae_interaction': 18.01198959350586, 'binder_aligned_rmsd': 0.65644497, 'target_aligned_rmsd': 1.4738655, 'time': 18.790415351999854}
+Tag: design_04_r44_af2pred reported success in 18.790415351999854 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r32.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r32.pdb
+Processing struct with tag: design_04_r32
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15a1a86d40> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r32 finished AF2 prediction in 9.008878693999804 seconds
+{'plddt_total': 93.98678856127688, 'plddt_binder': 93.98487236174813, 'plddt_target': 93.98817353717386, 'pae_binder': 2.5892627, 'pae_target': 3.4910097, 'pae_interaction': 25.644611358642578, 'binder_aligned_rmsd': 0.6383913, 'target_aligned_rmsd': 10.094007, 'time': 16.633269487000007}
+Tag: design_04_r32_af2pred reported success in 16.633269487000007 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r01.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r01.pdb
+Processing struct with tag: design_04_r01
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15a0de8540> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r01 finished AF2 prediction in 9.068867705000002 seconds
+{'plddt_total': 91.85432126944325, 'plddt_binder': 90.47791674778863, 'plddt_target': 92.8491482999461, 'pae_binder': 2.9033842, 'pae_target': 3.488359, 'pae_interaction': 17.075366973876953, 'binder_aligned_rmsd': 0.62282896, 'target_aligned_rmsd': 1.3822621, 'time': 16.698260490999928}
+Tag: design_04_r01_af2pred reported success in 16.698260490999928 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r45.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r45.pdb
+Processing struct with tag: design_04_r45
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15a1a86520> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r45 finished AF2 prediction in 9.055399357999931 seconds
+{'plddt_total': 92.70159699314931, 'plddt_binder': 91.8711749114503, 'plddt_target': 93.30180305219908, 'pae_binder': 2.7594934, 'pae_target': 3.5117528, 'pae_interaction': 21.001930236816406, 'binder_aligned_rmsd': 0.63267523, 'target_aligned_rmsd': 2.6598957, 'time': 18.51188322200005}
+Tag: design_04_r45_af2pred reported success in 18.51188322200005 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r41.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r41.pdb
+Processing struct with tag: design_04_r41
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15a0de87c0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r41 finished AF2 prediction in 9.102302176000194 seconds
+{'plddt_total': 91.82189417695248, 'plddt_binder': 90.68331982667904, 'plddt_target': 92.64482415289272, 'pae_binder': 2.606593, 'pae_target': 3.547387, 'pae_interaction': 16.968158721923828, 'binder_aligned_rmsd': 0.7837149, 'target_aligned_rmsd': 1.5910752, 'time': 16.891704340999922}
+Tag: design_04_r41_af2pred reported success in 16.891704340999922 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r43.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r43.pdb
+Processing struct with tag: design_04_r43
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15a0de87c0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r43 finished AF2 prediction in 9.104468190000034 seconds
+{'plddt_total': 92.32161600432701, 'plddt_binder': 91.90908557364733, 'plddt_target': 92.6197815631351, 'pae_binder': 2.4626648, 'pae_target': 3.5451155, 'pae_interaction': 16.98259735107422, 'binder_aligned_rmsd': 0.7005109, 'target_aligned_rmsd': 1.7402164, 'time': 16.94911021000007}
+Tag: design_04_r43_af2pred reported success in 16.94911021000007 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r30.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r30.pdb
+Processing struct with tag: design_04_r30
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed7d80> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r30 finished AF2 prediction in 9.106552823999891 seconds
+{'plddt_total': 91.86476867150108, 'plddt_binder': 90.85663184652998, 'plddt_target': 92.59342202024257, 'pae_binder': 2.508786, 'pae_target': 3.533741, 'pae_interaction': 17.064983367919922, 'binder_aligned_rmsd': 0.7652882, 'target_aligned_rmsd': 1.7666007, 'time': 18.456459202000133}
+Tag: design_04_r30_af2pred reported success in 18.456459202000133 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r26.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r26.pdb
+Processing struct with tag: design_04_r26
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed7d80> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r26 finished AF2 prediction in 9.097307054000112 seconds
+{'plddt_total': 93.68273660371244, 'plddt_binder': 93.33220083284951, 'plddt_target': 93.93609414106882, 'pae_binder': 2.707195, 'pae_target': 3.48082, 'pae_interaction': 25.064321517944336, 'binder_aligned_rmsd': 0.5793056, 'target_aligned_rmsd': 13.393028, 'time': 16.703231682000023}
+Tag: design_04_r26_af2pred reported success in 16.703231682000023 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r38.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r38.pdb
+Processing struct with tag: design_04_r38
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed6520> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r38 finished AF2 prediction in 9.084357080000018 seconds
+{'plddt_total': 90.7113294994408, 'plddt_binder': 89.04843471554378, 'plddt_target': 91.91322374918815, 'pae_binder': 2.926552, 'pae_target': 3.5426965, 'pae_interaction': 12.379868507385254, 'binder_aligned_rmsd': 0.7141271, 'target_aligned_rmsd': 1.5436299, 'time': 16.837637559000086}
+Tag: design_04_r38_af2pred reported success in 16.837637559000086 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r48.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r48.pdb
+Processing struct with tag: design_04_r48
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed7600> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r48 finished AF2 prediction in 9.112650472999803 seconds
+{'plddt_total': 91.20605873275848, 'plddt_binder': 89.4835548496654, 'plddt_target': 92.45103678687526, 'pae_binder': 2.8424342, 'pae_target': 3.5403948, 'pae_interaction': 16.604835510253906, 'binder_aligned_rmsd': 0.79486513, 'target_aligned_rmsd': 1.7476752, 'time': 18.255478493999817}
+Tag: design_04_r48_af2pred reported success in 18.255478493999817 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r09.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r09.pdb
+Processing struct with tag: design_04_r09
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed6a20> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r09 finished AF2 prediction in 9.084009938999998 seconds
+{'plddt_total': 93.717586709251, 'plddt_binder': 94.09676153697372, 'plddt_target': 93.44352965555042, 'pae_binder': 2.3194654, 'pae_target': 3.5150096, 'pae_interaction': 20.508155822753906, 'binder_aligned_rmsd': 0.65380156, 'target_aligned_rmsd': 1.5798197, 'time': 16.842920519000018}
+Tag: design_04_r09_af2pred reported success in 16.842920519000018 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r21.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r21.pdb
+Processing struct with tag: design_04_r21
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed79c0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r21 finished AF2 prediction in 9.076292005999903 seconds
+{'plddt_total': 91.1834670037646, 'plddt_binder': 89.57910881302045, 'plddt_target': 92.34305262677768, 'pae_binder': 2.8660538, 'pae_target': 3.4762783, 'pae_interaction': 13.582603454589844, 'binder_aligned_rmsd': 0.63691074, 'target_aligned_rmsd': 1.2610236, 'time': 16.70176681199996}
+Tag: design_04_r21_af2pred reported success in 16.70176681199996 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r29.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r29.pdb
+Processing struct with tag: design_04_r29
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed6520> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r29 finished AF2 prediction in 9.115356675000157 seconds
+{'plddt_total': 92.53850178664987, 'plddt_binder': 91.19117914756575, 'plddt_target': 93.51230923866117, 'pae_binder': 3.0449617, 'pae_target': 3.5125086, 'pae_interaction': 21.921781539916992, 'binder_aligned_rmsd': 0.73841345, 'target_aligned_rmsd': 3.5417461, 'time': 18.067802779999965}
+Tag: design_04_r29_af2pred reported success in 18.067802779999965 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r23.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r23.pdb
+Processing struct with tag: design_04_r23
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed79c0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r23 finished AF2 prediction in 9.066801704999989 seconds
+{'plddt_total': 92.48647790196635, 'plddt_binder': 91.85677292817121, 'plddt_target': 92.9416111998579, 'pae_binder': 2.5837553, 'pae_target': 3.5594075, 'pae_interaction': 18.413341522216797, 'binder_aligned_rmsd': 0.54282945, 'target_aligned_rmsd': 1.4914119, 'time': 16.818548898000017}
+Tag: design_04_r23_af2pred reported success in 16.818548898000017 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r49.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r49.pdb
+Processing struct with tag: design_04_r49
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed7420> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r49 finished AF2 prediction in 9.104917976000024 seconds
+{'plddt_total': 93.50097641368797, 'plddt_binder': 92.6643327165705, 'plddt_target': 94.10567928388177, 'pae_binder': 3.0621955, 'pae_target': 3.467334, 'pae_interaction': 25.83321762084961, 'binder_aligned_rmsd': 0.8141871, 'target_aligned_rmsd': 11.826148, 'time': 16.822813226000108}
+Tag: design_04_r49_af2pred reported success in 16.822813226000108 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r06.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r06.pdb
+Processing struct with tag: design_04_r06
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed79c0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r06 finished AF2 prediction in 9.092284266999968 seconds
+{'plddt_total': 91.07824680530685, 'plddt_binder': 89.85790651619311, 'plddt_target': 91.96027493506229, 'pae_binder': 2.5904877, 'pae_target': 3.552213, 'pae_interaction': 13.028425216674805, 'binder_aligned_rmsd': 0.5433362, 'target_aligned_rmsd': 1.3632301, 'time': 18.015654347999998}
+Tag: design_04_r06_af2pred reported success in 18.015654347999998 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r46.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r46.pdb
+Processing struct with tag: design_04_r46
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed7d80> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r46 finished AF2 prediction in 9.107737315999884 seconds
+{'plddt_total': 92.35248012103648, 'plddt_binder': 91.07419598641162, 'plddt_target': 93.27638845596334, 'pae_binder': 3.010341, 'pae_target': 3.557531, 'pae_interaction': 21.56818389892578, 'binder_aligned_rmsd': 0.76560354, 'target_aligned_rmsd': 3.140202, 'time': 17.06223259599983}
+Tag: design_04_r46_af2pred reported success in 17.06223259599983 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r24.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r24.pdb
+Processing struct with tag: design_04_r24
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed7d80> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r24 finished AF2 prediction in 9.066888611999957 seconds
+{'plddt_total': 92.9849403335982, 'plddt_binder': 92.14564117171183, 'plddt_target': 93.59156250011014, 'pae_binder': 2.8393095, 'pae_target': 3.5368476, 'pae_interaction': 23.07391357421875, 'binder_aligned_rmsd': 0.6004434, 'target_aligned_rmsd': 4.957802, 'time': 16.58242350599994}
+Tag: design_04_r24_af2pred reported success in 16.58242350599994 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r08.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r08.pdb
+Processing struct with tag: design_04_r08
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159a884ea0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r08 finished AF2 prediction in 9.088881881000134 seconds
+{'plddt_total': 92.1014978397361, 'plddt_binder': 90.5192768009053, 'plddt_target': 93.24508334304946, 'pae_binder': 3.1721623, 'pae_target': 3.4949148, 'pae_interaction': 19.78989028930664, 'binder_aligned_rmsd': 0.80686355, 'target_aligned_rmsd': 2.242054, 'time': 17.766898286000014}
+Tag: design_04_r08_af2pred reported success in 17.766898286000014 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r15.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r15.pdb
+Processing struct with tag: design_04_r15
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159a884680> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r15 finished AF2 prediction in 9.088071105999916 seconds
+{'plddt_total': 91.24025263374615, 'plddt_binder': 89.88343922795923, 'plddt_target': 92.22091974881987, 'pae_binder': 2.770642, 'pae_target': 3.570075, 'pae_interaction': 15.921941757202148, 'binder_aligned_rmsd': 0.7338432, 'target_aligned_rmsd': 1.6886876, 'time': 17.270778876000122}
+Tag: design_04_r15_af2pred reported success in 17.270778876000122 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r25.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r25.pdb
+Processing struct with tag: design_04_r25
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159a8847c0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r25 finished AF2 prediction in 9.095983496999906 seconds
+{'plddt_total': 93.1214753381675, 'plddt_binder': 92.96141622679788, 'plddt_target': 93.23716162658317, 'pae_binder': 2.52657, 'pae_target': 3.540729, 'pae_interaction': 20.482818603515625, 'binder_aligned_rmsd': 0.67998236, 'target_aligned_rmsd': 2.1952493, 'time': 16.552623319000077}
+Tag: design_04_r25_af2pred reported success in 16.552623319000077 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r11.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r11.pdb
+Processing struct with tag: design_04_r11
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159a885d00> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r11 finished AF2 prediction in 9.073358824999787 seconds
+{'plddt_total': 92.84248547683849, 'plddt_binder': 92.86199027351334, 'plddt_target': 92.82838795052896, 'pae_binder': 2.3941262, 'pae_target': 3.623356, 'pae_interaction': 19.087833404541016, 'binder_aligned_rmsd': 0.6570981, 'target_aligned_rmsd': 1.4832242, 'time': 17.770349936000002}
+Tag: design_04_r11_af2pred reported success in 17.770349936000002 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r34.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r34.pdb
+Processing struct with tag: design_04_r34
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159a8860c0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r34 finished AF2 prediction in 9.088332474000026 seconds
+{'plddt_total': 92.03772388666306, 'plddt_binder': 90.8926491108156, 'plddt_target': 92.86535218999835, 'pae_binder': 2.874032, 'pae_target': 3.571393, 'pae_interaction': 19.785961151123047, 'binder_aligned_rmsd': 0.77405035, 'target_aligned_rmsd': 1.9627784, 'time': 17.362496142999817}
+Tag: design_04_r34_af2pred reported success in 17.362496142999817 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r39.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r39.pdb
+Processing struct with tag: design_04_r39
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159a8863e0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r39 finished AF2 prediction in 9.066918385999998 seconds
+{'plddt_total': 92.97027850041049, 'plddt_binder': 92.0118482455613, 'plddt_target': 93.66300531827176, 'pae_binder': 2.9355316, 'pae_target': 3.49913, 'pae_interaction': 21.87862777709961, 'binder_aligned_rmsd': 1.2234457, 'target_aligned_rmsd': 2.0594473, 'time': 18.295879168000056}
+Tag: design_04_r39_af2pred reported success in 18.295879168000056 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r31.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r31.pdb
+Processing struct with tag: design_04_r31
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed7600> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r31 finished AF2 prediction in 9.106280294000044 seconds
+{'plddt_total': 93.3240769515456, 'plddt_binder': 92.95914752214551, 'plddt_target': 93.58783782626053, 'pae_binder': 2.6420646, 'pae_target': 3.5067213, 'pae_interaction': 21.83658218383789, 'binder_aligned_rmsd': 1.2032746, 'target_aligned_rmsd': 3.255731, 'time': 18.5195275210001}
+Tag: design_04_r31_af2pred reported success in 18.5195275210001 seconds
+Processing struct with tag: control_TrkA_88
+The distance between residues 93 and 94 is 26.19 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 93
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159fed6d40> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: control_TrkA_88 finished AF2 prediction in 99.18783059900011 seconds
+{'plddt_total': 93.22155015439331, 'plddt_binder': 93.29687836436958, 'plddt_target': 93.15218853530622, 'pae_binder': 2.6434553, 'pae_target': 3.475321, 'pae_interaction': 5.861947059631348, 'binder_aligned_rmsd': 0.61507726, 'target_aligned_rmsd': 1.4965435, 'time': 108.49617497100007}
+Tag: control_TrkA_88_af2pred reported success in 108.49617497100007 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r50.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r50.pdb
+Processing struct with tag: design_04_r50
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15794c9ee0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r50 finished AF2 prediction in 9.13073230100008 seconds
+{'plddt_total': 91.55657533676188, 'plddt_binder': 90.43605363442924, 'plddt_target': 92.36645735923993, 'pae_binder': 2.6898813, 'pae_target': 3.526509, 'pae_interaction': 15.581832885742188, 'binder_aligned_rmsd': 0.75680745, 'target_aligned_rmsd': 1.5761155, 'time': 17.020445522999808}
+Tag: design_04_r50_af2pred reported success in 17.020445522999808 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r13.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r13.pdb
+Processing struct with tag: design_04_r13
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15794cbe20> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r13 finished AF2 prediction in 9.070574575999899 seconds
+{'plddt_total': 93.03280834872544, 'plddt_binder': 92.73468004609812, 'plddt_target': 93.24828722092141, 'pae_binder': 2.51324, 'pae_target': 3.5651886, 'pae_interaction': 20.86339569091797, 'binder_aligned_rmsd': 0.6834337, 'target_aligned_rmsd': 2.4301853, 'time': 18.575888652999993}
+Tag: design_04_r13_af2pred reported success in 18.575888652999993 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r17.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r17.pdb
+Processing struct with tag: design_04_r17
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15794ca480> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r17 finished AF2 prediction in 9.066166867999982 seconds
+{'plddt_total': 91.51199698358371, 'plddt_binder': 90.66353387981361, 'plddt_target': 92.12524259323934, 'pae_binder': 2.5472999, 'pae_target': 3.5960371, 'pae_interaction': 15.461538314819336, 'binder_aligned_rmsd': 0.7263375, 'target_aligned_rmsd': 1.6759083, 'time': 16.664782276000096}
+Tag: design_04_r17_af2pred reported success in 16.664782276000096 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r22.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r22.pdb
+Processing struct with tag: design_04_r22
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15794cbe20> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r22 finished AF2 prediction in 9.078828219999878 seconds
+{'plddt_total': 91.04829124695466, 'plddt_binder': 89.58245928538179, 'plddt_target': 92.10775395185388, 'pae_binder': 2.8410413, 'pae_target': 3.4889884, 'pae_interaction': 9.389069557189941, 'binder_aligned_rmsd': 0.7022913, 'target_aligned_rmsd': 1.40698, 'time': 17.105581593999887}
+Tag: design_04_r22_af2pred reported success in 17.105581593999887 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r14.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r14.pdb
+Processing struct with tag: design_04_r14
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15794cbe20> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r14 finished AF2 prediction in 9.095796172999826 seconds
+{'plddt_total': 93.69339700590284, 'plddt_binder': 93.0885803327918, 'plddt_target': 94.13054173003259, 'pae_binder': 2.8133807, 'pae_target': 3.4583743, 'pae_interaction': 25.643665313720703, 'binder_aligned_rmsd': 1.1014823, 'target_aligned_rmsd': 14.126427, 'time': 18.29607669699999}
+Tag: design_04_r14_af2pred reported success in 18.29607669699999 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r28.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r28.pdb
+Processing struct with tag: design_04_r28
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e1578a24c20> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r28 finished AF2 prediction in 9.075426564000054 seconds
+{'plddt_total': 93.39088742312924, 'plddt_binder': 93.16498520345304, 'plddt_target': 93.5541632848754, 'pae_binder': 2.5372539, 'pae_target': 3.5055122, 'pae_interaction': 21.965303421020508, 'binder_aligned_rmsd': 0.5805346, 'target_aligned_rmsd': 2.7691402, 'time': 16.65283902400006}
+Tag: design_04_r28_af2pred reported success in 16.65283902400006 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r33.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r33.pdb
+Processing struct with tag: design_04_r33
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e1578a24040> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r33 finished AF2 prediction in 9.095617765000043 seconds
+{'plddt_total': 91.5700856118414, 'plddt_binder': 90.38470310295831, 'plddt_target': 92.42684722717276, 'pae_binder': 2.6327696, 'pae_target': 3.5141768, 'pae_interaction': 14.331855773925781, 'binder_aligned_rmsd': 0.65944964, 'target_aligned_rmsd': 1.2485541, 'time': 17.0731419440001}
+Tag: design_04_r33_af2pred reported success in 17.0731419440001 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r35.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r35.pdb
+Processing struct with tag: design_04_r35
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e1578a24d60> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r35 finished AF2 prediction in 9.084883505000107 seconds
+{'plddt_total': 93.88130801451064, 'plddt_binder': 93.77041352064325, 'plddt_target': 93.96145948037518, 'pae_binder': 2.5624022, 'pae_target': 3.4805062, 'pae_interaction': 25.187679290771484, 'binder_aligned_rmsd': 0.54316777, 'target_aligned_rmsd': 6.519066, 'time': 18.25450580300003}
+Tag: design_04_r35_af2pred reported success in 18.25450580300003 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r18.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r18.pdb
+Processing struct with tag: design_04_r18
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15794cbd80> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r18 finished AF2 prediction in 9.071592160000137 seconds
+{'plddt_total': 91.110215369677, 'plddt_binder': 90.18345904245899, 'plddt_target': 91.78004915073554, 'pae_binder': 2.547956, 'pae_target': 3.6087873, 'pae_interaction': 13.21417236328125, 'binder_aligned_rmsd': 0.6483602, 'target_aligned_rmsd': 1.1885126, 'time': 18.258932897000022}
+Tag: design_04_r18_af2pred reported success in 18.258932897000022 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r36.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r36.pdb
+Processing struct with tag: design_04_r36
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e1579818a40> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r36 finished AF2 prediction in 9.111010328999782 seconds
+{'plddt_total': 93.49858401901267, 'plddt_binder': 93.00405663188467, 'plddt_target': 93.85601470475866, 'pae_binder': 2.808028, 'pae_target': 3.477367, 'pae_interaction': 23.807567596435547, 'binder_aligned_rmsd': 0.78137887, 'target_aligned_rmsd': 6.182584, 'time': 18.484519280999848}
+Tag: design_04_r36_af2pred reported success in 18.484519280999848 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r02.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r02.pdb
+Processing struct with tag: design_04_r02
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15794cae80> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r02 finished AF2 prediction in 9.111730805000207 seconds
+{'plddt_total': 91.843711013206, 'plddt_binder': 91.15678687194422, 'plddt_target': 92.34020073906848, 'pae_binder': 2.5241518, 'pae_target': 3.5922358, 'pae_interaction': 15.72353744506836, 'binder_aligned_rmsd': 0.70967156, 'target_aligned_rmsd': 1.7786394, 'time': 17.288882343000296}
+Tag: design_04_r02_af2pred reported success in 17.288882343000296 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r37.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r37.pdb
+Processing struct with tag: design_04_r37
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e1579818b80> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r37 finished AF2 prediction in 9.109999333999895 seconds
+{'plddt_total': 92.92351193115492, 'plddt_binder': 92.10968397688194, 'plddt_target': 93.51172421493635, 'pae_binder': 2.7267325, 'pae_target': 3.5527778, 'pae_interaction': 22.327388763427734, 'binder_aligned_rmsd': 0.5584612, 'target_aligned_rmsd': 3.1626651, 'time': 16.764915943999767}
+Tag: design_04_r37_af2pred reported success in 16.764915943999767 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r12.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r12.pdb
+Processing struct with tag: design_04_r12
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159a965bc0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r12 finished AF2 prediction in 9.098429957999997 seconds
+{'plddt_total': 92.50965559915458, 'plddt_binder': 91.53217350443671, 'plddt_target': 93.21615255870312, 'pae_binder': 2.8556738, 'pae_target': 3.5358336, 'pae_interaction': 20.263410568237305, 'binder_aligned_rmsd': 0.5925743, 'target_aligned_rmsd': 1.9075165, 'time': 18.436546268000257}
+Tag: design_04_r12_af2pred reported success in 18.436546268000257 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r27.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r27.pdb
+Processing struct with tag: design_04_r27
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15794cbd80> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r27 finished AF2 prediction in 9.077732308999657 seconds
+{'plddt_total': 91.5258119662625, 'plddt_binder': 89.80185100727961, 'plddt_target': 92.77184315443824, 'pae_binder': 3.007167, 'pae_target': 3.4973333, 'pae_interaction': 16.68707275390625, 'binder_aligned_rmsd': 0.83553225, 'target_aligned_rmsd': 1.4670237, 'time': 16.88190133399985}
+Tag: design_04_r27_af2pred reported success in 16.88190133399985 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r10.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r10.pdb
+Processing struct with tag: design_04_r10
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15900084a0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r10 finished AF2 prediction in 9.070001265999963 seconds
+{'plddt_total': 92.80358092117068, 'plddt_binder': 92.53723798097714, 'plddt_target': 92.9960862145779, 'pae_binder': 2.4787931, 'pae_target': 3.5407605, 'pae_interaction': 18.614139556884766, 'binder_aligned_rmsd': 0.7161757, 'target_aligned_rmsd': 1.616093, 'time': 16.63142501099992}
+Tag: design_04_r10_af2pred reported success in 16.63142501099992 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r47.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r47.pdb
+Processing struct with tag: design_04_r47
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15794cb6a0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r47 finished AF2 prediction in 9.09239437799988 seconds
+{'plddt_total': 92.09837219604387, 'plddt_binder': 90.7583343251822, 'plddt_target': 93.06691441953795, 'pae_binder': 2.9282963, 'pae_target': 3.5425923, 'pae_interaction': 19.86128044128418, 'binder_aligned_rmsd': 0.6730059, 'target_aligned_rmsd': 1.9636778, 'time': 18.22302340899978}
+Tag: design_04_r47_af2pred reported success in 18.22302340899978 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r20.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r20.pdb
+Processing struct with tag: design_04_r20
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e15900084a0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r20 finished AF2 prediction in 9.096697232999759 seconds
+{'plddt_total': 93.58741363728608, 'plddt_binder': 94.07848461705456, 'plddt_target': 93.23248114695836, 'pae_binder': 2.1643596, 'pae_target': 3.5404494, 'pae_interaction': 19.740156173706055, 'binder_aligned_rmsd': 0.736888, 'target_aligned_rmsd': 2.0210807, 'time': 17.29063328600023}
+Tag: design_04_r20_af2pred reported success in 17.29063328600023 seconds
+
+Non-unique residue indices detected for tag: /content/trka_focus_oq3ruiii/work/prepared/design_04_r03.pdb. This will cause AF2 to yield garbage outputs.
+Renumbering /content/trka_focus_oq3ruiii/work/prepared/design_04_r03.pdb
+Processing struct with tag: design_04_r03
+The distance between residues 73 and 74 is 34.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 73
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7e159a965bc0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: design_04_r03 finished AF2 prediction in 9.093632322000303 seconds
+{'plddt_total': 91.29755391316881, 'plddt_binder': 89.87457657778191, 'plddt_target': 92.32604248230983, 'pae_binder': 2.874372, 'pae_target': 3.6356013, 'pae_interaction': 16.812355041503906, 'binder_aligned_rmsd': 0.6519894, 'target_aligned_rmsd': 1.0434397, 'time': 16.709442014999695}
+Tag: design_04_r03_af2pred reported success in 16.709442014999695 seconds
+{
+  "pass_thresholds": {
+    "pae_interaction": 10.0,
+    "plddt_binder": 80.0,
+    "binder_aligned_rmsd": 1.0
+  },
+  "designs_scored": 50,
+  "designs_passing": 1,
+  "passing_names": [
+    "design_04_r22"
+  ],
+  "control": {
+    "name": "control_TrkA_88",
+    "pae_interaction": 5.862,
+    "passes_filter": true
+  },
+  "pae_interaction": {
+    "min": 9.389,
+    "median": 19.79,
+    "max": 25.833
+  }
+}

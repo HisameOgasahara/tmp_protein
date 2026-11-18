@@ -1,0 +1,22 @@
+["/content/gfp_foundry_0d0b0ba4/venv/bin/python", "-u", "/content/trka_focus_main_btfwnb86/repo/src/rfd3_design/focus_design.py", "design_sequences", "/content/trka_focus_oq3ruiii"]
+Environment variable CCD_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+Environment variable PDB_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+/content/gfp_foundry_0d0b0ba4/venv/lib/python3.12/site-packages/mpnn/utils/inference.py:1602: DeprecationWarning: Passing processing kwargs directly is deprecated; use config instead.
+  data = parse(
+/content/gfp_foundry_0d0b0ba4/venv/lib/python3.12/site-packages/mpnn/utils/inference.py:2231: DeprecationWarning: Use get_annotation_categories(n_body=2) instead of get_annotation_2d_categories().
+  "mpnn_pair_bias" in atom_array_plus.get_annotation_2d_categories()
+MPNN이 내놓은 스칼라: 없음
+결과 객체: MPNNInferenceOutput
+  seed 1: 서열 10개 (누적 10)
+  seed 2: 서열 10개 (누적 20)
+  seed 3: 서열 10개 (누적 30)
+  seed 4: 서열 10개 (누적 40)
+  seed 5: 서열 10개 (누적 50)
+서로 다른 서열 50/50개, v0.2.0의 8개와 겹침 0개
+설계 50개 완료

@@ -1,0 +1,20 @@
+{
+  "design_version": "0.3.0",
+  "revision": "52fb96949c36c09250fa3745c726903bacc1ce5d",
+  "foundry_revision": "0d0b0ba44fab7ca76aa4b625c014ce5964c7d284",
+  "af2_revision": "cafa3853ac94dceb1b908c8d9e6954d71749871a",
+  "target": "TrkA D5 domain, design frame",
+  "mode": "focused resampling of one backbone",
+  "backbone": "design_04",
+  "backbone_source": "results/2026-11-19-trka-design-v2",
+  "binder_length": 73,
+  "sequences": 50,
+  "mpnn_seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "recycles": 3
+}

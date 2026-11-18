@@ -1,0 +1,262 @@
+> /usr/local/bin/uv venv --allow-existing --python 3.12 /content/gfp_foundry_0d0b0ba4/venv
+warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?
+Using CPython 3.12.3 interpreter at: /usr/bin/python3.12
+Creating virtual environment at: gfp_foundry_0d0b0ba4/venv
+Activate with: source gfp_foundry_0d0b0ba4/venv/bin/activate
+> /usr/local/bin/uv pip install --python /content/gfp_foundry_0d0b0ba4/venv/bin/python --index-url https://download.pytorch.org/whl/cu128 torch==2.11.0+cu128
+Using Python 3.12.3 environment at: gfp_foundry_0d0b0ba4/venv
+Resolved 29 packages in 965ms
+Prepared 29 packages in 1m 14s
+Installed 29 packages in 264ms
+ + cuda-bindings==12.9.7
+ + cuda-pathfinder==1.6.0
+ + cuda-toolkit==12.8.1
+ + filelock==4.2.4
+ + fsspec==2026.9.0
+ + jinja2==3.1.6
+ + markupsafe==3.0.3
+ + mpmath==1.3.0
+ + networkx==3.7
+ + nvidia-cublas-cu12==12.8.4.1
+ + nvidia-cuda-cupti-cu12==12.8.90
+ + nvidia-cuda-nvrtc-cu12==12.8.93
+ + nvidia-cuda-runtime-cu12==12.8.90
+ + nvidia-cudnn-cu12==9.19.0.56
+ + nvidia-cufft-cu12==11.3.3.83
+ + nvidia-cufile-cu12==1.13.1.3
+ + nvidia-curand-cu12==10.3.9.90
+ + nvidia-cusolver-cu12==11.7.3.90
+ + nvidia-cusparse-cu12==12.5.8.93
+ + nvidia-cusparselt-cu12==0.7.1
+ + nvidia-nccl-cu12==2.28.9
+ + nvidia-nvjitlink-cu12==12.8.93
+ + nvidia-nvshmem-cu12==3.4.5
+ + nvidia-nvtx-cu12==12.8.90
+ + setuptools==78.1.0
+ + sympy==1.14.0
+ + torch==2.11.0+cu128
+ + triton==3.6.0
+ + typing-extensions==4.16.0
+> /usr/local/bin/uv pip install --python /content/gfp_foundry_0d0b0ba4/venv/bin/python --extra-index-url https://download.pytorch.org/whl/cu128 --index-strategy unsafe-best-match --constraint /content/gfp_foundry_0d0b0ba4/constraints.txt rc-foundry[rfd3] @ git+https://github.com/RosettaCommons/foundry.git@0d0b0ba44fab7ca76aa4b625c014ce5964c7d284 atomworks[ml]==3.0.1 biopython scikit-learn
+Using Python 3.12.3 environment at: gfp_foundry_0d0b0ba4/venv
+Resolved 150 packages in 2.48s
+Prepared 121 packages in 24.34s
+Installed 121 packages in 321ms
+ + absl-py==2.5.1
+ + aiohappyeyeballs==2.7.1
+ + aiohttp==3.14.5
+ + aiosignal==1.4.0
+ + annotated-doc==0.0.7
+ + annotated-types==0.8.0
+ + antlr4-python3-runtime==4.9.3
+ + anyio==4.16.0
+ + assertpy==2.36.1
+ + asttokens==3.0.2
+ + atomworks==3.0.1
+ + attrs==26.1.0
+ + beartype==0.23.1
+ + biopython==1.88
+ + biotite==1.6.0
+ + biotraj==1.2.2
+ + certifi==2026.10.23
+ + charset-normalizer==3.5.2
+ + click==8.5.1
+ + cloudpickle==3.1.3
+ + comm==0.2.3
+ + cwevals==0.0.1b1
+ + cython==3.3.1
+ + cytoolz==1.2.0
+ + debugpy==1.8.22
+ + distro==1.9.0
+ + dm-tree==0.1.10
+ + einops==0.8.2
+ + einx==0.4.3
+ + environs==15.2.0
+ + executing==2.3.0
+ + frozendict==2.5.1
+ + frozenlist==1.8.0
+ + googleapis-common-protos==1.76.0
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + hydra-core==1.3.8
+ + idna==3.20
+ + ipykernel==7.4.0
+ + ipython==9.18.1
+ + ipython-pygments-lexers==1.1.1
+ + jaxtyping==0.3.11
+ + jedi==0.20.1
+ + joblib==1.6.0
+ + jupyter-client==8.10.0
+ + jupyter-core==5.9.1
+ + lightning==2.6.6
+ + lightning-utilities==0.15.3
+ + llvmlite==0.50.0
+ + loralib==0.1.2
+ + markdown-it-py==4.3.0
+ + marshmallow==4.4.0
+ + matplotlib-inline==0.2.2
+ + mdurl==0.1.2
+ + msgpack==1.2.4
+ + multidict==7.2.1
+ + narwhals==2.29.0
+ + nest-asyncio2==1.7.4
+ + numba==0.68.1
+ + numpy==2.5.5
+ + omegaconf==2.3.1
+ + opentelemetry-api==1.45.2
+ + opentelemetry-exporter-http-transport==0.66b2
+ + opentelemetry-exporter-otlp-common==0.66b2
+ + opentelemetry-exporter-otlp-proto-common==1.45.2
+ + opentelemetry-exporter-otlp-proto-http==1.45.2
+ + opentelemetry-proto==1.45.2
+ + opentelemetry-sdk==1.45.2
+ + opentelemetry-semantic-conventions==0.66b2
+ + opt-einsum==3.4.0
+ + packaging==26.3
+ + pandas==3.1.1
+ + parso==0.8.7
+ + pexpect==4.9.0
+ + pillow==13.0.0
+ + platformdirs==4.14.7
+ + prompt-toolkit==3.0.53
+ + propcache==0.5.4
+ + protobuf==7.36.2
+ + psutil==7.2.2
+ + ptyprocess==0.7.0
+ + pure-eval==0.2.4
+ + py3dmol==2.5.5
+ + pyarrow==26.0.1
+ + pydantic==2.14.3
+ + pydantic-core==2.50.4
+ + pygments==2.21.0
+ + pymol-remote==1.1.0
+ + python-dateutil==4.0.0
+ + python-dotenv==1.2.4
+ + pytorch-lightning==2.6.6
+ + pyyaml==6.0.3
+ + pyzmq==27.3.0
+ + rc-foundry==1.0.0 (from git+https://github.com/RosettaCommons/foundry.git@0d0b0ba44fab7ca76aa4b625c014ce5964c7d284)
+ + rdkit==2026.9.2
+ + requests==2.34.2
+ + rich==15.0.0
+ + rootutils==1.0.7
+ + scikit-learn==1.9.1
+ + scipy==1.18.1
+ + shellingham==1.5.4
+ + sniffio==1.3.1
+ + stack-data==0.6.3
+ + threadpoolctl==3.8.0
+ + toolz==1.2.0
+ + torchmetrics==1.9.0
+ + tornado==6.6.1
+ + tqdm==4.70.1
+ + traitlets==5.16.1
+ + typer==0.29.2
+ + typing-inspection==0.4.5
+ + tzdata==2026.6
+ + urllib3==2.8.0
+ + wadler-lindig==0.1.8
+ + wandb==0.31.0
+ + wcwidth==0.9.4
+ + wrapt==2.5.2
+ + xxhash==4.1.0
+ + yarl==1.25.1
+ + zstandard==0.25.0
+> /usr/local/bin/uv pip check --python /content/gfp_foundry_0d0b0ba4/venv/bin/python
+Using Python 3.12.3 environment at: gfp_foundry_0d0b0ba4/venv
+Checked 150 packages in 2ms
+All installed packages are compatible
+["/usr/local/bin/uv", "venv", "--allow-existing", "--python", "3.11", "/content/trka88_af2_v0_3_0/original_venv"]
+warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?
+Using CPython 3.11.17
+Creating virtual environment at: trka88_af2_v0_3_0/original_venv
+Activate with: source trka88_af2_v0_3_0/original_venv/bin/activate
+["/usr/local/bin/uv", "pip", "install", "--python", "/content/trka88_af2_v0_3_0/original_venv/bin/python", "jax[cuda12]==0.4.35", "numpy==1.26.4", "dm-haiku==0.0.13", "biopython==1.81", "tensorflow-cpu==2.18.1", "ml-collections==0.1.1", "dm-tree==0.1.9", "scipy==1.12.0", "pandas==2.2.3", "mock==5.1.0", "--find-links", "https://west.rosettacommons.org/pyrosetta/quarterly/release/", "pyrosetta==2026.3+releasequarterly.5e498f1409"]
+Using Python 3.11.17 environment at: trka88_af2_v0_3_0/original_venv
+Resolved 69 packages in 1.86s
+Prepared 54 packages in 4m 12s
+Installed 69 packages in 779ms
+ + absl-py==2.5.1
+ + astunparse==1.6.3
+ + attrs==26.1.0
+ + biopython==1.81
+ + certifi==2026.10.23
+ + charset-normalizer==3.5.2
+ + contextlib2==21.6.0
+ + dm-haiku==0.0.13
+ + dm-tree==0.1.9
+ + flatbuffers==25.12.19
+ + gast==0.7.0
+ + google-pasta==0.2.0
+ + grpcio==1.85.3
+ + h5py==3.16.0
+ + idna==3.20
+ + jax==0.4.35
+ + jax-cuda12-pjrt==0.4.35
+ + jax-cuda12-plugin==0.4.35
+ + jaxlib==0.4.34
+ + jmp==0.0.4
+ + keras==3.15.1
+ + libclang==18.1.1
+ + markdown==3.11.3
+ + markdown-it-py==4.3.0
+ + markupsafe==3.0.4
+ + mdurl==0.1.2
+ + ml-collections==0.1.1
+ + ml-dtypes==0.5.4
+ + mock==5.1.0
+ + namex==0.1.0
+ + numpy==1.26.4
+ + nvidia-cublas-cu12==12.9.3.13
+ + nvidia-cuda-cupti-cu12==12.9.79
+ + nvidia-cuda-nvcc-cu12==12.9.86
+ + nvidia-cuda-nvrtc-cu12==12.9.86
+ + nvidia-cuda-runtime-cu12==12.9.79
+ + nvidia-cudnn-cu12==9.28.1.4
+ + nvidia-cufft-cu12==11.4.1.4
+ + nvidia-cusolver-cu12==11.7.5.82
+ + nvidia-cusparse-cu12==12.5.10.65
+ + nvidia-nccl-cu12==2.32.6
+ + nvidia-nvjitlink-cu12==12.9.86
+ + opt-einsum==3.4.0
+ + optree==0.20.0
+ + packaging==26.3
+ + pandas==2.2.3
+ + protobuf==5.29.6
+ + pygments==2.21.0
+ + pyrosetta==2026.3+releasequarterly.5e498f1409
+ + python-dateutil==4.0.0
+ + pytz==2026.6
+ + pyyaml==6.0.3
+ + requests==2.34.2
+ + rich==15.0.0
+ + scipy==1.12.0
+ + setuptools==84.2.1
+ + six==1.17.0
+ + tabulate==0.10.0
+ + tensorboard==2.18.0
+ + tensorboard-data-server==0.7.2
+ + tensorflow-cpu==2.18.1
+ + tensorflow-io-gcs-filesystem==0.37.1
+ + termcolor==3.3.0
+ + typing-extensions==4.16.0
+ + tzdata==2026.6
+ + urllib3==2.8.0
+ + werkzeug==3.1.9
+ + wheel==0.48.0
+ + wrapt==2.5.2
+["/usr/local/bin/uv", "pip", "check", "--python", "/content/trka88_af2_v0_3_0/original_venv/bin/python"]
+Using Python 3.11.17 environment at: trka88_af2_v0_3_0/original_venv
+Checked 69 packages in 5ms
+All installed packages are compatible
+["curl", "--fail", "--location", "--retry", "3", "--output", "/content/trka88_af2_v0_3_0/alphafold_params.tar", "https://storage.googleapis.com/alphafold/alphafold_params_2022-12-06.tar"]
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 5329M    0 23310    0     0   164k      0  9:13:14 --:--:--  9:13:14  164k  3 5329M    3  199M    0     0   180M      0  0:00:29  0:00:01  0:00:28  180M  7 5329M    7  415M    0     0   197M      0  0:00:26  0:00:02  0:00:24  197M 12 5329M   12  642M    0     0   204M      0  0:00:26  0:00:03  0:00:23  204M 16 5329M   16  860M    0     0   209M      0  0:00:25  0:00:04  0:00:21  209M 20 5329M   20 1083M    0     0   212M      0  0:00:25  0:00:05  0:00:20  218M 24 5329M   24 1311M    0     0   214M      0  0:00:24  0:00:06  0:00:18  222M 28 5329M   28 1521M    0     0   213M      0  0:00:24  0:00:07  0:00:17  220M 30 5329M   30 1611M    0     0   166M      0  0:00:32  0:00:09  0:00:23  147M 31 5329M   31 1702M    0     0   168M      0  0:00:31  0:00:10  0:00:21  140M 36 5329M   36 1920M    0     0   172M      0  0:00:30  0:00:11  0:00:19  139M 40 5329M   40 2152M    0     0   177M      0  0:00:29  0:00:12  0:00:17  140M 44 5329M   44 2363M    0     0   180M      0  0:00:29  0:00:13  0:00:16  140M 48 5329M   48 2584M    0     0   183M      0  0:00:29  0:00:14  0:00:15  221M 52 5329M   52 2808M    0     0   185M      0  0:00:28  0:00:15  0:00:13  221M 57 5329M   57 3054M    0     0   189M      0  0:00:28  0:00:16  0:00:12  226M 61 5329M   61 3272M    0     0   191M      0  0:00:27  0:00:17  0:00:10  224M 63 5329M   63 3402M    0     0   187M      0  0:00:28  0:00:18  0:00:10  207M 68 5329M   68 3630M    0     0   189M      0  0:00:28  0:00:19  0:00:09  208M 72 5329M   72 3840M    0     0   191M      0  0:00:27  0:00:20  0:00:07  206M 75 5329M   75 4032M    0     0   190M      0  0:00:27  0:00:21  0:00:06  194M 79 5329M   79 4230M    0     0   191M      0  0:00:27  0:00:22  0:00:05  191M 83 5329M   83 4443M    0     0   192M      0  0:00:27  0:00:23  0:00:04  208M 87 5329M   87 4676M    0     0   193M      0  0:00:27  0:00:24  0:00:03  209M 91 5329M   91 4896M    0     0   195M      0  0:00:27  0:00:25  0:00:02  211M 96 5329M   96 5118M    0     0   196M      0  0:00:27  0:00:26  0:00:01  218M100 5329M  100 5329M    0     0   196M      0  0:00:27  0:00:27 --:--:--  220M
+["tar", "-xf", "/content/trka88_af2_v0_3_0/alphafold_params.tar", "-C", "/content/trka88_af2_v0_3_0/params_hh1cqt0h", "params_model_1_ptm.npz"]
+["curl", "--fail", "--location", "--retry", "3", "--output", "/content/trka88_af2_v0_3_0/dl_binder_design.tar.gz", "https://codeload.github.com/nrbennet/dl_binder_design/tar.gz/cafa3853ac94dceb1b908c8d9e6954d71749871a"]
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 1734k    0 1734k    0     0  2470k      0 --:--:-- --:--:-- --:--:-- 2471k100 5672k    0 5672k    0     0  5393k      0 --:--:--  0:00:01 --:--:-- 5397k
+["tar", "-xzf", "/content/trka88_af2_v0_3_0/dl_binder_design.tar.gz", "--strip-components=1", "-C", "/content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a"]

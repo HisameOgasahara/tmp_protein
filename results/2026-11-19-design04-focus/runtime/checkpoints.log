@@ -1,0 +1,7 @@
+> /content/gfp_foundry_0d0b0ba4/venv/bin/python -u /content/trka_focus_main_btfwnb86/repo/src/rfd3_design/checkpoints.py /content/gfp_foundry_0d0b0ba4/weights
+rfd3: downloading rfd3_latest.ckpt
+ligandmpnn: downloading ligandmpnn_v_32_010_25.pt
+rf3: downloading rf3_foundry_01_24_latest_remapped.ckpt
+ligandmpnn: ready (10.5 MB)
+rf3: ready (3,038.9 MB)
+rfd3: ready (2,690.3 MB)
