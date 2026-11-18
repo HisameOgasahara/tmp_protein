@@ -16,7 +16,7 @@ from tempfile import mkdtemp
 from time import perf_counter
 
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 SOURCE = Path(__file__).resolve().parent
 AF2_SOURCE = SOURCE.parent / "af2_filter"
 RECYCLES = 3
@@ -48,6 +48,7 @@ def run(revision):
         "design_version": VERSION, "revision": revision, "foundry_revision": FOUNDRY_REV,
         "af2_revision": af2_workflow.AF2_REVISION, "target": "TrkA D5 domain, design frame",
         "hotspots": ["B108 MET", "B115 PHE", "B145 LEU"],
+        "binder_lengths": None, "backbones_per_length": None,
         "backbones": None, "sequences_per_backbone": None, **settings,
     }
     (root / "source.json").write_text(json.dumps(source, indent=2))
@@ -56,6 +57,8 @@ def run(revision):
     try:
         print("=== 1/2 설계 (RFdiffusion3 + MPNN) ===", flush=True)
         design_python, design_env = design_runtime.prepare_runtime(root)
+        source["binder_lengths"] = list(trka_design.BINDER_LENGTHS)
+        source["backbones_per_length"] = trka_design.BACKBONES_PER_LENGTH
         source["backbones"] = trka_design.BACKBONES
         source["sequences_per_backbone"] = trka_design.SEQUENCES_PER_BACKBONE
         (root / "source.json").write_text(json.dumps(source, indent=2))

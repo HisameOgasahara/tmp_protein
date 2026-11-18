@@ -41,8 +41,11 @@ RFdiffusion3 → ProteinMPNN → AlphaFold2 initial guess 로 이어지는 de no
 배치는 5 Å 이상 어긋났다.** 접히는 것과 붙는 것은 다른 문제다.
 [설계 실행 결과](docs/03-design-run.md)
 
-**다음 단계:** 백본당 서열 수를 2개에서 늘리고(현재 가장 값싼 개선), AF2 앞에 구조만으로
-계산되는 값싼 필터를 넣어 규모를 키운다. [작업 순서](docs/00-purpose.md)
+**다음 단계:** 규모를 4배로 올린 v0.2.0이 실행 대기 중이다. 소요 시간을 분해해 보니
+**채점 시간의 62%가 JAX 재컴파일**이었다 — 결합여 길이가 바뀔 때마다 길이당 92초씩 다시
+컴파일했고 실제 추론은 10.5초였다. 길이를 4종으로 고정해 컴파일을 17회에서 4회로 줄였고,
+그 예산으로 설계를 40개에서 **160개**로 늘렸다(약 1.5시간).
+[설계 실행 결과](docs/03-design-run.md) · [작업 순서](docs/00-purpose.md)
 
 ## 폴더 지도
 
@@ -68,7 +71,7 @@ GPU 가속이 필요하므로 Colab T4에서 실행한다. 로컬 PC에는 모�
 | --- | --- | --- |
 | [notebooks/01_af2_filter_T4.ipynb](notebooks/01_af2_filter_T4.ipynb) | TrkA_88 한 건을 AF2 initial guess로 채점 | 설치 포함 약 7분 |
 | [notebooks/02_calibrate_filter_T4.ipynb](notebooks/02_calibrate_filter_T4.ipynb) | 실험 라벨이 붙은 설계 20개 채점, 지표 교정 | AF2 20회, 약 40분 |
-| [notebooks/03_design_trka_T4.ipynb](notebooks/03_design_trka_T4.ipynb) | TrkA에 새 결합여 40개 설계 후 같은 필터로 채점 | 실측 62.6분 |
+| [notebooks/03_design_trka_T4.ipynb](notebooks/03_design_trka_T4.ipynb) | TrkA에 새 결합여 160개 설계 후 같은 필터로 채점 | 약 1.5시간 |
 | [diagnostics/90_af2_conditions_T4.ipynb](diagnostics/90_af2_conditions_T4.ipynb) | 12개 조건 비교로 실패 원인 분리 | AF2 12회, 약 25분 |
 
 실행하면 설정·입력 해시·지표·구조·로그를 담은 ZIP 하나가 나온다. 그 ZIP을 `results/` 아래

@@ -43,6 +43,11 @@
 고른 것이고, 임의의 표면이 아니라 결합이 확인된 에피토프를 겨냥한다. 설계용 표적 PDB는
 실행 중에 `design.pdb`와 `target_1www_chainX.pdb`로부터 만들어지므로 따로 두지 않는다.
 
+`contig`의 결합여 길이는 `70-95`로 적혀 있지만 **실행 코드가 이 범위를 몇 개의 고정
+길이로 좁힌다** ([trka_design.py](../src/rfd3_design/trka_design.py)의 `BINDER_LENGTHS`).
+길이가 바뀌면 AF2 채점에서 JAX가 매번 재컴파일하기 때문이다(길이당 92초).
+이 파일은 에피토프와 허용 범위를, 코드는 실제로 뽑을 길이와 개수를 정한다.
+
 ## pdl1_8aom
 
 RFdiffusion3 공식 예제의 입력이다. `pdl1.json`에 contig, hotspot 잔기, 수소결합 공여자

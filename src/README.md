@@ -44,7 +44,7 @@
 | `checkpoints.py` | 모델 가중치 다운로드 |
 | `rf3_runtime.py` | RF3 모델 생성 |
 | `trka_workflow.py` | **TrkA 설계 전체 진행.** 설계 환경과 AF2 환경을 차례로 띄운다 |
-| `trka_design.py` | 표적 준비 → RFD3 백본 → MPNN 서열 |
+| `trka_design.py` | 표적 준비 → RFD3 백본 → MPNN 서열. 결합여 길이를 고정 집합으로 뽑는다 |
 | `check_interface.py` | 생성된 백본이 지정한 hotspot에 붙었는지 확인 (실행 후 점검) |
 | `workflow.py` | 과거 PD-L1 실행 (채점 방법이 부적절해 결론에 쓰지 않음) |
 
@@ -56,6 +56,19 @@ PyRosetta를 요구한다. 한 가상환경에 합칠 수 없다. `trka_workflow
 
 두 패키지 모두 `workflow.py`를 갖고 있어 모듈 이름이 겹친다. `trka_workflow.py`는
 `importlib`으로 **파일 경로를 지정해** 불러온다. `sys.path` 순서에 기대지 않는다.
+
+### 결합여 길이를 고정하는 이유
+
+`trka_design.py`의 `BINDER_LENGTHS`가 contig의 범위를 몇 개의 단일 값으로 좁힌다.
+**채점 비용 때문이다.** 업스트림 AF2는 JAX로 돌고, JAX는 총 서열 길이가 바뀌면 커널을
+다시 컴파일한다. 실측으로 길이당 92초이고 실제 추론은 10.5초다. 첫 실행은 길이를
+70–95에서 자유 추출해 백본 20개에서 17종을 뽑았고 채점 시간의 62%를 재컴파일에 썼다
+([설계 실행 결과](../docs/03-design-run.md)).
+
+길이를 고정하면 설계가 몇 개든 컴파일은 길이 종류 수만큼만 일어난다. `generate_backbones`는
+길이마다 단일 항목 입력 파일을 써서 `model.run`을 따로 호출한다. 한 파일에 여러 길이를
+넣고 `n_batches`로 나누는 방식은 의미가 검증되지 않았으므로 쓰지 않는다. 뽑힌 백본의
+길이가 요청과 다르면 실행을 멈춘다 — 고정 길이가 깨지면 속도 이득이 사라지기 때문이다.
 
 **주의.** 현재 `workflow.py`의 `predict_complexes`는 RF3에 서열만 넘긴다. 표적 템플릿도
 초기 좌표도 주지 않으므로 논문의 채점 방법과 다르다. 설계 단계(`generate_backbones`,

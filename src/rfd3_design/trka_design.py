@@ -8,6 +8,15 @@ coordinate frame, with sidechains grafted from the crystal structure. Hotspots
 are the three most deeply buried hydrophobic contacts of the published binder
 TrkA_88 (Met108 3.21 A, Phe115 3.80 A, Leu145 3.15 A), so the campaign aims at
 a known-targetable epitope rather than an arbitrary patch.
+
+Binder length is fixed to a few values rather than sampled from a range. AF2 is
+scored by the pinned upstream script, where JAX recompiles for every distinct
+total sequence length: a measured 92 s per length against 10.5 s of actual
+inference. The first run sampled 70-95 freely, drew 17 distinct lengths from 20
+backbones, and spent 62% of its scoring time recompiling. Four fixed lengths cost
+four compilations no matter how many designs are scored. One of them is 93, the
+published binder's length, so the positive control shares a compilation and is
+compared at equal length.
 """
 
 import json
@@ -16,8 +25,10 @@ from pathlib import Path
 
 
 SOURCE = Path(__file__).resolve().parent
-BACKBONES = 20
-SEQUENCES_PER_BACKBONE = 2
+BINDER_LENGTHS = (73, 80, 87, 93)
+BACKBONES_PER_LENGTH = 5
+SEQUENCES_PER_BACKBONE = 8
+BACKBONES = len(BINDER_LENGTHS) * BACKBONES_PER_LENGTH
 
 
 def read_json(path):
@@ -79,10 +90,35 @@ def prepare_target(root):
     target = root / "trka_target.pdb"
     target.write_text(text + "END\n")
     specification = read_json(inputs / "design_spec.json")
-    for entry in specification.values():
-        entry["input"] = str(target)
-    write_json(root / "trka.json", specification)
+    (name, entry), = specification.items()
+    entry["input"] = str(target)
+    write_json(root / "trka.json", {
+        f"{name}_{length:03d}": fixed_length(entry, length)
+        for length in BINDER_LENGTHS
+    })
     print(f"표적 준비 완료: {target.name}", flush=True)
+    print(f"결합여 길이 {list(BINDER_LENGTHS)} × 각 {BACKBONES_PER_LENGTH}개 "
+          f"= 백본 {BACKBONES}개", flush=True)
+
+
+def fixed_length(entry, length):
+    """Same spec with the contig's binder segment pinned to one length.
+
+    The first comma-separated field of the contig is the binder. The published
+    range form (`70-95`) becomes a single number, which is what removes the
+    recompilations downstream.
+    """
+    variant = dict(entry)
+    fields = variant["contig"].split(",")
+    binder = fields[0]
+    # A length or a range of lengths -- never a chain reference like "B94-194",
+    # which would mean the first field is part of the target and pinning it
+    # would silently redesign the wrong segment.
+    if not all(part.isdigit() for part in binder.split("-", 1)):
+        raise ValueError(f"Contig's first field is not a binder length: {binder!r}")
+    fields[0] = str(length)
+    variant["contig"] = ",".join(fields)
+    return variant
 
 
 def generate_backbones(root):
@@ -95,27 +131,48 @@ def generate_backbones(root):
     )
     model = RFD3InferenceEngine(**config)
     model._assign_override("trainer.precision", "32-true")
-    output = model.run(inputs=str(root / "trka.json"), n_batches=BACKBONES)
-    samples = [sample for batch in (output or {}).values() for sample in batch]
+    # One call per length, each with a single-entry input file. This is exactly
+    # the call shape already verified to return n_batches samples; batching the
+    # lengths into one file would rely on unverified semantics for n_batches.
+    specification = read_json(root / "trka.json")
+    samples = []
+    for key, entry in specification.items():
+        single = root / f"trka_{key}.json"
+        write_json(single, {key: entry})
+        output = model.run(inputs=str(single), n_batches=BACKBONES_PER_LENGTH)
+        produced = [sample for batch in (output or {}).values() for sample in batch]
+        if len(produced) != BACKBONES_PER_LENGTH:
+            raise RuntimeError(f"{key}: expected {BACKBONES_PER_LENGTH} structures, "
+                               f"got {len(produced)}.")
+        expected = int(entry["contig"].split(",")[0])
+        samples.extend((expected, sample) for sample in produced)
+        print(f"  길이 {expected}: 백본 {len(produced)}개", flush=True)
     if len(samples) != BACKBONES:
         raise RuntimeError(f"Expected {BACKBONES} RFdiffusion structures, got {len(samples)}.")
 
     wanted = target_sequence(root / "trka_target.pdb")
     backbones = []
-    for index, sample in enumerate(samples, 1):
+    for index, (expected, sample) in enumerate(samples, 1):
         atoms = sample.atom_array
         chains = [str(chain) for chain in np.unique(atoms.chain_id)]
         target_chain = next((c for c in chains if sequence_of(atoms, c) == wanted), None)
         if target_chain is None:
             raise RuntimeError(f"Backbone {index}: no chain matches the TrkA target sequence.")
         binder_chain, = [c for c in chains if c != target_chain]
+        length = len(sequence_of(atoms, binder_chain))
+        if length != expected:
+            raise RuntimeError(f"Backbone {index}: asked for {expected} binder residues, "
+                               f"got {length}. Fixed lengths are what keep AF2 from "
+                               f"recompiling, so this is not safe to ignore.")
         name = f"design_{index:02d}"
         path = root / "backbones" / f"{name}.pdb"
         write_complex_pdb(atoms, binder_chain, target_chain, path)
         backbones.append({"id": name, "file": f"backbones/{name}.pdb",
-                          "binder_length": len(sequence_of(atoms, binder_chain))})
-        print(f"  {index}/{BACKBONES} {name} 결합여 {backbones[-1]['binder_length']}잔기", flush=True)
+                          "binder_length": length})
+        print(f"  {index}/{BACKBONES} {name} 결합여 {length}잔기", flush=True)
     write_json(root / "backbones.json", backbones)
+    distinct = sorted({backbone["binder_length"] for backbone in backbones})
+    print(f"서로 다른 길이 {len(distinct)}종: {distinct}", flush=True)
 
 
 def design_sequences(root):
@@ -147,5 +204,6 @@ def design_sequences(root):
 
 
 if __name__ == "__main__":
-    stages = {stage.__name__: stage for stage in (prepare_target, generate_backbones, design_sequences)}
+    stages = {stage.__name__: stage
+              for stage in (prepare_target, generate_backbones, design_sequences)}
     stages[sys.argv[1]](Path(sys.argv[2]))
