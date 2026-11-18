@@ -34,9 +34,9 @@ def pose_rmsd(reference_path, prediction_path, target_sequence, binder_sequence)
     return float(np.sqrt(np.mean(np.sum((aligned - binder) ** 2, axis=1))))
 
 
-def design_reference(folder, binder_sequence):
+def design_reference(design_path, binder_sequence):
     # Raw RFdiffusion models use placeholder residues for the generated binder.
-    lines = (folder / "design.pdb").read_text().splitlines()
+    lines = design_path.read_text().splitlines()
     from Bio.SeqUtils import seq3
 
     residues = {}

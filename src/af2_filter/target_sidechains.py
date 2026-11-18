@@ -78,12 +78,26 @@ def graft(design_path, design_chain, reference_path, reference_chain):
     return "\n".join(lines) + "\nTER\n"
 
 
-def design_with_target_sidechains(inputs, binder_chain="A", target_chain="B"):
-    """Return PDB text for the full complex: design binder plus grafted target."""
-    design_path = inputs / "design.pdb"
+def complex_with_target_sidechains(design_path, reference_path, reference_chain="X",
+                                   binder_chain="A", target_chain="B"):
+    """Return PDB text for the full complex: design binder plus grafted target.
+
+    Works for any design in the public release. The binder chain is copied as
+    it is, whatever its length, and only the target chain gains sidechains.
+    """
     binder = [
         line for line in design_path.read_text().splitlines()
         if line.startswith("ATOM") and line[21] == binder_chain
     ]
-    target = graft(design_path, target_chain, inputs / "target_1www_chainX.pdb", "X")
+    if not binder:
+        raise ValueError(f"No chain {binder_chain} atoms in {design_path}.")
+    target = graft(design_path, target_chain, reference_path, reference_chain)
     return "\n".join(binder) + "\nTER\n" + target + "END\n"
+
+
+def design_with_target_sidechains(inputs, binder_chain="A", target_chain="B"):
+    """The TrkA_88 case: `inputs` holds design.pdb and the reference target."""
+    return complex_with_target_sidechains(
+        inputs / "design.pdb", inputs / "target_1www_chainX.pdb",
+        binder_chain=binder_chain, target_chain=target_chain,
+    )

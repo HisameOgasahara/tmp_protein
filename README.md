@@ -22,8 +22,10 @@ RFdiffusion3 → ProteinMPNN → AlphaFold2 initial guess 로 이어지는 de no
 실패한 설계에서도 결합체 **자체 접힘은 0.594 Å로 정확**했고 어긋난 것은 표적에 대한
 배치뿐이었다. 즉 실패는 설계나 AF2가 아니라 입력 준비 단계에서 발생했다.
 
-**다음 단계:** 교정된 이 필터로 실험 라벨이 붙은 공개 설계 95개(결합체 6개)를 채점해
-통과선이 실제로 무엇을 가르는지 확인한다. [작업 순서](docs/00-purpose.md)
+**다음 단계:** 교정된 이 필터로 실험 라벨이 붙은 설계를 채점해 통과선이 실제로 무엇을
+가르는지 확인한다. 결합체 6개 전부와 비결합체 14개,
+[notebooks/02_calibrate_filter_T4.ipynb](notebooks/02_calibrate_filter_T4.ipynb)로 약 40분.
+구현은 끝났고 실행이 남았다. [작업 순서](docs/00-purpose.md)
 
 재현 대상 설계(TrkA_88)는 결합체 **자체 접힘은 0.594 Å로 정확**했다. 어긋난 것은 표적에 대한
 배치뿐이다. 즉 실패는 설계나 AF2가 아니라 입력 준비 단계에서 발생했다.
@@ -48,8 +50,9 @@ GPU 가속이 필요하므로 Colab T4에서 실행한다. 로컬 PC에는 모�
 
 | 노트북 | 용도 | 소요 |
 | --- | --- | --- |
-| [notebooks/01_af2_filter_T4.ipynb](notebooks/01_af2_filter_T4.ipynb) | 공개 설계를 AF2 initial guess로 채점 | 설치 포함 약 7분 |
-| [diagnostics/90_af2_conditions_T4.ipynb](diagnostics/90_af2_conditions_T4.ipynb) | 11개 조건 비교로 실패 원인 분리 | AF2 11회, 약 23분 |
+| [notebooks/01_af2_filter_T4.ipynb](notebooks/01_af2_filter_T4.ipynb) | TrkA_88 한 건을 AF2 initial guess로 채점 | 설치 포함 약 7분 |
+| [notebooks/02_calibrate_filter_T4.ipynb](notebooks/02_calibrate_filter_T4.ipynb) | 실험 라벨이 붙은 설계 20개 채점, 지표 교정 | AF2 20회, 약 40분 |
+| [diagnostics/90_af2_conditions_T4.ipynb](diagnostics/90_af2_conditions_T4.ipynb) | 12개 조건 비교로 실패 원인 분리 | AF2 12회, 약 25분 |
 
 실행하면 설정·입력 해시·지표·구조·로그를 담은 ZIP 하나가 나온다. 그 ZIP을 `results/` 아래
 날짜 폴더로 풀어 보존한다. 규칙은 [results/README.md](results/README.md)에 있다.

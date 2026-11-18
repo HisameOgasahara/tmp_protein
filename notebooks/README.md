@@ -14,11 +14,18 @@ Colab T4에서 실행한다. 로컬 PC에 모델이나 가중치를 설치하지
 
 ## 목록
 
-| 노트북 | 코드 | 소요 |
-| --- | --- | --- |
-| [01_af2_filter_T4.ipynb](01_af2_filter_T4.ipynb) | [src/af2_filter/workflow.py](../src/af2_filter/workflow.py) | 설치 포함 약 7분 |
+| 노트북 | 하는 일 | 코드 | 소요 |
+| --- | --- | --- | --- |
+| [01_af2_filter_T4.ipynb](01_af2_filter_T4.ipynb) | TrkA_88 한 건을 채점 (재현 확인) | [workflow.py](../src/af2_filter/workflow.py) | 설치 포함 약 7분 |
+| [02_calibrate_filter_T4.ipynb](02_calibrate_filter_T4.ipynb) | 실험 라벨이 붙은 설계 20개를 채점 (지표 교정) | [calibration_workflow.py](../src/af2_filter/calibration_workflow.py) | AF2 20회, 약 40분 |
 
 진단용 노트북은 [diagnostics/](../diagnostics/)에 있다.
+
+01은 파이프라인이 정상인지, 02는 그 점수가 실제 결합 여부를 가르는지 본다. 서로 다른
+질문이다. 단계 정의는 [취지 문서](../docs/00-purpose.md) 참조.
+
+02는 공개 자료 아카이브(251.7 MB)를 Colab에서 받아 TrkA 부분만 풀고, 같은 세션에서
+재사용한다. 로컬 디스크는 쓰지 않는다.
 
 ## 실행 후
 

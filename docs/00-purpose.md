@@ -41,8 +41,11 @@ AI 단백질 설계 파이프라인을 **끝까지 직접 돌려보고, 나오�
 1. ~~**채점기 교정** — 공개 TrkA_88(실험 검증된 결합체)이 ②를 통과하게 만든다.~~
    **완료.** 1.496 Å / `pae_interaction` 5.86으로 통과했다. 원인은 입력 준비 단계의
    표적 사이드체인 누락이었다. [문제 기록](issues/2026-11-18-trka-target-sidechains.md)
-2. **임계값 확인** — 실험 라벨이 붙은 공개 설계 95개 중 결합체 6개와 비결합체 일부를
-   같은 필터로 채점해 분포를 본다. 라벨은 [inputs/trka/published_results.csv](../inputs/trka/published_results.csv)에 있다.
+2. **임계값 확인** — 실험 라벨이 붙은 공개 설계 중 결합체 6개 전부와 비결합체 14개를
+   같은 필터로 채점해 분포를 본다. 라벨은
+   [inputs/trka/published_results.csv](../inputs/trka/published_results.csv)에 있다.
+   구현됨: [notebooks/02_calibrate_filter_T4.ipynb](../notebooks/02_calibrate_filter_T4.ipynb),
+   AF2 20회로 약 40분. **실행 대기.**
 3. **설계** — 교정된 필터를 써서 같은 표적에 새 결합체를 설계하고 채점한다.
    결과표에는 항상 TrkA_88을 양성 대조로 함께 넣는다.
 

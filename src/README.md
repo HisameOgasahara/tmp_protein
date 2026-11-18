@@ -17,12 +17,23 @@
 | `compare.py` | 구조 읽기, 표적 고정 후 결합체 자세 RMSD |
 | `diagnostic_workflow.py` | 조건 비교 실험 전체 진행과 배열 차이 비교 |
 | `diagnostic_case.py` | 조건 1개 실행. AF2 특징·초기 좌표·신뢰도 배열을 가로채 저장 |
+| `target_sidechains.py` | 주사슬 전용 설계에 실험 구조의 표적 사이드체인을 잔기별로 이식 |
+| `calibration_workflow.py` | 공개 자료 아카이브 확보와 교정 실행 진행 |
+| `calibration.py` | 라벨된 설계 선택·준비·채점. 그룹별 분포 요약 |
 
 `diagnostic_case.py`는 업스트림 `model.RunModel`을 감싸서 **실제로 모델에 들어간 배열을
 그대로 저장**한다. 입력을 추측하지 않고 확인하기 위한 장치다.
 
-`workflow.py`와 `diagnostic_workflow.py`는 설치 상태를 `/content` 아래에 두고 같은 Colab
-세션에서 재사용한다. 두 번째 실행부터는 설치 단계를 건너뛴다.
+`workflow.py`, `diagnostic_workflow.py`, `calibration_workflow.py`는 설치 상태를 `/content`
+아래 같은 폴더에 두고 한 Colab 세션에서 공유한다. 두 번째 실행부터는 설치와 가중치
+다운로드를 건너뛴다. 공개 자료 아카이브도 같은 방식으로 한 번만 받는다.
+
+`calibration.py`는 선택된 설계를 **모두 준비한 뒤 업스트림 `predict.py`에 디렉터리째
+한 번** 넘긴다. 설계마다 따로 호출하면 모델 적재가 매번 반복되기 때문이다. 업스트림이
+`-pdbdir`와 `-checkpoint_name`을 지원하므로 중간에 끊겨도 이어서 돌 수 있다.
+
+결합여 길이는 설계마다 다르다(65~94잔기). 길이를 가정하는 코드를 두지 않는다. 표적
+101잔기는 공개 설계 95개에서 모두 동일하므로 같은 참조 구조를 쓴다.
 
 ## rfd3_design
 

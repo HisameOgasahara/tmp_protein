@@ -138,7 +138,7 @@ def run_case(directory, inputs, upstream, case):
     }, indent=2))
     target, binder, prepared = prepare_input(inputs, directory, case, upstream)
     canonical = directory / "canonical_design.pdb"
-    canonical.write_text(design_reference(inputs, binder))
+    canonical.write_text(design_reference(inputs / "design.pdb", binder))
     observe_model(directory, case)
     script = upstream / "af2_initial_guess/predict.py"
     command = [
