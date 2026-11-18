@@ -1,7 +1,5 @@
 # 노트북
 
-Colab T4에서 실행. 로컬 PC에 모델·가중치를 설치하지 않음.
-
 셀 3개 구조 — ① GitHub `main`에서 clone하고 커밋 해시 출력, ② `src/` 워크플로를
 서브프로세스로 실행하고 로그를 실시간 출력한 뒤 지표 표 표시, ③ 결과 ZIP 다운로드.
 
@@ -14,7 +12,7 @@ Colab T4에서 실행. 로컬 PC에 모델·가중치를 설치하지 않음.
 | [03_design_trka_T4](03_design_trka_T4.ipynb) | TrkA에 새 결합여 160개 설계·채점 | [trka_workflow.py](../src/rfd3_design/trka_workflow.py) | 1.75시간 |
 | [04_focus_design04_T4](04_focus_design04_T4.ipynb) | 백본 `design_04` 1개에 서열 50개 재추출·채점 | [focus_workflow.py](../src/rfd3_design/focus_workflow.py) | 30분 |
 
-소요는 설치 포함 실측. 진단용 노트북은 [diagnostics/](../diagnostics/).
+소요는 **Colab T4** 기준 설치 포함 실측. 진단용 노트북은 [diagnostics/](../diagnostics/).
 
 01·02·03은 서로 다른 질문 — 파이프라인이 정상인가 / 그 점수가 실제 결합을 가르는가 /
 교정된 필터로 직접 설계한 후보가 어디에 놓이는가. 단계 정의는
@@ -32,8 +30,7 @@ Python 3.11 JAX·PyRosetta. 한 프로세스에 합칠 수 없어 각각 서브�
 62%를 재컴파일에 소모. 고정 후 실측 컴파일 4회(378초, 9.2%), 설계당 채점 61.7초 →
 25.5초. [04-scale-run](../docs/04-scale-run.md)
 
-**02는 공개 자료 아카이브(251.7 MB)를 Colab에서 받아 TrkA 부분만 전개**하고 같은 세션에서
-재사용. 로컬 디스크 미사용.
+**02는 공개 자료 아카이브(251.7 MB)를 받아 TrkA 부분만 전개**하고 같은 세션에서 재사용.
 
 ## 실행 후
 

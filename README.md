@@ -81,7 +81,7 @@ RFdiffusion3 → LigandMPNN → AlphaFold2 initial guess, Colab T4.
 | [04_focus_design04_T4](notebooks/04_focus_design04_T4.ipynb) | 백본 1개에 서열 50개 재추출·채점 | 30분 |
 | [90_af2_conditions_T4](diagnostics/90_af2_conditions_T4.ipynb) | 12조건 비교로 실패 원인 분리 | 25분 |
 
-소요는 설치 포함 실측.
+소요는 **Colab T4** 기준 설치 포함 실측.
 실행당 ZIP 하나 → [results/](results/) 아래 날짜 폴더로 보존.
 
 ## 재현성
