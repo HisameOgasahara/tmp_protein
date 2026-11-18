@@ -103,10 +103,3 @@ PMC 웹페이지와 bioRxiv는 자동 요청을 차단하거나 제한한다. Eu
 | `af2_initial_guess/predict.py` | 특징 구성, 템플릿 마스킹, 점수 산출의 전체 흐름 |
 | `af2_initial_guess/af2_util.py` | `af2_get_atom_positions`가 **모든 원자**를 템플릿에 넣는 지점 |
 | `mpnn_fr/dl_interface_design.py` | ProteinMPNN + FastRelax 단계. 사이드체인 패킹이 여기서 일어난다 |
-
-## 다른 표적 (현재 비활성)
-
-PD-L1 (PDB 8AOM) 입력이 [inputs/pdl1_8aom/](../inputs/pdl1_8aom/)에 남아 있다.
-RFdiffusion3 공식 예제의 hotspot 설정이다. 이 표적으로 돌린 과거 실행은 채점을
-AF2 initial guess가 아닌 서열 전용 RF3 예측으로 했기 때문에 결과를 쓰지 않는다.
-재평가하려면 교정된 AF2 필터를 적용해야 한다.

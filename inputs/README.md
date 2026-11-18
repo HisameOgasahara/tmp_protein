@@ -6,7 +6,6 @@
 | 폴더 | 내용 |
 | --- | --- |
 | [trka/](trka/) | TrkA 결합체 공개 설계 자료. 재현·교정의 기준 |
-| [pdl1_8aom/](pdl1_8aom/) | PD-L1 (PDB 8AOM) 설계 입력. 현재 비활성 |
 
 ## trka
 
@@ -47,8 +46,3 @@
 길이로 좁힌다** ([trka_design.py](../src/rfd3_design/trka_design.py)의 `BINDER_LENGTHS`).
 길이가 바뀌면 AF2 채점에서 JAX가 매번 재컴파일하기 때문이다(길이당 92초).
 이 파일은 에피토프와 허용 범위를, 코드는 실제로 뽑을 길이와 개수를 정한다.
-
-## pdl1_8aom
-
-RFdiffusion3 공식 예제의 입력이다. `pdl1.json`에 contig, hotspot 잔기, 수소결합 공여자
-지정이 들어 있고 `pdl1_cropped.pdb`가 표적 구조(114잔기)다.

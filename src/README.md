@@ -55,7 +55,6 @@ SVG를 쓴다(`python src/figures.py`). 그림이 어떤 실행에서 나왔는�
 | `check_interface.py` | 생성된 백본이 지정한 hotspot에 붙었는지 확인 (실행 후 점검) |
 | `focus_workflow.py` | **백본 1개 집중 재추출 진행.** 백본 생성을 건너뛴다 |
 | `focus_design.py` | 저장된 백본을 가져와 서열 50개 설계, MPNN 점수도 기록 |
-| `workflow.py` | 과거 PD-L1 실행 (채점 방법이 부적절해 결론에 쓰지 않음) |
 
 ### 환경이 두 개인 이유
 
@@ -78,11 +77,6 @@ PyRosetta를 요구한다. 한 가상환경에 합칠 수 없다. `trka_workflow
 길이마다 단일 항목 입력 파일을 써서 `model.run`을 따로 호출한다. 한 파일에 여러 길이를
 넣고 `n_batches`로 나누는 방식은 의미가 검증되지 않았으므로 쓰지 않는다. 뽑힌 백본의
 길이가 요청과 다르면 실행을 멈춘다 — 고정 길이가 깨지면 속도 이득이 사라지기 때문이다.
-
-**주의.** 현재 `workflow.py`의 `predict_complexes`는 RF3에 서열만 넘긴다. 표적 템플릿도
-초기 좌표도 주지 않으므로 논문의 채점 방법과 다르다. 설계 단계(`generate_backbones`,
-`design_sequences`)는 정상 작동이 확인됐다. 채점은 `af2_filter`로 교체해야 한다.
-자세한 내용은 [results/README.md](../results/README.md)의 PD-L1 실행 메모 참조.
 
 ## 규약
 
