@@ -18,7 +18,7 @@ Colab T4에서 실행한다. 로컬 PC에 모델이나 가중치를 설치하지
 | --- | --- | --- | --- |
 | [01_af2_filter_T4.ipynb](01_af2_filter_T4.ipynb) | TrkA_88 한 건을 채점 (재현 확인) | [workflow.py](../src/af2_filter/workflow.py) | 설치 포함 약 7분 |
 | [02_calibrate_filter_T4.ipynb](02_calibrate_filter_T4.ipynb) | 실험 라벨이 붙은 설계 20개를 채점 (지표 교정) | [calibration_workflow.py](../src/af2_filter/calibration_workflow.py) | AF2 20회, 약 40분 |
-| [03_design_trka_T4.ipynb](03_design_trka_T4.ipynb) | TrkA에 새 결합여 40개를 설계하고 채점 | [trka_workflow.py](../src/rfd3_design/trka_workflow.py) | RFD3 + MPNN + AF2 41회 |
+| [03_design_trka_T4.ipynb](03_design_trka_T4.ipynb) | TrkA에 새 결합여 40개를 설계하고 채점 | [trka_workflow.py](../src/rfd3_design/trka_workflow.py) | 실측 62.6분 |
 
 진단용 노트북은 [diagnostics/](../diagnostics/)에 있다.
 
@@ -28,7 +28,8 @@ Colab T4에서 실행한다. 로컬 PC에 모델이나 가중치를 설치하지
 
 03은 환경을 둘 띄운다. RFdiffusion3·MPNN은 Python 3.12 foundry 스택, AF2는 Python 3.11
 JAX·PyRosetta다. 한 프로세스에 합칠 수 없어서 노트북이 각각 서브프로세스로 돌린다.
-채점 배치에 공개 결합여 TrkA_88을 양성 대조군으로 함께 넣는다.
+채점 배치에 공개 결합여 TrkA_88을 양성 대조군으로 함께 넣는다. 첫 실행 결과는
+[설계 실행 결과](../docs/03-design-run.md)에 있다 — 설계 500초, 서열 37초, 채점 2531초.
 
 02는 공개 자료 아카이브(251.7 MB)를 Colab에서 받아 TrkA 부분만 풀고, 같은 세션에서
 재사용한다. 로컬 디스크는 쓰지 않는다.

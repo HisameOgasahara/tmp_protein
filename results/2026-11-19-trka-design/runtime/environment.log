@@ -1,0 +1,34 @@
+> /content/gfp_foundry_0d0b0ba4/venv/bin/python -c import sys,platform; print(sys.version); print(platform.platform())
+3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]
+Linux-6.6.159+-x86_64-with-glibc2.39
+> /content/gfp_foundry_0d0b0ba4/venv/bin/python -c import torch; print('torch',torch.__version__); print('CUDA',torch.version.cuda); print('GPU',torch.cuda.get_device_name())
+torch 2.11.0+cu128
+CUDA 12.8
+GPU Tesla T4
+["/content/trka88_af2_v0_3_0/original_venv/bin/python", "-c", "import sys,jax; print(sys.version); print(jax.__version__); print(jax.devices()); assert any(d.platform == 'gpu' for d in jax.devices())"]
+3.11.17 (main, Oct 14 2026, 01:05:33) [Clang 23.1.3 ]
+0.4.35
+[CudaDevice(id=0)]
+["nvidia-smi"]
+Wed Nov 18 15:41:10 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.82.07              Driver Version: 580.82.07      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |
+| N/A   51C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+["/content/trka88_af2_v0_3_0/original_venv/bin/python", "-c", "from alphafold.model import model; import pyrosetta; print('Original AF2 and PyRosetta imports succeeded.')"]
+Original AF2 and PyRosetta imports succeeded.

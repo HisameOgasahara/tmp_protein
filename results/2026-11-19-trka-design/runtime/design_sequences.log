@@ -1,0 +1,34 @@
+["/content/gfp_foundry_0d0b0ba4/venv/bin/python", "-u", "/content/trka_design_main_0v2kg9on/repo/src/rfd3_design/trka_design.py", "design_sequences", "/content/trka_design_n33tm2m1"]
+Environment variable CCD_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+Environment variable PDB_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+/content/gfp_foundry_0d0b0ba4/venv/lib/python3.12/site-packages/mpnn/utils/inference.py:1602: DeprecationWarning: Passing processing kwargs directly is deprecated; use config instead.
+  data = parse(
+/content/gfp_foundry_0d0b0ba4/venv/lib/python3.12/site-packages/mpnn/utils/inference.py:2231: DeprecationWarning: Use get_annotation_categories(n_body=2) instead of get_annotation_2d_categories().
+  "mpnn_pair_bias" in atom_array_plus.get_annotation_2d_categories()
+  design_01 서열 2개
+  design_02 서열 2개
+  design_03 서열 2개
+  design_04 서열 2개
+  design_05 서열 2개
+  design_06 서열 2개
+  design_07 서열 2개
+  design_08 서열 2개
+  design_09 서열 2개
+  design_10 서열 2개
+  design_11 서열 2개
+  design_12 서열 2개
+  design_13 서열 2개
+  design_14 서열 2개
+  design_15 서열 2개
+  design_16 서열 2개
+  design_17 서열 2개
+  design_18 서열 2개
+  design_19 서열 2개
+  design_20 서열 2개
+설계 40개 완료

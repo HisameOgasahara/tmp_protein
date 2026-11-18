@@ -1,0 +1,20 @@
+{
+  "pass_thresholds": {
+    "pae_interaction": 10.0,
+    "plddt_binder": 80.0,
+    "binder_aligned_rmsd": 1.0
+  },
+  "designs_scored": 40,
+  "designs_passing": 0,
+  "passing_names": [],
+  "control": {
+    "name": "control_TrkA_88",
+    "pae_interaction": 5.862,
+    "passes_filter": true
+  },
+  "pae_interaction": {
+    "min": 10.235,
+    "median": 26.657,
+    "max": 27.464
+  }
+}

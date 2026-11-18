@@ -1,0 +1,14 @@
+{
+  "trka": {
+    "input": "/content/trka_design_n33tm2m1/trka_target.pdb",
+    "contig": "70-95,/0,B94-194",
+    "redesign_motif_sidechains": false,
+    "infer_ori_strategy": "hotspots",
+    "is_non_loopy": true,
+    "select_hotspots": {
+      "B108": "CB,CG,SD,CE",
+      "B115": "CB,CG,CD1,CD2,CE1,CE2,CZ",
+      "B145": "CB,CG,CD1,CD2"
+    }
+  }
+}

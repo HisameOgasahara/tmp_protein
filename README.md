@@ -16,6 +16,8 @@ RFdiffusion3 → ProteinMPNN → AlphaFold2 initial guess 로 이어지는 de no
 | **필터 교정** | **`pae_interaction`이 결합 여부를 가르지 못했다.** 비결합체 14/14 통과, 결합체 5/6 통과 | [교정 결과](docs/02-filter-calibration.md) |
 | 파이프라인 재현성 | 설계 20개 중 **19개가 저자들의 AF2 구조를 0.157~1.942 Å**로 재현 (중앙값 0.415 Å) | [결과](results/2026-11-18-trka88-calibration) |
 | 단량체 설계 자기일관성 | 설계 20개 중 **16개가 Cα RMSD < 2 Å** (최소 0.512 Å) | [결과](results/2026-11-16-monomer-selfconsistency) |
+| **직접 설계 후 채점** | **설계 40개 전부 탈락. 같은 배치의 양성 대조군은 통과** (`pae_interaction` 5.862) | [설계 실행 결과](docs/03-design-run.md) |
+| 설계 단계 점검 | 백본 20개 전부가 지정한 에피토프에 접촉 (Met108 20/20, Leu145 20/20) | [점검 출력](results/2026-11-19-trka-design/interface_check.txt) |
 
 재현된 구조는 저자들의 공개 AF2 구조와 **0.191 Å** 차이다. 정답 좌표를 직접 투입한
 대조군(0.409·0.412 Å)보다 가깝다. 대조군은 AF2 자신의 예측을 되먹인 것이고, 이쪽은
@@ -28,14 +30,19 @@ RFdiffusion3 → ProteinMPNN → AlphaFold2 initial guess 로 이어지는 de no
 통과 후 실제 결합률은 공개 자료 기준 6/95 ≈ 6.3%이고, 통과한 설계들 사이에서
 `pae_interaction` 순서로 우선순위를 정할 근거는 이 데이터에 없다.
 
-**다음 단계:** 설계 파이프라인이 구현됐고 실행이 남았다
-([notebooks/03_design_trka_T4.ipynb](notebooks/03_design_trka_T4.ipynb)). RFdiffusion3로
-TrkA에 백본 20개를 만들고, MPNN으로 서열 40개를 설계한 뒤, 교정된 필터로 채점한다.
-공개 결합여 TrkA_88을 양성 대조군으로 같은 배치에 넣어 기준점을 둔다.
-[작업 순서](docs/00-purpose.md)
+교정 집합으로는 "필터가 불량품을 거르는가"를 볼 수 없었다. 저자들이 이미 계산 필터를
+통과시켜 실험까지 보낸 설계들이었기 때문이다. 그래서 같은 표적에 **직접 설계한 40개**를
+같은 필터로 채점했고, **전부 떨어졌다.** 같은 배치의 실험 검증 결합체만 통과했다. 두
+실행을 합치면 결론은 하나다 — **이 필터는 선별 전 집단에서 거르고, 선별 후 집단에서는
+더 이상 가르지 못한다.**
 
-재현 대상 설계(TrkA_88)는 결합체 **자체 접힘은 0.594 Å로 정확**했다. 어긋난 것은 표적에 대한
-배치뿐이다. 즉 실패는 설계나 AF2가 아니라 입력 준비 단계에서 발생했다.
+떨어뜨린 것은 계면 항 하나다. `plddt_binder`는 32/40, 접힘 RMSD는 21/40이 통과했지만
+`pae_interaction`은 0/40이었다. 그리고 **설계대로 정확히 접힌 21개 전부가 표적에 대한
+배치는 5 Å 이상 어긋났다.** 접히는 것과 붙는 것은 다른 문제다.
+[설계 실행 결과](docs/03-design-run.md)
+
+**다음 단계:** 백본당 서열 수를 2개에서 늘리고(현재 가장 값싼 개선), AF2 앞에 구조만으로
+계산되는 값싼 필터를 넣어 규모를 키운다. [작업 순서](docs/00-purpose.md)
 
 ## 폴더 지도
 
@@ -43,6 +50,8 @@ TrkA에 백본 20개를 만들고, MPNN으로 서열 40개를 설계한 뒤, 교
 | --- | --- |
 | [docs/00-purpose.md](docs/00-purpose.md) | 프로젝트 취지, 범위, 무엇을 성공으로 볼지 |
 | [docs/01-pipeline.md](docs/01-pipeline.md) | 설계문서 — 파이프라인 단계, 지표 정의, 통과 기준 |
+| [docs/02-filter-calibration.md](docs/02-filter-calibration.md) | 필터 교정 결과 분석 |
+| [docs/03-design-run.md](docs/03-design-run.md) | 직접 설계 40개 채점 결과 분석 |
 | [docs/issues/](docs/issues/) | 생긴 문제와 대처법 |
 | [docs/references.md](docs/references.md) | 참고 논문, 공개 데이터, 고정한 업스트림 리비전 |
 | [notebooks/](notebooks/) | Colab 실행 진입점 |
@@ -59,7 +68,7 @@ GPU 가속이 필요하므로 Colab T4에서 실행한다. 로컬 PC에는 모�
 | --- | --- | --- |
 | [notebooks/01_af2_filter_T4.ipynb](notebooks/01_af2_filter_T4.ipynb) | TrkA_88 한 건을 AF2 initial guess로 채점 | 설치 포함 약 7분 |
 | [notebooks/02_calibrate_filter_T4.ipynb](notebooks/02_calibrate_filter_T4.ipynb) | 실험 라벨이 붙은 설계 20개 채점, 지표 교정 | AF2 20회, 약 40분 |
-| [notebooks/03_design_trka_T4.ipynb](notebooks/03_design_trka_T4.ipynb) | TrkA에 새 결합여 40개 설계 후 같은 필터로 채점 | RFD3 + MPNN + AF2 41회 |
+| [notebooks/03_design_trka_T4.ipynb](notebooks/03_design_trka_T4.ipynb) | TrkA에 새 결합여 40개 설계 후 같은 필터로 채점 | 실측 62.6분 |
 | [diagnostics/90_af2_conditions_T4.ipynb](diagnostics/90_af2_conditions_T4.ipynb) | 12개 조건 비교로 실패 원인 분리 | AF2 12회, 약 25분 |
 
 실행하면 설정·입력 해시·지표·구조·로그를 담은 ZIP 하나가 나온다. 그 ZIP을 `results/` 아래

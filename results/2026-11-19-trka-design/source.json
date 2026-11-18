@@ -1,0 +1,15 @@
+{
+  "design_version": "0.1.0",
+  "revision": "809097cb582b7c2a02a3da9f210560561b96968b",
+  "foundry_revision": "0d0b0ba44fab7ca76aa4b625c014ce5964c7d284",
+  "af2_revision": "cafa3853ac94dceb1b908c8d9e6954d71749871a",
+  "target": "TrkA D5 domain, design frame",
+  "hotspots": [
+    "B108 MET",
+    "B115 PHE",
+    "B145 LEU"
+  ],
+  "backbones": 20,
+  "sequences_per_backbone": 2,
+  "recycles": 3
+}

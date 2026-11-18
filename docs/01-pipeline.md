@@ -70,6 +70,11 @@ showed the most predictivity in the experiments performed in the paper."*
 실제 결합 여부를 가르지 못했다. 실험에서 결합하지 않은 설계 14개가 전부 통과했다.
 **통과한 후보들의 순위를 이 지표로 매기지 않는다.** [교정 결과](02-filter-calibration.md)
 
+반대쪽도 측정했다. 선별을 거치지 않은 직접 설계 40개는 **0개가 통과했다.** 즉 이 기준은
+**선별 전 집단을 거르는 데는 작동하고, 선별 후 집단을 가르는 데는 작동하지 않는다.**
+거절은 세 기준 중 `pae_interaction` 하나가 한다(0/40). 같은 40개에서 `plddt_binder`는
+32개, 접힘 RMSD는 21개가 통과했다. [설계 실행 결과](03-design-run.md)
+
 ## 검증 지점
 
 입력 준비 코드는 다음을 실행 중에 단정(assert)한다. 조용히 틀린 입력이 들어가는 것을 막는다.
@@ -83,3 +88,14 @@ showed the most predictivity in the experiments performed in the paper."*
 마지막 항목은 나중에 추가됐다. 그 검사가 없던 동안 표적 사이드체인이 통째로 비어 있어도
 파이프라인이 정상 종료하며 틀린 숫자를 냈다.
 [문제 기록](issues/2026-11-18-trka-target-sidechains.md)
+
+### 실행 후 점검
+
+단정으로 잡을 수 없는 것이 하나 더 있다. **생성된 백본이 지정한 hotspot에 실제로 붙었는가.**
+엉뚱한 면에 붙어도 파이프라인은 정상 종료하고, 그 경우 채점 결과는 아무것도 뜻하지 않는다.
+[check_interface.py](../src/rfd3_design/check_interface.py)가 백본별로 계면 잔기와 hotspot
+최단 거리를 뽑는다.
+
+RFdiffusion3 출력은 표적 사슬을 1부터 다시 번호 매기므로 사양의 hotspot 번호와 직접 비교할
+수 없다. 이 도구는 표적 입력의 첫 잔기 번호를 기준으로 옮긴 뒤 **옮긴 자리의 잔기 이름이
+사양과 같은지 교차 검증**한다. 번호를 잘못 옮긴 채 "접촉 없음"으로 결론 내는 것을 막는다.
