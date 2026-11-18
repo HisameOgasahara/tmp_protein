@@ -1,0 +1,6 @@
+# Run outputs are data, not source. Without this the 42 py3Dmol viewer pages in
+# the first result folder make the repository read as 94% HTML on GitHub, which
+# says nothing true about what is in it.
+results/** linguist-generated=true
+diagnostics/**/*.html linguist-generated=true
+docs/figures/*.svg linguist-generated=true
