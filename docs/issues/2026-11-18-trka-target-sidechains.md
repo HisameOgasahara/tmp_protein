@@ -87,9 +87,10 @@ JAX 정밀도 default/highest, 서열 입히기 방식 2종, `initial_guess` 해
 
 저자들이 쓴 표적 입력 대신 실험 구조를 썼다. figshare 아카이브
 (`RFdiffusion_designs.zip`, 251.7 MB)는 받을 수 있지만 당시에는 HEAD 요청이 403을
-돌려줘 막힌 것으로 판단했다. 실제로는 GET으로 받을 수 있다. **PDB 1WWW 체인 X의 TrkA Ig 유사 D5 도메인(잔기 282–382)
-서열이 `design.pdb` 표적 101잔기와 글자 하나까지 동일하다.** 정렬 모호성이 없어
-잔기별 대응이 확정된다.
+돌려줘 막힌 것으로 판단했다. 실제로는 GET으로 받을 수 있다.
+
+**PDB 1WWW 체인 X의 TrkA Ig 유사 D5 도메인(잔기 282–382) 서열이 `design.pdb` 표적
+101잔기와 글자 하나까지 동일하다.** 정렬 모호성이 없어 잔기별 대응이 확정된다.
 
 구현은 [src/af2_filter/target_sidechains.py](../../src/af2_filter/target_sidechains.py)다.
 각 잔기의 N/CA/C 국소 좌표계로 중첩한 뒤 사이드체인 원자만 옮긴다. 전역 중첩이 아니라
