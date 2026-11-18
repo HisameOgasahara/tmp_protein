@@ -7,9 +7,20 @@
     "design.pdb": "d0a7ae1870bfdd9ce41ddad1f94b18987f0e62465eef82e49c08c5cff79f52d5",
     "published_af2.pdb": "4d7de09d4693c897d0b1747492d34200b8abfcd204c9700d42aa1bac7759407c",
     "published_sequences.fasta": "de927f4d43ffbc064c5d7bca1bdeb20b161e47eb649ffafe9515da9dde0c3e74",
-    "published_results.csv": "c6f49f3fc5838c80715cd945030c4b8d597a17176c2201a74ef3fc4a1806d230"
+    "published_results.csv": "c6f49f3fc5838c80715cd945030c4b8d597a17176c2201a74ef3fc4a1806d230",
+    "target_1www_chainX.pdb": "4e2501312ea935f94ce9e617b63e76b25f21c9a2af9dc24490deb095e364ab43"
   },
   "binder_chain": "A",
   "target_chain": "B",
-  "published_pose_rmsd_angstrom": 1.4
+  "published_pose_rmsd_angstrom": 1.4,
+  "target_sidechain_source": {
+    "pdb_id": "1WWW",
+    "chain": "X",
+    "description": "TrkA Ig-like D5 domain, residues 282-382. Sequence is identical to the 101-residue target in design.pdb.",
+    "url": "https://files.rcsb.org/download/1WWW.pdb",
+    "original_sha256": "8e34f790d5b2a56113b2f887822c9ca956684034c5417dbb9bd9a4bb1d8c1b28",
+    "extracted_file": "target_1www_chainX.pdb",
+    "extracted_sha256": "4e2501312ea935f94ce9e617b63e76b25f21c9a2af9dc24490deb095e364ab43",
+    "note": "Primary altloc only, waters removed. design.pdb carries no target sidechains, so these are grafted per residue onto the design backbone."
+  }
 }

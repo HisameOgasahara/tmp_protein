@@ -32,10 +32,27 @@
 `published_results.csv`의 `Binder` 열이 실험 결과다. 95개 중 6개가 `True`이고
 해당 설계는 10, 17, 23, 54, 73, 88번이다. 이 라벨이 채점기 교정의 정답지다.
 
+## 표적 실험 구조
+
+| 항목 | 값 |
+| --- | --- |
+| PDB | [1WWW](https://www.rcsb.org/structure/1WWW) 체인 X — NGF–TrkA 복합체의 TrkA 수용체 |
+| 영역 | Ig 유사 D5 도메인, 잔기 282–382 (101잔기) |
+| 다운로드 | `https://files.rcsb.org/download/1WWW.pdb` |
+| 용도 | `design.pdb`에 없는 표적 사이드체인 공급 |
+
+**서열이 `design.pdb` 표적 101잔기와 글자 하나까지 동일하다.** 그래서 잔기별 대응이
+확정되고 정렬 모호성이 없다. SHA-256은
+[inputs/trka/provenance.json](../inputs/trka/provenance.json)의
+`target_sidechain_source`에 기록돼 있다.
+
 ### 확인된 주의사항
 
 - 아카이브에서 현재 받아온 것은 **TrkA_88 한 건의 구조뿐**이다. 나머지 94개 설계의
   구조 파일은 아직 받지 않았다. 교정 작업에는 추가 다운로드가 필요하다.
+- figshare 아카이브(`RFdiffusion_designs.zip`) **직접 다운로드가 403으로 거부된다.**
+  저자들이 RFdiffusion 입력으로 쓴 원본 표적 PDB는 아직 확보하지 못했고, 대신 1WWW를
+  썼다. 아카이브를 열 수 있게 되면 원본 표적과 비교해볼 가치가 있다.
 - `provenance.json`의 `published_pose_rmsd_angstrom: 1.4`는 CSV에 없는 값이며 수동으로
   입력됐다. 다만 공개 AF2 구조와 설계 구조로 직접 재계산한 값이 **1.3896 Å**로 일치하므로
   지표 정의 자체는 검증됐다.

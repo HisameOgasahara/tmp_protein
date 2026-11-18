@@ -12,7 +12,7 @@ import numpy as np
 from workflow import AF2_REVISION, SOURCE, prepare_runtime, run_logged
 
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 
 
 def build_cases():
@@ -28,6 +28,7 @@ def build_cases():
         ("recycles_12", {"recycles": 12}),
         ("no_initial_guess", {"initial_guess": False}),
         ("empty_target_template", {"target_template": False}),
+        ("grafted_target_sidechains", {"input": "grafted_target"}),
         ("published_coordinates_control", {"input": "published"}),
         ("published_target_control", {"input": "published_target"}),
         ("highest_precision", {"precision": "highest"}),

@@ -10,6 +10,7 @@ from types import SimpleNamespace
 import numpy as np
 
 from compare import design_reference, pose_rmsd, read_inputs
+from target_sidechains import design_with_target_sidechains
 
 
 def save_arrays(path, values):
@@ -53,7 +54,11 @@ def prepare_input(inputs, directory, case, upstream):
     if case["input"] == "published":
         pose = pyrosetta.pose_from_pdb(str(inputs / "published_af2.pdb"))
     else:
-        pose = pyrosetta.pose_from_pdb(str(inputs / "design.pdb"))
+        source = inputs / "design.pdb"
+        if case["input"] == "grafted_target":
+            source = directory / "design_with_target_sidechains.pdb"
+            source.write_text(design_with_target_sidechains(inputs))
+        pose = pyrosetta.pose_from_pdb(str(source))
         if case["threading"] == "mutate":
             for index, residue in enumerate(binder, 1):
                 mutate_residue(pose, index, residue)

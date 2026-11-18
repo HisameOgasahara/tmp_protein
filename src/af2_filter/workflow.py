@@ -10,7 +10,7 @@ from tempfile import mkdtemp
 from time import perf_counter
 
 
-VERSION = "0.3.4"
+VERSION = "0.4.0"
 AF2_REVISION = "cafa3853ac94dceb1b908c8d9e6954d71749871a"
 SOURCE = Path(__file__).resolve().parent
 

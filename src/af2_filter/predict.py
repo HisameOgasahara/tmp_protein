@@ -10,13 +10,18 @@ import pyrosetta
 from pyrosetta.toolbox.mutants import mutate_residue
 
 from compare import pose_rmsd, read_inputs
+from target_sidechains import design_with_target_sidechains
 
 
 def predict(root, upstream):
     inputs = root / "inputs"
     target, binder = read_inputs(inputs)
     pyrosetta.init("-mute all")
-    pose = pyrosetta.pose_from_pdb(str(inputs / "design.pdb"))
+    # design.pdb is backbone-only, so the target sidechains come from an
+    # experimental structure instead of being rebuilt from default rotamers.
+    grafted = root / "design_with_target_sidechains.pdb"
+    grafted.write_text(design_with_target_sidechains(inputs))
+    pose = pyrosetta.pose_from_pdb(str(grafted))
     if pose.chain_sequence(2) != target or pose.chain_end(1) != len(binder):
         raise ValueError("Expected binder in chain 1 followed by TrkA in chain 2.")
     for index, residue in enumerate(binder, 1):
@@ -36,6 +41,15 @@ def predict(root, upstream):
             for atom in ("N", "CA", "C", "O"):
                 if not np.allclose(before[atom].coord, after[atom].coord, atol=0.002):
                     raise ValueError("Sequence preparation changed the design backbone.")
+    # The target template and the initial guess carry sidechains, so a target
+    # left with backbone atoms only would silently poison the prediction.
+    bare = [
+        residue.id[1] for residue in prepared["B"]
+        if residue.resname != "GLY"
+        and not any(atom.id not in ("N", "CA", "C", "O") for atom in residue)
+    ]
+    if bare:
+        raise ValueError(f"Target residues are missing sidechains: {bare}")
     output = root / "original_af2_output"
     subprocess.run([
         sys.executable, str(upstream / "af2_initial_guess/predict.py"),

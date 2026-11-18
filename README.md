@@ -12,6 +12,12 @@ RFdiffusion3 → ProteinMPNN → AlphaFold2 initial guess 로 이어지는 de no
 | 공개 TrkA_88 AF2 재현 | **실패.** 결합체 자세 31.14 Å, `pae_interaction` 26.07 | [결과 색인](results/README.md) |
 | 실패 원인 | 공개 `design.pdb`가 주사슬 전용 → 표적 사이드체인이 재구성되며 충돌하는 결합면 생성 | [문제 기록](docs/issues/2026-11-18-trka-target-sidechains.md) |
 | 원인 검증 | 표적 좌표만 교체 시 **31.14 Å → 1.65 Å**, `pae_interaction` 26.15 → 4.86 | [진단](diagnostics/README.md) |
+| 수정 | 1WWW 체인 X에서 표적 사이드체인 이식. 설계 주사슬 보존(편차 0.000000 Å), 사이드체인 378개 보강 | [코드](src/af2_filter/target_sidechains.py) |
+
+**다음 단계:** 수정안의 AF2 검증 실행이 아직 남아 있다. 진단 노트북 v0.2.0에
+`grafted_target_sidechains` 조건을 추가해 알려진 정답 대조군과 나란히 비교한다.
+이식한 사이드체인은 공개 AF2 표적과 RMSD 1.296 Å 차이이므로(재구성본 1.601 Å)
+**통과가 보장되지는 않는다.**
 
 재현 대상 설계(TrkA_88)는 결합체 **자체 접힘은 0.594 Å로 정확**했다. 어긋난 것은 표적에 대한
 배치뿐이다. 즉 실패는 설계나 AF2가 아니라 입력 준비 단계에서 발생했다.
