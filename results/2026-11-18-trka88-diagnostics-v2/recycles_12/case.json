@@ -1,0 +1,10 @@
+{
+  "id": "recycles_12",
+  "threading": "original",
+  "input": "design",
+  "recycles": 12,
+  "initial_guess": true,
+  "target_template": true,
+  "seed": 0,
+  "precision": "default"
+}

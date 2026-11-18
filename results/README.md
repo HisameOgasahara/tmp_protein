@@ -27,6 +27,7 @@
 | [2026-11-18-trka88-af2-colabdesign](2026-11-18-trka88-af2-colabdesign) | TrkA_88 재현, ColabDesign 경로 | 실패. 38.66 Å, 결합면 PAE 26.37, ipTM 0.099 |
 | [2026-11-18-trka88-af2-upstream](2026-11-18-trka88-af2-upstream) | TrkA_88 재현, 업스트림 AF2 코드 | 실패. 31.14 Å, `pae_interaction` 26.07 |
 | [2026-11-18-trka88-diagnostics](2026-11-18-trka88-diagnostics) | 11개 조건 비교로 실패 원인 분리 | **원인 확정** — 표적 전체 원자 좌표 |
+| [2026-11-18-trka88-diagnostics-v2](2026-11-18-trka88-diagnostics-v2) | 12개 조건. 사이드체인 이식 수정안 포함 | **재현 성공. 1.496 Å, `pae_interaction` 5.86** |
 
 ## 실행별 메모
 
@@ -79,3 +80,19 @@ RFdiffusion3 공식 8AOM 예제로 백본 8개와 서열 16개를 만들고 RF3�
 원본 배열이 필요하면 같은 커밋으로 노트북을 다시 실행하면 재생성된다.
 
 조건별 결과표는 [진단 문서](../diagnostics/README.md)에 있다.
+
+### 2026-11-18-trka88-diagnostics-v2
+
+수정안(`grafted_target_sidechains`)을 포함한 12개 조건. **재현에 성공한 실행이다.**
+
+| 조건 | 설계 기준 RMSD | 공개 AF2 기준 | `pae_interaction` |
+| --- | --- | --- | --- |
+| `original_thread` (수정 전) | 32.780 Å | 32.157 Å | 26.15 |
+| **`grafted_target_sidechains`** | **1.496 Å** | **0.191 Å** | **5.86** |
+| `published_target_control` | 1.654 Å | 0.412 Å | 4.86 |
+
+업스트림 코드가 자체 산출한 `target_aligned_rmsd`도 1.497 Å로 일치한다.
+v0.1.0 실행과 겹치는 11개 조건의 값은 동일하다(`recycles_12`만 40.216 → 40.204 Å).
+
+원본 ZIP은 113 MB이므로 앞 실행과 같은 기준으로 텍스트 산출물만 옮겼다(170개 파일, 7.6 MB).
+`*.npz` 배열과 AF2 체크포인트는 제외했고, 배열의 shape·dtype·SHA-256은 사이드카 `.json`에 있다.

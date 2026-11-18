@@ -1,0 +1,409 @@
+{
+  "mutate_baseline": {
+    "initial_guess/coordinates": {
+      "maximum_absolute_difference": 8.67900013923645
+    }
+  },
+  "original_thread": {},
+  "seed_1": {
+    "processed_features/bert_mask": {
+      "maximum_absolute_difference": 1.0
+    },
+    "processed_features/msa_feat": {
+      "maximum_absolute_difference": 1.0
+    },
+    "processed_features/random_crop_to_size_seed": {
+      "maximum_absolute_difference": 3731193610.0
+    }
+  },
+  "seed_2": {
+    "processed_features/bert_mask": {
+      "maximum_absolute_difference": 1.0
+    },
+    "processed_features/msa_feat": {
+      "maximum_absolute_difference": 1.0
+    },
+    "processed_features/random_crop_to_size_seed": {
+      "maximum_absolute_difference": 1734842207.0
+    }
+  },
+  "recycles_12": {
+    "processed_features/aatype": {
+      "reference_shape": [
+        4,
+        194
+      ],
+      "case_shape": [
+        13,
+        194
+      ]
+    },
+    "processed_features/atom14_atom_exists": {
+      "reference_shape": [
+        4,
+        194,
+        14
+      ],
+      "case_shape": [
+        13,
+        194,
+        14
+      ]
+    },
+    "processed_features/atom37_atom_exists": {
+      "reference_shape": [
+        4,
+        194,
+        37
+      ],
+      "case_shape": [
+        13,
+        194,
+        37
+      ]
+    },
+    "processed_features/bert_mask": {
+      "reference_shape": [
+        4,
+        1,
+        194
+      ],
+      "case_shape": [
+        13,
+        1,
+        194
+      ]
+    },
+    "processed_features/extra_deletion_value": {
+      "reference_shape": [
+        4,
+        5,
+        194
+      ],
+      "case_shape": [
+        13,
+        5,
+        194
+      ]
+    },
+    "processed_features/extra_has_deletion": {
+      "reference_shape": [
+        4,
+        5,
+        194
+      ],
+      "case_shape": [
+        13,
+        5,
+        194
+      ]
+    },
+    "processed_features/extra_msa": {
+      "reference_shape": [
+        4,
+        5,
+        194
+      ],
+      "case_shape": [
+        13,
+        5,
+        194
+      ]
+    },
+    "processed_features/extra_msa_mask": {
+      "reference_shape": [
+        4,
+        5,
+        194
+      ],
+      "case_shape": [
+        13,
+        5,
+        194
+      ]
+    },
+    "processed_features/extra_msa_row_mask": {
+      "reference_shape": [
+        4,
+        5
+      ],
+      "case_shape": [
+        13,
+        5
+      ]
+    },
+    "processed_features/is_distillation": {
+      "reference_shape": [
+        4
+      ],
+      "case_shape": [
+        13
+      ]
+    },
+    "processed_features/msa_feat": {
+      "reference_shape": [
+        4,
+        1,
+        194,
+        49
+      ],
+      "case_shape": [
+        13,
+        1,
+        194,
+        49
+      ]
+    },
+    "processed_features/msa_mask": {
+      "reference_shape": [
+        4,
+        1,
+        194
+      ],
+      "case_shape": [
+        13,
+        1,
+        194
+      ]
+    },
+    "processed_features/msa_row_mask": {
+      "reference_shape": [
+        4,
+        1
+      ],
+      "case_shape": [
+        13,
+        1
+      ]
+    },
+    "processed_features/random_crop_to_size_seed": {
+      "reference_shape": [
+        4,
+        2
+      ],
+      "case_shape": [
+        13,
+        2
+      ]
+    },
+    "processed_features/residue_index": {
+      "reference_shape": [
+        4,
+        194
+      ],
+      "case_shape": [
+        13,
+        194
+      ]
+    },
+    "processed_features/residx_atom14_to_atom37": {
+      "reference_shape": [
+        4,
+        194,
+        14
+      ],
+      "case_shape": [
+        13,
+        194,
+        14
+      ]
+    },
+    "processed_features/residx_atom37_to_atom14": {
+      "reference_shape": [
+        4,
+        194,
+        37
+      ],
+      "case_shape": [
+        13,
+        194,
+        37
+      ]
+    },
+    "processed_features/seq_length": {
+      "reference_shape": [
+        4
+      ],
+      "case_shape": [
+        13
+      ]
+    },
+    "processed_features/seq_mask": {
+      "reference_shape": [
+        4,
+        194
+      ],
+      "case_shape": [
+        13,
+        194
+      ]
+    },
+    "processed_features/target_feat": {
+      "reference_shape": [
+        4,
+        194,
+        22
+      ],
+      "case_shape": [
+        13,
+        194,
+        22
+      ]
+    },
+    "processed_features/template_aatype": {
+      "reference_shape": [
+        4,
+        4,
+        194
+      ],
+      "case_shape": [
+        13,
+        4,
+        194
+      ]
+    },
+    "processed_features/template_all_atom_masks": {
+      "reference_shape": [
+        4,
+        4,
+        194,
+        37
+      ],
+      "case_shape": [
+        13,
+        4,
+        194,
+        37
+      ]
+    },
+    "processed_features/template_all_atom_positions": {
+      "reference_shape": [
+        4,
+        4,
+        194,
+        37,
+        3
+      ],
+      "case_shape": [
+        13,
+        4,
+        194,
+        37,
+        3
+      ]
+    },
+    "processed_features/template_mask": {
+      "reference_shape": [
+        4,
+        4
+      ],
+      "case_shape": [
+        13,
+        4
+      ]
+    },
+    "processed_features/template_pseudo_beta": {
+      "reference_shape": [
+        4,
+        4,
+        194,
+        3
+      ],
+      "case_shape": [
+        13,
+        4,
+        194,
+        3
+      ]
+    },
+    "processed_features/template_pseudo_beta_mask": {
+      "reference_shape": [
+        4,
+        4,
+        194
+      ],
+      "case_shape": [
+        13,
+        4,
+        194
+      ]
+    },
+    "processed_features/true_msa": {
+      "reference_shape": [
+        4,
+        1,
+        194
+      ],
+      "case_shape": [
+        13,
+        1,
+        194
+      ]
+    }
+  },
+  "no_initial_guess": {},
+  "empty_target_template": {
+    "raw_features/template_all_atom_masks": {
+      "maximum_absolute_difference": 1.0
+    },
+    "raw_features/template_all_atom_positions": {
+      "maximum_absolute_difference": 23.43400001525879
+    },
+    "processed_features/template_all_atom_masks": {
+      "maximum_absolute_difference": 1.0
+    },
+    "processed_features/template_all_atom_positions": {
+      "maximum_absolute_difference": 23.43400001525879
+    },
+    "processed_features/template_pseudo_beta": {
+      "maximum_absolute_difference": 23.43400001525879
+    },
+    "processed_features/template_pseudo_beta_mask": {
+      "maximum_absolute_difference": 1.0
+    }
+  },
+  "grafted_target_sidechains": {
+    "raw_features/template_all_atom_positions": {
+      "maximum_absolute_difference": 5.353999614715576
+    },
+    "processed_features/template_all_atom_positions": {
+      "maximum_absolute_difference": 5.353999614715576
+    },
+    "processed_features/template_pseudo_beta": {
+      "maximum_absolute_difference": 0.2019999921321869
+    },
+    "initial_guess/coordinates": {
+      "maximum_absolute_difference": 5.353999614715576
+    }
+  },
+  "published_coordinates_control": {
+    "raw_features/template_all_atom_positions": {
+      "maximum_absolute_difference": 34.11999988555908
+    },
+    "processed_features/template_all_atom_positions": {
+      "maximum_absolute_difference": 34.11999988555908
+    },
+    "processed_features/template_pseudo_beta": {
+      "maximum_absolute_difference": 30.432000160217285
+    },
+    "initial_guess/coordinates": {
+      "maximum_absolute_difference": 51.28800010681152
+    }
+  },
+  "published_target_control": {
+    "raw_features/template_all_atom_positions": {
+      "maximum_absolute_difference": 6.674000263214111
+    },
+    "processed_features/template_all_atom_positions": {
+      "maximum_absolute_difference": 6.674000263214111
+    },
+    "processed_features/template_pseudo_beta": {
+      "maximum_absolute_difference": 1.4250001907348633
+    },
+    "initial_guess/coordinates": {
+      "maximum_absolute_difference": 6.674000263214111
+    }
+  },
+  "highest_precision": {},
+  "original_thread_repeat": {}
+}

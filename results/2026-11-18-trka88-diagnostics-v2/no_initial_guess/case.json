@@ -1,0 +1,10 @@
+{
+  "id": "no_initial_guess",
+  "threading": "original",
+  "input": "design",
+  "recycles": 3,
+  "initial_guess": false,
+  "target_template": true,
+  "seed": 0,
+  "precision": "default"
+}

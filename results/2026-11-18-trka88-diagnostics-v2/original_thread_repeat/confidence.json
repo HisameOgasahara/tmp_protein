@@ -1,0 +1,36 @@
+{
+  "plddt": {
+    "shape": [
+      194
+    ],
+    "dtype": "float64",
+    "sha256": "f313eb43cc4c556382508da20d3bedc5c4d66a31b3883edfdc0f8079b965aa2c"
+  },
+  "aligned_confidence_probs": {
+    "shape": [
+      194,
+      194,
+      64
+    ],
+    "dtype": "float32",
+    "sha256": "0eae2e67a864de9503b2e21ad29c4d0a430bc36d2a62f7b0c459201cd195e192"
+  },
+  "predicted_aligned_error": {
+    "shape": [
+      194,
+      194
+    ],
+    "dtype": "float32",
+    "sha256": "fce4b4ff126dbf08dc6917b229f02a48e89672d0e4a1d540e108b9b24f46e007"
+  },
+  "max_predicted_aligned_error": {
+    "shape": [],
+    "dtype": "float32",
+    "sha256": "8d7c87021aabeee2ea36d92350b8d4fdf307532c0830c03b51a806dff14718fd"
+  },
+  "ptm": {
+    "shape": [],
+    "dtype": "float64",
+    "sha256": "9aeea99ae9e7ae3a4369c4777e10a7d0b6fa8b0f7d264aaf5fc12cf571052e03"
+  }
+}

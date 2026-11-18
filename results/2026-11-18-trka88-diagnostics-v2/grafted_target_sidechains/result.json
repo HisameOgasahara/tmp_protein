@@ -1,0 +1,29 @@
+{
+  "id": "grafted_target_sidechains",
+  "threading": "original",
+  "input": "grafted_target",
+  "recycles": 3,
+  "initial_guess": true,
+  "target_template": true,
+  "seed": 0,
+  "precision": "default",
+  "status": "success",
+  "rmsd_vs_original_design": 1.4964535457240118,
+  "rmsd_vs_published_af2": 0.19091628368389912,
+  "input_rmsd_vs_design": 1.6540111434571735e-14,
+  "plddt_binder": 93.297,
+  "pae_interaction": 5.862,
+  "binder_aligned_rmsd": 0.615,
+  "original_scores": {
+    "binder_aligned_rmsd": "0.615",
+    "pae_binder": "2.643",
+    "pae_interaction": "5.862",
+    "pae_target": "3.475",
+    "plddt_binder": "93.297",
+    "plddt_target": "93.152",
+    "plddt_total": "93.222",
+    "target_aligned_rmsd": "1.497",
+    "time": "112.361",
+    "description": "TrkA_88_af2pred"
+  }
+}

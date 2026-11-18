@@ -1,0 +1,29 @@
+{
+  "id": "original_thread",
+  "threading": "original",
+  "input": "design",
+  "recycles": 3,
+  "initial_guess": true,
+  "target_template": true,
+  "seed": 0,
+  "precision": "default",
+  "status": "success",
+  "rmsd_vs_original_design": 32.78033795164724,
+  "rmsd_vs_published_af2": 32.1570101174756,
+  "input_rmsd_vs_design": 1.6540111434571735e-14,
+  "plddt_binder": 94.356,
+  "pae_interaction": 26.151,
+  "binder_aligned_rmsd": 0.594,
+  "original_scores": {
+    "binder_aligned_rmsd": "0.594",
+    "pae_binder": "2.738",
+    "pae_interaction": "26.151",
+    "pae_target": "3.356",
+    "plddt_binder": "94.356",
+    "plddt_target": "94.460",
+    "plddt_total": "94.410",
+    "target_aligned_rmsd": "32.780",
+    "time": "113.210",
+    "description": "TrkA_88_af2pred"
+  }
+}

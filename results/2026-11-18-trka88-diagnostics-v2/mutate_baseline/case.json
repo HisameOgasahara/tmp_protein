@@ -1,0 +1,10 @@
+{
+  "id": "mutate_baseline",
+  "threading": "mutate",
+  "input": "design",
+  "recycles": 3,
+  "initial_guess": true,
+  "target_template": true,
+  "seed": 0,
+  "precision": "default"
+}

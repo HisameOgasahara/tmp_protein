@@ -1,0 +1,48 @@
+["/content/trka88_af2_v0_3_0/original_venv/bin/python", "/content/trka88_main_vw1oqpzr/repo/src/af2_filter/diagnostic_case.py", "/content/trka88_diagnostics_kzq9ycp4/empty_target_template", "/content/trka88_diagnostics_kzq9ycp4/inputs", "/content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a"]
+┌───────────────────────────────────────────────────────────────────────────────┐
+│                                  PyRosetta-4                                  │
+│               Created in JHU by Sergey Lyskov and PyRosetta Team              │
+│               (C) Copyright Rosetta Commons Member Institutions               │
+│                                                                               │
+│ NOTE: USE OF PyRosetta FOR COMMERCIAL PURPOSES REQUIRES PURCHASE OF A LICENSE │
+│          See LICENSE.PyRosetta.md or email license@uw.edu for details         │
+└───────────────────────────────────────────────────────────────────────────────┘
+PyRosetta-4 2026 [Rosetta PyRosetta4.Release.python311.ubuntu 2026.03+releasequarterly.5e498f1409c68ade56c8ce5842bf79e1b02e8db4 2026-01-13T13:24:11] retrieved from: http://www.pyrosetta.org
+/content/trka88_af2_v0_3_0/original_venv/lib/python3.11/site-packages/Bio/Data/SCOPData.py:18: BiopythonDeprecationWarning: The 'Bio.Data.SCOPData' module will be deprecated in a future release of Biopython in favor of 'Bio.Data.PDBData.
+  warnings.warn(
+/content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a/af2_initial_guess/af2_util.py:14: UserWarning: Import of 'rosetta' as a top-level module is deprecated and may be removed in 2018, import via 'pyrosetta.rosetta'.
+  from rosetta import *
+┌───────────────────────────────────────────────────────────────────────────────┐
+│                                  PyRosetta-4                                  │
+│               Created in JHU by Sergey Lyskov and PyRosetta Team              │
+│               (C) Copyright Rosetta Commons Member Institutions               │
+│                                                                               │
+│ NOTE: USE OF PyRosetta FOR COMMERCIAL PURPOSES REQUIRES PURCHASE OF A LICENSE │
+│          See LICENSE.PyRosetta.md or email license@uw.edu for details         │
+└───────────────────────────────────────────────────────────────────────────────┘
+PyRosetta-4 2026 [Rosetta PyRosetta4.Release.python311.ubuntu 2026.03+releasequarterly.5e498f1409c68ade56c8ce5842bf79e1b02e8db4 2026-01-13T13:24:11] retrieved from: http://www.pyrosetta.org
+/content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a/af2_initial_guess/predict.py:537: DeprecationWarning: jax.lib.xla_bridge.get_backend is deprecated; use jax.extend.backend.get_backend.
+  device = xla_bridge.get_backend().platform
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+Found GPU and will use it to run AF2
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+
+Processing struct with tag: TrkA_88
+The distance between residues 93 and 94 is 26.19 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 93
+WARNING:tensorflow:From /content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a/af2_initial_guess/alphafold/model/tf/input_pipeline.py:151: calling map_fn (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7c7643f1e520> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795003834.733912    6214 mlir_graph_optimization_pass.cc:401] MLIR V1 optimization pass is not enabled
+Running model_1_ptm
+Tag: TrkA_88 finished AF2 prediction in 102.66236139900002 seconds
+{'plddt_total': 61.05460889891141, 'plddt_binder': 93.13645358556174, 'plddt_target': 31.513900425065085, 'pae_binder': 2.538105, 'pae_target': 18.098927, 'pae_interaction': 25.573238372802734, 'binder_aligned_rmsd': 0.6056739, 'target_aligned_rmsd': 45.69637, 'time': 112.50059498700011}
+Tag: TrkA_88_af2pred reported success in 112.50059498700011 seconds

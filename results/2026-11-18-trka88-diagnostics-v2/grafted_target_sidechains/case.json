@@ -1,0 +1,10 @@
+{
+  "id": "grafted_target_sidechains",
+  "threading": "original",
+  "input": "grafted_target",
+  "recycles": 3,
+  "initial_guess": true,
+  "target_template": true,
+  "seed": 0,
+  "precision": "default"
+}

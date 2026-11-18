@@ -1,0 +1,10 @@
+{
+  "id": "published_target_control",
+  "threading": "original",
+  "input": "published_target",
+  "recycles": 3,
+  "initial_guess": true,
+  "target_template": true,
+  "seed": 0,
+  "precision": "default"
+}
