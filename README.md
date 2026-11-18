@@ -1,67 +1,55 @@
 # TrkA 결합체 설계 파이프라인 재현과 교정
 
-RFdiffusion3 → ProteinMPNN → AlphaFold2 initial guess 로 이어지는 de novo 단백질 결합체
-설계 파이프라인을 직접 돌리고, **채점 지표가 무엇을 재는지 공개 데이터로 교정**하는 저장소다.
+RFdiffusion3 → MPNN → AlphaFold2 initial guess 로 이어지는 de novo 단백질 결합체 설계
+파이프라인을 직접 돌리고, **채점 지표가 무엇을 재는지 공개 데이터로 교정**하는 저장소다.
 실험 검증 수단이 없으므로 결합 여부를 주장하지 않는다. 계산으로 확인 가능한 범위까지만 다룬다.
 
-## 현재까지 확인된 결과
+왜 이 구조가 됐는지는 [경과](docs/history.md)에 있다. 아래는 **지금 상태**다.
 
-| 항목 | 결과 | 근거 |
+## 지금 상태
+
+단계 정의와 번호는 [작업 순서](docs/00-purpose.md)에 있다.
+
+| 무엇을 물었나 | 상태 | 상세 |
 | --- | --- | --- |
-| **공개 TrkA_88 AF2 재현** | **성공. 1.496 Å, `pae_interaction` 5.86** (논문 1.4 Å, 통과선 < 10) | [결과](results/2026-11-18-trka88-diagnostics-v2) |
-| 처음 시도 | 실패. 결합체 자세 31.14 Å, `pae_interaction` 26.07 | [결과 색인](results/README.md) |
-| 실패 원인 | 공개 `design.pdb`가 주사슬 전용 → 표적 사이드체인이 기본 로터머로 재구성되며 충돌하는 결합면 생성 | [문제 기록](docs/issues/2026-11-18-trka-target-sidechains.md) |
-| 원인 분리 | 12개 조건 통제 실험. 탐색 설정(시드·recycle·정밀도)은 모두 무관, 표적 좌표만이 결과를 바꿨다 | [진단](diagnostics/README.md) |
-| 수정 | 1WWW 체인 X에서 표적 사이드체인 이식. 설계 주사슬 편차 0.000000 Å, CB 변화 0.202 Å | [코드](src/af2_filter/target_sidechains.py) |
-| **필터 교정** | **`pae_interaction`이 결합 여부를 가르지 못했다.** 비결합체 14/14 통과, 결합체 5/6 통과 | [교정 결과](docs/02-filter-calibration.md) |
-| 파이프라인 재현성 | 설계 20개 중 **19개가 저자들의 AF2 구조를 0.157~1.942 Å**로 재현 (중앙값 0.415 Å) | [결과](results/2026-11-18-trka88-calibration) |
-| 단량체 설계 자기일관성 | 설계 20개 중 **16개가 Cα RMSD < 2 Å** (최소 0.512 Å) | [결과](results/2026-11-16-monomer-selfconsistency) |
-| **직접 설계 후 채점** | **설계 40개 전부 탈락. 같은 배치의 양성 대조군은 통과** (`pae_interaction` 5.862) | [설계 실행 결과](docs/03-design-run.md) |
-| 설계 단계 점검 | 백본 20개 전부가 지정한 에피토프에 접촉 (Met108 20/20, Leu145 20/20) | [점검 출력](results/2026-11-19-trka-design/interface_check.txt) |
+| 설계한 구조대로 접히는 서열인가 | **확인.** 20개 중 16개가 Cα RMSD < 2 Å (최소 0.512 Å) | [결과](results/2026-11-16-monomer-selfconsistency) |
+| 공개 결합체의 공개 결과를 다시 낼 수 있는가 | **성공.** 1.496 Å, `pae_interaction` 5.86 (논문 1.4 Å) | [문제 기록](docs/issues/2026-11-18-trka-target-sidechains.md) |
+| 그 점수가 실제 결합을 가르는가 | **가르지 못한다.** 비결합체 14/14 통과, 결합체 5/6 통과 | [교정 결과](docs/02-filter-calibration.md) |
+| 걸러지지 않은 날것은 어디에 놓이는가 | **0/40 통과.** 같은 배치의 양성 대조군은 통과 | [설계 실행 결과](docs/03-design-run.md) |
+| 통과율을 잴 수 있는가 | **실행 대기.** 설계 160개 | [v0.2.0](docs/03-design-run.md) |
 
-재현된 구조는 저자들의 공개 AF2 구조와 **0.191 Å** 차이다. 정답 좌표를 직접 투입한
-대조군(0.409·0.412 Å)보다 가깝다. 대조군은 AF2 자신의 예측을 되먹인 것이고, 이쪽은
-독립적인 결정 구조에서 표적 사이드체인만 가져온 결과다.
+뒤의 두 줄을 합친 것이 현재의 핵심 결론이다.
 
-실패한 설계에서도 결합체 **자체 접힘은 0.594 Å로 정확**했고 어긋난 것은 표적에 대한
-배치뿐이었다. 즉 실패는 설계나 AF2가 아니라 입력 준비 단계에서 발생했다.
+> **이 필터는 선별 전 집단에서 거르고, 선별 후 집단에서는 더 이상 가르지 못한다.**
 
-교정 결과의 실무적 귀결: **필터 통과는 합격이 아니라 기본 확률을 얻는 것**이다. 이 표적에서
-통과 후 실제 결합률은 공개 자료 기준 6/95 ≈ 6.3%이고, 통과한 설계들 사이에서
-`pae_interaction` 순서로 우선순위를 정할 근거는 이 데이터에 없다.
+통과는 합격이 아니라 기본 확률을 얻는 것이고, 이 표적에서 그 값은 6/95 ≈ 6.3%다.
+통과한 설계들 사이에서 `pae_interaction` 순서로 우선순위를 정할 근거는 없다.
 
-교정 집합으로는 "필터가 불량품을 거르는가"를 볼 수 없었다. 저자들이 이미 계산 필터를
-통과시켜 실험까지 보낸 설계들이었기 때문이다. 그래서 같은 표적에 **직접 설계한 40개**를
-같은 필터로 채점했고, **전부 떨어졌다.** 같은 배치의 실험 검증 결합체만 통과했다. 두
-실행을 합치면 결론은 하나다 — **이 필터는 선별 전 집단에서 거르고, 선별 후 집단에서는
-더 이상 가르지 못한다.**
+설계 실행에서 가장 분명한 관찰: **설계대로 정확히 접힌 21개 전부가 표적에 대한 배치는
+5 Å 이상 어긋났다.** 접히는 것과 붙는 것은 다른 문제다.
 
-떨어뜨린 것은 계면 항 하나다. `plddt_binder`는 32/40, 접힘 RMSD는 21/40이 통과했지만
-`pae_interaction`은 0/40이었다. 그리고 **설계대로 정확히 접힌 21개 전부가 표적에 대한
-배치는 5 Å 이상 어긋났다.** 접히는 것과 붙는 것은 다른 문제다.
-[설계 실행 결과](docs/03-design-run.md)
+## 문서 지도
 
-**다음 단계:** 규모를 4배로 올린 v0.2.0이 실행 대기 중이다. 소요 시간을 분해해 보니
-**채점 시간의 62%가 JAX 재컴파일**이었다 — 결합여 길이가 바뀔 때마다 길이당 92초씩 다시
-컴파일했고 실제 추론은 10.5초였다. 길이를 4종으로 고정해 컴파일을 17회에서 4회로 줄였고,
-그 예산으로 설계를 40개에서 **160개**로 늘렸다(약 1.5시간).
-[설계 실행 결과](docs/03-design-run.md) · [작업 순서](docs/00-purpose.md)
+| 문서 | 무엇이 들어 있나 |
+| --- | --- |
+| [docs/00-purpose.md](docs/00-purpose.md) | 취지, 범위, 무엇을 성공으로 볼지, 작업 순서 |
+| [docs/01-pipeline.md](docs/01-pipeline.md) | 설계문서 — 파이프라인 단계, 지표 정의, 통과 기준, 검증 지점 |
+| [docs/02-filter-calibration.md](docs/02-filter-calibration.md) | 교정 상세 — 분포, 한계, 지표를 어떻게 쓸 것인가 |
+| [docs/03-design-run.md](docs/03-design-run.md) | 설계 실행 상세 — 채점 결과, 소요 시간 분해, v0.2.0에 반영한 것 |
+| [docs/history.md](docs/history.md) | **경과** — 각 단계가 무엇 때문에 다음을 바꿨는지, 버린 선택 |
+| [docs/issues/](docs/issues/) | 생긴 문제와 대처법. 원인 미규명 건은 그렇다고 적는다 |
+| [docs/references.md](docs/references.md) | 참고 논문, 공개 데이터, 고정한 업스트림 리비전과 가중치 |
 
 ## 폴더 지도
 
 | 폴더 | 내용 |
 | --- | --- |
-| [docs/00-purpose.md](docs/00-purpose.md) | 프로젝트 취지, 범위, 무엇을 성공으로 볼지 |
-| [docs/01-pipeline.md](docs/01-pipeline.md) | 설계문서 — 파이프라인 단계, 지표 정의, 통과 기준 |
-| [docs/02-filter-calibration.md](docs/02-filter-calibration.md) | 필터 교정 결과 분석 |
-| [docs/03-design-run.md](docs/03-design-run.md) | 직접 설계 40개 채점 결과 분석 |
-| [docs/issues/](docs/issues/) | 생긴 문제와 대처법 |
-| [docs/references.md](docs/references.md) | 참고 논문, 공개 데이터, 고정한 업스트림 리비전 |
 | [notebooks/](notebooks/) | Colab 실행 진입점 |
-| [src/](src/) | 파이프라인 코드 |
+| [src/](src/) | 파이프라인 코드 ([af2_filter](src/af2_filter) 채점, [rfd3_design](src/rfd3_design) 설계) |
+| [inputs/](inputs/) | 고정 입력 — 공개 설계 구조·서열·실험 라벨·설계 사양 |
+| [results/](results/) | 실행별 설정·지표·구조·로그. 실행 하나당 폴더 하나 |
 | [diagnostics/](diagnostics/) | 문제 발생 시 원인을 좁히는 조건 비교 실험 |
-| [inputs/](inputs/) | 고정 입력 (공개 설계 구조·서열·실험 라벨) |
-| [results/](results/) | 실행별 설정·지표·구조·로그 |
+| [docs/](docs/) | 위 문서 지도 참조 |
 
 ## 실행
 
@@ -69,20 +57,22 @@ GPU 가속이 필요하므로 Colab T4에서 실행한다. 로컬 PC에는 모�
 
 | 노트북 | 용도 | 소요 |
 | --- | --- | --- |
-| [notebooks/01_af2_filter_T4.ipynb](notebooks/01_af2_filter_T4.ipynb) | TrkA_88 한 건을 AF2 initial guess로 채점 | 설치 포함 약 7분 |
-| [notebooks/02_calibrate_filter_T4.ipynb](notebooks/02_calibrate_filter_T4.ipynb) | 실험 라벨이 붙은 설계 20개 채점, 지표 교정 | AF2 20회, 약 40분 |
-| [notebooks/03_design_trka_T4.ipynb](notebooks/03_design_trka_T4.ipynb) | TrkA에 새 결합여 160개 설계 후 같은 필터로 채점 | 약 1.5시간 |
-| [diagnostics/90_af2_conditions_T4.ipynb](diagnostics/90_af2_conditions_T4.ipynb) | 12개 조건 비교로 실패 원인 분리 | AF2 12회, 약 25분 |
+| [01_af2_filter_T4](notebooks/01_af2_filter_T4.ipynb) | TrkA_88 한 건을 채점 — 재현 확인 | 설치 포함 약 7분 |
+| [02_calibrate_filter_T4](notebooks/02_calibrate_filter_T4.ipynb) | 라벨된 설계 20개 채점 — 지표 교정 | 약 40분 |
+| [03_design_trka_T4](notebooks/03_design_trka_T4.ipynb) | 새 결합여 160개 설계 후 채점 | 약 1.5시간 |
+| [90_af2_conditions_T4](diagnostics/90_af2_conditions_T4.ipynb) | 12개 조건 비교로 실패 원인 분리 | 약 25분 |
 
 실행하면 설정·입력 해시·지표·구조·로그를 담은 ZIP 하나가 나온다. 그 ZIP을 `results/` 아래
 날짜 폴더로 풀어 보존한다. 규칙은 [results/README.md](results/README.md)에 있다.
+
+**노트북은 clone한 코드를 실행한다.** 코드를 고친 뒤에는 push 후 다시 실행한다.
 
 ## 재현성
 
 - 업스트림 AF2 실행 코드는 커밋 `cafa3853ac94dceb1b908c8d9e6954d71749871a`로 고정한다.
 - AF2 가중치는 `alphafold_params_2022-12-06`의 `params_model_1_ptm`을 쓰고 SHA-256을 기록한다.
-- 모든 입력 파일의 SHA-256을 실행마다 `source.json`에 남긴다.
-- 실행 시 저장소 커밋 해시를 `source.json`에 기록한다.
+- 모든 입력 파일의 SHA-256과 저장소 커밋 해시를 실행마다 `source.json`에 남긴다.
+- 과거 실행의 지표 값은 기준이 바뀌어도 원래 값으로 보존한다. 재평가는 새 폴더에 한다.
 
 ## 이력
 
