@@ -28,6 +28,8 @@
 ALTAEEQAMIADATALVVYMNANAPRPFTREEMFAAARSYIRSLVRRKEIPELSEERIDALARLATERALALL
 ```
 
+![design_04_r22 예측 구조](figures/design04-r22.svg)
+
 **답은 "서열 탐색의 한계였다"다.** 백본은 멀쩡했다. 8개로 못 찾은 것을 50개로 찾았다.
 
 ## 백본이 멀쩡했다는 증거

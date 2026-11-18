@@ -5,6 +5,13 @@
 | [af2_filter/](af2_filter/) | AlphaFold2 initial guess 채점 (파이프라인 3단계) |
 | [rfd3_design/](rfd3_design/) | RFdiffusion3 백본 생성 + MPNN 서열 설계 (1·2단계) |
 
+| 파일 | 역할 |
+| --- | --- |
+| [figures.py](figures.py) | 보존된 결과에서 README의 그림 두 장을 SVG로 생성 |
+
+`figures.py`는 로컬에서 돌고 설치가 필요 없다. 좌표와 점수를 `results/`에서 읽어 직접
+SVG를 쓴다(`python src/figures.py`). 그림이 어떤 실행에서 나왔는지 코드로 고정된다.
+
 ## af2_filter
 
 업스트림 `dl_binder_design`의 `af2_initial_guess/predict.py`를 **고친 리비전 그대로**

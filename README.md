@@ -4,6 +4,13 @@ RFdiffusion3 → MPNN → AlphaFold2 initial guess 로 이어지는 de novo 단�
 파이프라인을 직접 돌리고, **채점 지표가 무엇을 재는지 공개 데이터로 교정**하는 저장소다.
 실험 검증 수단이 없으므로 결합 여부를 주장하지 않는다. 계산으로 확인 가능한 범위까지만 다룬다.
 
+![세 집단의 pae_interaction 분포](docs/figures/pae-overview.svg)
+
+위 그림이 이 저장소의 요약이다. **같은 자, 세 집단.** 실험 라벨이 붙은 공개 설계 20개는
+결합 여부와 무관하게 거의 전부 통과선 왼쪽에 있다(필터가 가르지 못한다). 선별을 거치지
+않은 날것 설계 160개는 거의 전부 오른쪽 끝, 즉 "계면 없음" 자리에 있다(필터가 거른다).
+백본 하나를 골라 서열을 50개 다시 뽑자 분포가 통째로 왼쪽으로 옮겨가고 하나가 선을 넘었다.
+
 왜 이 구조가 됐는지는 [경과](docs/history.md)에 있다. 아래는 **지금 상태**다.
 
 ## 지금 상태
@@ -38,8 +45,11 @@ RFdiffusion3 → MPNN → AlphaFold2 initial guess 로 이어지는 de novo 단�
 이 백본에서는 50개 중 27개가 `pae` 20 아래다(넓은 실행은 160개 중 10개). 모양을 찾으면
 그 위에서 서열을 더 뽑는 것이 돌아온다.
 
-**통과는 결합이 아니다.** 바로 위 줄이 말하듯 비결합체 14/14도 이 기준을 통과한다.
-정확히는 "붙을 후보로 분류되는 설계를 처음 만들었다"이고, 실험 검증은 없다.
+**통과는 결합이 아니다.** 표의 3번째 줄이 말하듯 실험상 결합하지 않는 설계 14개도
+14개 전부 이 기준을 통과한다. 정확히는 "붙을 후보로 분류되는 설계를 처음 만들었다"이고,
+실험 검증은 없다.
+
+![design_04_r22 예측 구조](docs/figures/design04-r22.svg)
 
 ## 문서 지도
 
@@ -63,6 +73,7 @@ RFdiffusion3 → MPNN → AlphaFold2 initial guess 로 이어지는 de novo 단�
 | [src/](src/) | 파이프라인 코드 ([af2_filter](src/af2_filter) 채점, [rfd3_design](src/rfd3_design) 설계) |
 | [inputs/](inputs/) | 고정 입력 — 공개 설계 구조·서열·실험 라벨·설계 사양 |
 | [results/](results/) | 실행별 설정·지표·구조·로그. 실행 하나당 폴더 하나 |
+| [docs/figures/](docs/figures/) | 위 두 그림. [src/figures.py](src/figures.py)가 결과 파일에서 다시 만든다 |
 | [diagnostics/](diagnostics/) | 문제 발생 시 원인을 좁히는 조건 비교 실험 |
 | [docs/](docs/) | 위 문서 지도 참조 |
 

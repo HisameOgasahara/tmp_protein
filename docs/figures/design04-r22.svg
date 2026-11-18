@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 795" width="840" height="795" font-family="Helvetica,Arial,sans-serif">
+<rect width="840" height="795" fill="#ffffff"/>
+<text x="28.0" y="34.0" font-size="19" text-anchor="start" fill="#0f172a" font-weight="bold" font-family="Helvetica,Arial,sans-serif">design_04_r22 — 세 기준을 전부 통과한 첫 설계</text>
+<text x="28.0" y="56.0" font-size="13" text-anchor="start" fill="#64748b" font-weight="normal" font-family="Helvetica,Arial,sans-serif">AF2 initial guess 예측 구조 · Cα 트레이스 · 회색이 표적 TrkA D5, 파란색이 설계한 결합여</text>
+<polyline points="484.7,92.0 544.9,114.2 561.3,97.2 603.6,113.1 591.1,165.9 562.4,155.0 557.1,199.3 528.2,201.4 528.4,246.6 480.0,255.7 479.4,279.5 484.0,346.1 425.9,375.8 415.1,434.7 371.1,468.2 373.0,530.5 435.2,514.1 468.4,464.1 466.0,416.3 502.3,362.8 462.6,327.9 488.5,289.8 470.3,246.7 506.9,236.4 499.1,194.3 532.9,179.7 535.4,180.2 563.0,216.8 542.8,259.1 592.5,262.1 627.1,317.2 622.7,335.1 670.0,356.9 666.1,369.7 714.0,359.4 715.7,385.6 754.1,353.3 785.7,327.4 796.0,384.7 766.8,409.4 712.5,443.0 705.0,494.8 642.0,511.6 627.4,572.0 573.4,609.1 567.6,583.0 582.1,520.4 561.6,496.2 536.5,443.7 474.7,444.7 442.1,401.2 378.8,386.0 344.8,381.6 355.5,322.7 307.8,277.7 282.3,260.1 313.9,207.2 356.7,200.9 421.4,205.4 426.3,216.6 436.1,281.2 422.5,304.7 447.2,358.0 472.7,386.8 527.8,414.2 501.4,469.4 529.3,501.1 509.2,562.2 515.7,570.5 566.3,529.0 603.1,537.0 638.1,493.9 686.9,502.2 649.6,472.2 646.0,418.1 676.3,368.3 679.9,320.6 649.1,334.7 663.9,297.0 631.7,295.8 664.0,272.8 629.5,251.7 666.1,239.9 648.7,218.2 685.8,186.2 676.0,128.9 703.2,148.1 694.0,183.1 653.1,173.3 659.3,202.5 622.0,211.1 637.4,239.7 602.3,263.2 616.9,290.6 583.7,348.3 578.0,379.8 546.3,437.8 561.7,469.2 589.2,451.9 654.4,470.4 657.1,522.8" fill="none" stroke="#cbd5e1" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="44.0" y1="649.4" x2="104.5" y2="622.4" stroke="rgb(147, 197, 253)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="104.5" y1="622.4" x2="153.7" y2="661.0" stroke="rgb(145, 195, 251)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="153.7" y1="661.0" x2="192.3" y2="637.3" stroke="rgb(143, 193, 249)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="192.3" y1="637.3" x2="237.7" y2="632.7" stroke="rgb(141, 191, 248)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="237.7" y1="632.7" x2="199.6" y2="598.4" stroke="rgb(140, 189, 246)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="199.6" y1="598.4" x2="183.1" y2="558.6" stroke="rgb(138, 187, 244)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="183.1" y1="558.6" x2="246.1" y2="548.2" stroke="rgb(136, 185, 243)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="246.1" y1="548.2" x2="255.5" y2="535.6" stroke="rgb(134, 183, 241)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="255.5" y1="535.6" x2="207.6" y2="493.2" stroke="rgb(133, 181, 240)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="207.6" y1="493.2" x2="230.4" y2="463.5" stroke="rgb(131, 179, 238)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="230.4" y1="463.5" x2="292.1" y2="461.3" stroke="rgb(129, 177, 236)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="292.1" y1="461.3" x2="271.5" y2="440.1" stroke="rgb(127, 175, 235)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="271.5" y1="440.1" x2="232.0" y2="395.0" stroke="rgb(126, 173, 233)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="232.0" y1="395.0" x2="281.6" y2="371.1" stroke="rgb(124, 171, 231)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="281.6" y1="371.1" x2="321.7" y2="368.3" stroke="rgb(122, 169, 230)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="321.7" y1="368.3" x2="278.1" y2="336.8" stroke="rgb(120, 167, 228)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="278.1" y1="336.8" x2="263.5" y2="292.9" stroke="rgb(119, 165, 227)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="263.5" y1="292.9" x2="325.2" y2="282.9" stroke="rgb(117, 163, 225)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="325.2" y1="282.9" x2="339.6" y2="273.3" stroke="rgb(115, 161, 223)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="339.6" y1="273.3" x2="286.5" y2="236.1" stroke="rgb(113, 159, 222)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="286.5" y1="236.1" x2="304.7" y2="198.1" stroke="rgb(112, 157, 220)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="304.7" y1="198.1" x2="364.4" y2="189.7" stroke="rgb(110, 155, 218)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="364.4" y1="189.7" x2="348.7" y2="184.0" stroke="rgb(108, 153, 217)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="348.7" y1="184.0" x2="353.0" y2="123.3" stroke="rgb(106, 151, 215)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="353.0" y1="123.3" x2="287.8" y2="130.0" stroke="rgb(105, 150, 214)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="287.8" y1="130.0" x2="244.0" y2="166.7" stroke="rgb(103, 148, 212)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="244.0" y1="166.7" x2="236.5" y2="226.1" stroke="rgb(101, 146, 210)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="236.5" y1="226.1" x2="181.5" y2="234.9" stroke="rgb(99, 144, 209)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="181.5" y1="234.9" x2="144.2" y2="286.7" stroke="rgb(98, 142, 207)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="144.2" y1="286.7" x2="169.5" y2="317.7" stroke="rgb(96, 140, 206)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="169.5" y1="317.7" x2="231.4" y2="304.2" stroke="rgb(94, 138, 204)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="231.4" y1="304.2" x2="218.0" y2="325.6" stroke="rgb(92, 136, 202)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="218.0" y1="325.6" x2="193.5" y2="381.4" stroke="rgb(91, 134, 201)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="193.5" y1="381.4" x2="246.3" y2="388.7" stroke="rgb(89, 132, 199)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="246.3" y1="388.7" x2="287.4" y2="380.2" stroke="rgb(87, 130, 197)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="287.4" y1="380.2" x2="253.8" y2="422.6" stroke="rgb(85, 128, 196)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="253.8" y1="422.6" x2="249.8" y2="466.2" stroke="rgb(84, 126, 194)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="249.8" y1="466.2" x2="314.6" y2="461.5" stroke="rgb(82, 124, 193)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="314.6" y1="461.5" x2="329.3" y2="472.3" stroke="rgb(80, 122, 191)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="329.3" y1="472.3" x2="290.0" y2="525.2" stroke="rgb(78, 120, 189)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="290.0" y1="525.2" x2="313.8" y2="550.6" stroke="rgb(77, 118, 188)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="313.8" y1="550.6" x2="373.0" y2="543.8" stroke="rgb(75, 116, 186)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="373.0" y1="543.8" x2="357.3" y2="578.0" stroke="rgb(73, 114, 184)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="357.3" y1="578.0" x2="331.3" y2="626.2" stroke="rgb(71, 112, 183)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="331.3" y1="626.2" x2="383.1" y2="627.6" stroke="rgb(70, 110, 181)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="383.1" y1="627.6" x2="423.4" y2="636.9" stroke="rgb(68, 108, 180)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="423.4" y1="636.9" x2="389.5" y2="687.8" stroke="rgb(66, 106, 178)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="389.5" y1="687.8" x2="381.9" y2="656.1" stroke="rgb(64, 104, 176)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="381.9" y1="656.1" x2="317.5" y2="670.1" stroke="rgb(63, 103, 175)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="317.5" y1="670.1" x2="282.0" y2="716.6" stroke="rgb(61, 101, 173)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="282.0" y1="716.6" x2="275.9" y2="711.4" stroke="rgb(59, 99, 172)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="275.9" y1="711.4" x2="226.0" y2="669.5" stroke="rgb(57, 97, 170)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="226.0" y1="669.5" x2="191.5" y2="663.7" stroke="rgb(56, 95, 168)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="191.5" y1="663.7" x2="196.3" y2="603.8" stroke="rgb(54, 93, 167)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="196.3" y1="603.8" x2="132.4" y2="595.6" stroke="rgb(52, 91, 165)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="132.4" y1="595.6" x2="144.8" y2="604.7" stroke="rgb(50, 89, 163)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="144.8" y1="604.7" x2="196.2" y2="563.7" stroke="rgb(49, 87, 162)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="196.2" y1="563.7" x2="156.3" y2="518.2" stroke="rgb(47, 85, 160)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="156.3" y1="518.2" x2="111.1" y2="529.2" stroke="rgb(45, 83, 159)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="111.1" y1="529.2" x2="154.3" y2="523.5" stroke="rgb(43, 81, 157)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="154.3" y1="523.5" x2="180.9" y2="470.2" stroke="rgb(42, 79, 155)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="180.9" y1="470.2" x2="121.1" y2="441.9" stroke="rgb(40, 77, 154)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="121.1" y1="441.9" x2="109.9" y2="454.1" stroke="rgb(38, 75, 152)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="109.9" y1="454.1" x2="168.8" y2="429.8" stroke="rgb(36, 73, 150)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="168.8" y1="429.8" x2="157.0" y2="377.1" stroke="rgb(35, 71, 149)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="157.0" y1="377.1" x2="99.2" y2="366.6" stroke="rgb(33, 69, 147)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="99.2" y1="366.6" x2="125.2" y2="371.5" stroke="rgb(31, 67, 146)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="125.2" y1="371.5" x2="172.5" y2="330.5" stroke="rgb(29, 65, 144)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="172.5" y1="330.5" x2="128.6" y2="286.3" stroke="rgb(28, 63, 142)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="128.6" y1="286.3" x2="96.0" y2="290.7" stroke="rgb(26, 61, 141)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="96.0" y1="290.7" x2="150.7" y2="276.8" stroke="rgb(24, 59, 139)" stroke-width="4.6" stroke-linecap="round"/>
+<line x1="150.7" y1="276.8" x2="165.9" y2="222.4" stroke="rgb(23, 58, 138)" stroke-width="4.6" stroke-linecap="round"/>
+<circle cx="371.1" cy="468.2" r="6.5" fill="#f59e0b" stroke="#ffffff" stroke-width="2"/>
+<circle cx="488.5" cy="289.8" r="6.5" fill="#f59e0b" stroke="#ffffff" stroke-width="2"/>
+<circle cx="378.8" cy="386.0" r="6.5" fill="#f59e0b" stroke="#ffffff" stroke-width="2"/>
+<line x1="496.5" y1="289.8" x2="502.5" y2="290.8" stroke="#f59e0b" stroke-width="1.4"/>
+<text x="505.5" y="294.8" font-size="13" text-anchor="start" fill="#b45309" font-weight="bold" font-family="Helvetica,Arial,sans-serif">Phe115</text>
+<line x1="386.8" y1="386.0" x2="392.8" y2="387.0" stroke="#f59e0b" stroke-width="1.4"/>
+<text x="395.8" y="391.0" font-size="13" text-anchor="start" fill="#b45309" font-weight="bold" font-family="Helvetica,Arial,sans-serif">Leu145</text>
+<line x1="379.1" y1="468.2" x2="385.1" y2="469.2" stroke="#f59e0b" stroke-width="1.4"/>
+<text x="388.1" y="473.2" font-size="13" text-anchor="start" fill="#b45309" font-weight="bold" font-family="Helvetica,Arial,sans-serif">Met108</text>
+<circle cx="44.0" cy="649.4" r="5" fill="#1e3a8a" stroke="#ffffff" stroke-width="2"/>
+<text x="44.0" y="638.4" font-size="13" text-anchor="middle" fill="#1e3a8a" font-weight="bold" font-family="Helvetica,Arial,sans-serif">N</text>
+<circle cx="165.9" cy="222.4" r="5" fill="#1e3a8a" stroke="#ffffff" stroke-width="2"/>
+<text x="165.9" y="211.4" font-size="13" text-anchor="middle" fill="#1e3a8a" font-weight="bold" font-family="Helvetica,Arial,sans-serif">C</text>
+<text x="28.0" y="743.0" font-size="12" text-anchor="start" fill="#b45309" font-weight="normal" font-family="Helvetica,Arial,sans-serif">주황색은 설계가 겨냥한 hotspot 3개</text>
+<rect x="28" y="751" width="784" height="32" rx="6" fill="#f1f5f9"/>
+<text x="420.0" y="772.0" font-size="14" text-anchor="middle" fill="#0f172a" font-weight="bold" font-family="Helvetica,Arial,sans-serif">pae_interaction 9.389  ·  plddt_binder 89.58  ·  접힘 0.702 Å  ·  설계한 자리에서 1.407 Å</text>
+</svg>
