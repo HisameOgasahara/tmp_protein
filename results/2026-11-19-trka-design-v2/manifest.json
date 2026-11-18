@@ -1,0 +1,802 @@
+[
+  {
+    "name": "design_01_seq01",
+    "design_pdb": "backbones/design_01.pdb",
+    "sequence": "RIDALVDAAVASFLRRRAEELARLGSLSPEQLAGLQEEIVWLTMNLMSRGLTEEEKARLRELLTAALAAVVAA"
+  },
+  {
+    "name": "design_01_seq02",
+    "design_pdb": "backbones/design_01.pdb",
+    "sequence": "RVDALVAAAVASYRRRRAEELARLGSLTPEQLAGLRDEIVWLTLRLMSRGLTAEERAELERRLRAALAAEDAA"
+  },
+  {
+    "name": "design_01_seq03",
+    "design_pdb": "backbones/design_01.pdb",
+    "sequence": "RIDALVAAAVASFKRRRDEELARLGSLTPEQLQGLKDEIVWLTMRLMSAGLTDEQKAELRTRLTAALNAEIAA"
+  },
+  {
+    "name": "design_01_seq04",
+    "design_pdb": "backbones/design_01.pdb",
+    "sequence": "RIDALVAAAVASFERRRAEELARLGALTPEQLQALADEIVWLTMRLMSRGLTPEERAELRERLTAALAAVIAA"
+  },
+  {
+    "name": "design_01_seq05",
+    "design_pdb": "backbones/design_01.pdb",
+    "sequence": "RIDALVAAAVASFRRRRAEELARLGALTPEQLAALAEEIVWLTMRLASRGLTDAEKAELRARLEAALAAELAA"
+  },
+  {
+    "name": "design_01_seq06",
+    "design_pdb": "backbones/design_01.pdb",
+    "sequence": "RIDALVAAAVASFRRRRAEELARLGSLTPEELAGLAEETVWLTMRLMSRGLTAAERAELRTRLTAALAAEIAA"
+  },
+  {
+    "name": "design_01_seq07",
+    "design_pdb": "backbones/design_01.pdb",
+    "sequence": "RIDALVAAAVASFRRRVAEELERLGALTPAQLEGLAEETIWLTMRLMSRGLTEEEKAELRERLTAALAAEIAA"
+  },
+  {
+    "name": "design_01_seq08",
+    "design_pdb": "backbones/design_01.pdb",
+    "sequence": "RIDALVAAAVASFRRRRAEELARKGALTPEELAGLAEETIWLTMELRSRGLTPEQRAELRTRLTAALAAEIAA"
+  },
+  {
+    "name": "design_02_seq01",
+    "design_pdb": "backbones/design_02.pdb",
+    "sequence": "FGVAMRAHLIRVAEQLTGQRIDIDPATMTDAEATALLGVVYVSQGRTEEGLALIDANRAKCNPQIQAVIDRVL"
+  },
+  {
+    "name": "design_02_seq02",
+    "design_pdb": "backbones/design_02.pdb",
+    "sequence": "FGVAMRAHLIRIAEQLTGRKINIDPATMTDAEATALLGVAYVHQGKTEEGLALINANKAKCNAEIQAVVDAVL"
+  },
+  {
+    "name": "design_02_seq03",
+    "design_pdb": "backbones/design_02.pdb",
+    "sequence": "FGVAMRAHLIRVAEQLTGEKIDIDPADMTDAEATALLGVVYVSQGRTEEGRALIDANAAKCNPLIQAVIDKVL"
+  },
+  {
+    "name": "design_02_seq04",
+    "design_pdb": "backbones/design_02.pdb",
+    "sequence": "FGVDMKAHLIKIAEQLTGRKIDIDPEKMTDDEATALLGVAYISQGKTEEGLALINANKAKCNPEIQAVIDAVL"
+  },
+  {
+    "name": "design_02_seq05",
+    "design_pdb": "backbones/design_02.pdb",
+    "sequence": "FGVDMRAHLIRVAEQITGRTIDIDPATLTDAEATALLGVVKVHQGKTEEGLALINANVGKCNAQIQAVVNAVL"
+  },
+  {
+    "name": "design_02_seq06",
+    "design_pdb": "backbones/design_02.pdb",
+    "sequence": "FGVDMRAHLIRIAEQLTGRRIDIDPAEMTDAEATALLGVALVSQGRTEEGLALINANVGKCNPLIQAVVAAVL"
+  },
+  {
+    "name": "design_02_seq07",
+    "design_pdb": "backbones/design_02.pdb",
+    "sequence": "FGVAMRAHLIRIAEQLTGEKIDIDPADMTDDEATALLGVVLVSQGKVEEGRALIDANVAKCNPQIQAVVAKVL"
+  },
+  {
+    "name": "design_02_seq08",
+    "design_pdb": "backbones/design_02.pdb",
+    "sequence": "FGVDMRAHLIRVAEQLTGEKIDVDPAEMTDAEATALLGVVKVSQGKTEEGLALINANVSKCNPLIQAVVEKVL"
+  },
+  {
+    "name": "design_03_seq01",
+    "design_pdb": "backbones/design_03.pdb",
+    "sequence": "TTRFFTGPVVPAGEHTVTLTAPTALDGADVTVIALSLDGQVLGFTHAKTDANGNSTVHLTLPQDAVIQLAVKL"
+  },
+  {
+    "name": "design_03_seq02",
+    "design_pdb": "backbones/design_03.pdb",
+    "sequence": "TTRWVTGPVIPAGTHTVTFTAPTPLDGAAVTVAALSLDGQLLGFTDATTDANGNVTVDLTLPEDAVVQLAVKL"
+  },
+  {
+    "name": "design_03_seq03",
+    "design_pdb": "backbones/design_03.pdb",
+    "sequence": "TVRRFTGPVVPAGEHTVTLKAPTPLDGAPVTVVALSLDGQVLGFTDATTDADGNVSVHLTLPEDAVIQLDVRL"
+  },
+  {
+    "name": "design_03_seq04",
+    "design_pdb": "backbones/design_03.pdb",
+    "sequence": "TTVRYTGPVIPAGTHTVTLKAPTKLKGKKVTVALLSLEGELLGFTDTTTDENGNCTVDVTLPQDAVAQLYVSL"
+  },
+  {
+    "name": "design_03_seq05",
+    "design_pdb": "backbones/design_03.pdb",
+    "sequence": "TTVRVDGPVVPAGRHRVTFTAPTPLTGAAVTVAALSLDGQLLGFTEATTDAAGNVSVDVTLPQDARIVLDVRQ"
+  },
+  {
+    "name": "design_03_seq06",
+    "design_pdb": "backbones/design_03.pdb",
+    "sequence": "EVRRFTGPVIPAGTHTVTLTAPTPLNGADVTVVALSLDGAVLGFTEATTDANGNVTVDLTLPQDAQIVLDVRL"
+  },
+  {
+    "name": "design_03_seq07",
+    "design_pdb": "backbones/design_03.pdb",
+    "sequence": "EVRRFTGPVVPAGRHTVTLTAPVPLNGAKVQVALLSLEGELLGFTDTTTDANGKSTVDVTLPQDAQVVLNVRL"
+  },
+  {
+    "name": "design_03_seq08",
+    "design_pdb": "backbones/design_03.pdb",
+    "sequence": "EVRRFTGPVVPAGTHTVTFTLPVKTDGKKVTVVALSLDGQVLGFTEATTDSNGNVTVDLTLPQDAQIVVDVHL"
+  },
+  {
+    "name": "design_04_seq01",
+    "design_pdb": "backbones/design_04.pdb",
+    "sequence": "ELTEEEKAMIDDATALVVYLNRNAPRPLTAEEMFAAARGYIRSLIERKEIPKLSEETVDRLAKIATERALAAL"
+  },
+  {
+    "name": "design_04_seq02",
+    "design_pdb": "backbones/design_04.pdb",
+    "sequence": "MLTAEQQAMIDDATALVVYMNQHAPRPLTREEMFAAAKGYIRSLVRRKEIPELSEEEIERLAELATERALAQL"
+  },
+  {
+    "name": "design_04_seq03",
+    "design_pdb": "backbones/design_04.pdb",
+    "sequence": "ALTAEERAMIDDATALVVYMNAHAPRPLTAEEMFAAARGYIRSLVARKEVPELSEERIDELARIATERALAAL"
+  },
+  {
+    "name": "design_04_seq04",
+    "design_pdb": "backbones/design_04.pdb",
+    "sequence": "ALSATEQAMIADATALVVYMNQHAPRPLTREEMFAAARSYIRSLVARKEIPELSEETIERLARIATERALAQL"
+  },
+  {
+    "name": "design_04_seq05",
+    "design_pdb": "backbones/design_04.pdb",
+    "sequence": "ALTPVEQAMIKDATELVVYLNAHAPRPLTRAEMRAAARGYIRSLIRRKEVPELSEETVERLAELATEQALAAL"
+  },
+  {
+    "name": "design_04_seq06",
+    "design_pdb": "backbones/design_04.pdb",
+    "sequence": "ALTPVEQAMIADATALVLYLNAHAPRPLTREEMFAAARSYIRSLIERKEIPKLSEETVERLAELATERALAAL"
+  },
+  {
+    "name": "design_04_seq07",
+    "design_pdb": "backbones/design_04.pdb",
+    "sequence": "ALTAEEQAMIEDATALVVYMNRHAPRPLTREEMFAAARGYIRSLIRRKEVPELSDERVDRLARIATERALAAL"
+  },
+  {
+    "name": "design_04_seq08",
+    "design_pdb": "backbones/design_04.pdb",
+    "sequence": "ALTATQQAMIDDATDLVVYLNQNAPRPLTREEMFAAARSYIRSLIERKEIPELSEEEVERLAEIATERAEARL"
+  },
+  {
+    "name": "design_05_seq01",
+    "design_pdb": "backbones/design_05.pdb",
+    "sequence": "AHPSSVAVDELLRILAEQPATRWLTAAELAEATGLPRSTVSLWLSSLERLGEIERRTTAAGTVLYRSRHALER"
+  },
+  {
+    "name": "design_05_seq02",
+    "design_pdb": "backbones/design_05.pdb",
+    "sequence": "MHPLSAGVYRLLQILAAAPATRWLTAAELAEATGLPPATVRRYLDSLERLGEIVVRTTAAGTRLYRSRHALER"
+  },
+  {
+    "name": "design_05_seq03",
+    "design_pdb": "backbones/design_05.pdb",
+    "sequence": "MHPLSAGVAELLRILAEQPATRWLSAEELAAATGLPVGTVSRYLASLERLGEIVVRTTASGRRLYRSRHALER"
+  },
+  {
+    "name": "design_05_seq04",
+    "design_pdb": "backbones/design_05.pdb",
+    "sequence": "AHPLSVGVARLLRLLAEQPATRWLTAAELAEATGLPRSTVSLWLDSLERLGEIVRRTTASGTRLYRSRHALER"
+  },
+  {
+    "name": "design_05_seq05",
+    "design_pdb": "backbones/design_05.pdb",
+    "sequence": "AHPLSEGVYRLLQILAEQPATRWLTAAELARATGLPRSTVSRILASLERQGEIERRTTASGTVLYRSRHALER"
+  },
+  {
+    "name": "design_05_seq06",
+    "design_pdb": "backbones/design_05.pdb",
+    "sequence": "MHPSSAGYAKLLRILAEQPATRWLTAEELAEATGLPLSTVSLWLDSLERLGEIDVRTTASGTRLYRSRHALER"
+  },
+  {
+    "name": "design_05_seq07",
+    "design_pdb": "backbones/design_05.pdb",
+    "sequence": "MHPSSVGYDRLLRILAEQPADRWLTAAELAEATGLPLSTVTLWLDSLERLGEISRRTTASGTRLYRSVHALER"
+  },
+  {
+    "name": "design_05_seq08",
+    "design_pdb": "backbones/design_05.pdb",
+    "sequence": "AHPSAVGYARLLRILAEMPATRWLTAAELAEATGLPRSTVSLWLASLERLGEILRRTTASGTVLYRSRHALER"
+  },
+  {
+    "name": "design_06_seq01",
+    "design_pdb": "backbones/design_06.pdb",
+    "sequence": "LLEELSRLPLAARLARLSELVSGAALAEIQALYDAHRAALAAADAARADAAAHAAAVDKAFEYQKAFDEAMLAALEAKLA"
+  },
+  {
+    "name": "design_06_seq02",
+    "design_pdb": "backbones/design_06.pdb",
+    "sequence": "LWETLSSMPVAERLAALSQLVSGEALEEAEALYRAMRAHLAEADALRDDPAAHAAAVAAAFEKLREFWEAARAALDAKLA"
+  },
+  {
+    "name": "design_06_seq03",
+    "design_pdb": "backbones/design_06.pdb",
+    "sequence": "LWEELSRLPLAERLAALSRLVSGAALDAIQALYDAHRADVAAATAARDDPVAHAAAMAAALARQREFWEAMRAALDAAAA"
+  },
+  {
+    "name": "design_06_seq04",
+    "design_pdb": "backbones/design_06.pdb",
+    "sequence": "LWEKLSKMPLAERLAALSELVSGAALERIQALYDAMRAYIARADALRDDPAAYAAAMAQAMEQRRQFDEAMRAALDAAAA"
+  },
+  {
+    "name": "design_06_seq05",
+    "design_pdb": "backbones/design_06.pdb",
+    "sequence": "LLAELSSLPLAARLAELARLVSGDALARIQALYDAHRADLAAADAARDDAAAYAAAVAAAWRRQAEFDRAMEAALAAAAA"
+  },
+  {
+    "name": "design_06_seq06",
+    "design_pdb": "backbones/design_06.pdb",
+    "sequence": "LWAQLSSMPLAARLAALAQLVSGAALAEAQALYDAMRAHLAAADAARDDPVAHAAAVAAAFAEQAAFDAAALAALEAAAA"
+  },
+  {
+    "name": "design_06_seq07",
+    "design_pdb": "backbones/design_06.pdb",
+    "sequence": "LLEELSRMPVAERLAALSRLVSGAALERARALYEAMVAAVREATALRDDPVAYAAAMAKAMEYLRQFWEAARAALEAAAA"
+  },
+  {
+    "name": "design_06_seq08",
+    "design_pdb": "backbones/design_06.pdb",
+    "sequence": "LLEELSRMPVAERLAAASRLVSGAALAEIQALYDAMQAALAAADAARDDPVAHAQYVAQAFEHLRAFDEALLAALAARAA"
+  },
+  {
+    "name": "design_07_seq01",
+    "design_pdb": "backbones/design_07.pdb",
+    "sequence": "MKVYPKTADATGVATAETYFAMLAESDPNLDKEKLAEALKEVVAEVRELAKTWSIDTDENYRAFLAEVGRIVARAVAKIK"
+  },
+  {
+    "name": "design_07_seq02",
+    "design_pdb": "backbones/design_07.pdb",
+    "sequence": "MKVYPKTADETAVATARTRLAMLAEADPNLDRAALAEAAVRVEEECRRLAQTTDISTDEQYLAFLREVGRIVARAVAEIR"
+  },
+  {
+    "name": "design_07_seq03",
+    "design_pdb": "backbones/design_07.pdb",
+    "sequence": "MKVYPKTADETAVATARTRLAALAEADPNLDRAALAAAETKVVAECKELAKTTSIDTDENYRAFLKEVGRIVARAVAEIR"
+  },
+  {
+    "name": "design_07_seq04",
+    "design_pdb": "backbones/design_07.pdb",
+    "sequence": "MKVYPKTADETAVATARTRFAMLAESDPNLDRAALAEALGRVVARCRELAKTTDISTDEQYRAFLREVGRIVAEAVAEIK"
+  },
+  {
+    "name": "design_07_seq05",
+    "design_pdb": "backbones/design_07.pdb",
+    "sequence": "MERYPKTADETGVATAERQLAALAEAVPDLDREALAVARGEVVERVRALAATADISTDEQLRAFLREVGRIVAEAVARIK"
+  },
+  {
+    "name": "design_07_seq06",
+    "design_pdb": "backbones/design_07.pdb",
+    "sequence": "MRVVPKTAAETGVTTAETYLAMLAEADPNLDREALAVARAEVVAEVRALAETTSIDTDEQYLAFLREVGRIVARAVARIK"
+  },
+  {
+    "name": "design_07_seq07",
+    "design_pdb": "backbones/design_07.pdb",
+    "sequence": "MKVVPKTADATAVTTAETYLDMLAESVPDLDKEKLAEAKKEVVEKCKELAKTTKIDTDEQYLAFLREVGKIVAEAVAKIK"
+  },
+  {
+    "name": "design_07_seq08",
+    "design_pdb": "backbones/design_07.pdb",
+    "sequence": "MRVVPKTAAETGEATARTRLAMLAESVPDLDRAALAEAETEVVERVRELAKTTSIDTDENYRAFLREVGRIVAEAVARIR"
+  },
+  {
+    "name": "design_08_seq01",
+    "design_pdb": "backbones/design_08.pdb",
+    "sequence": "VVVAAGDLTPSPVQAAVAEARRLAGAGRYEEALALLRATLEAHAGEPSAAAVYEVLAELYRQLGKDEEAAAAERAAAAIR"
+  },
+  {
+    "name": "design_08_seq02",
+    "design_pdb": "backbones/design_08.pdb",
+    "sequence": "VVVAAGDLTPSPVQAAVAEARRLAGAGKYDEARALLEATLAAHAGEPSAAAVWETLAELYEQLGLTAEAAAARAAAAAIK"
+  },
+  {
+    "name": "design_08_seq03",
+    "design_pdb": "backbones/design_08.pdb",
+    "sequence": "VVVAAGDLTPSPVQAAVAEARRLWGEGRYDEALALLRATLEAHAGEPSAAAVYEVLAELYEDLGRTAEAEAARRAAAAIR"
+  },
+  {
+    "name": "design_08_seq04",
+    "design_pdb": "backbones/design_08.pdb",
+    "sequence": "VVVAAGDLTPSPVQAAVAEARRLWGAGRYDEALALLEATIERFAGEPSAAAVYEVLAELYEDRGLEEEAEAYRQKAEAIK"
+  },
+  {
+    "name": "design_08_seq05",
+    "design_pdb": "backbones/design_08.pdb",
+    "sequence": "VVVAAGDLTPSPVQAAVAEARRLWGEGRYDEARALLEATIEAHAGTPSAAAVYEVLAELYEDRGEEEKAEEYRRKAEAIR"
+  },
+  {
+    "name": "design_08_seq06",
+    "design_pdb": "backbones/design_08.pdb",
+    "sequence": "VVVAAGDLTPSPVQAAVAEARRLAGAGRYDEALALLEATLAAHAGEPSAAAVWEELAVLYRQRGEEERARAAEERAAALR"
+  },
+  {
+    "name": "design_08_seq07",
+    "design_pdb": "backbones/design_08.pdb",
+    "sequence": "VVVAAGDLTPSPVQAAVAEARRLHGAGRHDEALALLEATLAAHAGEPSAAAVYEVLAELYEQLGLEEEARAYRERAEAIR"
+  },
+  {
+    "name": "design_08_seq08",
+    "design_pdb": "backbones/design_08.pdb",
+    "sequence": "VVVAAGDLTLSPVQAAVEEARRLAGAGRYDEARALLEATLAAHAGEPSAAAVYEVLAELYEQLGLLEEARAARERAAAIR"
+  },
+  {
+    "name": "design_09_seq01",
+    "design_pdb": "backbones/design_09.pdb",
+    "sequence": "AELEEQEARAFARMTGYARRVAEEARAEGKSKEEALAGAERAIEMVARVELANGVAPEAIERAVARAREEVEAYIDELFA"
+  },
+  {
+    "name": "design_09_seq02",
+    "design_pdb": "backbones/design_09.pdb",
+    "sequence": "AELEAQRARALHLATGYARRVAEEARAEGKSREEALEAARRAIEMVARVMAADGVAPEALAAAAAEAEREVERYIDELFA"
+  },
+  {
+    "name": "design_09_seq03",
+    "design_pdb": "backbones/design_09.pdb",
+    "sequence": "AQLEAERARALHLMTDYAVRVAREAVAEGKSKEEALAGADRAIDMVARVMAADGASAEALAAAAAEARKEVRAEIDELFA"
+  },
+  {
+    "name": "design_09_seq04",
+    "design_pdb": "backbones/design_09.pdb",
+    "sequence": "AELAAQEARAFHLAKDFAVRVAREAREEGKSKEEALAGARRAIEMVVRVMAADGVDPEALARAAEEAEKEVEAEIDKLFA"
+  },
+  {
+    "name": "design_09_seq05",
+    "design_pdb": "backbones/design_09.pdb",
+    "sequence": "AELAAQTARAYHLALGYARRVAEEAVAEGKSREEALAGARRAIDMVAAMMAADGVDAAALAEAKARAAAEVEAHIDRLHA"
+  },
+  {
+    "name": "design_09_seq06",
+    "design_pdb": "backbones/design_09.pdb",
+    "sequence": "SRLEEERARALHLATGYAKRVAEEARAEGKSKEEALEGARKAIEMVARVMRADGVSEEALEAAAAEAEKEVEKYVDELFA"
+  },
+  {
+    "name": "design_09_seq07",
+    "design_pdb": "backbones/design_09.pdb",
+    "sequence": "AQLEEETARATHLATGYAERVAEEAHAEGKSKEEALAGARRAIEMVARMMAADGVSPEALARAAAEAEERVEAHVDELHA"
+  },
+  {
+    "name": "design_09_seq08",
+    "design_pdb": "backbones/design_09.pdb",
+    "sequence": "AQLEEEEARTFHLASGYARRVAEEARAEGKSKEEALAGAERAIDMVARVMAADGVSPEAIERAKERARKEVEAYVDELFA"
+  },
+  {
+    "name": "design_10_seq01",
+    "design_pdb": "backbones/design_10.pdb",
+    "sequence": "MLYMVTVEGVDGEAIREALVRTVEEHGGTVLGITVEGGVVRALIEVADEATAEALITALTAEIAKLGGTSVTAKRISSAR"
+  },
+  {
+    "name": "design_10_seq02",
+    "design_pdb": "backbones/design_10.pdb",
+    "sequence": "MLYLVTVRGADGAAIEAALRATVAAHGGRVLGLTVTGDVVRALVELPDDATAAALVTALTAAIAALGGTEVRAQRIERAR"
+  },
+  {
+    "name": "design_10_seq03",
+    "design_pdb": "backbones/design_10.pdb",
+    "sequence": "MLYLVTVHATDGAAAAAALRATVAAHGGRVLGLTVRGGTVRALVELADDETAAALVEALTAAIAALGGTSVTAQRIDRAR"
+  },
+  {
+    "name": "design_10_seq04",
+    "design_pdb": "backbones/design_10.pdb",
+    "sequence": "MLAMITVEGTDGAAIAAALRATVAAHGGRVLGLTVTGGVVRALVELPDRATLEALITALTAEIAALGGTSVTAQEISRAR"
+  },
+  {
+    "name": "design_10_seq05",
+    "design_pdb": "backbones/design_10.pdb",
+    "sequence": "MLYMVEVEGTDGEAIEAALRATVAAHGGRVLGLTVEGGVVRALVEMPDAATAAAMVTALTAAVAALGGTSVSMMEISSAR"
+  },
+  {
+    "name": "design_10_seq06",
+    "design_pdb": "backbones/design_10.pdb",
+    "sequence": "MLAMIEVEATDGAAAAAALVATVAAHGGTVLGLTVTGGVVRALVEFPDEATLAATVTALTATIAALGGTSVTAMRISSAR"
+  },
+  {
+    "name": "design_10_seq07",
+    "design_pdb": "backbones/design_10.pdb",
+    "sequence": "MLYLITAEGVDGEAIKEALVATVEEHGGTVLGITVNGGVVRALVEMPDDATLEATITALTEKLAALGGTSVRALRIERAR"
+  },
+  {
+    "name": "design_10_seq08",
+    "design_pdb": "backbones/design_10.pdb",
+    "sequence": "MLYMVTVRGTDGEALRDALVETIREHGGRVLGITVTGDVVRALVELPDEETLRALIEALRERAAALGGTSVTAKRIERAR"
+  },
+  {
+    "name": "design_11_seq01",
+    "design_pdb": "backbones/design_11.pdb",
+    "sequence": "AMLEACCERVDGKVRLKAGTAPLLAAAIAALSGQPVRPEDLGQLRYREEPGRVVFSLPTASGVVYVLVDLETGEVRVFSSEEALLAA"
+  },
+  {
+    "name": "design_11_seq02",
+    "design_pdb": "backbones/design_11.pdb",
+    "sequence": "SMLDACCEEVDGRVRLKAGTAPLLAAAIARLSGQPVLPENLGQLRHELLPGRVVFSLPTPAGVVYVAYDLQTGEVTVFRTEEALLAA"
+  },
+  {
+    "name": "design_11_seq03",
+    "design_pdb": "backbones/design_11.pdb",
+    "sequence": "SLFEECFEIVDGKVRLKKGKAPALAAGIAELSGRPVEPANLAQLRYREEPGRVVFSLPTASGVVYVVYDLQTGEVRVFDSEEALRAA"
+  },
+  {
+    "name": "design_11_seq04",
+    "design_pdb": "backbones/design_11.pdb",
+    "sequence": "SMLAACFERVDGRAVLKAGTLPLLAAAIAALSGQPVAPENLGQLRYEELPGRLVFSLPTANGVVYVDYNLETGEVTIFTSEEALRAA"
+  },
+  {
+    "name": "design_11_seq05",
+    "design_pdb": "backbones/design_11.pdb",
+    "sequence": "SMLAACCERVDGKAVMKAGKAPELAAAISALSGQPVAPENLAQLSYEELPGRLVFRLPTASGVVYVAYDLKTGEVTVFRTEEALRAA"
+  },
+  {
+    "name": "design_11_seq06",
+    "design_pdb": "backbones/design_11.pdb",
+    "sequence": "AMFAACCEVVDGRVVLKAGKAPELAAEISRLSGEPVAPENLGQLRHREVPGRVVFSLPTASGVVYVDVDLETGEVRVFRTEEALRAA"
+  },
+  {
+    "name": "design_11_seq07",
+    "design_pdb": "backbones/design_11.pdb",
+    "sequence": "SMLAACFEEVDGKARLKAGKAADLAAAIAALSGRPVLPENLAQLRHETLPGRLVLSLPTPSGVVYVVYDLQTGEVTVFSTEEALRAY"
+  },
+  {
+    "name": "design_11_seq08",
+    "design_pdb": "backbones/design_11.pdb",
+    "sequence": "SMVAECFEEVDGRAVLKAGKAPALAAAISALSGREVLPENLGQLSYERLPGRLVFRLPTPEGVVYVVYDLETGEVTIFSSEEDLERY"
+  },
+  {
+    "name": "design_12_seq01",
+    "design_pdb": "backbones/design_12.pdb",
+    "sequence": "GAALRARMNAILAALGLADQVSVDAAHLGTSAAGEREARIKIHTAPEARGKGLGTRALNAILADLRADGVARLVAQDEDGRVTTLRA"
+  },
+  {
+    "name": "design_12_seq02",
+    "design_pdb": "backbones/design_12.pdb",
+    "sequence": "GAALREQMNAILKALGLADKVSVDAAHLGTDAAGNKEARIKIHTAPEARGKGLGTKALNAILAALQKQGVKRVVAKSDDGKVTTLTA"
+  },
+  {
+    "name": "design_12_seq03",
+    "design_pdb": "backbones/design_12.pdb",
+    "sequence": "GAALRERMNAILAALGLADKVSVDAAHLGTDAAGRKVARIKIHVAPEARGQGLGTRALDAILADLQKDGVAELVAQSDDGTVTTRKA"
+  },
+  {
+    "name": "design_12_seq04",
+    "design_pdb": "backbones/design_12.pdb",
+    "sequence": "GRALLERMNAILAALGLADKVSVDAAHLGTDAAGRKVARIKIHVAPEARGRGLGTRALAAILAALAAEGVAELVAQGEDGTVTVLRR"
+  },
+  {
+    "name": "design_12_seq05",
+    "design_pdb": "backbones/design_12.pdb",
+    "sequence": "GRALLEQMNAILAALGLADKVGVDAAHLGTDAAGEKEARIKIHVAPEARGKGLGTRALNAILAALAAQGVARLVAKSDDGTVTTLTR"
+  },
+  {
+    "name": "design_12_seq06",
+    "design_pdb": "backbones/design_12.pdb",
+    "sequence": "GAALRAQMNAILEALGLGDKVSVDAAHLGTDAAGRKVARIKISVAPEARGQGLGTKALDAILAALRAQGVAELVAQSEDGTVTTLRA"
+  },
+  {
+    "name": "design_12_seq07",
+    "design_pdb": "backbones/design_12.pdb",
+    "sequence": "GRALLERMNAILAALGLADDVSVDAAHLGTDAAGRKEARIRIHVAPAARGRGLGSRALAAILAALRKEGVARLVAKSEDGRVTTLEA"
+  },
+  {
+    "name": "design_12_seq08",
+    "design_pdb": "backbones/design_12.pdb",
+    "sequence": "GRALRERMNAILAALGLADKVSVDAAHLGTDAAGNRVARIRIHVAPAARGKGLGTRALAAILADLRKDGVAALVAKSSDGRVTTLRA"
+  },
+  {
+    "name": "design_13_seq01",
+    "design_pdb": "backbones/design_13.pdb",
+    "sequence": "AVPAELPAGATIRIPVPEGREREAFQRVLDLAYHLRPEPATLAALQAAARRFEAGEPLRALLRELGEATDLRITLDEERREILVSAK"
+  },
+  {
+    "name": "design_13_seq02",
+    "design_pdb": "backbones/design_13.pdb",
+    "sequence": "AVPHQLPAGATITIPVPEGKEEEAFQKVCALAYHLRPEPEHVEAIRELSRRFLEGEPLEKLLAELGAATDLTITYDKEKREILVSAK"
+  },
+  {
+    "name": "design_13_seq03",
+    "design_pdb": "backbones/design_13.pdb",
+    "sequence": "AVPAALPAGATIRIPVPEGKEEEAFDRVCALAYHLRPEPETVEAIRELSRRFQQGEPLKALLAALGEATDLKLTYDEERREILVSAR"
+  },
+  {
+    "name": "design_13_seq04",
+    "design_pdb": "backbones/design_13.pdb",
+    "sequence": "AVPAALPAGATIRIPVAPGKEEEAFQKVCALAYMLRPEPEALEAIQELSKQFLEGKPLEELLKELGEKLDLKITYDKERQEILVSAK"
+  },
+  {
+    "name": "design_13_seq05",
+    "design_pdb": "backbones/design_13.pdb",
+    "sequence": "AVPAALPAGATITIPVPEGEEEAAFDRVLALAYHLRPEPAHLAALREAAARFREGAPLKELLAELGEATDLDLRYDEERREILVSAK"
+  },
+  {
+    "name": "design_13_seq06",
+    "design_pdb": "backbones/design_13.pdb",
+    "sequence": "ALPHTLPAGATITIPVAPGEEEEAFQRVCDLVYHLRPEPATLAAIQALARQFLEGKPLKELLAELGEATDLTITYDEARREILVSAK"
+  },
+  {
+    "name": "design_13_seq07",
+    "design_pdb": "backbones/design_13.pdb",
+    "sequence": "PVPHQLPAGATIRIPVAPGEEEAAFQRVCDLAYHLRPEPAAVAAIRALAAQFLEGKPLEELLTELGAALDLKLTYDRAAREILVSAR"
+  },
+  {
+    "name": "design_13_seq08",
+    "design_pdb": "backbones/design_13.pdb",
+    "sequence": "AVPAELPAGATIRIPVAPGQEEEAFQRVLDLAYHLRPEPEALEAMRALAKEFLEGKPLEELLKELGEKLDLDITLDRERQEILVSAK"
+  },
+  {
+    "name": "design_14_seq01",
+    "design_pdb": "backbones/design_14.pdb",
+    "sequence": "APEVLARHTFVVETPGGPVLVLELTLRLPDGTVAVVSLLIATDGTVLARTIRSGTPGVALSPEQLALAAAWVDANEAALVAAAQAAA"
+  },
+  {
+    "name": "design_14_seq02",
+    "design_pdb": "backbones/design_14.pdb",
+    "sequence": "EPRVLARHTFVVETPGGPVLVEVLTLQLPDGTIAVVSLLIAEDGTVLAETIRSGEAGVELSPAQLALLRAWVEANRAAIVAAARAAA"
+  },
+  {
+    "name": "design_14_seq03",
+    "design_pdb": "backbones/design_14.pdb",
+    "sequence": "EPEILARKVFTVQTPAGPVLVLELTLRLPSGRTAVLTLQIATDGTVLSVTIRSGTPGVALSPEDLALVRAWFEAHRAELVAAAQAAA"
+  },
+  {
+    "name": "design_14_seq04",
+    "design_pdb": "backbones/design_14.pdb",
+    "sequence": "EPRVLAEHTFVVDTPAGPVLVHVLTLELPSGTIAVLSLLIATDGTVLSRTIRSGEAGVELSPEERALIAAWYDANEAAIVAAAQAAA"
+  },
+  {
+    "name": "design_14_seq05",
+    "design_pdb": "backbones/design_14.pdb",
+    "sequence": "EPRVLARHAYVVETPGGPVIVLELTLELPDGTIAVLSLQIAEDGTVLSVTIRSGEAGVELSPEQLALIRAWFEANRDALVAWAQAAA"
+  },
+  {
+    "name": "design_14_seq06",
+    "design_pdb": "backbones/design_14.pdb",
+    "sequence": "EPEVLARHAFVVETPGGPVIVLELTLRLPSGTTVVVSLLIATDGTVLARTIRSGTAGVELSPEERALAEAWVDANVDALVAAALAAA"
+  },
+  {
+    "name": "design_14_seq07",
+    "design_pdb": "backbones/design_14.pdb",
+    "sequence": "EPKILDQHVFTVETPSGPVLVLVLTLEMPDGTIVEVTLLIATDGTVLSRTIRSGEAGVELSPEELALAEAWVDANIDAFVALAKEAA"
+  },
+  {
+    "name": "design_14_seq08",
+    "design_pdb": "backbones/design_14.pdb",
+    "sequence": "TPRVLDRHVFTVETPAGPVLVAVLTLELPSGTVAVVTLLIATDGTVLSMTIRSGEAGVALSAEERALVAAWVEANRDEIVAWAQAAA"
+  },
+  {
+    "name": "design_15_seq01",
+    "design_pdb": "backbones/design_15.pdb",
+    "sequence": "LAKELARALLAADPAMPLAEAARIATDIAGGILSRLLNLPLEVVRALQTFGYLKVAAELAEELGLPEVCSAAGRRLPGSDSAVDTAT"
+  },
+  {
+    "name": "design_15_seq02",
+    "design_pdb": "backbones/design_15.pdb",
+    "sequence": "MAKELAKELLKANPSMPLAEAAKIATNIAGRILSELLNLPLEVVRALQTWGYLKVAAELAKELGLPEVCSDAGRRLPGSDSARDTAL"
+  },
+  {
+    "name": "design_15_seq03",
+    "design_pdb": "backbones/design_15.pdb",
+    "sequence": "MAKEIARELLAADPSLPLAEAARIATNIAGKILSEAFNLPLEVVRALQTWGYLKVAAELAEELGLPEHCSAEGKRLPGSDSARDTAL"
+  },
+  {
+    "name": "design_15_seq04",
+    "design_pdb": "backbones/design_15.pdb",
+    "sequence": "MAEELARALLAADPSLPLAEAARIATNIAGGILSRLLNLPLEVVKALQTWGYLTVAARLAEALGLPEECADAGTRLPGSDSARDTAT"
+  },
+  {
+    "name": "design_15_seq05",
+    "design_pdb": "backbones/design_15.pdb",
+    "sequence": "MAEALARALLAADPSMPLAEAARIAANIAGKILSEEFNLPLEEVKAFQTTGYLAVAARLAEELGLPEVCADAGRRLPGSDSARDTAQ"
+  },
+  {
+    "name": "design_15_seq06",
+    "design_pdb": "backbones/design_15.pdb",
+    "sequence": "MAKEKARELLAADPSLPLAEAARIATNIAAGVLSRLFNLPLEAVRALQTWGYLKVAAELARELGLPEECADAGRRLPGSDSARDTAL"
+  },
+  {
+    "name": "design_15_seq07",
+    "design_pdb": "backbones/design_15.pdb",
+    "sequence": "LARERARALLAADPSLPLAEAARIATNQAAGELSRALNLPLEVVRALQTSGYLKVAAELAEELGLPEECAAEGRRLPGSDSARDTAT"
+  },
+  {
+    "name": "design_15_seq08",
+    "design_pdb": "backbones/design_15.pdb",
+    "sequence": "MAKEIARELLAANPEMPLAEAARIATDIAGGILSRLFNWPLEKVKEFQTYGYLKVAAELARELGLPEECSAEGRRLPGSDSARDTAT"
+  },
+  {
+    "name": "design_16_seq01",
+    "design_pdb": "backbones/design_16.pdb",
+    "sequence": "DPAEEAIRKARAAVLEALSDPDAAERAAIIVQKLGLDLYDLLGGERAIALLDAWAPALAAEVLAASGDAAIVAAINAAAAQARAAIAARQAAD"
+  },
+  {
+    "name": "design_16_seq02",
+    "design_pdb": "backbones/design_16.pdb",
+    "sequence": "DPGEEAIARARAAILEALSAPDAAEQAAIIVKQLGRDLYDLLGGDAAIAALNAEAPVLAAEALAASGDAAVVAAINAAAAEAVRAIAARQAAD"
+  },
+  {
+    "name": "design_16_seq03",
+    "design_pdb": "backbones/design_16.pdb",
+    "sequence": "DPADEAIERARAAVLAALSAPDAAEQAAIIVQKLGLDLYELLGGEAAIARLNAEAPALAAEALAASGDQAVVDAINAAAAQAVAAINARIAAD"
+  },
+  {
+    "name": "design_16_seq04",
+    "design_pdb": "backbones/design_16.pdb",
+    "sequence": "APGDEAIARTRAAVLEALSDPAAAERAAILVQQLGRDLYDLLGGEAAIAALRAWAPELAAEALAASGDEAVVAAIRDAAAQAVAAIRARAAAD"
+  },
+  {
+    "name": "design_16_seq05",
+    "design_pdb": "backbones/design_16.pdb",
+    "sequence": "SPADEAIARAREAVLRALSDPDAATRAAIIVQQLGLDLYDLLGGEAAIAALNAWAPKLAAEALAASGDAAVVAAINAAAAQAVAAIAARIAAD"
+  },
+  {
+    "name": "design_16_seq06",
+    "design_pdb": "backbones/design_16.pdb",
+    "sequence": "DPGAEAIERARRAVLEALSDPDAATRAAIIVRQLGLDLYDLLGGDAAIAALREWAPRLAAEVAAASGDAAVVAAIEAAAAEAVRAIAARQAAD"
+  },
+  {
+    "name": "design_16_seq07",
+    "design_pdb": "backbones/design_16.pdb",
+    "sequence": "DPGDEAIARARAAVLAALSDPDAAERAAIIVQQLGKDLYDLLGGDAAIARLQAEAPKLAAEVAAASGDAAVVAAINDAAANAIRAIRRRQAED"
+  },
+  {
+    "name": "design_16_seq08",
+    "design_pdb": "backbones/design_16.pdb",
+    "sequence": "DPAAEAQARARAAVLEALSDPNAAEQAAIIVQKLGLDLYELLGGEAAIAALRAWAPVLAAEVAAASGDAAVVAAIDAAAAQAVRAIAARQAAD"
+  },
+  {
+    "name": "design_17_seq01",
+    "design_pdb": "backbones/design_17.pdb",
+    "sequence": "MSPVWRITIVVSHDDEEELLATLAQVAAEFAAQNDVLDIRISAPILEDGKWIAYVRVDVPASSREEAEAVGEELIAMLEAAGLTVEGYRIEPA"
+  },
+  {
+    "name": "design_17_seq02",
+    "design_pdb": "backbones/design_17.pdb",
+    "sequence": "MSPVWRITLTVSDDDEERLRATLARVAAEFAAAHDVLDIRISEPVLSDGKWLAWVSVDVRAASEEEAVAVGEELEAMLRAAGIEVEGRMVRPL"
+  },
+  {
+    "name": "design_17_seq03",
+    "design_pdb": "backbones/design_17.pdb",
+    "sequence": "ASPVWRVTLVVSHDDEAELRATLAAVAAAFAAANDVRAIRISAPRLVDGRWVAYLAVDVPAATRAEAEAVGRELAAMLEAAGITVEGSRVEPA"
+  },
+  {
+    "name": "design_17_seq04",
+    "design_pdb": "backbones/design_17.pdb",
+    "sequence": "MSPTWIITLCVSHDDEEELLATLREVAAAFAARNDVLDIRISEPVLEDGKWHAWLRVDVPAATEAEARALGEELEAMLRAAGIEVEGSMIRPA"
+  },
+  {
+    "name": "design_17_seq05",
+    "design_pdb": "backbones/design_17.pdb",
+    "sequence": "MSPVWRITLCVAHDDEEELLATLARVAAEFAARHDVLDIRISAPILSDGRWLAWLSVDVRAATEEEARAVGDELEALLRAAGLTVEGRMIRPL"
+  },
+  {
+    "name": "design_17_seq06",
+    "design_pdb": "backbones/design_17.pdb",
+    "sequence": "MSPVWRITIHVSHADEATLLATLAAVAAEFAARNDVLAITISAPFLSDGVWHAYLRVDVRASTREEAEAVGEELIAMLEAAGITVEGYMIRPL"
+  },
+  {
+    "name": "design_17_seq07",
+    "design_pdb": "backbones/design_17.pdb",
+    "sequence": "ASSTWRITLCVSHADKEELLATLARVAAEFAAAHDVLAITISEPFLDDGVWHAYLSVDVPAASREEAEAVGEELIALLEAAGITVEGYRIRPL"
+  },
+  {
+    "name": "design_17_seq08",
+    "design_pdb": "backbones/design_17.pdb",
+    "sequence": "MSPVWRIVLEVADDDEERLLATLREVAARFAAEHDVLAITISAPRLDDGTWLASLSVDVPAATREEAEAVGRELEAMLRAAGLTVLGRMIRPL"
+  },
+  {
+    "name": "design_18_seq01",
+    "design_pdb": "backbones/design_18.pdb",
+    "sequence": "GGPTIRVSPEDAIERHAAAAAAALRAGREREAQLHAAIVASIGLDAAADKQYALAEKAVELLRRLEALARELGHAEAAARIAELIARLEAALA"
+  },
+  {
+    "name": "design_18_seq02",
+    "design_pdb": "backbones/design_18.pdb",
+    "sequence": "GGPTIRISPEDAIEQHAAAAAAALRAGREREAQLHAAIVKSIALKAAEEKQYELAEKAVRALEALRDLAEALGATEAAAQIAAFIEELKAALA"
+  },
+  {
+    "name": "design_18_seq03",
+    "design_pdb": "backbones/design_18.pdb",
+    "sequence": "GGPTIRVSAADAIAAHAAAAAAALRAGREREAQLHAAIVASIALAAAADGELDLARAGVEALRALRDLAAALGHAAAAAAIAARVAALEAALA"
+  },
+  {
+    "name": "design_18_seq04",
+    "design_pdb": "backbones/design_18.pdb",
+    "sequence": "GGPTIRISARDAIERNAAAAAAALRAGREREAQLEAAIVASIALDCAKDKEYDLAEYGVELLRELEALARALGHAEAAAAIAALVARLEEALK"
+  },
+  {
+    "name": "design_18_seq05",
+    "design_pdb": "backbones/design_18.pdb",
+    "sequence": "GGPTIRVSAEDAIERHAALAAEYLRAGKEREAILQAAIVLSIGLDCAADKQYALAEKAVALLRELQALAEALGATEAAAAIAAFVARLEAALA"
+  },
+  {
+    "name": "design_18_seq06",
+    "design_pdb": "backbones/design_18.pdb",
+    "sequence": "GGPTIRVSAEDAIEANAAAAAAALRAGREREAQLHAAIVASIALDAAREKQYDLARKAVALLEELRDLAAALGATEAAAAIAALVARLRAALA"
+  },
+  {
+    "name": "design_18_seq07",
+    "design_pdb": "backbones/design_18.pdb",
+    "sequence": "GGPTIRVSPEDAIEQHAAAAARYLREGKEREAQLEAAIVASIGLDAAADKQYDLARKAVALLRELQALAAALGHTAAAAQIAALIARLEAALA"
+  },
+  {
+    "name": "design_18_seq08",
+    "design_pdb": "backbones/design_18.pdb",
+    "sequence": "GGPTIRVSAADAIERNAAAAAAALRAGREREAQLHAAIVAAIALDAAADKEYDLAERGVALLRELQALAAALGHTDAAAAIAALIARLEAALA"
+  },
+  {
+    "name": "design_19_seq01",
+    "design_pdb": "backbones/design_19.pdb",
+    "sequence": "MTSVTTGDVTTVTGEVDVTVEGDKATAKFTWNGTDMTATGKLTQGSKPNEFQLSGTATVGGKRYAVHAQLQRIPGSNKAQAVMKLVAMEAGPR"
+  },
+  {
+    "name": "design_19_seq02",
+    "design_pdb": "backbones/design_19.pdb",
+    "sequence": "VTSVTTGDVTTVTGTVTVTVEGDRATLTFTLDGVTLTARGRLTRGSKPNEFDLSGLVEHGGRRYAVHCALQLVPGSNQAQADCQVVALEAMPR"
+  },
+  {
+    "name": "design_19_seq03",
+    "design_pdb": "backbones/design_19.pdb",
+    "sequence": "MTSVRSGDVTTVTGTVTVTVEGDKATVRFTLDGKDMTATGNLTQGSAPNHFQVSGTAVVDGRRYLVQCDCQLVPGSDLADAVCKVVEMEAGPR"
+  },
+  {
+    "name": "design_19_seq04",
+    "design_pdb": "backbones/design_19.pdb",
+    "sequence": "MTSVTSGDVTTVTGTVEVTIEGDRATIRFTMDGVDLTATGKLTQGSQPNHFQLSGLAEHGGRRYLVHCDCQLRPGSNLADAVCKVVAMEAGPR"
+  },
+  {
+    "name": "design_19_seq05",
+    "design_pdb": "backbones/design_19.pdb",
+    "sequence": "MTSVTTGDVTTVEGEVEVTIDGDRATVTFELNGVTLTATGRLTRGPEPDRFQLSGLAEHGGRRYLVHADLRLVPGSNRADARIGVVAMERGPR"
+  },
+  {
+    "name": "design_19_seq06",
+    "design_pdb": "backbones/design_19.pdb",
+    "sequence": "MESVTSGDVTTVRGEVEVTVEGDRATVRFTVDGVDLEARGRLTRGPEPDEFVVKGTVVHDGRRYAVECRCRLVPGSDRAEAECKLVAMERGPR"
+  },
+  {
+    "name": "design_19_seq07",
+    "design_pdb": "backbones/design_19.pdb",
+    "sequence": "MTSVTTGDVTTVTGEVTVTIEGDKATIEFEVDGVKLKATGNLTKGSKPNHFQIKGTAVVDGRRYAVYADCKLYPGSNKAKADIKLVAMERGPR"
+  },
+  {
+    "name": "design_19_seq08",
+    "design_pdb": "backbones/design_19.pdb",
+    "sequence": "MTSTTTGDVTTVTGTVTVTISGDRATVRFTANGVDLTARGNLTQGPKPNEFQVKGLAEHGGRRYLVECSCTLRPGSNLADAVCKLVAMEAMPR"
+  },
+  {
+    "name": "design_20_seq01",
+    "design_pdb": "backbones/design_20.pdb",
+    "sequence": "STAEKQQEILDTCSALAREAVAAALAGDRARVGTLLGVRESDLPEDRDALLELVKERVAARARLLGRQAKLSQAQIDAIVAQVAAEIDALWAA"
+  },
+  {
+    "name": "design_20_seq02",
+    "design_pdb": "backbones/design_20.pdb",
+    "sequence": "SVEEKKERILETCSRLAREAVAAALAGDRATVGTLLGVPVAALPADREALLRLIAERVSARARLLGKQAKLSEEEIEEIVERVRAEIDALWAA"
+  },
+  {
+    "name": "design_20_seq03",
+    "design_pdb": "backbones/design_20.pdb",
+    "sequence": "SVEATKAAILAEASALARAAVAAALAGDRATVGTLLGVRVEDLPADRAALLELIRERVARRVRLLGRQAGLSQEEIDDIVARVRAEIDALVAA"
+  },
+  {
+    "name": "design_20_seq04",
+    "design_pdb": "backbones/design_20.pdb",
+    "sequence": "ETAAKMQAILDDASRLAREAVAAALAGDRATVGTLLGVRVEDLPEDREALLEFVRERVERRVRLLGRQAGLSQEQIDAIQAAVRAEIDALWAK"
+  },
+  {
+    "name": "design_20_seq05",
+    "design_pdb": "backbones/design_20.pdb",
+    "sequence": "EVEAKMQAIFDEASRLAREAVAAALAGDRARVGELLGIREADLPADRDALLALIRERVVARVRLLGKQANLTQEQIDAIQARVTALIDALWAA"
+  },
+  {
+    "name": "design_20_seq06",
+    "design_pdb": "backbones/design_20.pdb",
+    "sequence": "EVEAKMEAIFKEASALARAAVAAALAGDRATVGTLLGVPVADLPADREALLEQIRARVAARVRLLGKEAGLSEEQIEAIVERVRALIDALWAE"
+  },
+  {
+    "name": "design_20_seq07",
+    "design_pdb": "backbones/design_20.pdb",
+    "sequence": "SVEEQKAAIFEEAAALAREAVAAALAGDRERVGELLGVRVEDLPADREALLELIRERVAARVRLLGRQAKLSQEQIDAIVARVRALIDALWAA"
+  },
+  {
+    "name": "design_20_seq08",
+    "design_pdb": "backbones/design_20.pdb",
+    "sequence": "DVEEKMEEIFEECSRLAREAVAAALAGDRETVGTLLGIPVEDLPEDQAELLELIRERVERRARLLGKEANLTEEQIEEICARVRALIDALWAA"
+  }
+]

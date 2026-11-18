@@ -73,7 +73,9 @@ showed the most predictivity in the experiments performed in the paper."*
 반대쪽도 측정했다. 선별을 거치지 않은 직접 설계 40개는 **0개가 통과했다.** 즉 이 기준은
 **선별 전 집단을 거르는 데는 작동하고, 선별 후 집단을 가르는 데는 작동하지 않는다.**
 거절은 세 기준 중 `pae_interaction` 하나가 한다(0/40). 같은 40개에서 `plddt_binder`는
-32개, 접힘 RMSD는 21개가 통과했다. [설계 실행 결과](03-design-run.md)
+32개, 접힘 RMSD는 21개가 통과했다. 설계 160개로 늘린 실행에서도 양상은 같다 —
+`pae_interaction` 1/160, 나머지 두 기준은 126/160과 63/160.
+[설계 실행 결과](03-design-run.md) · [규모 확대 결과](04-scale-run.md)
 
 ## 검증 지점
 

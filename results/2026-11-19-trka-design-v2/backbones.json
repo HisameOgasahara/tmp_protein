@@ -1,0 +1,102 @@
+[
+  {
+    "id": "design_01",
+    "file": "backbones/design_01.pdb",
+    "binder_length": 73
+  },
+  {
+    "id": "design_02",
+    "file": "backbones/design_02.pdb",
+    "binder_length": 73
+  },
+  {
+    "id": "design_03",
+    "file": "backbones/design_03.pdb",
+    "binder_length": 73
+  },
+  {
+    "id": "design_04",
+    "file": "backbones/design_04.pdb",
+    "binder_length": 73
+  },
+  {
+    "id": "design_05",
+    "file": "backbones/design_05.pdb",
+    "binder_length": 73
+  },
+  {
+    "id": "design_06",
+    "file": "backbones/design_06.pdb",
+    "binder_length": 80
+  },
+  {
+    "id": "design_07",
+    "file": "backbones/design_07.pdb",
+    "binder_length": 80
+  },
+  {
+    "id": "design_08",
+    "file": "backbones/design_08.pdb",
+    "binder_length": 80
+  },
+  {
+    "id": "design_09",
+    "file": "backbones/design_09.pdb",
+    "binder_length": 80
+  },
+  {
+    "id": "design_10",
+    "file": "backbones/design_10.pdb",
+    "binder_length": 80
+  },
+  {
+    "id": "design_11",
+    "file": "backbones/design_11.pdb",
+    "binder_length": 87
+  },
+  {
+    "id": "design_12",
+    "file": "backbones/design_12.pdb",
+    "binder_length": 87
+  },
+  {
+    "id": "design_13",
+    "file": "backbones/design_13.pdb",
+    "binder_length": 87
+  },
+  {
+    "id": "design_14",
+    "file": "backbones/design_14.pdb",
+    "binder_length": 87
+  },
+  {
+    "id": "design_15",
+    "file": "backbones/design_15.pdb",
+    "binder_length": 87
+  },
+  {
+    "id": "design_16",
+    "file": "backbones/design_16.pdb",
+    "binder_length": 93
+  },
+  {
+    "id": "design_17",
+    "file": "backbones/design_17.pdb",
+    "binder_length": 93
+  },
+  {
+    "id": "design_18",
+    "file": "backbones/design_18.pdb",
+    "binder_length": 93
+  },
+  {
+    "id": "design_19",
+    "file": "backbones/design_19.pdb",
+    "binder_length": 93
+  },
+  {
+    "id": "design_20",
+    "file": "backbones/design_20.pdb",
+    "binder_length": 93
+  }
+]

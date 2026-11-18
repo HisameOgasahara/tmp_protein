@@ -1,0 +1,3 @@
+["/content/gfp_foundry_0d0b0ba4/venv/bin/python", "-u", "/content/trka_design_main_qznboqxy/repo/src/rfd3_design/trka_design.py", "prepare_target", "/content/trka_design_5posjuft"]
+표적 준비 완료: trka_target.pdb
+결합여 길이 [73, 80, 87, 93] × 각 5개 = 백본 20개

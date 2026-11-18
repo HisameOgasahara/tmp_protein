@@ -16,7 +16,7 @@ RFdiffusion3 → MPNN → AlphaFold2 initial guess 로 이어지는 de novo 단�
 | 공개 결합체의 공개 결과를 다시 낼 수 있는가 | **성공.** 1.496 Å, `pae_interaction` 5.86 (논문 1.4 Å) | [문제 기록](docs/issues/2026-11-18-trka-target-sidechains.md) |
 | 그 점수가 실제 결합을 가르는가 | **가르지 못한다.** 비결합체 14/14 통과, 결합체 5/6 통과 | [교정 결과](docs/02-filter-calibration.md) |
 | 걸러지지 않은 날것은 어디에 놓이는가 | **0/40 통과.** 같은 배치의 양성 대조군은 통과 | [설계 실행 결과](docs/03-design-run.md) |
-| 통과율을 잴 수 있는가 | **실행 대기.** 설계 160개 | [v0.2.0](docs/03-design-run.md) |
+| 규모를 4배로 키우면 달라지는가 | **0/160 통과.** 다만 처음으로 계면 기준을 넘은 설계가 1개 (0.121 Å 차이로 탈락) | [규모 확대 결과](docs/04-scale-run.md) |
 
 뒤의 두 줄을 합친 것이 현재의 핵심 결론이다.
 
@@ -25,8 +25,12 @@ RFdiffusion3 → MPNN → AlphaFold2 initial guess 로 이어지는 de novo 단�
 통과는 합격이 아니라 기본 확률을 얻는 것이고, 이 표적에서 그 값은 6/95 ≈ 6.3%다.
 통과한 설계들 사이에서 `pae_interaction` 순서로 우선순위를 정할 근거는 없다.
 
-설계 실행에서 가장 분명한 관찰: **설계대로 정확히 접힌 21개 전부가 표적에 대한 배치는
-5 Å 이상 어긋났다.** 접히는 것과 붙는 것은 다른 문제다.
+설계 160개에서 잰 것: **이 파이프라인의 날것 출력이 필터를 통과할 확률은 1.9% 미만**
+(0/160의 95% 상한). 떨어뜨리는 것은 언제나 계면 항 하나이고, 자신 있게 접힌 단백질에
+계면이 없는 조합이 160개 중 106개다.
+
+**결과를 가르는 것은 서열이 아니라 백본이다.** 백본 20개 중 19개는 서열을 8개씩 만들어도
+전부 평탄면에 머물렀고, 쓸 만한 값은 백본 3개에서 나왔다.
 
 ## 문서 지도
 
@@ -35,7 +39,8 @@ RFdiffusion3 → MPNN → AlphaFold2 initial guess 로 이어지는 de novo 단�
 | [docs/00-purpose.md](docs/00-purpose.md) | 취지, 범위, 무엇을 성공으로 볼지, 작업 순서 |
 | [docs/01-pipeline.md](docs/01-pipeline.md) | 설계문서 — 파이프라인 단계, 지표 정의, 통과 기준, 검증 지점 |
 | [docs/02-filter-calibration.md](docs/02-filter-calibration.md) | 교정 상세 — 분포, 한계, 지표를 어떻게 쓸 것인가 |
-| [docs/03-design-run.md](docs/03-design-run.md) | 설계 실행 상세 — 채점 결과, 소요 시간 분해, v0.2.0에 반영한 것 |
+| [docs/03-design-run.md](docs/03-design-run.md) | 첫 설계 실행(40개) — 채점 결과, 소요 시간 분해, v0.2.0에 반영한 것 |
+| [docs/04-scale-run.md](docs/04-scale-run.md) | 규모 확대 실행(160개) — 재컴파일 수정 검증, 백본별 분해, 통과율 상한 |
 | [docs/history.md](docs/history.md) | **경과** — 각 단계가 무엇 때문에 다음을 바꿨는지, 버린 선택 |
 | [docs/issues/](docs/issues/) | 생긴 문제와 대처법. 원인 미규명 건은 그렇다고 적는다 |
 | [docs/references.md](docs/references.md) | 참고 논문, 공개 데이터, 고정한 업스트림 리비전과 가중치 |
@@ -59,7 +64,7 @@ GPU 가속이 필요하므로 Colab T4에서 실행한다. 로컬 PC에는 모�
 | --- | --- | --- |
 | [01_af2_filter_T4](notebooks/01_af2_filter_T4.ipynb) | TrkA_88 한 건을 채점 — 재현 확인 | 설치 포함 약 7분 |
 | [02_calibrate_filter_T4](notebooks/02_calibrate_filter_T4.ipynb) | 라벨된 설계 20개 채점 — 지표 교정 | 약 40분 |
-| [03_design_trka_T4](notebooks/03_design_trka_T4.ipynb) | 새 결합여 160개 설계 후 채점 | 약 1.5시간 |
+| [03_design_trka_T4](notebooks/03_design_trka_T4.ipynb) | 새 결합여 160개 설계 후 채점 | 약 1.75시간 |
 | [90_af2_conditions_T4](diagnostics/90_af2_conditions_T4.ipynb) | 12개 조건 비교로 실패 원인 분리 | 약 25분 |
 
 실행하면 설정·입력 해시·지표·구조·로그를 담은 ZIP 하나가 나온다. 그 ZIP을 `results/` 아래
