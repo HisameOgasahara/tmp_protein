@@ -27,6 +27,24 @@ def run_logged(arguments, log, env):
         raise RuntimeError(f"Exit {result.returncode}. Full log: {log}")
 
 
+def run_streamed(arguments, log, env):
+    """Like run_logged, but also echoes each line so long steps show progress."""
+    arguments = [str(argument) for argument in arguments]
+    with log.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(arguments) + "\n")
+        handle.flush()
+        with subprocess.Popen(arguments, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                              text=True, encoding="utf-8", errors="replace", env=env,
+                              bufsize=1) as process:
+            for line in process.stdout:
+                handle.write(line)
+                handle.flush()
+                print(line, end="", flush=True)
+            code = process.wait()
+    if code:
+        raise RuntimeError(f"Exit {code}. Full log: {log}")
+
+
 def prepare_runtime(root):
     state = Path("/content/trka88_af2_v0_3_0")
     state.mkdir(exist_ok=True)

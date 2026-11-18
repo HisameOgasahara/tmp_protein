@@ -89,7 +89,10 @@ def run(root, release, upstream, settings):
     directory = root / "work"
     (directory / "prepared").mkdir(parents=True)
     records, failures = [], []
-    for row in selected:
+    print(f"설계 {len(selected)}개 준비 시작 "
+          f"(결합 {sum(r['Binder'] == 'True' for r in selected)}, "
+          f"비결합 {sum(r['Binder'] != 'True' for r in selected)})", flush=True)
+    for index, row in enumerate(selected, 1):
         record = {
             "design": row["RFdiffusion_output"],
             "af2": row["AF2_prediction"],
@@ -107,10 +110,14 @@ def run(root, release, upstream, settings):
             record["target_sequence"] = target
             record["grafted"] = grafted.name
             records.append(record)
+            print(f"  {index}/{len(selected)} {record['design']} "
+                  f"({'결합' if record['binder_experimental'] else '비결합'}, "
+                  f"{record['length']}잔기) 준비됨", flush=True)
         except Exception as error:
             failures.append({**record, "error": str(error)})
-            print(f"  준비 실패 {record['design']}: {error}", flush=True)
-    print(f"준비 완료 {len(records)}개, 실패 {len(failures)}개", flush=True)
+            print(f"  {index}/{len(selected)} {record['design']} 준비 실패: {error}", flush=True)
+    print(f"준비 완료 {len(records)}개, 실패 {len(failures)}개. "
+          f"이제 AF2를 {len(records)}회 실행합니다 (설계당 약 2분).", flush=True)
     (root / "prepare_failures.json").write_text(json.dumps(failures, indent=2))
 
     sys.argv = [

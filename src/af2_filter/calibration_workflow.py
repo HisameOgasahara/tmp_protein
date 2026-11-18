@@ -7,7 +7,7 @@ from pathlib import Path
 from tempfile import mkdtemp
 from time import perf_counter
 
-from workflow import AF2_REVISION, SOURCE, prepare_runtime, run_logged
+from workflow import AF2_REVISION, SOURCE, prepare_runtime, run_logged, run_streamed
 
 
 VERSION = "0.1.0"
@@ -55,8 +55,10 @@ def run(revision):
                 source["archive_sha256"] = hashlib.file_digest(handle, "sha256").hexdigest()
         source["release_file_count"] = sum(1 for _ in release.rglob("*") if _.is_file())
         (root / "source.json").write_text(json.dumps(source, indent=2))
-        run_logged([python, SOURCE / "calibration.py", root, release, upstream],
-                   root / "runtime/calibration.log", env)
+        # Streamed, not swallowed: this step runs AF2 once per design and the
+        # upstream predictor reports each one as it finishes.
+        run_streamed([python, SOURCE / "calibration.py", root, release, upstream],
+                     root / "runtime/calibration.log", env)
     except Exception:
         (root / "runtime/failure.txt").write_text(traceback.format_exc())
         print("실패 기록을 ZIP에 저장했습니다.", flush=True)
