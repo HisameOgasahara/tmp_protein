@@ -5,7 +5,22 @@
 | 항목 | 내용 |
 | --- | --- |
 | 설계 방법·공개 데이터 출처 | RFdiffusion 논문, Nature 2023, [doi:10.1038/s41586-023-06415-8](https://doi.org/10.1038/s41586-023-06415-8) |
+| 전문 (봇 차단 없이 읽히는 경로) | `https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10468394/fullTextXML` |
 | AF2 initial guess 채점 절차 | `dl_binder_design` 저장소에 구현된 절차 (아래) |
+
+PMC 웹페이지와 bioRxiv는 자동 요청을 차단하거나 제한한다. Europe PMC의 전문 XML API가
+막히지 않는다.
+
+### 이 저장소가 논문에서 직접 인용하는 값
+
+| 값 | 원문 |
+| --- | --- |
+| 통과 기준 | "In silico success is defined in line with current best practice: AF2 pLDDT of the monomer > 80, AF2 interaction pAE < 10, AF2 r.m.s.d. monomer vs design < 1 Å." |
+| 선별에 AF2가 쓰였음 | "We attribute one order of magnitude to RFdiffusion, and the second to filtering with AF2" |
+| TrkA_88의 보고값 | "Binders: ... TrkA_88 (1.4 Å)" — AF2 예측과 설계의 RMSD |
+| 다섯 표적 전체 실험 성공률 | "The overall experimental success rate ... was 19%" |
+
+마지막 값은 다섯 표적을 합친 수치다. TrkA 단독으로는 공개 CSV 기준 6/95 ≈ 6.3%로 더 낮다.
 
 재현 대상인 TrkA 결합체 설계는 RFdiffusion 논문의 공개 자료에 포함돼 있다.
 채점에 쓰는 AF2 initial guess 절차는 `dl_binder_design` 저장소의 구현을 그대로 쓴다.

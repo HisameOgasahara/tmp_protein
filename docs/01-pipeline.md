@@ -48,11 +48,20 @@ RMSD 계산은 반사를 허용하지 않는 Kabsch 중첩을 쓰고, 표적 Cα
 
 ## 통과 기준
 
-| 지표 | 기준 | 출처 |
+논문(Watson et al. 2023) Extended Data Fig. 8 설명에 그대로 적혀 있다.
+
+> "In silico success is defined in line with current best practice:
+> **AF2 pLDDT of the monomer > 80, AF2 interaction pAE < 10,
+> AF2 r.m.s.d. monomer vs design < 1 Å.**"
+
+| 지표 | 기준 | 대응하는 출력 |
 | --- | --- | --- |
-| `pae_interaction` | < 10 | 논문의 주 필터 |
-| `plddt_binder` | > 80 | 논문 |
-| `binder_aligned_rmsd` | < 2 Å | 논문 |
+| AF2 interaction pAE | < 10 | `pae_interaction` |
+| AF2 pLDDT (monomer) | > 80 | `plddt_binder` |
+| AF2 r.m.s.d. monomer vs design | < 1 Å | `binder_aligned_rmsd` |
+
+업스트림 저장소도 같은 지표를 지목한다 — *"`pae_interaction` is the score that
+showed the most predictivity in the experiments performed in the paper."*
 
 이 기준은 **후보를 줄이는 용도**다. 통과가 결합을 의미하지 않는다. 자세한 해석 범위는
 [취지 문서](00-purpose.md)의 "무엇을 성공으로 보는가"에 있다.

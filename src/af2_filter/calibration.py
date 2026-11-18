@@ -21,9 +21,12 @@ from compare import design_reference, pose_rmsd
 from target_sidechains import complex_with_target_sidechains
 
 
+# Watson et al. 2023, Extended Data Fig. 8 legend: "In silico success is defined
+# in line with current best practice: AF2 pLDDT of the monomer > 80, AF2
+# interaction pAE < 10, AF2 r.m.s.d. monomer vs design < 1 A."
 PAE_PASS = 10.0
 PLDDT_PASS = 80.0
-RMSD_PASS = 2.0
+RMSD_PASS = 1.0
 
 
 def read_sequences(path):
