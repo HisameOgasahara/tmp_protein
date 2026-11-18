@@ -1,0 +1,93 @@
+["/usr/local/bin/uv", "venv", "--allow-existing", "--python", "3.11", "/content/trka88_af2_v0_3_0/original_venv"]
+warning: The `--system` flag has no effect, `uv venv` always ignores virtual environments when finding a Python interpreter; did you mean `--no-managed-python`?
+Using CPython 3.11.17
+Creating virtual environment at: trka88_af2_v0_3_0/original_venv
+Activate with: source trka88_af2_v0_3_0/original_venv/bin/activate
+["/usr/local/bin/uv", "pip", "install", "--python", "/content/trka88_af2_v0_3_0/original_venv/bin/python", "jax[cuda12]==0.4.35", "numpy==1.26.4", "dm-haiku==0.0.13", "biopython==1.81", "tensorflow-cpu==2.18.1", "ml-collections==0.1.1", "dm-tree==0.1.9", "scipy==1.12.0", "pandas==2.2.3", "mock==5.1.0", "--find-links", "https://west.rosettacommons.org/pyrosetta/quarterly/release/", "pyrosetta==2026.3+releasequarterly.5e498f1409"]
+Using Python 3.11.17 environment at: trka88_af2_v0_3_0/original_venv
+Resolved 69 packages in 1.89s
+Prepared 68 packages in 1m 59s
+Installed 69 packages in 562ms
+ + absl-py==2.5.1
+ + astunparse==1.6.3
+ + attrs==26.1.0
+ + biopython==1.81
+ + certifi==2026.10.23
+ + charset-normalizer==3.5.2
+ + contextlib2==21.6.0
+ + dm-haiku==0.0.13
+ + dm-tree==0.1.9
+ + flatbuffers==25.12.19
+ + gast==0.7.0
+ + google-pasta==0.2.0
+ + grpcio==1.85.3
+ + h5py==3.16.0
+ + idna==3.20
+ + jax==0.4.35
+ + jax-cuda12-pjrt==0.4.35
+ + jax-cuda12-plugin==0.4.35
+ + jaxlib==0.4.34
+ + jmp==0.0.4
+ + keras==3.15.1
+ + libclang==18.1.1
+ + markdown==3.11.3
+ + markdown-it-py==4.3.0
+ + markupsafe==3.0.4
+ + mdurl==0.1.2
+ + ml-collections==0.1.1
+ + ml-dtypes==0.5.4
+ + mock==5.1.0
+ + namex==0.1.0
+ + numpy==1.26.4
+ + nvidia-cublas-cu12==12.9.3.13
+ + nvidia-cuda-cupti-cu12==12.9.79
+ + nvidia-cuda-nvcc-cu12==12.9.86
+ + nvidia-cuda-nvrtc-cu12==12.9.86
+ + nvidia-cuda-runtime-cu12==12.9.79
+ + nvidia-cudnn-cu12==9.28.1.4
+ + nvidia-cufft-cu12==11.4.1.4
+ + nvidia-cusolver-cu12==11.7.5.82
+ + nvidia-cusparse-cu12==12.5.10.65
+ + nvidia-nccl-cu12==2.32.6
+ + nvidia-nvjitlink-cu12==12.9.86
+ + opt-einsum==3.4.0
+ + optree==0.20.0
+ + packaging==26.3
+ + pandas==2.2.3
+ + protobuf==5.29.6
+ + pygments==2.21.0
+ + pyrosetta==2026.3+releasequarterly.5e498f1409
+ + python-dateutil==4.0.0
+ + pytz==2026.6
+ + pyyaml==6.0.3
+ + requests==2.34.2
+ + rich==15.0.0
+ + scipy==1.12.0
+ + setuptools==84.2.1
+ + six==1.17.0
+ + tabulate==0.10.0
+ + tensorboard==2.18.0
+ + tensorboard-data-server==0.7.2
+ + tensorflow-cpu==2.18.1
+ + tensorflow-io-gcs-filesystem==0.37.1
+ + termcolor==3.3.0
+ + typing-extensions==4.16.0
+ + tzdata==2026.6
+ + urllib3==2.8.0
+ + werkzeug==3.1.9
+ + wheel==0.48.0
+ + wrapt==2.5.2
+["/usr/local/bin/uv", "pip", "check", "--python", "/content/trka88_af2_v0_3_0/original_venv/bin/python"]
+Using Python 3.11.17 environment at: trka88_af2_v0_3_0/original_venv
+Checked 69 packages in 4ms
+All installed packages are compatible
+["curl", "--fail", "--location", "--retry", "3", "--output", "/content/trka88_af2_v0_3_0/alphafold_params.tar", "https://storage.googleapis.com/alphafold/alphafold_params_2022-12-06.tar"]
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  4 5329M    4  237M    0     0   231M      0  0:00:22  0:00:01  0:00:21  231M  8 5329M    8  478M    0     0   238M      0  0:00:22  0:00:02  0:00:20  238M 13 5329M   13  695M    0     0   230M      0  0:00:23  0:00:03  0:00:20  230M 17 5329M   17  907M    0     0   223M      0  0:00:23  0:00:04  0:00:19  223M 20 5329M   20 1078M    0     0   211M      0  0:00:25  0:00:05  0:00:20  211M 20 5329M   20 1098M    0     0   126M      0  0:00:42  0:00:08  0:00:34  112M 21 5329M   21 1147M    0     0   127M      0  0:00:41  0:00:09  0:00:32 95.4M 23 5329M   23 1235M    0     0   122M      0  0:00:43  0:00:10  0:00:33 76.1M 27 5329M   27 1463M    0     0   132M      0  0:00:40  0:00:11  0:00:29 79.9M 30 5329M   30 1630M    0     0   132M      0  0:00:40  0:00:12  0:00:28 75.9M 30 5329M   30 1640M    0     0  99.2M      0  0:00:53  0:00:16  0:00:37 69.3M 32 5329M   32 1750M    0     0   102M      0  0:00:51  0:00:17  0:00:34 75.5M 36 5329M   36 1942M    0     0   107M      0  0:00:49  0:00:18  0:00:31 89.4M 38 5329M   38 2053M    0     0   101M      0  0:00:52  0:00:20  0:00:32 64.3M 40 5329M   40 2177M    0     0   102M      0  0:00:52  0:00:21  0:00:31 61.3M 44 5329M   44 2377M    0     0   108M      0  0:00:49  0:00:22  0:00:27  134M 48 5329M   48 2564M    0     0   111M      0  0:00:47  0:00:23  0:00:24  135M 51 5329M   51 2725M    0     0   101M      0  0:00:52  0:00:26  0:00:26 89.4M 52 5329M   52 2773M    0     0   102M      0  0:00:51  0:00:27  0:00:24  105M 55 5329M   55 2983M    0     0   106M      0  0:00:50  0:00:28  0:00:22  119M 60 5329M   60 3217M    0     0   110M      0  0:00:48  0:00:29  0:00:19  119M 64 5329M   64 3445M    0     0   114M      0  0:00:46  0:00:30  0:00:16  125M 68 5329M   68 3668M    0     0   118M      0  0:00:45  0:00:31  0:00:14  219M 73 5329M   73 3892M    0     0   121M      0  0:00:43  0:00:32  0:00:11  223M 77 5329M   77 4135M    0     0   125M      0  0:00:42  0:00:33  0:00:09  229M 82 5329M   82 4387M    0     0   129M      0  0:00:41  0:00:34  0:00:07  235M 85 5329M   85 4542M    0     0   122M      0  0:00:43  0:00:37  0:00:06  155M 85 5329M   85 4552M    0     0   110M      0  0:00:48  0:00:41  0:00:07 87.6M 87 5329M   87 4655M    0     0   110M      0  0:00:48  0:00:42  0:00:06 76.5M 90 5329M   90 4812M    0     0   111M      0  0:00:47  0:00:43  0:00:04 67.7M 93 5329M   93 4996M    0     0   105M      0  0:00:50  0:00:47  0:00:03 45.9M 96 5329M   96 5148M    0     0   107M      0  0:00:49  0:00:48  0:00:01 55.4M100 5329M  100 5329M    0     0   109M      0  0:00:48  0:00:48 --:--:--  101M
+["tar", "-xf", "/content/trka88_af2_v0_3_0/alphafold_params.tar", "-C", "/content/trka88_af2_v0_3_0/params_vh0byvps", "params_model_1_ptm.npz"]
+["curl", "--fail", "--location", "--retry", "3", "--output", "/content/trka88_af2_v0_3_0/dl_binder_design.tar.gz", "https://codeload.github.com/nrbennet/dl_binder_design/tar.gz/cafa3853ac94dceb1b908c8d9e6954d71749871a"]
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 4368k    0 4368k    0     0  4752k      0 --:--:-- --:--:-- --:--:-- 4747k100 5672k    0 5672k    0     0  4971k      0 --:--:--  0:00:01 --:--:-- 4971k
+["tar", "-xzf", "/content/trka88_af2_v0_3_0/dl_binder_design.tar.gz", "--strip-components=1", "-C", "/content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a"]

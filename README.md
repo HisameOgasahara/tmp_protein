@@ -13,6 +13,8 @@ RFdiffusion3 → ProteinMPNN → AlphaFold2 initial guess 로 이어지는 de no
 | 실패 원인 | 공개 `design.pdb`가 주사슬 전용 → 표적 사이드체인이 기본 로터머로 재구성되며 충돌하는 결합면 생성 | [문제 기록](docs/issues/2026-11-18-trka-target-sidechains.md) |
 | 원인 분리 | 12개 조건 통제 실험. 탐색 설정(시드·recycle·정밀도)은 모두 무관, 표적 좌표만이 결과를 바꿨다 | [진단](diagnostics/README.md) |
 | 수정 | 1WWW 체인 X에서 표적 사이드체인 이식. 설계 주사슬 편차 0.000000 Å, CB 변화 0.202 Å | [코드](src/af2_filter/target_sidechains.py) |
+| **필터 교정** | **`pae_interaction`이 결합 여부를 가르지 못했다.** 비결합체 14/14 통과, 결합체 5/6 통과 | [교정 결과](docs/02-filter-calibration.md) |
+| 파이프라인 재현성 | 설계 20개 중 **19개가 저자들의 AF2 구조를 0.157~1.942 Å**로 재현 (중앙값 0.415 Å) | [결과](results/2026-11-18-trka88-calibration) |
 | 단량체 설계 자기일관성 | 설계 20개 중 **16개가 Cα RMSD < 2 Å** (최소 0.512 Å) | [결과](results/2026-11-16-monomer-selfconsistency) |
 
 재현된 구조는 저자들의 공개 AF2 구조와 **0.191 Å** 차이다. 정답 좌표를 직접 투입한
@@ -22,10 +24,13 @@ RFdiffusion3 → ProteinMPNN → AlphaFold2 initial guess 로 이어지는 de no
 실패한 설계에서도 결합체 **자체 접힘은 0.594 Å로 정확**했고 어긋난 것은 표적에 대한
 배치뿐이었다. 즉 실패는 설계나 AF2가 아니라 입력 준비 단계에서 발생했다.
 
-**다음 단계:** 교정된 이 필터로 실험 라벨이 붙은 설계를 채점해 통과선이 실제로 무엇을
-가르는지 확인한다. 결합체 6개 전부와 비결합체 14개,
-[notebooks/02_calibrate_filter_T4.ipynb](notebooks/02_calibrate_filter_T4.ipynb)로 약 40분.
-구현은 끝났고 실행이 남았다. [작업 순서](docs/00-purpose.md)
+교정 결과의 실무적 귀결: **필터 통과는 합격이 아니라 기본 확률을 얻는 것**이다. 이 표적에서
+통과 후 실제 결합률은 공개 자료 기준 6/95 ≈ 6.3%이고, 통과한 설계들 사이에서
+`pae_interaction` 순서로 우선순위를 정할 근거는 이 데이터에 없다.
+
+**다음 단계:** 교정된 필터를 들고 RFdiffusion3로 같은 표적에 새 결합체를 설계한다.
+결과표에는 이 교정 집합을 함께 놓아 새 설계의 점수가 어디에 위치하는지 읽는다.
+[작업 순서](docs/00-purpose.md)
 
 재현 대상 설계(TrkA_88)는 결합체 **자체 접힘은 0.594 Å로 정확**했다. 어긋난 것은 표적에 대한
 배치뿐이다. 즉 실패는 설계나 AF2가 아니라 입력 준비 단계에서 발생했다.

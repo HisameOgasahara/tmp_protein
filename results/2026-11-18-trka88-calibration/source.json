@@ -1,0 +1,12 @@
+{
+  "calibration_version": "0.1.0",
+  "revision": "80563c15a2e7d36ededc2cb8e20a9f4b7638e4ac",
+  "af2_revision": "cafa3853ac94dceb1b908c8d9e6954d71749871a",
+  "archive_url": "https://ndownloader.figshare.com/files/40226533",
+  "release_path": "PUBLIC_RELEASE/experimentally_tested/TrkA_binders",
+  "non_binders": 14,
+  "seed": 0,
+  "recycles": 3,
+  "archive_sha256": "13ee58d9373ae45beb82fabfe277807163962c8e382725cd192952c84c2bdd92",
+  "release_file_count": 192
+}

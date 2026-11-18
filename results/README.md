@@ -28,6 +28,7 @@
 | [2026-11-18-trka88-af2-upstream](2026-11-18-trka88-af2-upstream) | TrkA_88 재현, 업스트림 AF2 코드 | 실패. 31.14 Å, `pae_interaction` 26.07 |
 | [2026-11-18-trka88-diagnostics](2026-11-18-trka88-diagnostics) | 11개 조건 비교로 실패 원인 분리 | **원인 확정** — 표적 전체 원자 좌표 |
 | [2026-11-18-trka88-diagnostics-v2](2026-11-18-trka88-diagnostics-v2) | 12개 조건. 사이드체인 이식 수정안 포함 | **재현 성공. 1.496 Å, `pae_interaction` 5.86** |
+| [2026-11-18-trka88-calibration](2026-11-18-trka88-calibration) | 실험 라벨이 붙은 설계 20개 채점 | **비결합체 14/14 통과 — 지표가 결합을 못 가름** |
 
 ## 실행별 메모
 

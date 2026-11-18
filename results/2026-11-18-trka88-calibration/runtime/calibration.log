@@ -1,0 +1,285 @@
+["/content/trka88_af2_v0_3_0/original_venv/bin/python", "/content/trka88_main_0nhmap2f/repo/src/af2_filter/calibration.py", "/content/trka88_calibration_806ic0bk", "/content/trka88_af2_v0_3_0/trka_release", "/content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a"]
+┌───────────────────────────────────────────────────────────────────────────────┐
+│                                  PyRosetta-4                                  │
+│               Created in JHU by Sergey Lyskov and PyRosetta Team              │
+│               (C) Copyright Rosetta Commons Member Institutions               │
+│                                                                               │
+│ NOTE: USE OF PyRosetta FOR COMMERCIAL PURPOSES REQUIRES PURCHASE OF A LICENSE │
+│          See LICENSE.PyRosetta.md or email license@uw.edu for details         │
+└───────────────────────────────────────────────────────────────────────────────┘
+PyRosetta-4 2026 [Rosetta PyRosetta4.Release.python311.ubuntu 2026.03+releasequarterly.5e498f1409c68ade56c8ce5842bf79e1b02e8db4 2026-01-13T13:24:11] retrieved from: http://www.pyrosetta.org
+준비 완료 20개, 실패 0개
+/content/trka88_af2_v0_3_0/original_venv/lib/python3.11/site-packages/Bio/Data/SCOPData.py:18: BiopythonDeprecationWarning: The 'Bio.Data.SCOPData' module will be deprecated in a future release of Biopython in favor of 'Bio.Data.PDBData.
+  warnings.warn(
+/content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a/af2_initial_guess/af2_util.py:14: UserWarning: Import of 'rosetta' as a top-level module is deprecated and may be removed in 2018, import via 'pyrosetta.rosetta'.
+  from rosetta import *
+┌───────────────────────────────────────────────────────────────────────────────┐
+│                                  PyRosetta-4                                  │
+│               Created in JHU by Sergey Lyskov and PyRosetta Team              │
+│               (C) Copyright Rosetta Commons Member Institutions               │
+│                                                                               │
+│ NOTE: USE OF PyRosetta FOR COMMERCIAL PURPOSES REQUIRES PURCHASE OF A LICENSE │
+│          See LICENSE.PyRosetta.md or email license@uw.edu for details         │
+└───────────────────────────────────────────────────────────────────────────────┘
+PyRosetta-4 2026 [Rosetta PyRosetta4.Release.python311.ubuntu 2026.03+releasequarterly.5e498f1409c68ade56c8ce5842bf79e1b02e8db4 2026-01-13T13:24:11] retrieved from: http://www.pyrosetta.org
+/content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a/af2_initial_guess/predict.py:537: DeprecationWarning: jax.lib.xla_bridge.get_backend is deprecated; use jax.extend.backend.get_backend.
+  device = xla_bridge.get_backend().platform
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+Found GPU and will use it to run AF2
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+
+Processing struct with tag: Trka_binder_design_58
+The distance between residues 84 and 85 is 50.18 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 84
+WARNING:tensorflow:From /content/trka88_af2_v0_3_0/dl_binder_design_cafa3853ac94dceb1b908c8d9e6954d71749871a/af2_initial_guess/alphafold/model/tf/input_pipeline.py:151: calling map_fn (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fe0b04aaa20> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1795010703.929553    2965 mlir_graph_optimization_pass.cc:401] MLIR V1 optimization pass is not enabled
+Running model_1_ptm
+Tag: Trka_binder_design_58 finished AF2 prediction in 116.27961380900001 seconds
+{'plddt_total': 94.94276671747731, 'plddt_binder': 95.56949701939209, 'plddt_target': 94.42152567430065, 'pae_binder': 2.2230816, 'pae_target': 3.313609, 'pae_interaction': 4.6272478103637695, 'binder_aligned_rmsd': 0.72108567, 'target_aligned_rmsd': 1.3420142, 'time': 127.06541479100008}
+Tag: Trka_binder_design_58_af2pred reported success in 127.06541479100008 seconds
+Processing struct with tag: Trka_binder_design_25
+The distance between residues 65 and 66 is 25.80 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 65
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fe0448e8d60> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_25 finished AF2 prediction in 104.10118679599998 seconds
+{'plddt_total': 92.8906176692622, 'plddt_binder': 90.89478747533735, 'plddt_target': 94.17506284357027, 'pae_binder': 2.3781376, 'pae_target': 3.2883935, 'pae_interaction': 5.141173362731934, 'binder_aligned_rmsd': 0.43110245, 'target_aligned_rmsd': 0.887832, 'time': 115.27972279500011}
+Tag: Trka_binder_design_25_af2pred reported success in 115.27972279500011 seconds
+Processing struct with tag: Trka_binder_design_88
+The distance between residues 93 and 94 is 26.19 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 93
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fe01dbf9a80> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_88 finished AF2 prediction in 108.00900874600006 seconds
+{'plddt_total': 93.22155123955226, 'plddt_binder': 93.29688002043824, 'plddt_target': 93.15218909477605, 'pae_binder': 2.6434553, 'pae_target': 3.475321, 'pae_interaction': 5.861945152282715, 'binder_aligned_rmsd': 0.61507744, 'target_aligned_rmsd': 1.4965423, 'time': 118.9458757609998}
+Tag: Trka_binder_design_88_af2pred reported success in 118.9458757609998 seconds
+Processing struct with tag: Trka_binder_design_85
+The distance between residues 62 and 63 is 47.37 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 62
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fdfa292fec0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_85 finished AF2 prediction in 104.21463530900019 seconds
+{'plddt_total': 93.29608197495209, 'plddt_binder': 92.94683608848737, 'plddt_target': 93.51047053892053, 'pae_binder': 2.1717153, 'pae_target': 3.422062, 'pae_interaction': 5.936227798461914, 'binder_aligned_rmsd': 0.6095313, 'target_aligned_rmsd': 2.1178768, 'time': 112.66601929199987}
+Tag: Trka_binder_design_85_af2pred reported success in 112.66601929199987 seconds
+Processing struct with tag: Trka_binder_design_16
+The distance between residues 65 and 66 is 46.56 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 65
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fdf99919620> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_16 finished AF2 prediction in 8.40045553799996 seconds
+{'plddt_total': 93.69431337971523, 'plddt_binder': 92.78796157598146, 'plddt_target': 94.27760909498942, 'pae_binder': 2.4742727, 'pae_target': 3.3374355, 'pae_interaction': 5.232753276824951, 'binder_aligned_rmsd': 0.43146822, 'target_aligned_rmsd': 1.2277801, 'time': 17.62664960999996}
+Tag: Trka_binder_design_16_af2pred reported success in 17.62664960999996 seconds
+Processing struct with tag: Trka_binder_design_10
+The distance between residues 93 and 94 is 26.53 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 93
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fdf99919ee0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_10 finished AF2 prediction in 11.46974759700015 seconds
+{'plddt_total': 94.58232778346007, 'plddt_binder': 94.8409870046468, 'plddt_target': 94.34415642137726, 'pae_binder': 2.238919, 'pae_target': 3.3229482, 'pae_interaction': 4.418370246887207, 'binder_aligned_rmsd': 0.7257726, 'target_aligned_rmsd': 1.9213456, 'time': 20.240207385000076}
+Tag: Trka_binder_design_10_af2pred reported success in 20.240207385000076 seconds
+Processing struct with tag: Trka_binder_design_73
+The distance between residues 65 and 66 is 47.05 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 65
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fdf9a2062a0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_73 finished AF2 prediction in 8.525407811999912 seconds
+{'plddt_total': 93.21382151304158, 'plddt_binder': 92.4170736213004, 'plddt_target': 93.72658005723146, 'pae_binder': 2.376427, 'pae_target': 3.4432335, 'pae_interaction': 5.704748153686523, 'binder_aligned_rmsd': 0.3982438, 'target_aligned_rmsd': 2.3046253, 'time': 20.287681767000095}
+Tag: Trka_binder_design_73_af2pred reported success in 20.287681767000095 seconds
+Processing struct with tag: Trka_binder_design_28
+The distance between residues 55 and 56 is 27.88 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 55
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fdf9af19260> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_28 finished AF2 prediction in 103.18457709599988 seconds
+{'plddt_total': 90.75896293099089, 'plddt_binder': 85.84219703512369, 'plddt_target': 93.43640970596807, 'pae_binder': 3.5696707, 'pae_target': 3.4981008, 'pae_interaction': 6.617432594299316, 'binder_aligned_rmsd': 0.6215104, 'target_aligned_rmsd': 1.5720657, 'time': 111.73360492300003}
+Tag: Trka_binder_design_28_af2pred reported success in 111.73360492300003 seconds
+Processing struct with tag: Trka_binder_design_60
+The distance between residues 65 and 66 is 38.65 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 65
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fdf9991a5c0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_60 finished AF2 prediction in 8.579306140999961 seconds
+{'plddt_total': 92.88658916533666, 'plddt_binder': 91.73222680866851, 'plddt_target': 93.62949563249936, 'pae_binder': 2.6412957, 'pae_target': 3.4308317, 'pae_interaction': 5.686176300048828, 'binder_aligned_rmsd': 0.54222906, 'target_aligned_rmsd': 1.1601211, 'time': 16.766387518999863}
+Tag: Trka_binder_design_60_af2pred reported success in 16.766387518999863 seconds
+Processing struct with tag: Trka_binder_design_53
+The distance between residues 62 and 63 is 41.95 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 62
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fdf95f1e480> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_53 finished AF2 prediction in 8.44807389100015 seconds
+{'plddt_total': 92.61825265285394, 'plddt_binder': 90.37657622175668, 'plddt_target': 93.99433125412156, 'pae_binder': 2.7371874, 'pae_target': 3.3680909, 'pae_interaction': 5.764718055725098, 'binder_aligned_rmsd': 0.63045454, 'target_aligned_rmsd': 2.8696337, 'time': 18.25567932900003}
+Tag: Trka_binder_design_53_af2pred reported success in 18.25567932900003 seconds
+Processing struct with tag: Trka_binder_design_54
+The distance between residues 91 and 92 is 46.03 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 91
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fe07c172020> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_54 finished AF2 prediction in 115.80750149899995 seconds
+{'plddt_total': 94.09255468734194, 'plddt_binder': 94.3995092457428, 'plddt_target': 93.8159916693768, 'pae_binder': 2.1866095, 'pae_target': 3.3580143, 'pae_interaction': 5.406547546386719, 'binder_aligned_rmsd': 0.49567413, 'target_aligned_rmsd': 1.2960547, 'time': 127.73876632200017}
+Tag: Trka_binder_design_54_af2pred reported success in 127.73876632200017 seconds
+Processing struct with tag: Trka_binder_design_2
+The distance between residues 65 and 66 is 46.84 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 65
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fe0448cf600> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_2 finished AF2 prediction in 8.471465795999848 seconds
+{'plddt_total': 92.86858552092914, 'plddt_binder': 90.78965689720384, 'plddt_target': 94.20650988273255, 'pae_binder': 2.9035041, 'pae_target': 3.3311934, 'pae_interaction': 5.398052215576172, 'binder_aligned_rmsd': 0.59021086, 'target_aligned_rmsd': 2.0261762, 'time': 17.017568059999803}
+Tag: Trka_binder_design_2_af2pred reported success in 17.017568059999803 seconds
+Processing struct with tag: Trka_binder_design_69
+The distance between residues 65 and 66 is 37.54 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 65
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fe03f193ec0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_69 finished AF2 prediction in 8.56515003100003 seconds
+{'plddt_total': 94.76858822935387, 'plddt_binder': 95.10949150717538, 'plddt_target': 94.54919503075584, 'pae_binder': 1.8994709, 'pae_target': 3.3288605, 'pae_interaction': 4.392199993133545, 'binder_aligned_rmsd': 0.45771268, 'target_aligned_rmsd': 0.79791945, 'time': 19.25237296299997}
+Tag: Trka_binder_design_69_af2pred reported success in 19.25237296299997 seconds
+Processing struct with tag: Trka_binder_design_43
+The distance between residues 65 and 66 is 39.68 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 65
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fe0355eba60> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_43 finished AF2 prediction in 8.63683217799985 seconds
+{'plddt_total': 92.93467916554964, 'plddt_binder': 91.81529252454435, 'plddt_target': 93.65507650877086, 'pae_binder': 2.6028185, 'pae_target': 3.4902942, 'pae_interaction': 5.892828941345215, 'binder_aligned_rmsd': 0.6317356, 'target_aligned_rmsd': 2.2126317, 'time': 17.098404594000158}
+Tag: Trka_binder_design_43_af2pred reported success in 17.098404594000158 seconds
+Processing struct with tag: Trka_binder_design_75
+The distance between residues 88 and 89 is 59.35 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 88
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fe03f191440> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_75 finished AF2 prediction in 119.8779326230001 seconds
+{'plddt_total': 94.18531999765293, 'plddt_binder': 94.93146487970233, 'plddt_target': 93.5352135657683, 'pae_binder': 2.027588, 'pae_target': 3.5014384, 'pae_interaction': 5.348155975341797, 'binder_aligned_rmsd': 0.47619438, 'target_aligned_rmsd': 1.8977729, 'time': 130.85466380999992}
+Tag: Trka_binder_design_75_af2pred reported success in 130.85466380999992 seconds
+Processing struct with tag: Trka_binder_design_17
+The distance between residues 88 and 89 is 26.07 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 88
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fe01ca44d60> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_17 finished AF2 prediction in 10.827765092999925 seconds
+{'plddt_total': 93.36228964931266, 'plddt_binder': 93.01404056839763, 'plddt_target': 93.6657145911, 'pae_binder': 2.904101, 'pae_target': 3.4424, 'pae_interaction': 6.182364463806152, 'binder_aligned_rmsd': 0.889026, 'target_aligned_rmsd': 1.533444, 'time': 20.139241749999883}
+Tag: Trka_binder_design_17_af2pred reported success in 20.139241749999883 seconds
+Processing struct with tag: Trka_binder_design_23
+The distance between residues 94 and 95 is 28.95 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 94
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fdf91dd56c0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_23 finished AF2 prediction in 118.65421884900002 seconds
+{'plddt_total': 94.45636347006672, 'plddt_binder': 94.64493807459193, 'plddt_target': 94.2808583925878, 'pae_binder': 2.519104, 'pae_target': 3.4471214, 'pae_interaction': 26.391672134399414, 'binder_aligned_rmsd': 0.58002096, 'target_aligned_rmsd': 20.297525, 'time': 130.292471579}
+Tag: Trka_binder_design_23_af2pred reported success in 130.292471579 seconds
+Processing struct with tag: Trka_binder_design_7
+The distance between residues 56 and 57 is 44.25 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 56
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fdf8f066c00> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_7 finished AF2 prediction in 113.88727130899997 seconds
+{'plddt_total': 90.15506360563577, 'plddt_binder': 86.64280080115574, 'plddt_target': 92.10245684376333, 'pae_binder': 2.830804, 'pae_target': 3.653968, 'pae_interaction': 8.796496391296387, 'binder_aligned_rmsd': 0.74535453, 'target_aligned_rmsd': 3.9417393, 'time': 122.35311208500002}
+Tag: Trka_binder_design_7_af2pred reported success in 122.35311208500002 seconds
+Processing struct with tag: Trka_binder_design_48
+The distance between residues 65 and 66 is 47.05 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 65
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fdf9b4e5260> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_48 finished AF2 prediction in 8.42385409399958 seconds
+{'plddt_total': 92.80940736098549, 'plddt_binder': 91.79949975011249, 'plddt_target': 93.45934790263642, 'pae_binder': 2.6208732, 'pae_target': 3.5406892, 'pae_interaction': 6.828300476074219, 'binder_aligned_rmsd': 0.76005405, 'target_aligned_rmsd': 1.922647, 'time': 15.794767402999923}
+Tag: Trka_binder_design_48_af2pred reported success in 15.794767402999923 seconds
+Processing struct with tag: Trka_binder_design_4
+The distance between residues 84 and 85 is 28.33 A > limit 3.0 A.
+I'm going to insert a chainbreak after residue 84
+WARNING:tensorflow:AutoGraph could not transform <function process_tensors_from_config.<locals>.wrap_ensemble_fn at 0x7fe04a792ca0> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: `haiku.experimental.flax` features require `flax` to be installed.
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Running model_1_ptm
+Tag: Trka_binder_design_4 finished AF2 prediction in 10.387764435999998 seconds
+{'plddt_total': 94.37436448332699, 'plddt_binder': 94.39804265196827, 'plddt_target': 94.35467174901143, 'pae_binder': 2.2832236, 'pae_target': 3.3212178, 'pae_interaction': 4.8773932456970215, 'binder_aligned_rmsd': 0.5631183, 'target_aligned_rmsd': 1.2790359, 'time': 19.432614249999915}
+Tag: Trka_binder_design_4_af2pred reported success in 19.432614249999915 seconds
+{
+  "pass_thresholds": {
+    "pae_interaction": 10.0,
+    "plddt_binder": 80.0,
+    "binder_aligned_rmsd": 2.0
+  },
+  "binders": {
+    "count": 6,
+    "pae_interaction": {
+      "min": 4.418,
+      "median": 5.7835,
+      "max": 26.392,
+      "mean": 8.994333333333334
+    },
+    "passes_filter": 5
+  },
+  "non_binders": {
+    "count": 14,
+    "pae_interaction": {
+      "min": 4.392,
+      "median": 5.542,
+      "max": 8.796,
+      "mean": 5.752642857142858
+    },
+    "passes_filter": 14
+  }
+}
