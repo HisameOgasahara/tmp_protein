@@ -1,0 +1,13 @@
+> /content/gfp_foundry_0d0b0ba4/venv/bin/python /content/gfp_main_yxknmqcm/repo/pdl1_pipeline/workflow.py design_sequences /content/pdl1_8aom_2ilpi09e
+Environment variable CCD_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+Environment variable PDB_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+/content/gfp_foundry_0d0b0ba4/venv/lib/python3.12/site-packages/mpnn/utils/inference.py:1602: DeprecationWarning: Passing processing kwargs directly is deprecated; use config instead.
+  data = parse(
+/content/gfp_foundry_0d0b0ba4/venv/lib/python3.12/site-packages/mpnn/utils/inference.py:2231: DeprecationWarning: Use get_annotation_categories(n_body=2) instead of get_annotation_2d_categories().
+  "mpnn_pair_bias" in atom_array_plus.get_annotation_2d_categories()

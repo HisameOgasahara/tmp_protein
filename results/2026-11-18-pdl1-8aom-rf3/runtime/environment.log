@@ -1,0 +1,7 @@
+> /content/gfp_foundry_0d0b0ba4/venv/bin/python -c import sys,platform; print(sys.version); print(platform.platform())
+3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]
+Linux-6.6.159+-x86_64-with-glibc2.39
+> /content/gfp_foundry_0d0b0ba4/venv/bin/python -c import torch; print('torch',torch.__version__); print('CUDA',torch.version.cuda); print('GPU',torch.cuda.get_device_name())
+torch 2.11.0+cu128
+CUDA 12.8
+GPU Tesla T4

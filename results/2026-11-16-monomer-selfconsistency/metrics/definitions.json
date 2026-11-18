@@ -1,0 +1,10 @@
+{
+  "representative": "Highest RF3 ranking score per sequence.",
+  "ca_rmsd_angstrom": "Kabsch superposition without reflection, C-alpha, matching single-chain residue order.",
+  "overall_plddt": "RF3 overall_plddt, with the model's native scale.",
+  "ca_plddt": "RF3 predicted pLDDT on each residue's C-alpha atom, with the model's native scale.",
+  "identity_fraction": "Identical residues divided by full alignment length for equal-length, ungapped sequences.",
+  "residue_count": "Count of distinct polymer residues with one finite C-alpha coordinate.",
+  "time": "Wall clock elapsed with CUDA synchronization on each stage boundary.",
+  "vram": "Per-process peak PyTorch allocator allocated and reserved memory, MiB."
+}

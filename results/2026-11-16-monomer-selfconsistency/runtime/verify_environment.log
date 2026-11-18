@@ -1,0 +1,32 @@
+$ /content/foundry_0d0b0ba_py312/bin/python -u /content/protein_work_20261116_034141_e707cc62/verify_environment.py
+Environment variable CCD_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+Environment variable PDB_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+03:44:13 INFO rf3._core: cuEquivariance usage disabled via DISABLE_CUEQUIVARIANCE
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "torch": "2.11.0+cu128",
+  "cuda_wheel": "12.8",
+  "device": "Tesla T4",
+  "compute_capability": [
+    7,
+    5
+  ],
+  "vram_mib": 14912.6875,
+  "foundry": "1.0.0",
+  "foundry_source": {
+    "url": "https://github.com/RosettaCommons/foundry.git",
+    "vcs_info": {
+      "vcs": "git",
+      "commit_id": "0d0b0ba44fab7ca76aa4b625c014ce5964c7d284",
+      "requested_revision": "0d0b0ba44fab7ca76aa4b625c014ce5964c7d284"
+    }
+  },
+  "atomworks": "3.0.1",
+  "rf3_cuequivariance": false
+}

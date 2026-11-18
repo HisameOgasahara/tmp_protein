@@ -1,0 +1,16 @@
+$ /content/foundry_0d0b0ba_py312/bin/python -u /content/protein_work_20261116_034141_e707cc62/design_sequences.py
+Environment variable CCD_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+Environment variable PDB_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+{'model': 'LigandMPNN', 'operation': 'load', 'input_id': 'checkpoint', 'status': 'success', 'seconds': 0.1182668520000334, 'baseline_allocated_mib': 0.0, 'peak_allocated_mib': 9.99267578125, 'peak_reserved_mib': 10.0}
+/content/foundry_0d0b0ba_py312/lib/python3.12/site-packages/mpnn/utils/inference.py:1602: DeprecationWarning: Passing processing kwargs directly is deprecated; use config instead.
+  data = parse(
+/content/foundry_0d0b0ba_py312/lib/python3.12/site-packages/mpnn/utils/inference.py:2231: DeprecationWarning: Use get_annotation_categories(n_body=2) instead of get_annotation_2d_categories().
+  "mpnn_pair_bias" in atom_array_plus.get_annotation_2d_categories()
+{'model': 'LigandMPNN', 'operation': 'inference', 'input_id': 'bb01', 'status': 'success', 'seconds': 4.415868898999861, 'baseline_allocated_mib': 9.99267578125, 'peak_allocated_mib': 136.27685546875, 'peak_reserved_mib': 170.0}
+{'model': 'LigandMPNN', 'operation': 'inference', 'input_id': 'bb02', 'status': 'success', 'seconds': 1.0557349990001512, 'baseline_allocated_mib': 19.11767578125, 'peak_allocated_mib': 136.27685546875, 'peak_reserved_mib': 170.0}

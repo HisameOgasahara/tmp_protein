@@ -1,0 +1,162 @@
+[
+  {
+    "id": "backbone_01_seq01",
+    "sequence": "AAAARAAAIAAKKAELTARAIEEVKKVKDDPVALLKMLEELIAELKAACEGDLELVKRLGKELVAAVRKAL",
+    "backbone": {
+      "id": "backbone_01",
+      "file": "structures/backbone_01.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_01_seq02",
+    "sequence": "AAAARAAAIAAFKERATAEAIEEVKKVKDDKVRLLELLERLIRELKEACEGDLALVKELGKEIVAAVRKAL",
+    "backbone": {
+      "id": "backbone_01",
+      "file": "structures/backbone_01.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_02_seq01",
+    "sequence": "DLALKIMAAADHAAAQGWSGVEIALAVAAAAAPEAAARVAALAPAVADALLAFAAAHPIALPPETAEHLIARAARLVAAA",
+    "backbone": {
+      "id": "backbone_02",
+      "file": "structures/backbone_02.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_02_seq02",
+    "sequence": "SLALAIMAAADHLAAQGWSGLEIALGVAAAGAPAAAAAVAALAPAIADRLLAFAAAHPIALPPETAAHLIARAARLVAAA",
+    "backbone": {
+      "id": "backbone_02",
+      "file": "structures/backbone_02.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_03_seq01",
+    "sequence": "MKKRHVLHRTIRTDAPRAVIEAAVAAATERAAQLGLDMKARLADDGTLYLTFRGNQTKEDFEAAVAEVLALVDAGLA",
+    "backbone": {
+      "id": "backbone_03",
+      "file": "structures/backbone_03.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_03_seq02",
+    "sequence": "MKKRHVKHVKIKTDAPREVIEAAIAKATELAAELGLEMKALLSDDGTLYLVLRGVQLKEDFEAAAAKVLAALEEGLA",
+    "backbone": {
+      "id": "backbone_03",
+      "file": "structures/backbone_03.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_04_seq01",
+    "sequence": "MDWIAVIQAYAKAEAFDHTYLYRVPKEKLEEETERLIAELEAELDSEVAAVYHVDDYIIIGLD",
+    "backbone": {
+      "id": "backbone_04",
+      "file": "structures/backbone_04.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_04_seq02",
+    "sequence": "MDWIAVIDAVDEAEAHDVTEVHRVPKKRLEEEAERLIAELEAALDGTVSAVHFVDDYIIIGLD",
+    "backbone": {
+      "id": "backbone_04",
+      "file": "structures/backbone_04.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_05_seq01",
+    "sequence": "AAALEAGAAEPRVVAALRELYRVRPDLSAAVEQGIIDLLNAKQYDVALAAIESLIRRAKAA",
+    "backbone": {
+      "id": "backbone_05",
+      "file": "structures/backbone_05.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_05_seq02",
+    "sequence": "AAALAAAADHPEVVAALKRLLEVRPDLSAAVAQGIIDLCNSERWDEALAAIDSLIRRAEAA",
+    "backbone": {
+      "id": "backbone_05",
+      "file": "structures/backbone_05.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_06_seq01",
+    "sequence": "AAVLAELDAIEAELRAADAADASVEEIREILARASALHKAAMRSTDDKAFMDAVAAKMEEILRLAQAILEAKRA",
+    "backbone": {
+      "id": "backbone_06",
+      "file": "structures/backbone_06.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_06_seq02",
+    "sequence": "SATLAALRALEARLREAAANNASIEEIKAILAEASALHKAAMRSTDDKAFLDEIAALMERILRLAKAILDEKRA",
+    "backbone": {
+      "id": "backbone_06",
+      "file": "structures/backbone_06.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_07_seq01",
+    "sequence": "SPEEKLEAKLAEGAEIDRVMALPAARAAMLAWRPLVSPAEMREMTLEIGRLLATKEKSVEEVLREVAERYGLPFRG",
+    "backbone": {
+      "id": "backbone_07",
+      "file": "structures/backbone_07.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_07_seq02",
+    "sequence": "SPEEKLEAKLAEGARIDEVMANPAARAAMLAWRPQLSPAQLREATLRLGELLATKEKSVDEVLAEVAAEYGLPYTG",
+    "backbone": {
+      "id": "backbone_07",
+      "file": "structures/backbone_07.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_08_seq01",
+    "sequence": "ALTPEEVALRKAIAEAEALAKQEKNPRIQALAYRAIAKAYERLAELVAPRDPARAAELRAKAKEYDKKAKEILDKLK",
+    "backbone": {
+      "id": "backbone_08",
+      "file": "structures/backbone_08.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  },
+  {
+    "id": "backbone_08_seq02",
+    "sequence": "PLTPRELSLLEHIREAEALAKQEKDPRVQALALRAIADAYEELAELVAPRDPALAAELRARAAAYRAEADRLLAALE",
+    "backbone": {
+      "id": "backbone_08",
+      "file": "structures/backbone_08.cif",
+      "target": "B",
+      "binder": "A"
+    }
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "diffused_index_map": {},
+  "metrics": {
+    "max_ca_deviation": 0.07712507247924805,
+    "n_chainbreaks": 0,
+    "n_clashing.interresidue_clashes_w_sidechain": 0,
+    "n_clashing.interresidue_clashes_w_backbone": 0,
+    "non_loop_fraction": 0.675,
+    "loop_fraction": 0.325,
+    "helix_fraction": 0.4,
+    "sheet_fraction": 0.275,
+    "num_ss_elements": 5,
+    "radius_of_gyration": 11.813150630048975,
+    "alanine_content": 0.3875,
+    "glycine_content": 0.0625,
+    "num_residues": 80,
+    "diffused_com": [
+      -2.2184457778930664,
+      0.268714964389801,
+      1.2635388374328613
+    ]
+  },
+  "specification": {
+    "length": "80",
+    "extra": {
+      "task_name": "",
+      "sampled_contig": "80P",
+      "num_tokens_in": 80,
+      "num_residues_in": 80,
+      "num_chains": 1,
+      "num_atoms": 400,
+      "num_residues": 81,
+      "example_id": "_0"
+    }
+  },
+  "ckpt_path": "/content/foundry_checkpoints/rfd3_latest.ckpt",
+  "seed": 0,
+  "inference_settings": {
+    "mode": "fast",
+    "execution_path": "legacy",
+    "random_stream": "legacy_global",
+    "pooling": "fp32_mean",
+    "compile_model": false,
+    "compile_cuda_graphs": false,
+    "inference_batch_size": 1,
+    "kernel_backend": "torch",
+    "dense_attention_backend": "vanilla",
+    "inference_cuda_graph": false
+  }
+}

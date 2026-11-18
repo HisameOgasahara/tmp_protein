@@ -1,0 +1,362 @@
+[
+  {
+    "sequence_id": "bb01_s01",
+    "backbone_id": "bb01",
+    "sequence": "KTTKTLTVTATDENGAVLATQTLTLAVAPGDTVTVSLTNTGSADQTVTVTVTDANGKVVASATLTIAAGATVSVSLTIQA",
+    "reference": "structures/generated/bb01.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 0,
+      "designed_sequence": "KTTKTLTVTATDENGAVLATQTLTLAVAPGDTVTVSLTNTGSADQTVTVTVTDANGKVVASATLTIAAGATVSVSLTIQA",
+      "confidence": 0.4618820250034332,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.6000000238418579,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb01_s02",
+    "backbone_id": "bb01",
+    "sequence": "RTSRTLTVTATDENGNVVATQTLTLDVAPGDTVNVSLTNTGSNDLNVTVTVTDAAGRQVASATLTIAAGATKTVSLTIQA",
+    "reference": "structures/generated/bb01.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 1,
+      "designed_sequence": "RTSRTLTVTATDENGNVVATQTLTLDVAPGDTVNVSLTNTGSNDLNVTVTVTDAAGRQVASATLTIAAGATKTVSLTIQA",
+      "confidence": 0.47518235445022583,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.612500011920929,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb01_s03",
+    "backbone_id": "bb01",
+    "sequence": "RTRRTLTVTAKDANGNVLATQTLTLDVAPGDTVDVELTNTGSTDQNVTVTVTDAAGRVVASATLTIAAGATVTVSLTIAA",
+    "reference": "structures/generated/bb01.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 2,
+      "designed_sequence": "RTRRTLTVTAKDANGNVLATQTLTLDVAPGDTVDVELTNTGSTDQNVTVTVTDAAGRVVASATLTIAAGATVTVSLTIAA",
+      "confidence": 0.47664204239845276,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.625,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb01_s04",
+    "backbone_id": "bb01",
+    "sequence": "ATEKTLTITATDAAGAVLATQTLTLKVKPGDTVTVSLTNTLATDQDVTVTATDENGKQVASATLTIGAGATVSVTLTIKA",
+    "reference": "structures/generated/bb01.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 3,
+      "designed_sequence": "ATEKTLTITATDAAGAVLATQTLTLKVKPGDTVTVSLTNTLATDQDVTVTATDENGKQVASATLTIGAGATVSVTLTIKA",
+      "confidence": 0.46373024582862854,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.5874999761581421,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb01_s05",
+    "backbone_id": "bb01",
+    "sequence": "RTERTLTVTATDAAGNVLATQTLTLAVAPGDTVTVDLTNTLSTDQTVTVTVTDEAGRTVASATLTIAAGATVTVTLTIAA",
+    "reference": "structures/generated/bb01.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 4,
+      "designed_sequence": "RTERTLTVTATDAAGNVLATQTLTLAVAPGDTVTVDLTNTLSTDQTVTVTVTDEAGRTVASATLTIAAGATVTVTLTIAA",
+      "confidence": 0.47335806488990784,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.6499999761581421,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb01_s06",
+    "backbone_id": "bb01",
+    "sequence": "RTERTLTVTAKDENGNVIATQTLTLAVAPGDTVSVALTNTLSNDLNVTVTVTDAAGRQVASATLTIAAGATVTVSLTIRA",
+    "reference": "structures/generated/bb01.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 5,
+      "designed_sequence": "RTERTLTVTAKDENGNVIATQTLTLAVAPGDTVSVALTNTLSNDLNVTVTVTDAAGRQVASATLTIAAGATVTVSLTIRA",
+      "confidence": 0.46649134159088135,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.612500011920929,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb01_s07",
+    "backbone_id": "bb01",
+    "sequence": "RTLRTLTVTARDAAGNVLATQTLTLNVAPGDTVTVALTNTGATDQTVTVTVTDSAGRQVASATLTIAAGATVDVTLTIQA",
+    "reference": "structures/generated/bb01.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 6,
+      "designed_sequence": "RTLRTLTVTARDAAGNVLATQTLTLNVAPGDTVTVALTNTGATDQTVTVTVTDSAGRQVASATLTIAAGATVDVTLTIQA",
+      "confidence": 0.4576548933982849,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.637499988079071,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb01_s08",
+    "backbone_id": "bb01",
+    "sequence": "KEKKTLTVTATDENGNVLATQTVTLNVAPGDTVSVSLTNTGSTDQTVTVTVTDENGKVVASATLTIAAGATVTVTLTIQA",
+    "reference": "structures/generated/bb01.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 7,
+      "designed_sequence": "KEKKTLTVTATDENGNVLATQTVTLNVAPGDTVSVSLTNTGSTDQTVTVTVTDENGKVVASATLTIAAGATVTVTLTIQA",
+      "confidence": 0.46852177381515503,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.574999988079071,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb01_s09",
+    "backbone_id": "bb01",
+    "sequence": "RTEKTLTITARDSNGNVLATQTLTLKVKAGDTVNVSLTNTLSSDQTVTVTVTDSAGRQVASATLTIKAGATVTVSLTIKA",
+    "reference": "structures/generated/bb01.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 8,
+      "designed_sequence": "RTEKTLTITARDSNGNVLATQTLTLKVKAGDTVNVSLTNTLSSDQTVTVTVTDSAGRQVASATLTIKAGATVTVSLTIKA",
+      "confidence": 0.449886679649353,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.5625,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb01_s10",
+    "backbone_id": "bb01",
+    "sequence": "KEEKTLTVTARDAAGNVVAEQTLTLKVAAGDTVSVSLTNTLPTDLDVTVTVTDENGKVVASATLTIAAGATVTVTLTIKA",
+    "reference": "structures/generated/bb01.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 9,
+      "designed_sequence": "KEEKTLTVTARDAAGNVVAEQTLTLKVAAGDTVSVSLTNTLPTDLDVTVTVTDENGKVVASATLTIAAGATVTVTLTIKA",
+      "confidence": 0.45043861865997314,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.637499988079071,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb02_s01",
+    "backbone_id": "bb02",
+    "sequence": "PQRVVVIVLRSRSPAALARAAAAEAAGRAAGAEVEVIERPDATPEEAAELGRRRIAERGGTLLRLEATDDVTIAVGLVPA",
+    "reference": "structures/generated/bb02.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 0,
+      "designed_sequence": "PQRVVVIVLRSRSPAALARAAAAEAAGRAAGAEVEVIERPDATPEEAAELGRRRIAERGGTLLRLEATDDVTIAVGLVPA",
+      "confidence": 0.4612951874732971,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.48750001192092896,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb02_s02",
+    "backbone_id": "bb02",
+    "sequence": "PQRVVVIVRRSDSPAAQARAAAAEAAGRAAGAEVEVIDRPDATPEEAAALGRRRIAERGGTVLSVEATDDVTVVVGLVPA",
+    "reference": "structures/generated/bb02.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 1,
+      "designed_sequence": "PQRVVVIVRRSDSPAAQARAAAAEAAGRAAGAEVEVIDRPDATPEEAAALGRRRIAERGGTVLSVEATDDVTVVVGLVPA",
+      "confidence": 0.47156065702438354,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.4625000059604645,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb02_s03",
+    "backbone_id": "bb02",
+    "sequence": "MQRVVVIVQRSDSPAALARAAAARAAAEAAGAEVRLIRRPDATPEEAAALGRQYIADLGGTVERVETTDDLTIAVGLVPA",
+    "reference": "structures/generated/bb02.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 2,
+      "designed_sequence": "MQRVVVIVQRSDSPAALARAAAARAAAEAAGAEVRLIRRPDATPEEAAALGRQYIADLGGTVERVETTDDLTIAVGLVPA",
+      "confidence": 0.4341725707054138,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.44999998807907104,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb02_s04",
+    "backbone_id": "bb02",
+    "sequence": "PQRVVVIVLRSRSPAALARAAAAEAAARAAGAECIVIERPDASPEEAAAIGRQLIADRGGTVLEVEATDDVVIAVGLVPR",
+    "reference": "structures/generated/bb02.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 3,
+      "designed_sequence": "PQRVVVIVLRSRSPAALARAAAAEAAARAAGAECIVIERPDASPEEAAAIGRQLIADRGGTVLEVEATDDVVIAVGLVPR",
+      "confidence": 0.4371985197067261,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.512499988079071,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb02_s05",
+    "backbone_id": "bb02",
+    "sequence": "PRRVVVIVLRSDSPAALARAAAAAEAGRAAGAEVRILRRPDASPEEAAALARRLIAERGGTLLRLETTDDVTIAVGLVPE",
+    "reference": "structures/generated/bb02.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 4,
+      "designed_sequence": "PRRVVVIVLRSDSPAALARAAAAAEAGRAAGAEVRILRRPDASPEEAAALARRLIAERGGTLLRLETTDDVTIAVGLVPE",
+      "confidence": 0.4408997893333435,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.48750001192092896,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb02_s06",
+    "backbone_id": "bb02",
+    "sequence": "PQRVVVVVLRSDSPAALARVAAVEAAARAAGATVVVIRRPDATPEEAAELARRYIAERGGTLLELEATDDVVVGVGLVPA",
+    "reference": "structures/generated/bb02.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 5,
+      "designed_sequence": "PQRVVVVVLRSDSPAALARVAAVEAAARAAGATVVVIRRPDATPEEAAELARRYIAERGGTLLELEATDDVVVGVGLVPA",
+      "confidence": 0.4425605833530426,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.5249999761581421,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb02_s07",
+    "backbone_id": "bb02",
+    "sequence": "PQRVVVIVLRSDSPAALARAAAARAAGEAAGARVVVIRRPDASPEEAAELARQYIADLGGTVLEVEATDDVTIAVGLVPA",
+    "reference": "structures/generated/bb02.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 6,
+      "designed_sequence": "PQRVVVIVLRSDSPAALARAAAARAAGEAAGARVVVIRRPDASPEEAAELARQYIADLGGTVLEVEATDDVTIAVGLVPA",
+      "confidence": 0.4549005329608917,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.5,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb02_s08",
+    "backbone_id": "bb02",
+    "sequence": "MQRVVVIVRRSDSPAALAREAAARAAAEAAGAEVVVIERPDASPEEARALGERYIREKGGTVLEVEATDDLTIVVGEVPR",
+    "reference": "structures/generated/bb02.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 7,
+      "designed_sequence": "MQRVVVIVRRSDSPAALAREAAARAAAEAAGAEVVVIERPDASPEEARALGERYIREKGGTVLEVEATDDLTIVVGEVPR",
+      "confidence": 0.4302677810192108,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.42500001192092896,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb02_s09",
+    "backbone_id": "bb02",
+    "sequence": "PRTVVVLVLRSRSPAAQAAAAAAAAAARAAGATVIVIERPDASPEEAAALARQYIADLGGTLLELRATPDLTIAVGLVPE",
+    "reference": "structures/generated/bb02.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 8,
+      "designed_sequence": "PRTVVVLVLRSRSPAAQAAAAAAAAAARAAGATVIVIERPDASPEEAAALARQYIADLGGTLLELRATPDLTIAVGLVPE",
+      "confidence": 0.42639872431755066,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.550000011920929,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  },
+  {
+    "sequence_id": "bb02_s10",
+    "backbone_id": "bb02",
+    "sequence": "PQRVVVIVRRSDSPAALARAAAVAAAGRAAGATVVEVDAPDATPEEAAALGRQAIADAGGTVLRVEATDDVTVVVGLVPA",
+    "reference": "structures/generated/bb02.cif",
+    "mpnn": {
+      "batch_idx": 0,
+      "design_idx": 9,
+      "designed_sequence": "PQRVVVIVRRSDSPAALARAAAVAAAGRAAGATVVEVDAPDATPEEAAALGRQAIADAGGTVLRVEATDDVTVVVGLVPA",
+      "confidence": 0.44227465987205505,
+      "ligand_interface_confidence": null,
+      "sequence_recovery": 0.48750001192092896,
+      "ligand_interface_sequence_recovery": null,
+      "model_type": "ligand_mpnn",
+      "checkpoint_path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+      "is_legacy_weights": true
+    }
+  }
+]

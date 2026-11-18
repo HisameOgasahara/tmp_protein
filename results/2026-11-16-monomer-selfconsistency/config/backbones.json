@@ -1,0 +1,12 @@
+[
+  {
+    "backbone_id": "bb01",
+    "file": "structures/generated/bb01.cif",
+    "example_id": "_0_model_0"
+  },
+  {
+    "backbone_id": "bb02",
+    "file": "structures/generated/bb02.cif",
+    "example_id": "_0_model_1"
+  }
+]

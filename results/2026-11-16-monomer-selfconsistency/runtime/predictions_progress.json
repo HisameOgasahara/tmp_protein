@@ -1,0 +1,902 @@
+[
+  {
+    "sequence_id": "bb01_s01",
+    "sample_id": "bb01_s01_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb01_s01_r01.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s01",
+    "sample_id": "bb01_s01_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb01_s01_r02.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s01",
+    "sample_id": "bb01_s01_r03",
+    "sample_idx": 2,
+    "rank": 3,
+    "file": "structures/predicted/bb01_s01_r03.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s01",
+    "sample_id": "bb01_s01_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb01_s01_r04.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s01",
+    "sample_id": "bb01_s01_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb01_s01_r05.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s02",
+    "sample_id": "bb01_s02_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb01_s02_r01.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s02",
+    "sample_id": "bb01_s02_r02",
+    "sample_idx": 2,
+    "rank": 2,
+    "file": "structures/predicted/bb01_s02_r02.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s02",
+    "sample_id": "bb01_s02_r03",
+    "sample_idx": 1,
+    "rank": 3,
+    "file": "structures/predicted/bb01_s02_r03.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s02",
+    "sample_id": "bb01_s02_r04",
+    "sample_idx": 4,
+    "rank": 4,
+    "file": "structures/predicted/bb01_s02_r04.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s02",
+    "sample_id": "bb01_s02_r05",
+    "sample_idx": 3,
+    "rank": 5,
+    "file": "structures/predicted/bb01_s02_r05.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s03",
+    "sample_id": "bb01_s03_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb01_s03_r01.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s03",
+    "sample_id": "bb01_s03_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb01_s03_r02.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s03",
+    "sample_id": "bb01_s03_r03",
+    "sample_idx": 2,
+    "rank": 3,
+    "file": "structures/predicted/bb01_s03_r03.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s03",
+    "sample_id": "bb01_s03_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb01_s03_r04.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s03",
+    "sample_id": "bb01_s03_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb01_s03_r05.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s04",
+    "sample_id": "bb01_s04_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb01_s04_r01.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s04",
+    "sample_id": "bb01_s04_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb01_s04_r02.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s04",
+    "sample_id": "bb01_s04_r03",
+    "sample_idx": 2,
+    "rank": 3,
+    "file": "structures/predicted/bb01_s04_r03.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s04",
+    "sample_id": "bb01_s04_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb01_s04_r04.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s04",
+    "sample_id": "bb01_s04_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb01_s04_r05.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s05",
+    "sample_id": "bb01_s05_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb01_s05_r01.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s05",
+    "sample_id": "bb01_s05_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb01_s05_r02.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s05",
+    "sample_id": "bb01_s05_r03",
+    "sample_idx": 2,
+    "rank": 3,
+    "file": "structures/predicted/bb01_s05_r03.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s05",
+    "sample_id": "bb01_s05_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb01_s05_r04.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s05",
+    "sample_id": "bb01_s05_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb01_s05_r05.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s06",
+    "sample_id": "bb01_s06_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb01_s06_r01.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s06",
+    "sample_id": "bb01_s06_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb01_s06_r02.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s06",
+    "sample_id": "bb01_s06_r03",
+    "sample_idx": 3,
+    "rank": 3,
+    "file": "structures/predicted/bb01_s06_r03.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s06",
+    "sample_id": "bb01_s06_r04",
+    "sample_idx": 4,
+    "rank": 4,
+    "file": "structures/predicted/bb01_s06_r04.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s06",
+    "sample_id": "bb01_s06_r05",
+    "sample_idx": 2,
+    "rank": 5,
+    "file": "structures/predicted/bb01_s06_r05.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s07",
+    "sample_id": "bb01_s07_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb01_s07_r01.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s07",
+    "sample_id": "bb01_s07_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb01_s07_r02.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s07",
+    "sample_id": "bb01_s07_r03",
+    "sample_idx": 2,
+    "rank": 3,
+    "file": "structures/predicted/bb01_s07_r03.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s07",
+    "sample_id": "bb01_s07_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb01_s07_r04.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s07",
+    "sample_id": "bb01_s07_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb01_s07_r05.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s08",
+    "sample_id": "bb01_s08_r01",
+    "sample_idx": 2,
+    "rank": 1,
+    "file": "structures/predicted/bb01_s08_r01.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s08",
+    "sample_id": "bb01_s08_r02",
+    "sample_idx": 0,
+    "rank": 2,
+    "file": "structures/predicted/bb01_s08_r02.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s08",
+    "sample_id": "bb01_s08_r03",
+    "sample_idx": 1,
+    "rank": 3,
+    "file": "structures/predicted/bb01_s08_r03.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s08",
+    "sample_id": "bb01_s08_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb01_s08_r04.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s08",
+    "sample_id": "bb01_s08_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb01_s08_r05.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s09",
+    "sample_id": "bb01_s09_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb01_s09_r01.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s09",
+    "sample_id": "bb01_s09_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb01_s09_r02.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s09",
+    "sample_id": "bb01_s09_r03",
+    "sample_idx": 2,
+    "rank": 3,
+    "file": "structures/predicted/bb01_s09_r03.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s09",
+    "sample_id": "bb01_s09_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb01_s09_r04.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s09",
+    "sample_id": "bb01_s09_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb01_s09_r05.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s10",
+    "sample_id": "bb01_s10_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb01_s10_r01.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s10",
+    "sample_id": "bb01_s10_r02",
+    "sample_idx": 2,
+    "rank": 2,
+    "file": "structures/predicted/bb01_s10_r02.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s10",
+    "sample_id": "bb01_s10_r03",
+    "sample_idx": 4,
+    "rank": 3,
+    "file": "structures/predicted/bb01_s10_r03.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s10",
+    "sample_id": "bb01_s10_r04",
+    "sample_idx": 1,
+    "rank": 4,
+    "file": "structures/predicted/bb01_s10_r04.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb01_s10",
+    "sample_id": "bb01_s10_r05",
+    "sample_idx": 3,
+    "rank": 5,
+    "file": "structures/predicted/bb01_s10_r05.cif",
+    "reference": "structures/generated/bb01.cif",
+    "backbone_id": "bb01"
+  },
+  {
+    "sequence_id": "bb02_s01",
+    "sample_id": "bb02_s01_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb02_s01_r01.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s01",
+    "sample_id": "bb02_s01_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb02_s01_r02.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s01",
+    "sample_id": "bb02_s01_r03",
+    "sample_idx": 3,
+    "rank": 3,
+    "file": "structures/predicted/bb02_s01_r03.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s01",
+    "sample_id": "bb02_s01_r04",
+    "sample_idx": 4,
+    "rank": 4,
+    "file": "structures/predicted/bb02_s01_r04.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s01",
+    "sample_id": "bb02_s01_r05",
+    "sample_idx": 2,
+    "rank": 5,
+    "file": "structures/predicted/bb02_s01_r05.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s02",
+    "sample_id": "bb02_s02_r01",
+    "sample_idx": 1,
+    "rank": 1,
+    "file": "structures/predicted/bb02_s02_r01.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s02",
+    "sample_id": "bb02_s02_r02",
+    "sample_idx": 2,
+    "rank": 2,
+    "file": "structures/predicted/bb02_s02_r02.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s02",
+    "sample_id": "bb02_s02_r03",
+    "sample_idx": 0,
+    "rank": 3,
+    "file": "structures/predicted/bb02_s02_r03.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s02",
+    "sample_id": "bb02_s02_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb02_s02_r04.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s02",
+    "sample_id": "bb02_s02_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb02_s02_r05.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s03",
+    "sample_id": "bb02_s03_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb02_s03_r01.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s03",
+    "sample_id": "bb02_s03_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb02_s03_r02.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s03",
+    "sample_id": "bb02_s03_r03",
+    "sample_idx": 2,
+    "rank": 3,
+    "file": "structures/predicted/bb02_s03_r03.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s03",
+    "sample_id": "bb02_s03_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb02_s03_r04.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s03",
+    "sample_id": "bb02_s03_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb02_s03_r05.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s04",
+    "sample_id": "bb02_s04_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb02_s04_r01.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s04",
+    "sample_id": "bb02_s04_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb02_s04_r02.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s04",
+    "sample_id": "bb02_s04_r03",
+    "sample_idx": 2,
+    "rank": 3,
+    "file": "structures/predicted/bb02_s04_r03.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s04",
+    "sample_id": "bb02_s04_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb02_s04_r04.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s04",
+    "sample_id": "bb02_s04_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb02_s04_r05.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s05",
+    "sample_id": "bb02_s05_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb02_s05_r01.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s05",
+    "sample_id": "bb02_s05_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb02_s05_r02.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s05",
+    "sample_id": "bb02_s05_r03",
+    "sample_idx": 2,
+    "rank": 3,
+    "file": "structures/predicted/bb02_s05_r03.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s05",
+    "sample_id": "bb02_s05_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb02_s05_r04.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s05",
+    "sample_id": "bb02_s05_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb02_s05_r05.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s06",
+    "sample_id": "bb02_s06_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb02_s06_r01.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s06",
+    "sample_id": "bb02_s06_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb02_s06_r02.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s06",
+    "sample_id": "bb02_s06_r03",
+    "sample_idx": 2,
+    "rank": 3,
+    "file": "structures/predicted/bb02_s06_r03.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s06",
+    "sample_id": "bb02_s06_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb02_s06_r04.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s06",
+    "sample_id": "bb02_s06_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb02_s06_r05.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s07",
+    "sample_id": "bb02_s07_r01",
+    "sample_idx": 1,
+    "rank": 1,
+    "file": "structures/predicted/bb02_s07_r01.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s07",
+    "sample_id": "bb02_s07_r02",
+    "sample_idx": 3,
+    "rank": 2,
+    "file": "structures/predicted/bb02_s07_r02.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s07",
+    "sample_id": "bb02_s07_r03",
+    "sample_idx": 4,
+    "rank": 3,
+    "file": "structures/predicted/bb02_s07_r03.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s07",
+    "sample_id": "bb02_s07_r04",
+    "sample_idx": 0,
+    "rank": 4,
+    "file": "structures/predicted/bb02_s07_r04.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s07",
+    "sample_id": "bb02_s07_r05",
+    "sample_idx": 2,
+    "rank": 5,
+    "file": "structures/predicted/bb02_s07_r05.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s08",
+    "sample_id": "bb02_s08_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb02_s08_r01.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s08",
+    "sample_id": "bb02_s08_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb02_s08_r02.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s08",
+    "sample_id": "bb02_s08_r03",
+    "sample_idx": 2,
+    "rank": 3,
+    "file": "structures/predicted/bb02_s08_r03.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s08",
+    "sample_id": "bb02_s08_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb02_s08_r04.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s08",
+    "sample_id": "bb02_s08_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb02_s08_r05.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s09",
+    "sample_id": "bb02_s09_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb02_s09_r01.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s09",
+    "sample_id": "bb02_s09_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb02_s09_r02.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s09",
+    "sample_id": "bb02_s09_r03",
+    "sample_idx": 2,
+    "rank": 3,
+    "file": "structures/predicted/bb02_s09_r03.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s09",
+    "sample_id": "bb02_s09_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb02_s09_r04.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s09",
+    "sample_id": "bb02_s09_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb02_s09_r05.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s10",
+    "sample_id": "bb02_s10_r01",
+    "sample_idx": 0,
+    "rank": 1,
+    "file": "structures/predicted/bb02_s10_r01.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s10",
+    "sample_id": "bb02_s10_r02",
+    "sample_idx": 1,
+    "rank": 2,
+    "file": "structures/predicted/bb02_s10_r02.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s10",
+    "sample_id": "bb02_s10_r03",
+    "sample_idx": 2,
+    "rank": 3,
+    "file": "structures/predicted/bb02_s10_r03.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s10",
+    "sample_id": "bb02_s10_r04",
+    "sample_idx": 3,
+    "rank": 4,
+    "file": "structures/predicted/bb02_s10_r04.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  },
+  {
+    "sequence_id": "bb02_s10",
+    "sample_id": "bb02_s10_r05",
+    "sample_idx": 4,
+    "rank": 5,
+    "file": "structures/predicted/bb02_s10_r05.cif",
+    "reference": "structures/generated/bb02.cif",
+    "backbone_id": "bb02"
+  }
+]

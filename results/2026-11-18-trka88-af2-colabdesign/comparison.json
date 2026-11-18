@@ -1,0 +1,9 @@
+{
+  "paper_pose_rmsd_angstrom": 1.4,
+  "published_af2_vs_design_angstrom": 1.3895899534785623,
+  "reprediction_vs_design_angstrom": 38.65882188766913,
+  "reprediction_vs_published_af2_angstrom": 38.220576256044275,
+  "plddt": 94.53206844627857,
+  "interface_pae_angstrom": 26.365616023540497,
+  "iptm": 0.09851016849279404
+}

@@ -1,0 +1,29 @@
+{
+  "id": "no_initial_guess",
+  "threading": "original",
+  "input": "design",
+  "recycles": 3,
+  "initial_guess": false,
+  "target_template": true,
+  "seed": 0,
+  "precision": "default",
+  "status": "success",
+  "rmsd_vs_original_design": 48.82924699569878,
+  "rmsd_vs_published_af2": 48.59788788779871,
+  "input_rmsd_vs_design": 1.6540111434571735e-14,
+  "plddt_binder": 94.42,
+  "pae_interaction": 26.508,
+  "binder_aligned_rmsd": 0.597,
+  "original_scores": {
+    "binder_aligned_rmsd": "0.597",
+    "pae_binder": "2.732",
+    "pae_interaction": "26.508",
+    "pae_target": "3.336",
+    "plddt_binder": "94.420",
+    "plddt_target": "94.666",
+    "plddt_total": "94.548",
+    "target_aligned_rmsd": "48.829",
+    "time": "110.601",
+    "description": "TrkA_88_af2pred"
+  }
+}

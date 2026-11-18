@@ -1,0 +1,120 @@
+{
+  "aatype": {
+    "shape": [
+      194,
+      21
+    ],
+    "dtype": "int32",
+    "sha256": "9dcae7edb653d2cdc19f61cc64d1d809ce43182d251898cfc827f4ae3ad62116"
+  },
+  "between_segment_residues": {
+    "shape": [
+      194
+    ],
+    "dtype": "int32",
+    "sha256": "508f5ba745944e982367cdbcd6a240acc7f895583df43b519b7d6745f5d86f7b"
+  },
+  "domain_name": {
+    "shape": [
+      1
+    ],
+    "dtype": "object"
+  },
+  "residue_index": {
+    "shape": [
+      194
+    ],
+    "dtype": "int32",
+    "sha256": "e555d31551f0ce7abd758a630ee642bf9d75fa64813f3c6c56d06e015bc3089c"
+  },
+  "seq_length": {
+    "shape": [
+      194
+    ],
+    "dtype": "int32",
+    "sha256": "85639d0c1c01bcb9e8a20869bedd79a413f8f6c143d749cbecaedf7cc80c9891"
+  },
+  "sequence": {
+    "shape": [
+      1
+    ],
+    "dtype": "object"
+  },
+  "deletion_matrix_int": {
+    "shape": [
+      1,
+      194
+    ],
+    "dtype": "int32",
+    "sha256": "508f5ba745944e982367cdbcd6a240acc7f895583df43b519b7d6745f5d86f7b"
+  },
+  "msa": {
+    "shape": [
+      1,
+      194
+    ],
+    "dtype": "int32",
+    "sha256": "685bf933e626ad4d00fa3d97fca8173bc4bf70dd87b8f538ab6914a29d8fcc95"
+  },
+  "num_alignments": {
+    "shape": [
+      194
+    ],
+    "dtype": "int32",
+    "sha256": "5bed6833f91c13f814e835e353400e0ac86fdf1ed7905035ea635ee35cd0e17b"
+  },
+  "template_all_atom_positions": {
+    "shape": [
+      1,
+      194,
+      37,
+      3
+    ],
+    "dtype": "float64",
+    "sha256": "557bdf516b1844ed0526121c48ae89213aff55513c7e7ab10f94d6d3b644fb6a"
+  },
+  "template_all_atom_masks": {
+    "shape": [
+      1,
+      194,
+      37
+    ],
+    "dtype": "float64",
+    "sha256": "76a554e1d9d4188e0ffa6daa54bf55b1e1b561e730b799aa565e76efd29f20eb"
+  },
+  "template_sequence": {
+    "shape": [
+      1
+    ],
+    "dtype": "|S194"
+  },
+  "template_aatype": {
+    "shape": [
+      1,
+      194,
+      22
+    ],
+    "dtype": "int32",
+    "sha256": "9d855adc4fe7b20ffb543a986bcfad1ee538a4dedfcd1a11fdfdf62dcc5fc41a"
+  },
+  "template_confidence_scores": {
+    "shape": [
+      1,
+      194
+    ],
+    "dtype": "int64",
+    "sha256": "755f53b49c0ee259502453c39092a987155f23454bf8b86289108b8386f5283c"
+  },
+  "template_domain_names": {
+    "shape": [
+      1
+    ],
+    "dtype": "|S4"
+  },
+  "template_release_date": {
+    "shape": [
+      1
+    ],
+    "dtype": "|S4"
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "model": "RFD3",
+    "calls": 1,
+    "total_seconds": 56.530257573000085,
+    "peak_allocated_mib": 1834.91357421875,
+    "peak_reserved_mib": 1906.0
+  },
+  {
+    "model": "LigandMPNN",
+    "calls": 2,
+    "total_seconds": 5.471603898000012,
+    "peak_allocated_mib": 136.27685546875,
+    "peak_reserved_mib": 170.0
+  },
+  {
+    "model": "RF3",
+    "calls": 20,
+    "total_seconds": 255.78567570099926,
+    "peak_allocated_mib": 3032.806640625,
+    "peak_reserved_mib": 3104.0
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "plddt": {
+    "shape": [
+      194
+    ],
+    "dtype": "float64",
+    "sha256": "42d5f0ed1201250c5cf0a7d07fb03b6d7a89abc21ef8d801c4d63e740d572e47"
+  },
+  "aligned_confidence_probs": {
+    "shape": [
+      194,
+      194,
+      64
+    ],
+    "dtype": "float32",
+    "sha256": "1ff61a787a50a43a895e80b30be4b4988e6880bec2e7b8858bf991d5bdc5b052"
+  },
+  "predicted_aligned_error": {
+    "shape": [
+      194,
+      194
+    ],
+    "dtype": "float32",
+    "sha256": "ee8524aa2fb10b8af6aa2b7f2de6304b6f72db5735aa579140e77e12139b9b53"
+  },
+  "max_predicted_aligned_error": {
+    "shape": [],
+    "dtype": "float32",
+    "sha256": "8d7c87021aabeee2ea36d92350b8d4fdf307532c0830c03b51a806dff14718fd"
+  },
+  "ptm": {
+    "shape": [],
+    "dtype": "float64",
+    "sha256": "d12c909dbe3d8323fab45f8e8978f5398ae1648b492084ea2ab533cf969e0b10"
+  }
+}

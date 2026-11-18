@@ -1,0 +1,33 @@
+{
+  "commit": "0d0b0ba44fab7ca76aa4b625c014ce5964c7d284",
+  "seed": 0,
+  "rfd3": {
+    "length": 80,
+    "contig": null,
+    "n_batches": 1,
+    "diffusion_batch_size": 2,
+    "num_timesteps": 200,
+    "n_recycle": null,
+    "low_memory_mode": true,
+    "inference_kernel_backend": "torch",
+    "compile_model": false,
+    "compile_cuda_graphs": false,
+    "precision": "32-true"
+  },
+  "mpnn": {
+    "model_type": "ligand_mpnn",
+    "batch_size": 10,
+    "temperature": 0.1
+  },
+  "rf3": {
+    "num_steps": 50,
+    "n_recycles": 10,
+    "diffusion_batch_size": 5,
+    "triangle_attention_backend": "vanilla",
+    "dense_attention_backend": "vanilla",
+    "precision": "32-true",
+    "msa": null,
+    "template": null,
+    "early_stopping_plddt_threshold": null
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "rfd3": {
+    "path": "/content/foundry_checkpoints/rfd3_latest.ckpt",
+    "url": "https://files.ipd.uw.edu/pub/rfd3/rfd3_foundry_2025_12_01_remapped.ckpt",
+    "bytes": 2690316669,
+    "sha256": "9b3f85923e0d51e9453e15cdd2f8c666e7ce096a60577f57d11bbc54ae6d67c1"
+  },
+  "ligandmpnn": {
+    "path": "/content/foundry_checkpoints/ligandmpnn_v_32_010_25.pt",
+    "url": "https://files.ipd.uw.edu/pub/ligandmpnn/ligandmpnn_v_32_010_25.pt",
+    "bytes": 10541943,
+    "sha256": "161cd264061fda9680cbb940255522ae42f2966c552d045d87913d9452a80970"
+  },
+  "rf3": {
+    "path": "/content/foundry_checkpoints/rf3_foundry_01_24_latest_remapped.ckpt",
+    "url": "https://files.ipd.uw.edu/pub/rf3/rf3_foundry_01_24_latest_remapped.ckpt",
+    "bytes": 3038876446,
+    "sha256": "364ef592fd8042a9cf4176d045015190f8322f961ccca38d891b20ca578d3bb0"
+  }
+}

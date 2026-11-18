@@ -1,0 +1,31 @@
+$ /content/foundry_0d0b0ba_py312/bin/python -u /content/protein_work_20261116_034141_e707cc62/compare_structures.py
+Environment variable CCD_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+Environment variable PDB_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+Traceback (most recent call last):
+  File "/content/protein_work_20261116_034141_e707cc62/compare_structures.py", line 32, in <module>
+    save_cif(mobile, aligned_path)
+  File "/content/protein_work_20261116_034141_e707cc62/pipeline_common.py", line 72, in save_cif
+    to_cif_file(atoms, path.with_suffix(""), file_type="cif")
+  File "/content/foundry_0d0b0ba_py312/lib/python3.12/site-packages/atomworks/io/utils/io_utils.py", line 1552, in to_cif_file
+    file_obj = _to_cif_or_bcif(structure, config, model_ids=model_ids, as_bcif="bcif" in file_type)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/foundry_0d0b0ba_py312/lib/python3.12/site-packages/atomworks/io/utils/io_utils.py", line 1228, in _to_cif_or_bcif
+    structures = [_ensure_label_entity_id(s) for s in structures]
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/foundry_0d0b0ba_py312/lib/python3.12/site-packages/atomworks/io/utils/io_utils.py", line 1184, in _ensure_label_entity_id
+    annotated, _ = ta.annotate_entities(
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/content/foundry_0d0b0ba_py312/lib/python3.12/site-packages/atomworks/io/transforms/atom_array.py", line 642, in annotate_entities
+    _, edges = get_coarse_graph_as_nodes_and_edges(instance, lower_level_id, exclude_bond_types=exclude_bond_types)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/foundry_0d0b0ba_py312/lib/python3.12/site-packages/atomworks/io/utils/bonds.py", line 402, in get_coarse_graph_as_nodes_and_edges
+    bond_array = atom_array.bonds.as_array()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'as_array'
+$ /content/foundry_0d0b0ba_py312/bin/python -u /content/protein_work_20261116_034141_e707cc62/compare_structures.py

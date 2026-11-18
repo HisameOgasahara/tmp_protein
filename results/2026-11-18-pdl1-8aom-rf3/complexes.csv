@@ -1,0 +1,17 @@
+id,file,binder_pose_rmsd_angstrom,iptm,has_clash
+backbone_01_seq01,structures/backbone_01_seq01.cif,26.634733200073242,0.15207406878471375,False
+backbone_01_seq02,structures/backbone_01_seq02.cif,12.851663589477539,0.1328238546848297,False
+backbone_02_seq01,structures/backbone_02_seq01.cif,8.886266708374023,0.13510558009147644,False
+backbone_02_seq02,structures/backbone_02_seq02.cif,20.62387466430664,0.14575570821762085,False
+backbone_03_seq01,structures/backbone_03_seq01.cif,24.50041389465332,0.18403606116771698,False
+backbone_03_seq02,structures/backbone_03_seq02.cif,19.981321334838867,0.18737095594406128,False
+backbone_04_seq01,structures/backbone_04_seq01.cif,19.440502166748047,0.20363545417785645,False
+backbone_04_seq02,structures/backbone_04_seq02.cif,17.49953269958496,0.14455637335777283,False
+backbone_05_seq01,structures/backbone_05_seq01.cif,19.47163200378418,0.17804549634456635,False
+backbone_05_seq02,structures/backbone_05_seq02.cif,14.71275520324707,0.15558698773384094,False
+backbone_06_seq01,structures/backbone_06_seq01.cif,21.894859313964844,0.15700572729110718,False
+backbone_06_seq02,structures/backbone_06_seq02.cif,16.349672317504883,0.14496687054634094,False
+backbone_07_seq01,structures/backbone_07_seq01.cif,17.677492141723633,0.18142083287239075,False
+backbone_07_seq02,structures/backbone_07_seq02.cif,12.200089454650879,0.19528459012508392,False
+backbone_08_seq01,structures/backbone_08_seq01.cif,31.116741180419922,0.19905154407024384,False
+backbone_08_seq02,structures/backbone_08_seq02.cif,21.426225662231445,0.15960635244846344,False

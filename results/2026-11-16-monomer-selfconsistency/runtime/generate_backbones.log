@@ -1,0 +1,18 @@
+$ /content/foundry_0d0b0ba_py312/bin/python -u /content/protein_work_20261116_034141_e707cc62/generate_backbones.py
+Environment variable CCD_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+Environment variable PDB_MIRROR_PATH not set. Will not be able to use function requiring this variable. To set it you may:
+  (1) add the line 'export VAR_NAME=path/to/variable' to your .bashrc or .zshrc file
+  (2) set it in your current shell with 'export VAR_NAME=path/to/variable'
+  (3) write it to a .env file in the root of the atomworks.io repository
+Seed set to 0
+03:55:38 INFO rfd3.engine: [rank: 0] Low memory mode enabled.
+03:55:57 INFO rfd3.engine: [rank: 0] RFD3 inference: mode=fast, policy=torch, kernels=torch, compile_model=False, token_and_atom_cuda_graph=False, low_memory_mode=True
+{'model': 'RFD3', 'operation': 'load', 'input_id': 'checkpoint', 'status': 'success', 'seconds': 19.278802548000044, 'baseline_allocated_mib': 0.0, 'peak_allocated_mib': 1337.1767578125, 'peak_reserved_mib': 1344.0}
+03:55:59 WARNING atomworks.ml: Cached data not found for ALA at /net/tukwila/ncorley/datahub/MACE-OFF23_medium/A/ALA/ALA.pt
+03:56:54 INFO rfd3.engine: [rank: 0] Finished inference batch in 54.80 seconds.
+{'model': 'RFD3', 'operation': 'inference', 'input_id': 'all_backbones', 'status': 'success', 'seconds': 56.530257573000085, 'baseline_allocated_mib': 1337.1767578125, 'peak_allocated_mib': 1834.91357421875, 'peak_reserved_mib': 1906.0}
+03:56:54 WARNING atomworks.io: Writing chem_comp with chem_comp_source='ccd' from a plain AtomArray. A plain AtomArray has no preserved CCD context, so known component codes resolve to the bundled CCD. If this structure came from a CIF, parse it with return_atom_array_plus=True to preserve its CCD registry. If it was constructed or modified and a component slice is the complete intended CCD definition, write it with ccd_entries={code: component_template}; run any earlier CCD-dependent processing inside `with custom_ccd_residues(ccd_entries):`. Silence this warning with CIFWriteConfig(warn_on_ccd_without_registry=False).
+03:56:54 WARNING atomworks.io: Writing chem_comp with chem_comp_source='ccd' from a plain AtomArray. A plain AtomArray has no preserved CCD context, so known component codes resolve to the bundled CCD. If this structure came from a CIF, parse it with return_atom_array_plus=True to preserve its CCD registry. If it was constructed or modified and a component slice is the complete intended CCD definition, write it with ccd_entries={code: component_template}; run any earlier CCD-dependent processing inside `with custom_ccd_residues(ccd_entries):`. Silence this warning with CIFWriteConfig(warn_on_ccd_without_registry=False).

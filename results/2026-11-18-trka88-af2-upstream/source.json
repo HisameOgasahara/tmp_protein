@@ -1,0 +1,22 @@
+{
+  "version": "0.3.4",
+  "revision": "b5d09ac36d86978ea7abc5b5af50fea229eae9cb",
+  "af2_repository": "https://github.com/nrbennet/dl_binder_design",
+  "af2_revision": "cafa3853ac94dceb1b908c8d9e6954d71749871a",
+  "candidate": "TrkA_88",
+  "model": "model_1_ptm",
+  "seed": 0,
+  "num_recycles": 3,
+  "initial_guess": true,
+  "target_template": true,
+  "binder_template": false,
+  "msa": "single_sequence",
+  "input_sha256": {
+    "binder.fasta": "ae05a25c2ba04c3db7b5b9cadbc76841bdf50da895b715ab4974ec9065f9d6fb",
+    "published_af2.pdb": "4d7de09d4693c897d0b1747492d34200b8abfcd204c9700d42aa1bac7759407c",
+    "published_sequences.fasta": "de927f4d43ffbc064c5d7bca1bdeb20b161e47eb649ffafe9515da9dde0c3e74",
+    "design.pdb": "d0a7ae1870bfdd9ce41ddad1f94b18987f0e62465eef82e49c08c5cff79f52d5",
+    "provenance.json": "352f99d58464dcb65627edf30ca2d2a91368a3053c0262d5677cf78d67768bc5",
+    "published_results.csv": "c6f49f3fc5838c80715cd945030c4b8d597a17176c2201a74ef3fc4a1806d230"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "torch": "2.11.0+cu128",
+  "cuda_wheel": "12.8",
+  "device": "Tesla T4",
+  "compute_capability": [
+    7,
+    5
+  ],
+  "vram_mib": 14912.6875,
+  "foundry": "1.0.0",
+  "foundry_source": {
+    "url": "https://github.com/RosettaCommons/foundry.git",
+    "vcs_info": {
+      "vcs": "git",
+      "commit_id": "0d0b0ba44fab7ca76aa4b625c014ce5964c7d284",
+      "requested_revision": "0d0b0ba44fab7ca76aa4b625c014ce5964c7d284"
+    }
+  },
+  "atomworks": "3.0.1",
+  "rf3_cuequivariance": false
+}

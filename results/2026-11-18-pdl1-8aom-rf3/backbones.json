@@ -1,0 +1,50 @@
+[
+  {
+    "id": "backbone_01",
+    "file": "structures/backbone_01.cif",
+    "target": "B",
+    "binder": "A"
+  },
+  {
+    "id": "backbone_02",
+    "file": "structures/backbone_02.cif",
+    "target": "B",
+    "binder": "A"
+  },
+  {
+    "id": "backbone_03",
+    "file": "structures/backbone_03.cif",
+    "target": "B",
+    "binder": "A"
+  },
+  {
+    "id": "backbone_04",
+    "file": "structures/backbone_04.cif",
+    "target": "B",
+    "binder": "A"
+  },
+  {
+    "id": "backbone_05",
+    "file": "structures/backbone_05.cif",
+    "target": "B",
+    "binder": "A"
+  },
+  {
+    "id": "backbone_06",
+    "file": "structures/backbone_06.cif",
+    "target": "B",
+    "binder": "A"
+  },
+  {
+    "id": "backbone_07",
+    "file": "structures/backbone_07.cif",
+    "target": "B",
+    "binder": "A"
+  },
+  {
+    "id": "backbone_08",
+    "file": "structures/backbone_08.cif",
+    "target": "B",
+    "binder": "A"
+  }
+]

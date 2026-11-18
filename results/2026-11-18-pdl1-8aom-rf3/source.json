@@ -1,0 +1,9 @@
+{
+  "version": "0.2.0",
+  "revision": "115441e02cd36047d742afbaef578b1e04eae8b4",
+  "foundry_revision": "0d0b0ba44fab7ca76aa4b625c014ce5964c7d284",
+  "source_pdb": "8AOM",
+  "backbones": 8,
+  "diffusion_batch_size": 1,
+  "sequences_per_backbone": 2
+}

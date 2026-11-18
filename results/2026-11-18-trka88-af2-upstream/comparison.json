@@ -1,0 +1,19 @@
+{
+  "paper_pose_rmsd_angstrom": 1.4,
+  "published_af2_vs_design_angstrom": 1.389589953478561,
+  "reprediction_vs_design_angstrom": 31.1354181565321,
+  "reprediction_vs_published_af2_angstrom": 30.484622143056978,
+  "plddt": 94.41922680412372,
+  "original_af2_scores": {
+    "binder_aligned_rmsd": "0.594",
+    "pae_binder": "2.733",
+    "pae_interaction": "26.067",
+    "pae_target": "3.343",
+    "plddt_binder": "94.341",
+    "plddt_target": "94.491",
+    "plddt_total": "94.419",
+    "target_aligned_rmsd": "31.135",
+    "time": "111.196",
+    "description": "TrkA_88_af2pred"
+  }
+}

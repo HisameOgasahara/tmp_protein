@@ -1,0 +1,6 @@
+$ /content/foundry_0d0b0ba_py312/bin/python -u /content/protein_work_20261116_034141_e707cc62/record_checkpoints.py
+Traceback (most recent call last):
+  File "/content/protein_work_20261116_034141_e707cc62/record_checkpoints.py", line 4, in <module>
+    from pipeline_common import ROOT, write_json
+ModuleNotFoundError: No module named 'pipeline_common'
+$ /content/foundry_0d0b0ba_py312/bin/python -u /content/protein_work_20261116_034141_e707cc62/record_checkpoints.py

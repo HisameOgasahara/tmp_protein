@@ -1,0 +1,15 @@
+{
+  "article": "https://doi.org/10.1038/s41586-023-06415-8",
+  "dataset": "https://doi.org/10.6084/m9.figshare.22662094.v1",
+  "archive_url": "https://ndownloader.figshare.com/files/40226533",
+  "archive_directory": "PUBLIC_RELEASE/experimentally_tested/TrkA_binders/",
+  "sha256": {
+    "design.pdb": "d0a7ae1870bfdd9ce41ddad1f94b18987f0e62465eef82e49c08c5cff79f52d5",
+    "published_af2.pdb": "4d7de09d4693c897d0b1747492d34200b8abfcd204c9700d42aa1bac7759407c",
+    "published_sequences.fasta": "de927f4d43ffbc064c5d7bca1bdeb20b161e47eb649ffafe9515da9dde0c3e74",
+    "published_results.csv": "c6f49f3fc5838c80715cd945030c4b8d597a17176c2201a74ef3fc4a1806d230"
+  },
+  "binder_chain": "A",
+  "target_chain": "B",
+  "published_pose_rmsd_angstrom": 1.4
+}

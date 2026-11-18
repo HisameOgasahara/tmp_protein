@@ -1,0 +1,10 @@
+{
+  "id": "published_coordinates_control",
+  "threading": "original",
+  "input": "published",
+  "recycles": 3,
+  "initial_guess": true,
+  "target_template": true,
+  "seed": 0,
+  "precision": "default"
+}
