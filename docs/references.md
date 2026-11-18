@@ -1,7 +1,5 @@
 # 참고문서
 
-이 자료들을 왜 쓰게 됐는지는 [경과](history.md)에 있다.
-
 ## 논문
 
 | 항목 | 내용 |
@@ -10,8 +8,7 @@
 | 전문 (봇 차단 없이 읽히는 경로) | `https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10468394/fullTextXML` |
 | AF2 initial guess 채점 절차 | `dl_binder_design` 저장소에 구현된 절차 (아래) |
 
-PMC 웹페이지와 bioRxiv는 자동 요청을 차단하거나 제한한다. Europe PMC의 전문 XML API가
-막히지 않는다.
+PMC 웹페이지와 bioRxiv는 자동 요청을 차단하거나 제한. Europe PMC의 전문 XML API는 통과.
 
 ### 이 저장소가 논문에서 직접 인용하는 값
 
@@ -22,10 +19,7 @@ PMC 웹페이지와 bioRxiv는 자동 요청을 차단하거나 제한한다. Eu
 | TrkA_88의 보고값 | "Binders: ... TrkA_88 (1.4 Å)" — AF2 예측과 설계의 RMSD |
 | 다섯 표적 전체 실험 성공률 | "The overall experimental success rate ... was 19%" |
 
-마지막 값은 다섯 표적을 합친 수치다. TrkA 단독으로는 공개 CSV 기준 6/95 ≈ 6.3%로 더 낮다.
-
-재현 대상인 TrkA 결합체 설계는 RFdiffusion 논문의 공개 자료에 포함돼 있다.
-채점에 쓰는 AF2 initial guess 절차는 `dl_binder_design` 저장소의 구현을 그대로 쓴다.
+마지막 값은 다섯 표적 합산. TrkA 단독은 공개 CSV 기준 6/95 = 6.3%.
 
 ## 공개 데이터
 
@@ -35,8 +29,8 @@ PMC 웹페이지와 bioRxiv는 자동 요청을 차단하거나 제한한다. Eu
 | 아카이브 | `https://ndownloader.figshare.com/files/40226533` |
 | 아카이브 내 경로 | `PUBLIC_RELEASE/experimentally_tested/TrkA_binders/` |
 
-현재 받아둔 파일은 [inputs/trka/](../inputs/trka/)에 있고 SHA-256은
-[inputs/trka/provenance.json](../inputs/trka/provenance.json)에 기록돼 있다.
+저장된 파일은 [inputs/trka/](../inputs/trka/), SHA-256은
+[provenance.json](../inputs/trka/provenance.json).
 
 | 파일 | 내용 |
 | --- | --- |
@@ -46,8 +40,8 @@ PMC 웹페이지와 bioRxiv는 자동 요청을 차단하거나 제한한다. Eu
 | `published_sequences.fasta` | 공개 설계 95개의 서열 |
 | `published_results.csv` | 설계 95개의 조건과 **실험 결합 라벨** |
 
-`published_results.csv`의 `Binder` 열이 실험 결과다. 95개 중 6개가 `True`이고
-해당 설계는 10, 17, 23, 54, 73, 88번이다. 이 라벨이 채점기 교정의 정답지다.
+`published_results.csv`의 `Binder` 열이 실험 결과. 95개 중 6개가 `True` — 설계 10, 17,
+23, 54, 73, 88번.
 
 ## 표적 실험 구조
 
@@ -58,28 +52,18 @@ PMC 웹페이지와 bioRxiv는 자동 요청을 차단하거나 제한한다. Eu
 | 다운로드 | `https://files.rcsb.org/download/1WWW.pdb` |
 | 용도 | `design.pdb`에 없는 표적 사이드체인 공급 |
 
-**서열이 `design.pdb` 표적 101잔기와 글자 하나까지 동일하다.** 그래서 잔기별 대응이
-확정되고 정렬 모호성이 없다. SHA-256은
-[inputs/trka/provenance.json](../inputs/trka/provenance.json)의
-`target_sidechain_source`에 기록돼 있다.
+서열이 `design.pdb` 표적 101잔기와 완전히 동일 — 잔기별 대응이 확정되고 정렬 모호성 없음.
+SHA-256은 [provenance.json](../inputs/trka/provenance.json)의 `target_sidechain_source`.
 
-### 확인된 주의사항
+### 취급 주의
 
-- 아카이브에서 현재 받아온 것은 **TrkA_88 한 건의 구조뿐**이다. 나머지 94개 설계의
-  구조 파일은 아직 받지 않았다. 교정 작업에는 추가 다운로드가 필요하다.
-- figshare 아카이브는 `RFdiffusion_designs.zip` 하나이고 **251.7 MB**다. 파일 목록은
-  `https://api.figshare.com/v2/articles/22662094/files`로 확인된다.
-  `curl -I`(HEAD)는 S3 서명 URL이 거부하므로 **GET으로 받아야 한다.** HEAD 응답의 403을
-  다운로드 실패로 오해하지 말 것.
-- 저자들이 RFdiffusion 입력으로 쓴 원본 표적 PDB는 아직 꺼내보지 않았다. 현재 사이드체인
-  공급원은 1WWW이고, 아카이브의 원본 표적과 비교해볼 가치가 있다.
-- 아카이브는 Colab에서 받는 것이 낫다. 로컬 디스크를 쓰지 않고, 어차피 AF2 실행이
-  거기서 일어난다.
-- `provenance.json`의 `published_pose_rmsd_angstrom: 1.4`는 CSV에 없는 값이며 수동으로
-  입력됐다. 다만 공개 AF2 구조와 설계 구조로 직접 재계산한 값이 **1.3896 Å**로 일치하므로
-  지표 정의 자체는 검증됐다.
-- 표적은 TrkA의 Ig 유사 D5 도메인 101잔기이며, `design.pdb`에서 잔기 번호 94–194다.
-  서열에 N-글리코실화 sequon이 포함되지만 AF2는 당사슬을 모델링하지 않는다.
+| 항목 | 내용 |
+| --- | --- |
+| 아카이브 크기 | `RFdiffusion_designs.zip` 하나, 251.7 MB. 목록은 `https://api.figshare.com/v2/articles/22662094/files` |
+| 다운로드 방식 | GET만 가능. S3 서명 URL이 HEAD를 거부하므로 `curl -I`의 403은 실패가 아님 |
+| 받는 위치 | Colab. 로컬 디스크를 쓰지 않고 AF2 실행도 거기서 일어남 |
+| `published_pose_rmsd_angstrom: 1.4` | CSV에 없는 수동 입력값. 공개 AF2 구조와 설계 구조로 재계산하면 1.3896 Å로 일치 |
+| 표적 번호 | `design.pdb`에서 94–194. 서열에 N-글리코실화 sequon이 있으나 AF2는 당사슬을 모델링하지 않음 |
 
 ## 고정한 업스트림 리비전
 
@@ -94,7 +78,7 @@ PMC 웹페이지와 bioRxiv는 자동 요청을 차단하거나 제한한다. Eu
 | --- | --- |
 | AlphaFold2 `params_model_1_ptm` | `https://storage.googleapis.com/alphafold/alphafold_params_2022-12-06.tar` |
 
-가중치 SHA-256은 진단 실행의 `source.json`에 기록된다.
+가중치 SHA-256은 진단 실행의 `source.json`에 기록.
 
 ## 읽을 때 유용한 업스트림 코드
 
@@ -102,4 +86,4 @@ PMC 웹페이지와 bioRxiv는 자동 요청을 차단하거나 제한한다. Eu
 | --- | --- |
 | `af2_initial_guess/predict.py` | 특징 구성, 템플릿 마스킹, 점수 산출의 전체 흐름 |
 | `af2_initial_guess/af2_util.py` | `af2_get_atom_positions`가 **모든 원자**를 템플릿에 넣는 지점 |
-| `mpnn_fr/dl_interface_design.py` | ProteinMPNN + FastRelax 단계. 사이드체인 패킹이 여기서 일어난다 |
+| `mpnn_fr/dl_interface_design.py` | ProteinMPNN + FastRelax 단계. 사이드체인 패킹 지점 |
