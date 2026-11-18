@@ -28,8 +28,10 @@ RFdiffusion3 → ProteinMPNN → AlphaFold2 initial guess 로 이어지는 de no
 통과 후 실제 결합률은 공개 자료 기준 6/95 ≈ 6.3%이고, 통과한 설계들 사이에서
 `pae_interaction` 순서로 우선순위를 정할 근거는 이 데이터에 없다.
 
-**다음 단계:** 교정된 필터를 들고 RFdiffusion3로 같은 표적에 새 결합체를 설계한다.
-결과표에는 이 교정 집합을 함께 놓아 새 설계의 점수가 어디에 위치하는지 읽는다.
+**다음 단계:** 설계 파이프라인이 구현됐고 실행이 남았다
+([notebooks/03_design_trka_T4.ipynb](notebooks/03_design_trka_T4.ipynb)). RFdiffusion3로
+TrkA에 백본 20개를 만들고, MPNN으로 서열 40개를 설계한 뒤, 교정된 필터로 채점한다.
+공개 결합여 TrkA_88을 양성 대조군으로 같은 배치에 넣어 기준점을 둔다.
 [작업 순서](docs/00-purpose.md)
 
 재현 대상 설계(TrkA_88)는 결합체 **자체 접힘은 0.594 Å로 정확**했다. 어긋난 것은 표적에 대한
@@ -57,6 +59,7 @@ GPU 가속이 필요하므로 Colab T4에서 실행한다. 로컬 PC에는 모�
 | --- | --- | --- |
 | [notebooks/01_af2_filter_T4.ipynb](notebooks/01_af2_filter_T4.ipynb) | TrkA_88 한 건을 AF2 initial guess로 채점 | 설치 포함 약 7분 |
 | [notebooks/02_calibrate_filter_T4.ipynb](notebooks/02_calibrate_filter_T4.ipynb) | 실험 라벨이 붙은 설계 20개 채점, 지표 교정 | AF2 20회, 약 40분 |
+| [notebooks/03_design_trka_T4.ipynb](notebooks/03_design_trka_T4.ipynb) | TrkA에 새 결합여 40개 설계 후 같은 필터로 채점 | RFD3 + MPNN + AF2 41회 |
 | [diagnostics/90_af2_conditions_T4.ipynb](diagnostics/90_af2_conditions_T4.ipynb) | 12개 조건 비교로 실패 원인 분리 | AF2 12회, 약 25분 |
 
 실행하면 설정·입력 해시·지표·구조·로그를 담은 ZIP 하나가 나온다. 그 ZIP을 `results/` 아래

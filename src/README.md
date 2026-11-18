@@ -20,6 +20,7 @@
 | `target_sidechains.py` | 주사슬 전용 설계에 실험 구조의 표적 사이드체인을 잔기별로 이식 |
 | `calibration_workflow.py` | 공개 자료 아카이브 확보와 교정 실행 진행 |
 | `calibration.py` | 라벨된 설계 선택·준비·채점. 그룹별 분포 요약 |
+| `score_designs.py` | 새로 설계한 후보를 같은 필터로 채점. 양성 대조군 포함 |
 
 `diagnostic_case.py`는 업스트림 `model.RunModel`을 감싸서 **실제로 모델에 들어간 배열을
 그대로 저장**한다. 입력을 추측하지 않고 확인하기 위한 장치다.
@@ -42,7 +43,18 @@
 | `runtime.py` | 설치와 환경 구성 |
 | `checkpoints.py` | 모델 가중치 다운로드 |
 | `rf3_runtime.py` | RF3 모델 생성 |
-| `workflow.py` | 백본 생성 → 서열 설계 → 복합체 예측 |
+| `trka_workflow.py` | **TrkA 설계 전체 진행.** 설계 환경과 AF2 환경을 차례로 띄운다 |
+| `trka_design.py` | 표적 준비 → RFD3 백본 → MPNN 서열 |
+| `workflow.py` | 과거 PD-L1 실행 (채점 방법이 부적절해 결론에 쓰지 않음) |
+
+### 환경이 두 개인 이유
+
+RFdiffusion3·MPNN은 Python 3.12의 foundry 스택을, 업스트림 AF2는 Python 3.11의 JAX와
+PyRosetta를 요구한다. 한 가상환경에 합칠 수 없다. `trka_workflow.py`는 노트북의 인터프리터에서
+돌면서 두 환경을 각각 서브프로세스로 호출한다.
+
+두 패키지 모두 `workflow.py`를 갖고 있어 모듈 이름이 겹친다. `trka_workflow.py`는
+`importlib`으로 **파일 경로를 지정해** 불러온다. `sys.path` 순서에 기대지 않는다.
 
 **주의.** 현재 `workflow.py`의 `predict_complexes`는 RF3에 서열만 넘긴다. 표적 템플릿도
 초기 좌표도 주지 않으므로 논문의 채점 방법과 다르다. 설계 단계(`generate_backbones`,

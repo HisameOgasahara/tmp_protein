@@ -18,6 +18,7 @@
 | `published_sequences.fasta` | 공개 설계 95개 서열 |
 | `published_results.csv` | 설계 95개의 조건과 실험 결합 라벨 |
 | `target_1www_chainX.pdb` | PDB 1WWW 체인 X. 표적 사이드체인 공급원 |
+| `design_spec.json` | 새 설계를 위한 RFdiffusion3 입력 사양 (contig, hotspot) |
 | `provenance.json` | 출처 URL과 SHA-256 |
 
 **`design.pdb`는 주사슬 전용이다.** N, CA, C, O만 있고 사이드체인이 없다. 결합체 93잔기는
@@ -36,6 +37,11 @@
 
 현재 구조 파일은 TrkA_88 한 건만 받아져 있다. 교정 작업에는 나머지 설계의 구조를
 아카이브에서 추가로 받아야 한다.
+
+`design_spec.json`의 hotspot은 공개 결합여 TrkA_88이 실제로 가장 깊이 파고든 소수성 잔기
+셋이다 — B108 MET(최단 3.21 Å), B115 PHE(3.80 Å), B145 LEU(3.15 Å). 계면 26잔기 중에서
+고른 것이고, 임의의 표면이 아니라 결합이 확인된 에피토프를 겨냥한다. 설계용 표적 PDB는
+실행 중에 `design.pdb`와 `target_1www_chainX.pdb`로부터 만들어지므로 따로 두지 않는다.
 
 ## pdl1_8aom
 
