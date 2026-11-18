@@ -50,9 +50,14 @@
 
 - 아카이브에서 현재 받아온 것은 **TrkA_88 한 건의 구조뿐**이다. 나머지 94개 설계의
   구조 파일은 아직 받지 않았다. 교정 작업에는 추가 다운로드가 필요하다.
-- figshare 아카이브(`RFdiffusion_designs.zip`) **직접 다운로드가 403으로 거부된다.**
-  저자들이 RFdiffusion 입력으로 쓴 원본 표적 PDB는 아직 확보하지 못했고, 대신 1WWW를
-  썼다. 아카이브를 열 수 있게 되면 원본 표적과 비교해볼 가치가 있다.
+- figshare 아카이브는 `RFdiffusion_designs.zip` 하나이고 **251.7 MB**다. 파일 목록은
+  `https://api.figshare.com/v2/articles/22662094/files`로 확인된다.
+  `curl -I`(HEAD)는 S3 서명 URL이 거부하므로 **GET으로 받아야 한다.** HEAD 응답의 403을
+  다운로드 실패로 오해하지 말 것.
+- 저자들이 RFdiffusion 입력으로 쓴 원본 표적 PDB는 아직 꺼내보지 않았다. 현재 사이드체인
+  공급원은 1WWW이고, 아카이브의 원본 표적과 비교해볼 가치가 있다.
+- 아카이브는 Colab에서 받는 것이 낫다. 로컬 디스크를 쓰지 않고, 어차피 AF2 실행이
+  거기서 일어난다.
 - `provenance.json`의 `published_pose_rmsd_angstrom: 1.4`는 CSV에 없는 값이며 수동으로
   입력됐다. 다만 공개 AF2 구조와 설계 구조로 직접 재계산한 값이 **1.3896 Å**로 일치하므로
   지표 정의 자체는 검증됐다.
