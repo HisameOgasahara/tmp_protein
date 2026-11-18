@@ -28,7 +28,7 @@ ALTAEEQAMIADATALVVYMNANAPRPFTREEMFAAARSYIRSLVRRKEIPELSEERIDALARLATERALALL
 
 ![design_04_r22 예측 구조](figures/design04-r22.svg)
 
-**한계 지점은 백본이 아니라 서열 추출 수.**
+**한계 지점은 서열 추출 수.**
 
 ## 백본별 분포 비교
 
