@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrkA 단백질 결합체 AI 설계 — 핵심 요약</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <style>
+    :root {
+      --bg: #070b12;
+      --surface: #0f1623;
+      --surface-2: #151f30;
+      --border: rgba(148, 163, 184, 0.14);
+      --border-strong: rgba(148, 163, 184, 0.26);
+
+      --ink: #f1f5f9;
+      --ink-2: #cbd5e1;
+      --ink-muted: #7c8da6;
+
+      --teal: #2dd4bf;
+      --teal-deep: #14b8a6;
+      --teal-soft: rgba(45, 212, 191, 0.11);
+      --teal-border: rgba(45, 212, 191, 0.28);
+
+      --sky: #38bdf8;
+      --sky-soft: rgba(56, 189, 248, 0.12);
+
+      --amber: #fbbf24;
+      --amber-soft: rgba(251, 191, 36, 0.12);
+      --amber-border: rgba(251, 191, 36, 0.30);
+
+      --rose: #fb7185;
+      --rose-soft: rgba(251, 113, 133, 0.12);
+      --rose-border: rgba(251, 113, 133, 0.32);
+
+      --emerald: #34d399;
+      --emerald-soft: rgba(52, 211, 153, 0.12);
+      --emerald-border: rgba(52, 211, 153, 0.30);
+
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      background:
+        radial-gradient(900px circle at 10% -5%, rgba(45, 212, 191, 0.08), transparent 55%),
+        radial-gradient(700px circle at 92% 10%, rgba(56, 189, 248, 0.07), transparent 55%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum" 1;
+    }
+
+    /* Top Nav */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(7, 11, 18, 0.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--teal);
+      box-shadow: 0 0 12px rgba(45, 212, 191, 0.75);
+    }
+
+    .nav-pills {
+      display: flex;
+      gap: 4px;
+    }
+
+    .nav-pills a {
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--ink-muted);
+      padding: 5px 12px;
+      border-radius: 999px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .nav-pills a:hover {
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 24px 72px;
+    }
+
+    section {
+      margin-top: 48px;
+      scroll-margin-top: 72px;
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .sec-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 4px;
+    }
+
+    .sec-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(140deg, #0d1526 0%, #0d1d2b 58%, #0a2224 100%);
+      border: 1px solid rgba(45, 212, 191, 0.22);
+      border-radius: 22px;
+      padding: 34px 36px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--teal);
+      background: var(--teal-soft);
+      border: 1px solid var(--teal-border);
+      padding: 4px 11px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(25px, 3.3vw, 36px);
+      font-weight: 800;
+      line-height: 1.22;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 span { color: var(--teal); }
+
+    .hero-lead {
+      font-size: 14.5px;
+      color: var(--ink-2);
+      max-width: 480px;
+    }
+
+    .hero-visual {
+      background: rgba(7, 11, 18, 0.55);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .kpi {
+      background: rgba(7, 11, 18, 0.52);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .kpi-label {
+      font-size: 11.5px;
+      color: var(--ink-muted);
+      font-weight: 600;
+    }
+
+    .kpi-val {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-top: 3px;
+    }
+
+    .kpi-val.teal { color: var(--teal); }
+    .kpi-val.rose { color: var(--rose); }
+    .kpi-val.amber { color: var(--amber); }
+
+    .kpi-note {
+      font-size: 11.5px;
+      color: var(--ink-2);
+      margin-top: 2px;
+    }
+
+    /* Grids */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+    /* Pipeline */
+    .pipeline-wrap {
+      display: grid;
+      grid-template-columns: 1fr 26px 1fr 26px 1fr;
+      align-items: stretch;
+      gap: 8px;
+    }
+
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .step-num {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: var(--teal-soft);
+      color: var(--teal);
+      border: 1px solid var(--teal-border);
+    }
+
+    .step-tool {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 11.5px;
+      color: var(--ink-muted);
+    }
+
+    .step-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+    }
+
+    .step-short {
+      font-size: 13px;
+      color: var(--ink-2);
+    }
+
+    .pipe-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-muted);
+    }
+
+    /* Visual Pass Gates */
+    .gate-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .gate-card.key {
+      border-color: var(--rose-border);
+      background: linear-gradient(180deg, rgba(251, 113, 133, 0.06), var(--surface) 45%);
+    }
+
+    .gate-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .gate-title {
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .gate-rule {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--teal);
+      letter-spacing: -0.02em;
+    }
+
+    .gate-card.key .gate-rule { color: var(--rose); }
+
+    .gate-code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 11px;
+      color: var(--ink-muted);
+    }
+
+    .gate-diagram {
+      background: rgba(7, 11, 18, 0.65);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px;
+    }
+
+    .gate-foot {
+      font-size: 12.5px;
+      color: var(--ink-2);
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+
+    .badge-teal { background: var(--teal-soft); color: var(--teal); border: 1px solid var(--teal-border); }
+    .badge-amber { background: var(--amber-soft); color: var(--amber); border: 1px solid var(--amber-border); }
+    .badge-rose { background: var(--rose-soft); color: var(--rose); border: 1px solid var(--rose-border); }
+    .badge-emerald { background: var(--emerald-soft); color: var(--emerald); border: 1px solid var(--emerald-border); }
+
+    /* Before/After Engineering */
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 12px;
+      align-items: center;
+      background: rgba(7, 11, 18, 0.55);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-top: 14px;
+    }
+
+    .ba-box { text-align: center; }
+    .ba-tag { font-size: 11px; color: var(--ink-muted); font-weight: 700; }
+    .ba-num { font-size: 24px; font-weight: 800; margin: 3px 0 1px; letter-spacing: -0.02em; }
+    .ba-num.bad { color: var(--rose); }
+    .ba-num.good { color: var(--emerald); }
+    .ba-sub { font-size: 11.5px; color: var(--ink-2); }
+
+    /* Filter Rate Strip */
+    .filter-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .filter-stat {
+      background: rgba(7, 11, 18, 0.55);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 13px 16px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .filter-stat .label { font-size: 12px; color: var(--ink-muted); font-weight: 600; }
+    .filter-stat .val { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
+
+    /* SVG responsive */
+    .svg-box { width: 100%; overflow: hidden; }
+    .svg-box svg { width: 100%; height: auto; display: block; }
+
+    /* Spotlight */
+    .spotlight {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .metric-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .metric-row {
+      background: rgba(7, 11, 18, 0.55);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 13px 15px;
+    }
+
+    .metric-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .metric-name { font-size: 13px; font-weight: 700; }
+    .metric-code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 11px;
+      color: var(--ink-muted);
+      margin-left: 6px;
+    }
+    .metric-score { font-size: 19px; font-weight: 800; color: var(--teal); }
+
+    .meter-track {
+      height: 7px;
+      background: rgba(148, 163, 184, 0.16);
+      border-radius: 999px;
+      position: relative;
+    }
+
+    .meter-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #14b8a6, #2dd4bf);
+    }
+
+    .meter-thresh {
+      position: absolute;
+      top: -4px;
+      bottom: -4px;
+      width: 2px;
+      background: var(--rose);
+    }
+
+    .metric-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--ink-muted);
+      margin-top: 6px;
+    }
+
+    .seq-box {
+      margin-top: 12px;
+      padding: 11px 13px;
+      background: #070b12;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 11px;
+      color: var(--teal);
+      word-break: break-all;
+      letter-spacing: 0.04em;
+    }
+
+    /* Scope compact */
+    .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .scope-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 22px;
+    }
+
+    .scope-card.done { border-top: 3px solid var(--teal); }
+    .scope-card.limit { border-top: 3px solid var(--amber); }
+
+    .scope-list {
+      list-style: none;
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--ink-2);
+    }
+
+    .scope-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .dot-ok { color: var(--emerald); font-weight: 800; }
+    .dot-warn { color: var(--amber); font-weight: 800; }
+
+    footer {
+      margin-top: 52px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid, .spotlight, .grid-2, .grid-3, .scope-grid, .filter-strip { grid-template-columns: 1fr; }
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .pipeline-wrap { grid-template-columns: 1fr; }
+      .pipe-arrow { transform: rotate(90deg); height: 22px; }
+    }
+
+    @media (max-width: 560px) {
+      .hero { padding: 24px 20px; }
+      .kpi-grid { grid-template-columns: 1fr; }
+      .nav-pills { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span>TrkA 단백질 결합체 AI 설계</span>
+      </div>
+      <nav class="nav-pills" aria-label="섹션 이동">
+        <a href="#overview">개요</a>
+        <a href="#design">설계 &amp; 관문</a>
+        <a href="#findings">핵심 발견</a>
+        <a href="#candidate">최종 후보</a>
+        <a href="#scope">범위</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <div id="overview" class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-tag">AI 단백질 설계 · 채점기 교정 · Colab T4</div>
+          <h1>표적 TrkA에 붙는<br /><span>맞춤 결합체</span>를 AI로 설계하다</h1>
+          <p class="hero-lead">
+            공개 실험 정답지로 AI 채점기를 교정한 뒤, 3단계 AI 파이프라인으로 새 결합체를 직접 설계·검증했습니다.
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <svg viewBox="0 0 420 215" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="표적 TrkA와 맞춤 설계 결합체 개념도">
+            <defs>
+              <linearGradient id="binderG" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2dd4bf" />
+                <stop offset="100%" stop-color="#0d9488" />
+              </linearGradient>
+              <linearGradient id="targetG" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#334155" />
+                <stop offset="100%" stop-color="#1e293b" />
+              </linearGradient>
+            </defs>
+
+            <!-- Target -->
+            <path d="M 225 32 C 275 20, 355 42, 376 90 C 394 134, 368 182, 314 190 C 266 198, 232 180, 224 156 C 218 138, 240 128, 240 110 C 240 90, 214 84, 216 62 C 217 46, 218 35, 225 32 Z"
+                  fill="url(#targetG)" stroke="#64748b" stroke-width="1.5" />
+
+            <!-- Hotspots -->
+            <circle cx="222" cy="70" r="6.5" fill="#fbbf24" stroke="#070b12" stroke-width="2" />
+            <circle cx="236" cy="110" r="6.5" fill="#fbbf24" stroke="#070b12" stroke-width="2" />
+            <circle cx="224" cy="148" r="6.5" fill="#fbbf24" stroke="#070b12" stroke-width="2" />
+
+            <!-- Binder -->
+            <path d="M 52 66 C 74 40, 134 38, 174 52 C 194 60, 206 66, 206 82 C 206 96, 220 100, 220 110 C 220 122, 204 128, 204 142 C 204 158, 186 174, 152 178 C 106 184, 62 168, 46 136 C 34 112, 38 84, 52 66 Z"
+                  fill="url(#binderG)" fill-opacity="0.9" stroke="#99f6e4" stroke-width="1.5" />
+
+            <path d="M 78 90 Q 112 76, 146 90 M 74 114 Q 112 100, 152 114 M 82 138 Q 116 124, 150 138"
+                  fill="none" stroke="#070b12" stroke-width="2.2" stroke-linecap="round" opacity="0.35" />
+
+            <text x="118" y="24" text-anchor="middle" fill="#2dd4bf" font-size="12.5" font-weight="700">설계 결합체 (73잔기)</text>
+            <text x="308" y="24" text-anchor="middle" fill="#cbd5e1" font-size="12.5" font-weight="700">표적 TrkA D5 (101잔기)</text>
+
+            <rect x="128" y="191" width="216" height="20" rx="10" fill="rgba(251, 191, 36, 0.14)" stroke="rgba(251, 191, 36, 0.38)" />
+            <text x="236" y="205" text-anchor="middle" fill="#fbbf24" font-size="10.5" font-weight="700">지정 접점 · Met108 · Phe115 · Leu145</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-label">날것 설계 차단율</div>
+          <div class="kpi-val rose">99.4%</div>
+          <div class="kpi-note">160개 중 PAE 통과 단 1개</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">채점 속도 개선</div>
+          <div class="kpi-val teal">2.4×</div>
+          <div class="kpi-note">61.7초 → 25.5초 / 설계</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">집중 탐색 위치 적중</div>
+          <div class="kpi-val amber">82%</div>
+          <div class="kpi-note">넓은 탐색 6.9% 대비 12배</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">3기준 최종 통과</div>
+          <div class="kpi-val teal">1건 확보</div>
+          <div class="kpi-note">design_04_r22 (PAE 9.389)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 1: Pipeline & Visual Pass Gates -->
+    <section id="design">
+      <div class="sec-head">
+        <div>
+          <div class="sec-kicker">01 · DESIGN &amp; GATES</div>
+          <h2 class="sec-title">설계 파이프라인과 3가지 합격 관문</h2>
+        </div>
+      </div>
+
+      <!-- 3-Step Pipeline -->
+      <div class="pipeline-wrap">
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-num">STEP 1</span>
+            <span class="step-tool">RFdiffusion3</span>
+          </div>
+          <div class="step-title">3D 백본 생성</div>
+          <div class="step-short">표적 접점 3곳에 맞닿는 결합체 골격 생성</div>
+        </div>
+
+        <div class="pipe-arrow" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-num">STEP 2</span>
+            <span class="step-tool">LigandMPNN</span>
+          </div>
+          <div class="step-title">아미노산 서열 설계</div>
+          <div class="step-short">생성된 백본 모양대로 접히는 서열 추출</div>
+        </div>
+
+        <div class="pipe-arrow" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <div class="step-card">
+          <div class="step-top">
+            <span class="step-num">STEP 3</span>
+            <span class="step-tool">AlphaFold2 (initial guess)</span>
+          </div>
+          <div class="step-title">복합체 예측 &amp; 채점</div>
+          <div class="step-short">대조군(TrkA_88) 동봉 채점 · 3관문 판정</div>
+        </div>
+      </div>
+
+      <!-- 3 Visual Gate Diagrams (Replaced glossary with intuitive diagrams) -->
+      <div class="grid-3" style="margin-top: 16px;">
+        <!-- Gate 1: PAE Interaction -->
+        <div class="gate-card key">
+          <div class="gate-head">
+            <div>
+              <div class="gate-title">① 결합 확신도 <span class="badge badge-rose" style="margin-left:4px;">핵심 관문</span></div>
+              <div class="gate-code">pae_interaction</div>
+            </div>
+            <div class="gate-rule">&lt; 10</div>
+          </div>
+          <div class="gate-diagram">
+            <svg viewBox="0 0 280 94" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="결합 확신도 통과와 탈락 비교 그림">
+              <!-- PASS side -->
+              <rect x="4" y="4" width="128" height="86" rx="8" fill="rgba(45,212,191,0.08)" stroke="rgba(45,212,191,0.28)" />
+              <text x="68" y="20" text-anchor="middle" font-size="10.5" font-weight="800" fill="#2dd4bf">통과 (&lt; 10)</text>
+              <rect x="24" y="34" width="38" height="30" rx="9" fill="#2dd4bf" />
+              <rect x="64" y="34" width="44" height="30" rx="9" fill="#475569" stroke="#94a3b8" stroke-width="1" />
+              <line x1="62" y1="42" x2="66" y2="42" stroke="#fbbf24" stroke-width="2.5" />
+              <line x1="62" y1="50" x2="66" y2="50" stroke="#fbbf24" stroke-width="2.5" />
+              <line x1="62" y1="58" x2="66" y2="58" stroke="#fbbf24" stroke-width="2.5" />
+              <text x="68" y="81" text-anchor="middle" font-size="10" fill="#cbd5e1">상대 위치 확신 · 밀착</text>
+
+              <!-- FAIL side -->
+              <rect x="148" y="4" width="128" height="86" rx="8" fill="rgba(251,113,133,0.07)" stroke="rgba(251,113,133,0.25)" />
+              <text x="212" y="20" text-anchor="middle" font-size="10.5" font-weight="800" fill="#fb7185">탈락 (&gt; 25)</text>
+              <rect x="158" y="31" width="32" height="24" rx="7" fill="#fb7185" fill-opacity="0.7" transform="rotate(-14 174 43)" />
+              <rect x="220" y="36" width="42" height="28" rx="8" fill="#475569" stroke="#94a3b8" stroke-width="1" />
+              <line x1="194" y1="46" x2="216" y2="48" stroke="#fb7185" stroke-width="1.6" stroke-dasharray="3 3" />
+              <text x="205" y="42" text-anchor="middle" font-size="11" font-weight="800" fill="#fb7185">?</text>
+              <text x="212" y="81" text-anchor="middle" font-size="10" fill="#94a3b8">위치 불확실 · 떨어짐</text>
+            </svg>
+          </div>
+          <div class="gate-foot">표적과 결합체가 맞물려 있을지 AI가 매긴 오차 예측치</div>
+        </div>
+
+        <!-- Gate 2: pLDDT -->
+        <div class="gate-card">
+          <div class="gate-head">
+            <div>
+              <div class="gate-title">② 구조 안정성</div>
+              <div class="gate-code">plddt_binder</div>
+            </div>
+            <div class="gate-rule">&gt; 80</div>
+          </div>
+          <div class="gate-diagram">
+            <svg viewBox="0 0 280 94" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="구조 안정성 통과와 탈락 비교 그림">
+              <!-- PASS side -->
+              <rect x="4" y="4" width="128" height="86" rx="8" fill="rgba(45,212,191,0.08)" stroke="rgba(45,212,191,0.28)" />
+              <text x="68" y="20" text-anchor="middle" font-size="10.5" font-weight="800" fill="#2dd4bf">통과 (&gt; 80)</text>
+              <path d="M 32 58 C 36 32, 48 32, 52 58 C 56 32, 68 32, 72 58 C 76 32, 88 32, 92 58 C 96 36, 102 36, 106 54"
+                    fill="none" stroke="#2dd4bf" stroke-width="3.6" stroke-linecap="round" />
+              <text x="68" y="81" text-anchor="middle" font-size="10" fill="#cbd5e1">단단하게 고정된 형태</text>
+
+              <!-- FAIL side -->
+              <rect x="148" y="4" width="128" height="86" rx="8" fill="rgba(148,163,184,0.06)" stroke="rgba(148,163,184,0.2)" />
+              <text x="212" y="20" text-anchor="middle" font-size="10.5" font-weight="800" fill="#94a3b8">탈락 (&lt; 60)</text>
+              <path d="M 164 56 Q 178 36, 194 52 T 222 44 Q 238 64, 258 42"
+                    fill="none" stroke="#64748b" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="4 3" />
+              <text x="212" y="81" text-anchor="middle" font-size="10" fill="#94a3b8">흐물흐물 풀린 형태</text>
+            </svg>
+          </div>
+          <div class="gate-foot">결합체 단독으로 얼마나 탄탄하게 형태를 유지하는가</div>
+        </div>
+
+        <!-- Gate 3: RMSD -->
+        <div class="gate-card">
+          <div class="gate-head">
+            <div>
+              <div class="gate-title">③ 접힘 정확도</div>
+              <div class="gate-code">binder_aligned_rmsd</div>
+            </div>
+            <div class="gate-rule">&lt; 1 Å</div>
+          </div>
+          <div class="gate-diagram">
+            <svg viewBox="0 0 280 94" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="접힘 정확도 통과와 탈락 비교 그림">
+              <!-- PASS side -->
+              <rect x="4" y="4" width="128" height="86" rx="8" fill="rgba(45,212,191,0.08)" stroke="rgba(45,212,191,0.28)" />
+              <text x="68" y="20" text-anchor="middle" font-size="10.5" font-weight="800" fill="#2dd4bf">통과 (&lt; 1 Å)</text>
+              <path d="M 28 58 Q 52 28, 70 50 T 108 42" fill="none" stroke="#94a3b8" stroke-width="4" stroke-dasharray="4 3" stroke-linecap="round" />
+              <path d="M 29 59 Q 53 29, 71 51 T 109 43" fill="none" stroke="#2dd4bf" stroke-width="2.6" stroke-linecap="round" />
+              <text x="68" y="81" text-anchor="middle" font-size="10" fill="#cbd5e1">설계(점선) · 예측(실선) 일치</text>
+
+              <!-- FAIL side -->
+              <rect x="148" y="4" width="128" height="86" rx="8" fill="rgba(148,163,184,0.06)" stroke="rgba(148,163,184,0.2)" />
+              <text x="212" y="20" text-anchor="middle" font-size="10.5" font-weight="800" fill="#94a3b8">탈락 (&gt; 2 Å)</text>
+              <path d="M 168 58 Q 192 28, 210 50 T 250 42" fill="none" stroke="#64748b" stroke-width="3" stroke-dasharray="4 3" stroke-linecap="round" />
+              <path d="M 168 42 Q 196 68, 216 38 T 252 58" fill="none" stroke="#fb7185" stroke-width="2.6" stroke-linecap="round" />
+              <text x="212" y="81" text-anchor="middle" font-size="10" fill="#94a3b8">설계와 다르게 접힘</text>
+            </svg>
+          </div>
+          <div class="gate-foot">원래 설계한 3D 모양과 AI 예측 구조 사이의 거리 오차</div>
+        </div>
+      </div>
+
+      <!-- 2 Engineering Safeguards (Compact) -->
+      <div class="grid-2" style="margin-top: 16px;">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+            <div style="font-size:15.5px;font-weight:800;">정확도 보정: 표적 사이드체인 378원자 이식</div>
+            <span class="badge badge-emerald">재현성 확보</span>
+          </div>
+          <div class="before-after">
+            <div class="ba-box">
+              <div class="ba-tag">사이드체인 누락</div>
+              <div class="ba-num bad">32.78 Å</div>
+              <div class="ba-sub">PAE 26.15 · 이탈</div>
+            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14m-5-5 5 5-5 5" stroke="#2dd4bf" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <div class="ba-box">
+              <div class="ba-tag">1WWW 결정 구조 이식</div>
+              <div class="ba-num good">1.50 Å</div>
+              <div class="ba-sub">PAE 5.86 · 논문 1.4 Å 재현</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:14px;">
+            <div style="font-size:15.5px;font-weight:800;">속도 최적화: 길이 4종 고정 (73·80·87·93)</div>
+            <span class="badge badge-teal">2.4배 가속</span>
+          </div>
+          <div class="svg-box">
+            <svg viewBox="0 0 460 104" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="길이 자유 추출 대비 길이 4종 고정의 컴파일 비중 감소">
+              <text x="0" y="14" font-size="11.5" font-weight="700" fill="#cbd5e1">자유 길이 (17종)</text>
+              <text x="460" y="14" text-anchor="end" font-size="11.5" fill="#94a3b8">61.7초 / 설계</text>
+              <rect x="0" y="21" width="460" height="20" rx="6" fill="#1e293b" />
+              <rect x="0" y="21" width="285" height="20" rx="6" fill="#fb7185" />
+              <text x="142" y="35" text-anchor="middle" font-size="10.5" font-weight="800" fill="#070b12">JAX 재컴파일 62%</text>
+              <text x="372" y="35" text-anchor="middle" font-size="10.5" fill="#cbd5e1">추론 38%</text>
+
+              <text x="0" y="66" font-size="11.5" font-weight="700" fill="#2dd4bf">길이 4종 고정</text>
+              <text x="460" y="66" text-anchor="end" font-size="11.5" font-weight="800" fill="#2dd4bf">25.5초 / 설계 (시간당 141개)</text>
+              <rect x="0" y="73" width="460" height="20" rx="6" fill="rgba(45,212,191,0.22)" />
+              <rect x="0" y="73" width="44" height="20" rx="6" fill="#fb7185" />
+              <text x="22" y="87" text-anchor="middle" font-size="9.5" font-weight="800" fill="#070b12">9.2%</text>
+              <text x="252" y="87" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2dd4bf">실제 추론·채점에 90.8% 집중</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Key Findings -->
+    <section id="findings">
+      <div class="sec-head">
+        <div>
+          <div class="sec-kicker">02 · KEY FINDINGS</div>
+          <h2 class="sec-title">최종적으로 알아낸 3가지</h2>
+        </div>
+      </div>
+
+      <!-- FINDING 1: Reframed as "How much did the AI filter screen out?" -->
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
+          <div>
+            <span class="badge badge-amber" style="margin-bottom:6px;">발견 1 · 필터 차단력 정량화</span>
+            <h3 style="font-size:19px;font-weight:800;letter-spacing:-0.02em;">AI 필터는 불량품을 얼마나 걸렀나</h3>
+          </div>
+          <span style="font-size:12px;color:var(--ink-muted);">가로축: pae_interaction (낮을수록 우수)</span>
+        </div>
+
+        <div class="filter-strip">
+          <div class="filter-stat">
+            <span class="label">날것 160개 차단율</span>
+            <span class="val" style="color:var(--rose);">99.4% <small style="font-size:12px;color:var(--ink-muted);">(159/160)</small></span>
+          </div>
+          <div class="filter-stat">
+            <span class="label">이미 통과한 비결합체</span>
+            <span class="val" style="color:var(--amber);">0% 차단 <small style="font-size:12px;color:var(--ink-muted);">(14/14 통과)</small></span>
+          </div>
+          <div class="filter-stat">
+            <span class="label">유망 백본 집중 50개</span>
+            <span class="val" style="color:var(--emerald);">1건 통과 <small style="font-size:12px;color:var(--ink-muted);">(PAE 9.389)</small></span>
+          </div>
+        </div>
+
+        <div class="svg-box">
+          <svg viewBox="0 0 920 365" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="세 집단의 PAE 분포와 AI 필터 차단 결과">
+            <!-- Pass zone -->
+            <rect x="205" y="20" width="220" height="296" rx="8" fill="rgba(45, 212, 191, 0.08)" />
+            <text x="315" y="38" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2dd4bf">통과 구간 (&lt; 10)</text>
+            <text x="655" y="38" text-anchor="middle" font-size="11.5" font-weight="600" fill="#64748b">차단 구간</text>
+
+            <!-- Dividers -->
+            <line x1="205" y1="126" x2="880" y2="126" stroke="rgba(148,163,184,0.14)" />
+            <line x1="205" y1="222" x2="880" y2="222" stroke="rgba(148,163,184,0.14)" />
+
+            <!-- Cutoff at x=10 -> 205 + 220 = 425 -->
+            <line x1="425" y1="20" x2="425" y2="316" stroke="#fb7185" stroke-width="2" stroke-dasharray="6 4" />
+            <rect x="387" y="2" width="76" height="20" rx="10" fill="#fb7185" />
+            <text x="425" y="16" text-anchor="middle" font-size="11" font-weight="800" fill="#070b12">통과선 10</text>
+
+            <!-- ROW 1: Published Calibration 20 -->
+            <text x="190" y="78" text-anchor="end" font-size="13.5" font-weight="800" fill="#f1f5f9">공개 검증군 20개</text>
+            <text x="190" y="96" text-anchor="end" font-size="11" fill="#fbbf24">결합 5/6 · 비결합 14/14 통과</text>
+
+            <circle cx="525" cy="64" r="4.8" fill="#2dd4bf" />
+            <text x="536" y="68" font-size="11" font-weight="600" fill="#2dd4bf">실제 결합 (중앙값 5.78)</text>
+            <circle cx="525" cy="83" r="4.8" fill="none" stroke="#94a3b8" stroke-width="1.8" />
+            <text x="536" y="87" font-size="11" fill="#94a3b8">실제 비결합 (중앙값 5.54)</text>
+
+            <!-- Dots: x = 205 + pae * 22 -->
+            <g stroke="#94a3b8" stroke-width="1.7" fill="#0f1623">
+              <circle cx="301.6" cy="108" r="4.8" />
+              <circle cx="306.9" cy="96" r="4.8" />
+              <circle cx="312.4" cy="108" r="4.8" />
+              <circle cx="318.1" cy="96" r="4.8" />
+              <circle cx="320.1" cy="84" r="4.8" />
+              <circle cx="322.7" cy="108" r="4.8" />
+              <circle cx="323.8" cy="96" r="4.8" />
+              <circle cx="330.2" cy="84" r="4.8" />
+              <circle cx="331.7" cy="108" r="4.8" />
+              <circle cx="334.6" cy="96" r="4.8" />
+              <circle cx="335.7" cy="84" r="4.8" />
+              <circle cx="350.6" cy="108" r="4.8" />
+              <circle cx="355.3" cy="108" r="4.8" />
+              <circle cx="398.6" cy="108" r="4.8" />
+            </g>
+            <g fill="#2dd4bf" stroke="#070b12" stroke-width="1.2">
+              <circle cx="302.2" cy="84" r="5.3" />
+              <circle cx="324.0" cy="72" r="5.3" />
+              <circle cx="330.6" cy="72" r="5.3" />
+              <circle cx="333.9" cy="60" r="5.3" />
+              <circle cx="341.0" cy="96" r="5.3" />
+              <circle cx="785.6" cy="108" r="5.3" />
+            </g>
+            <text x="785.6" y="96" text-anchor="middle" font-size="10" fill="#7c8da6">예외 1</text>
+
+            <!-- ROW 2: Wide 160 -->
+            <text x="190" y="172" text-anchor="end" font-size="13.5" font-weight="800" fill="#f1f5f9">넓은 탐색 160개</text>
+            <text x="190" y="190" text-anchor="end" font-size="11" fill="#fb7185">3기준 통과 0개 · 중앙값 26.4</text>
+
+            <g fill="#475569">
+              <rect x="382" y="199" width="10" height="10" rx="2" fill="#fbbf24" />
+              <rect x="458" y="199" width="10" height="10" rx="2" />
+              <rect x="480" y="194" width="10" height="15" rx="2" />
+              <rect x="535" y="199" width="10" height="10" rx="2" />
+              <rect x="568" y="199" width="10" height="10" rx="2" />
+              <rect x="579" y="199" width="10" height="10" rx="2" />
+              <rect x="612" y="194" width="10" height="15" rx="2" />
+              <rect x="634" y="199" width="10" height="10" rx="2" />
+              <rect x="645" y="199" width="10" height="10" rx="2" />
+              <rect x="711" y="199" width="10" height="10" rx="2" />
+              <rect x="722" y="194" width="10" height="15" rx="2" />
+              <rect x="733" y="199" width="10" height="10" rx="2" />
+              <rect x="744" y="184" width="10" height="25" rx="2" />
+              <rect x="755" y="182" width="10" height="27" rx="2" />
+              <rect x="766" y="172" width="10" height="37" rx="2" />
+              <rect x="777" y="141" width="10" height="68" rx="2" fill="#64748b" />
+              <rect x="788" y="141" width="10" height="68" rx="2" fill="#64748b" />
+              <rect x="799" y="166" width="10" height="43" rx="2" />
+              <rect x="810" y="186" width="10" height="23" rx="2" />
+            </g>
+
+            <!-- ROW 3: Focus 50 -->
+            <text x="190" y="268" text-anchor="end" font-size="13.5" font-weight="800" fill="#2dd4bf">집중 탐색 50개</text>
+            <text x="190" y="286" text-anchor="end" font-size="11" fill="#34d399">1개 최종 통과 · 중앙값 19.8</text>
+
+            <g fill="#14b8a6">
+              <rect x="406" y="274" width="10" height="28" rx="2" fill="#34d399" />
+              <rect x="470" y="274" width="10" height="28" rx="2" opacity="0.82" />
+              <rect x="492" y="262" width="10" height="40" rx="2" opacity="0.82" />
+              <rect x="503" y="274" width="10" height="28" rx="2" opacity="0.82" />
+              <rect x="514" y="262" width="10" height="40" rx="2" opacity="0.82" />
+              <rect x="536" y="274" width="10" height="28" rx="2" opacity="0.82" />
+              <rect x="547" y="253" width="10" height="49" rx="2" opacity="0.82" />
+              <rect x="569" y="238" width="10" height="64" rx="2" opacity="0.92" />
+              <rect x="580" y="262" width="10" height="40" rx="2" opacity="0.82" />
+              <rect x="602" y="253" width="10" height="49" rx="2" opacity="0.82" />
+              <rect x="613" y="274" width="10" height="28" rx="2" opacity="0.82" />
+              <rect x="624" y="274" width="10" height="28" rx="2" opacity="0.82" />
+              <rect x="635" y="245" width="10" height="57" rx="2" opacity="0.85" />
+              <rect x="646" y="262" width="10" height="40" rx="2" opacity="0.82" />
+              <rect x="657" y="253" width="10" height="49" rx="2" opacity="0.82" />
+              <rect x="668" y="274" width="10" height="28" rx="2" opacity="0.82" />
+              <rect x="679" y="238" width="10" height="64" rx="2" opacity="0.85" />
+              <rect x="690" y="262" width="10" height="40" rx="2" opacity="0.82" />
+              <rect x="712" y="274" width="10" height="28" rx="2" opacity="0.65" />
+              <rect x="723" y="274" width="10" height="28" rx="2" opacity="0.65" />
+              <rect x="745" y="274" width="10" height="28" rx="2" opacity="0.65" />
+              <rect x="756" y="253" width="10" height="49" rx="2" opacity="0.65" />
+              <rect x="767" y="245" width="10" height="57" rx="2" opacity="0.65" />
+            </g>
+
+            <!-- Callout design_04_r22 -->
+            <line x1="411" y1="242" x2="411" y2="272" stroke="#34d399" stroke-width="1.6" />
+            <rect x="262" y="226" width="154" height="21" rx="6" fill="rgba(52,211,153,0.16)" stroke="rgba(52,211,153,0.45)" />
+            <text x="339" y="240" text-anchor="middle" font-size="11" font-weight="800" fill="#34d399">design_04_r22 (9.389)</text>
+
+            <!-- Axis -->
+            <line x1="205" y1="316" x2="865" y2="316" stroke="rgba(148,163,184,0.35)" stroke-width="1.2" />
+            <g font-size="11.5" fill="#7c8da6" text-anchor="middle">
+              <text x="205" y="336">0</text>
+              <text x="315" y="336">5</text>
+              <text x="425" y="336" font-weight="800" fill="#fb7185">10</text>
+              <text x="535" y="336">15</text>
+              <text x="645" y="336">20</text>
+              <text x="755" y="336">25</text>
+              <text x="865" y="336">30</text>
+            </g>
+
+            <!-- Control marker -->
+            <polygon points="333.9,316 328.9,307 338.9,307" fill="#34d399" />
+            <text x="333.9" y="356" text-anchor="middle" font-size="11" font-weight="700" fill="#34d399">▲ 양성 대조군 TrkA_88 (5.862)</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- FINDING 2 & 3 -->
+      <div class="grid-2" style="margin-top: 18px;">
+        <div class="card">
+          <span class="badge badge-rose" style="margin-bottom:8px;">발견 2 · 탈락 지점</span>
+          <h3 style="font-size:17.5px;font-weight:800;margin-bottom:14px;">접힘 통과 ≠ 결합 통과</h3>
+
+          <div class="svg-box">
+            <svg viewBox="0 0 460 184" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="160개 설계의 기준별 통과율">
+              <text x="0" y="15" font-size="12" font-weight="700" fill="#cbd5e1">① 구조 안정성 (pLDDT &gt; 80)</text>
+              <text x="460" y="15" text-anchor="end" font-size="12" font-weight="800" fill="#2dd4bf">79% (126/160)</text>
+              <rect x="0" y="23" width="460" height="16" rx="5" fill="#1e293b" />
+              <rect x="0" y="23" width="363" height="16" rx="5" fill="#2dd4bf" />
+
+              <text x="0" y="64" font-size="12" font-weight="700" fill="#cbd5e1">② 접힘 정확도 (RMSD &lt; 1 Å)</text>
+              <text x="460" y="64" text-anchor="end" font-size="12" font-weight="800" fill="#38bdf8">39% (63/160)</text>
+              <rect x="0" y="72" width="460" height="16" rx="5" fill="#1e293b" />
+              <rect x="0" y="72" width="181" height="16" rx="5" fill="#38bdf8" />
+
+              <text x="0" y="113" font-size="12" font-weight="700" fill="#cbd5e1">③ 결합 확신도 (PAE &lt; 10)</text>
+              <text x="460" y="113" text-anchor="end" font-size="12" font-weight="800" fill="#fb7185">0.6% (1/160)</text>
+              <rect x="0" y="121" width="460" height="16" rx="5" fill="#1e293b" />
+              <rect x="0" y="121" width="6" height="16" rx="3" fill="#fb7185" />
+
+              <text x="0" y="160" font-size="12" font-weight="800" fill="#fb7185">3기준 동시 통과</text>
+              <text x="460" y="160" text-anchor="end" font-size="12.5" font-weight="800" fill="#fb7185">0% (0/160)</text>
+              <rect x="0" y="168" width="460" height="12" rx="5" fill="rgba(251,113,133,0.14)" stroke="rgba(251,113,133,0.35)" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="badge badge-teal" style="margin-bottom:8px;">발견 3 · 돌파구</span>
+          <h3 style="font-size:17.5px;font-weight:800;margin-bottom:14px;">병목은 백본이 아닌 서열 탐색 수</h3>
+
+          <div class="svg-box">
+            <svg viewBox="0 0 460 184" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="넓은 탐색 160개와 집중 탐색 50개 비교">
+              <rect x="0" y="1" width="11" height="9" rx="2" fill="#475569" />
+              <text x="16" y="9" font-size="11" fill="#94a3b8">넓은 탐색 (160)</text>
+              <rect x="122" y="1" width="11" height="9" rx="2" fill="#2dd4bf" />
+              <text x="138" y="9" font-size="11" font-weight="700" fill="#2dd4bf">design_04 집중 (50)</text>
+
+              <text x="0" y="34" font-size="11.5" font-weight="700" fill="#cbd5e1">안정성 (pLDDT &gt; 80)</text>
+              <text x="460" y="34" text-anchor="end" font-size="11.5" font-weight="700" fill="#2dd4bf">79% → 100%</text>
+              <rect x="0" y="40" width="363" height="7" rx="3.5" fill="#475569" />
+              <rect x="0" y="49" width="460" height="8" rx="4" fill="#2dd4bf" />
+
+              <text x="0" y="78" font-size="11.5" font-weight="700" fill="#cbd5e1">접힘 (&lt; 1 Å)</text>
+              <text x="460" y="78" text-anchor="end" font-size="11.5" font-weight="700" fill="#2dd4bf">39% → 94%</text>
+              <rect x="0" y="84" width="181" height="7" rx="3.5" fill="#475569" />
+              <rect x="0" y="93" width="432" height="8" rx="4" fill="#2dd4bf" />
+
+              <text x="0" y="122" font-size="11.5" font-weight="700" fill="#cbd5e1">위치 적중 (&lt; 5 Å)</text>
+              <text x="460" y="122" text-anchor="end" font-size="11.5" font-weight="800" fill="#2dd4bf">6.9% → 82%</text>
+              <rect x="0" y="128" width="32" height="7" rx="3.5" fill="#475569" />
+              <rect x="0" y="137" width="377" height="8" rx="4" fill="#2dd4bf" />
+
+              <text x="0" y="166" font-size="11.5" font-weight="700" fill="#cbd5e1">유망 결합 (PAE &lt; 20)</text>
+              <text x="460" y="166" text-anchor="end" font-size="11.5" font-weight="800" fill="#2dd4bf">6.3% → 54%</text>
+              <rect x="0" y="172" width="29" height="6" rx="3" fill="#475569" />
+              <rect x="0" y="179" width="248" height="5" rx="2.5" fill="#2dd4bf" />
+            </svg>
+          </div>
+          <div style="font-size:12px;color:var(--ink-muted);margin-top:10px;">
+            기하 지표 8종 사전 선별 불가(|r| ≤ 0.24) · 통과율 2% 구간에서 서열 8개는 미탐지 확률 85%
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Final Candidate -->
+    <section id="candidate">
+      <div class="sec-head">
+        <div>
+          <div class="sec-kicker">03 · FINAL CANDIDATE</div>
+          <h2 class="sec-title">최종 통과 후보 · <span style="color:var(--teal);">design_04_r22</span></h2>
+        </div>
+      </div>
+
+      <div class="spotlight">
+        <!-- Real C-alpha structural trace -->
+        <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
+            <div style="font-size:14.5px;font-weight:800;">AF2 예측 복합체 구조 (Cα 궤적)</div>
+            <div style="display:flex;gap:10px;font-size:11px;color:var(--ink-2);">
+              <span style="display:inline-flex;align-items:center;gap:4px;"><i style="width:9px;height:9px;border-radius:2px;background:#2dd4bf;display:inline-block;"></i>결합체</span>
+              <span style="display:inline-flex;align-items:center;gap:4px;"><i style="width:9px;height:9px;border-radius:2px;background:#64748b;display:inline-block;"></i>표적 TrkA</span>
+              <span style="display:inline-flex;align-items:center;gap:4px;"><i style="width:9px;height:9px;border-radius:99px;background:#fbbf24;display:inline-block;"></i>접점 3곳</span>
+            </div>
+          </div>
+
+          <div class="svg-box" style="background:#070b12;border:1px solid var(--border);border-radius:12px;padding:8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="20 75 800 660" role="img" aria-label="design_04_r22와 표적 TrkA D5의 예측 결합 구조">
+              <polyline points="484.7,92.0 544.9,114.2 561.3,97.2 603.6,113.1 591.1,165.9 562.4,155.0 557.1,199.3 528.2,201.4 528.4,246.6 480.0,255.7 479.4,279.5 484.0,346.1 425.9,375.8 415.1,434.7 371.1,468.2 373.0,530.5 435.2,514.1 468.4,464.1 466.0,416.3 502.3,362.8 462.6,327.9 488.5,289.8 470.3,246.7 506.9,236.4 499.1,194.3 532.9,179.7 535.4,180.2 563.0,216.8 542.8,259.1 592.5,262.1 627.1,317.2 622.7,335.1 670.0,356.9 666.1,369.7 714.0,359.4 715.7,385.6 754.1,353.3 785.7,327.4 796.0,384.7 766.8,409.4 712.5,443.0 705.0,494.8 642.0,511.6 627.4,572.0 573.4,609.1 567.6,583.0 582.1,520.4 561.6,496.2 536.5,443.7 474.7,444.7 442.1,401.2 378.8,386.0 344.8,381.6 355.5,322.7 307.8,277.7 282.3,260.1 313.9,207.2 356.7,200.9 421.4,205.4 426.3,216.6 436.1,281.2 422.5,304.7 447.2,358.0 472.7,386.8 527.8,414.2 501.4,469.4 529.3,501.1 509.2,562.2 515.7,570.5 566.3,529.0 603.1,537.0 638.1,493.9 686.9,502.2 649.6,472.2 646.0,418.1 676.3,368.3 679.9,320.6 649.1,334.7 663.9,297.0 631.7,295.8 664.0,272.8 629.5,251.7 666.1,239.9 648.7,218.2 685.8,186.2 676.0,128.9 703.2,148.1 694.0,183.1 653.1,173.3 659.3,202.5 622.0,211.1 637.4,239.7 602.3,263.2 616.9,290.6 583.7,348.3 578.0,379.8 546.3,437.8 561.7,469.2 589.2,451.9 654.4,470.4 657.1,522.8"
+                        fill="none" stroke="#475569" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round" />
+
+              <defs>
+                <linearGradient id="caDark" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#99f6e4" />
+                  <stop offset="55%" stop-color="#2dd4bf" />
+                  <stop offset="100%" stop-color="#0d9488" />
+                </linearGradient>
+              </defs>
+              <polyline points="44.0,649.4 104.5,622.4 153.7,661.0 192.3,637.3 237.7,632.7 199.6,598.4 183.1,558.6 246.1,548.2 255.5,535.6 207.6,493.2 230.4,463.5 292.1,461.3 271.5,440.1 232.0,395.0 281.6,371.1 321.7,368.3 278.1,336.8 263.5,292.9 325.2,282.9 339.6,273.3 286.5,236.1 304.7,198.1 364.4,189.7 348.7,184.0 353.0,123.3 287.8,130.0 244.0,166.7 236.5,226.1 181.5,234.9 144.2,286.7 169.5,317.7 231.4,304.2 218.0,325.6 193.5,381.4 246.3,388.7 287.4,380.2 253.8,422.6 249.8,466.2 314.6,461.5 329.3,472.3 290.0,525.2 313.8,550.6 373.0,543.8 357.3,578.0 331.3,626.2 383.1,627.6 423.4,636.9 389.5,687.8 381.9,656.1 317.5,670.1 282.0,716.6 275.9,711.4 226.0,669.5 191.5,663.7 196.3,603.8 132.4,595.6 144.8,604.7 196.2,563.7 156.3,518.2 111.1,529.2 154.3,523.5 180.9,470.2 121.1,441.9 109.9,454.1 168.8,429.8 157.0,377.1 99.2,366.6 125.2,371.5 172.5,330.5 128.6,286.3 96.0,290.7 150.7,276.8 165.9,222.4"
+                        fill="none" stroke="url(#caDark)" stroke-width="5.2" stroke-linejoin="round" stroke-linecap="round" />
+
+              <circle cx="371.1" cy="468.2" r="8" fill="#fbbf24" stroke="#070b12" stroke-width="2.5" />
+              <circle cx="488.5" cy="289.8" r="8" fill="#fbbf24" stroke="#070b12" stroke-width="2.5" />
+              <circle cx="378.8" cy="386.0" r="8" fill="#fbbf24" stroke="#070b12" stroke-width="2.5" />
+
+              <rect x="502" y="276" width="66" height="24" rx="6" fill="rgba(251,191,36,0.16)" stroke="rgba(251,191,36,0.45)" />
+              <text x="535" y="293" text-anchor="middle" font-size="13" font-weight="800" fill="#fbbf24">Phe115</text>
+
+              <rect x="392" y="373" width="66" height="24" rx="6" fill="rgba(251,191,36,0.16)" stroke="rgba(251,191,36,0.45)" />
+              <text x="425" y="390" text-anchor="middle" font-size="13" font-weight="800" fill="#fbbf24">Leu145</text>
+
+              <rect x="385" y="456" width="68" height="24" rx="6" fill="rgba(251,191,36,0.16)" stroke="rgba(251,191,36,0.45)" />
+              <text x="419" y="473" text-anchor="middle" font-size="13" font-weight="800" fill="#fbbf24">Met108</text>
+
+              <circle cx="44.0" cy="649.4" r="6" fill="#99f6e4" stroke="#070b12" stroke-width="2" />
+              <text x="44.0" y="634.0" text-anchor="middle" font-size="14" font-weight="800" fill="#99f6e4">N</text>
+              <circle cx="165.9" cy="222.4" r="6" fill="#2dd4bf" stroke="#070b12" stroke-width="2" />
+              <text x="165.9" y="207.0" text-anchor="middle" font-size="14" font-weight="800" fill="#2dd4bf">C</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Scorecard -->
+        <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+              <div style="font-size:16px;font-weight:800;">합격 성적표</div>
+              <span class="badge badge-emerald">3관문 전원 통과</span>
+            </div>
+
+            <div class="metric-list">
+              <div class="metric-row">
+                <div class="metric-top">
+                  <div><span class="metric-name">결합 확신도</span><span class="metric-code">pae_interaction</span></div>
+                  <div class="metric-score">9.389</div>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill" style="width: 31.3%;"></div>
+                  <div class="meter-thresh" style="left: 33.3%;"></div>
+                </div>
+                <div class="metric-meta"><span>기준 &lt; 10</span><span>대조군 5.862</span></div>
+              </div>
+
+              <div class="metric-row">
+                <div class="metric-top">
+                  <div><span class="metric-name">구조 안정성</span><span class="metric-code">plddt_binder</span></div>
+                  <div class="metric-score">89.58</div>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill" style="width: 89.6%;"></div>
+                  <div class="meter-thresh" style="left: 80%;"></div>
+                </div>
+                <div class="metric-meta"><span>기준 &gt; 80</span><span>대조군 93.30</span></div>
+              </div>
+
+              <div class="metric-row">
+                <div class="metric-top">
+                  <div><span class="metric-name">접힘 오차</span><span class="metric-code">binder_aligned_rmsd</span></div>
+                  <div class="metric-score">0.702 Å</div>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill" style="width: 35.1%;"></div>
+                  <div class="meter-thresh" style="left: 50%;"></div>
+                </div>
+                <div class="metric-meta"><span>기준 &lt; 1.0 Å</span><span>대조군 0.615 Å</span></div>
+              </div>
+
+              <div class="metric-row">
+                <div class="metric-top">
+                  <div><span class="metric-name">설계 위치 오차</span><span class="metric-code">target_aligned_rmsd</span></div>
+                  <div class="metric-score">1.407 Å</div>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill" style="width: 28.1%;"></div>
+                </div>
+                <div class="metric-meta"><span>의도한 자리 밀착</span><span>대조군(1.497 Å)보다 근접</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="seq-box">
+            <div style="font-size:10.5px;color:#7c8da6;margin-bottom:4px;font-family:Pretendard,sans-serif;letter-spacing:0;">design_04_r22 서열 (73잔기)</div>
+            ALTAEEQAMIADATALVVYMNANAPRPFTREEMFAAARSYIRSLVRRKEIPELSEERIDALARLATERALALL
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Scope -->
+    <section id="scope">
+      <div class="sec-head">
+        <div>
+          <div class="sec-kicker">04 · SCOPE</div>
+          <h2 class="sec-title">검증 범위와 한계</h2>
+        </div>
+      </div>
+
+      <div class="scope-grid">
+        <div class="scope-card done">
+          <span class="badge badge-teal">확인 완료 (계산)</span>
+          <ul class="scope-list">
+            <li><span class="dot-ok">✓</span><span>3단계 AI 파이프라인 재현 및 채점기 교정</span></li>
+            <li><span class="dot-ok">✓</span><span>사이드체인 누락 원인 분리·자동 검증 추가</span></li>
+            <li><span class="dot-ok">✓</span><span>길이 고정으로 채점 처리량 2.4배 향상</span></li>
+            <li><span class="dot-ok">✓</span><span>3기준 통과 신규 후보 1건(<strong>design_04_r22</strong>) 확보</span></li>
+          </ul>
+        </div>
+
+        <div class="scope-card limit">
+          <span class="badge badge-amber">실험 필요 (범위 밖)</span>
+          <ul class="scope-list">
+            <li><span class="dot-warn">!</span><span>단백질 합성·정제 및 결합력(SPR/BLI) 측정 미수행</span></li>
+            <li><span class="dot-warn">!</span><span>공개 TrkA 기준, AI 필터 통과 후 실제 결합률 <strong>6.3% (6/95)</strong></span></li>
+            <li><span class="dot-warn">!</span><span>최종 의미: <strong>'실험에 올릴 자격을 통과한 후보 1건'</strong></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>TrkA 단백질 결합체 AI 설계 · 핵심 요약</div>
+      <div>RFdiffusion3 · LigandMPNN · AlphaFold2 (initial guess)</div>
+    </footer>
+
+  </main>
+
+</body>
+</html>
