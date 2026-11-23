@@ -1,6 +1,6 @@
 # TrkA 결합체 설계 — 파이프라인 재현과 채점 지표 교정
 
-**[한눈에 보기](./summary-report-findings.html)**
+**[한눈에 보기](./report/summary-report-findings.html)**
 
 RFdiffusion3 → LigandMPNN → AlphaFold2 initial guess, Colab T4.
 공개 실험 라벨로 채점 기준을 먼저 교정하고, 그 자로 직접 설계한 결합여를 측정. 실험 수단 없음.
