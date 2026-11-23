@@ -12,18 +12,23 @@ RFdiffusion3 → LigandMPNN → AlphaFold2 initial guess, Colab T4.
 | 통과 기준 | `pae_interaction` < 10, `plddt_binder` > 80, 접힘 RMSD < 1 Å (Watson 2023) |
 | 양성 대조군 | TrkA_88, 모든 채점 배치에 동봉 |
 
-## 실행과 결과
+## 설계 결과
 
-| 실행 | 조건 | 결과 |
+| 회차 | 서열 후보 | AF2 세 기준 모두 통과 |
 | --- | --- | --- |
-| [단량체 자기일관성](results/2026-11-16-monomer-selfconsistency) | 표적 없음, 백본 2 × 서열 10 | 20개 중 16개 Cα RMSD < 2 Å, 최소 0.512 Å |
-| [TrkA_88 재현](docs/issues/2026-11-18-trka-target-sidechains.md) | 공개 설계 1건 | **1.496 Å, `pae` 5.862** (논문 1.4 Å) |
-| [지표 교정](docs/02-filter-calibration.md) | 실험 라벨된 공개 설계 20개 | 비결합 **14/14 통과**, 결합 5/6 통과 |
-| [설계 v0.1.0](docs/03-design-run.md) | 백본 20 × 서열 2 = 40 | **0/40**, `pae` 최소 10.235 |
-| [설계 v0.2.0](docs/04-scale-run.md) | 길이 4종 고정, 백본 20 × 서열 8 = 160 | **0/160**, `pae` 최소 8.480 |
-| [집중 v0.3.0](docs/05-focus-run.md) | `design_04` 1개 × 서열 50 | **1/50 — `design_04_r22`** |
+| 1회차 · 넓은 탐색 | 3D 백본 20개 × 백본당 서열 8개 = 160개 | **0개** |
+| 2회차 · 집중 탐색 | 1회차의 `design_04` 백본 1개 × 새 서열 50개 = 50개 | **1개** · `design_04_r22` |
+
+[1·2회차 설계 애니메이션](./report/summary-report-findings.html#findings) · [최종 후보와 양성 대조군 6종의 3D 구조·서열 비교](./report/summary-report-findings.html#candidate)
+
+<details>
+<summary>결과 그림 보기</summary>
 
 ![세 집단의 pae_interaction 분포](docs/figures/pae-overview.svg)
+
+![design_04_r22 예측 구조](docs/figures/design04-r22.svg)
+
+</details>
 
 ## 문제와 선택
 
@@ -35,20 +40,6 @@ RFdiffusion3 → LigandMPNN → AlphaFold2 initial guess, Colab T4.
 | 0/160. AF2에 보낼 백본을 미리 고를 수단 필요 | 백본 기하 설명자 8종과 AF2 결과의 상관 측정 | \|r\| ≤ 0.24. 사전 필터 안 폐기 | [상관 표](docs/04-scale-run.md#사전-필터-검증) |
 | 백본별 분해로 "서열 줄이고 백본 늘리기" 제안 | 백본당 첫 서열만으로 선별했을 때를 역산 | 20개 전부 평탄면(24.9–27.5). 제안 철회, 서열 8개 유지 | [seq01 역산](docs/04-scale-run.md#백본별-분해) |
 | `design_04` 배치 1.190 Å인데 `pae` 12.934에서 정지 | 같은 백본에 서열 50개 재추출 | **1/50 통과.** 한계는 백본이 아니라 서열 수 | [백본별 분포 비교](docs/05-focus-run.md#백본별-분포-비교) |
-
-## 통과한 설계
-
-| `design_04_r22` | 값 | 기준 |
-| --- | --- | --- |
-| `pae_interaction` | 9.389 | < 10 |
-| `plddt_binder` | 89.58 | > 80 |
-| 접힘 RMSD | 0.702 Å | < 1 |
-| 설계 위치와의 거리 | 1.407 Å | 대조군 1.497 Å |
-
-같은 백본 50개 / 넓은 실행 160개 비교 — `plddt` > 80: 50개 전부 / 126, 접힘 < 1 Å: 47 / 63,
-배치 < 5 Å: 41 / 11, `pae` < 20: 27 / 10.
-
-![design_04_r22 예측 구조](docs/figures/design04-r22.svg)
 
 ## 구조
 
