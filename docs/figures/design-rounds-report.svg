@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 620" width="800" role="img" aria-labelledby="title" font-family="system-ui, sans-serif"><title id="title">1·2회차 설계 결과</title>
+<g transform="translate(0 0)"><rect width="500" height="300" rx="14" fill="#101723"/>
+<text x="20" y="28" fill="#f1f5f9" font-size="17" font-weight="700">1회차 · 넓은 탐색</text>
+<text x="20" y="51" fill="#cbd5e1" font-size="13">3D 백본 20개 × 백본당 서열 8개 = 서열 160개</text>
+<svg x="20" y="65" width="460" height="223" viewBox="0 25 460 223" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="독자 설계 1회차 3D 백본 20개 곱하기 8서열 160개 누적 통과 160에서 126, 63, 0 및 design_04 선택">
+                <defs>
+                  <linearGradient id="fgR1G1" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#475569" stop-opacity="0.48" />
+                    <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0.42" />
+                  </linearGradient>
+                  <linearGradient id="fgR1G2" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.42" />
+                    <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.42" />
+                  </linearGradient>
+                  <linearGradient id="fgR1G3" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.42" />
+                    <stop offset="100%" stop-color="#fb7185" stop-opacity="0.50" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Header -->
+                
+
+                <!-- Top Numbers -->
+                <text x="34" y="45" text-anchor="middle" font-size="19" font-weight="800" fill="#f1f5f9">160</text>
+                <text x="166" y="45" text-anchor="middle" font-size="19" font-weight="800" fill="#2dd4bf">126</text>
+                <text x="298" y="45" text-anchor="middle" font-size="19" font-weight="800" fill="#38bdf8">63</text>
+                <text x="424" y="46" text-anchor="middle" font-size="21" font-weight="800" fill="#fb7185">0</text>
+
+                <!-- Flow Ribbons (centerline y = 104, full h = 92 => 58..150) -->
+                <path d="M 44,58 C 100,58 100,67.8 156,67.8 L 156,140.2 C 100,140.2 100,150 44,150 Z" fill="url(#fgR1G1)" />
+                <path d="M 176,67.8 C 232,67.8 232,85.9 288,85.9 L 288,122.1 C 232,122.1 232,140.2 176,140.2 Z" fill="url(#fgR1G2)" />
+                <path d="M 308,85.9 C 358,85.9 372,102.5 408,102.5 L 408,105.5 C 372,105.5 358,122.1 308,122.1 Z" fill="url(#fgR1G3)" />
+
+                <!-- Gate Bars -->
+                <rect x="24" y="58" width="20" height="92" rx="5" fill="#475569" stroke="#64748b" stroke-width="1" />
+                <rect x="156" y="67.8" width="20" height="72.4" rx="5" fill="#2dd4bf" />
+                <rect x="288" y="85.9" width="20" height="36.2" rx="5" fill="#38bdf8" />
+
+                <!-- Gate 3 Stop Wall (0 Pass) -->
+                <line x1="424" y1="60" x2="424" y2="148" stroke="rgba(251, 113, 133, 0.45)" stroke-width="1.8" stroke-dasharray="4 4" />
+                <circle cx="424" cy="104" r="14" fill="rgba(251, 113, 133, 0.16)" stroke="#fb7185" stroke-width="2" />
+                <path d="M 419,99 L 429,109 M 429,99 L 419,109" stroke="#fb7185" stroke-width="2.4" stroke-linecap="round" />
+
+                <!-- Inline subtle % inside ribbons -->
+                <text x="100" y="108" text-anchor="middle" font-size="10.5" font-weight="800" fill="#cbd5e1">79%</text>
+                <text x="232" y="108" text-anchor="middle" font-size="10.5" font-weight="800" fill="#e0f2fe">39%</text>
+                <text x="364" y="84" text-anchor="middle" font-size="10.5" font-weight="800" fill="#fb7185">0%</text>
+
+                <!-- Bottom Gate Labels -->
+                <text x="34" y="168" text-anchor="middle" font-size="10.5" font-weight="700" fill="#94a3b8">전체</text>
+                <text x="166" y="168" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2dd4bf">pLDDT &gt; 80</text>
+                <text x="298" y="168" text-anchor="middle" font-size="10.5" font-weight="700" fill="#38bdf8">접힘 &lt; 1 Å</text>
+                <text x="424" y="168" text-anchor="middle" font-size="10.5" font-weight="800" fill="#fb7185">PAE &lt; 10</text>
+
+                <!-- 20-Backbone Discovery Pulse Strip -->
+                <rect x="0" y="182" width="460" height="64" rx="10" fill="rgba(7, 11, 18, 0.62)" stroke="rgba(148, 163, 184, 0.16)" />
+                <text x="12" y="198" font-size="10.5" font-weight="700" fill="#94a3b8">3D 백본별 접힘·위치 근접 수</text>
+                <text x="448" y="198" text-anchor="end" font-size="10.5" font-weight="800" fill="#2dd4bf">design_04 선택 (7/8) →</text>
+
+                <line x1="12" y1="232.5" x2="448" y2="232.5" stroke="rgba(148, 163, 184, 0.18)" stroke-width="1" />
+                <rect x="14" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <text x="21" y="242" text-anchor="middle" font-size="8.5" fill="#64748b">01</text>
+                <rect x="36" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="58" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <!-- design_04 glowing peak -->
+                <rect x="78" y="203" width="18" height="30" rx="4" fill="rgba(45, 212, 191, 0.18)" />
+                <rect x="80" y="206" width="14" height="26" rx="3" fill="#2dd4bf" stroke="#99f6e4" stroke-width="1" />
+                <text x="87" y="242" text-anchor="middle" font-size="9" font-weight="800" fill="#2dd4bf">04</text>
+                <rect x="102" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="124" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="146" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="168" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="190" y="226" width="14" height="6" rx="2" fill="#475569" />
+                <rect x="212" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="234" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="256" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="278" y="226" width="14" height="6" rx="2" fill="#475569" />
+                <rect x="300" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="322" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="344" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="366" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="388" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="410" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <rect x="432" y="229" width="14" height="3" rx="1.5" fill="#1e293b" />
+                <text x="439" y="242" text-anchor="middle" font-size="8.5" fill="#64748b">20</text>
+              </svg>
+</g>
+<g transform="translate(0 320)"><rect width="500" height="300" rx="14" fill="#101723"/>
+<text x="20" y="28" fill="#f1f5f9" font-size="17" font-weight="700">2회차 · 집중 탐색</text>
+<text x="20" y="51" fill="#cbd5e1" font-size="13">design_04 백본 1개 × 새 서열 50개 = 서열 50개</text>
+<svg x="20" y="65" width="460" height="223" viewBox="0 25 460 223" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="독자 설계 2회차 design_04 재사용 새 서열 50개 누적 통과 50에서 50, 47, 1 design_04_r22">
+                <defs>
+                  <linearGradient id="fgR2G1" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.46" />
+                    <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0.48" />
+                  </linearGradient>
+                  <linearGradient id="fgR2G2" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.48" />
+                    <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.48" />
+                  </linearGradient>
+                  <linearGradient id="fgR2G3" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.45" />
+                    <stop offset="100%" stop-color="#34d399" stop-opacity="0.72" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Header -->
+                
+
+                <!-- Top Numbers -->
+                <text x="34" y="45" text-anchor="middle" font-size="19" font-weight="800" fill="#f1f5f9">50</text>
+                <text x="166" y="45" text-anchor="middle" font-size="19" font-weight="800" fill="#2dd4bf">50</text>
+                <text x="298" y="45" text-anchor="middle" font-size="19" font-weight="800" fill="#38bdf8">47</text>
+                <text x="420" y="46" text-anchor="middle" font-size="21" font-weight="800" fill="#34d399">1</text>
+
+                <!-- Flow Ribbons (centerline y = 104, full h = 84 => 62..146) -->
+                <path d="M 44,62 L 156,62 L 156,146 L 44,146 Z" fill="url(#fgR2G1)" />
+                <path d="M 176,62 C 232,62 232,64.5 288,64.5 L 288,143.5 C 232,143.5 232,146 176,146 Z" fill="url(#fgR2G2)" />
+                <path d="M 308,64.5 C 356,64.5 368,99.5 404,99.5 L 404,108.5 C 368,108.5 356,143.5 308,143.5 Z" fill="url(#fgR2G3)" />
+
+                <!-- Gate Bars -->
+                <rect x="24" y="62" width="20" height="84" rx="5" fill="#14b8a6" stroke="#5eead4" stroke-width="1" />
+                <rect x="156" y="62" width="20" height="84" rx="5" fill="#2dd4bf" />
+                <rect x="288" y="64.5" width="20" height="79" rx="5" fill="#38bdf8" />
+
+                <!-- Gate 3 Glowing Emerald Beacon (design_04_r22) -->
+                <circle cx="420" cy="104" r="24" fill="rgba(52, 211, 153, 0.22)" class="fg-beacon-ring" />
+                <circle cx="420" cy="104" r="15" fill="#34d399" stroke="#a7f3d0" stroke-width="1.8" />
+                <path d="M 413.5,104.5 L 418,109 L 427,99" fill="none" stroke="#070b12" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
+
+                <!-- Inline subtle % inside ribbons -->
+                <text x="100" y="108" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ecfeff">100%</text>
+                <text x="232" y="108" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ecfeff">94%</text>
+                <text x="352" y="108" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ecfdf5">2%</text>
+
+                <!-- Bottom Gate Labels -->
+                <text x="34" y="168" text-anchor="middle" font-size="10.5" font-weight="700" fill="#94a3b8">새 서열</text>
+                <text x="166" y="168" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2dd4bf">pLDDT &gt; 80</text>
+                <text x="298" y="168" text-anchor="middle" font-size="10.5" font-weight="700" fill="#38bdf8">접힘 &lt; 1 Å</text>
+                <text x="420" y="168" text-anchor="middle" font-size="10.5" font-weight="800" fill="#34d399">PAE &lt; 10</text>
+
+                <!-- Bottom Dual Visual Badges: Hit-Rate Jump + r22 Winner -->
+                <!-- Left: Target Hit-Rate Jump 6.9% -> 82% -->
+                <rect x="0" y="182" width="224" height="64" rx="10" fill="rgba(7, 11, 18, 0.62)" stroke="rgba(148, 163, 184, 0.16)" />
+                <text x="12" y="198" font-size="10.5" font-weight="700" fill="#94a3b8">표적 위치 적중 (&lt; 5 Å)</text>
+                <text x="212" y="198" text-anchor="end" font-size="11" font-weight="800" fill="#2dd4bf">12×</text>
+
+                <text x="12" y="216" font-size="9.5" font-weight="700" fill="#7c8da6">1회차</text>
+                <rect x="48" y="208" width="124" height="8" rx="4" fill="#151f30" />
+                <rect x="48" y="208" width="9" height="8" rx="4" fill="#64748b" />
+                <text x="212" y="216" text-anchor="end" font-size="10" font-weight="700" fill="#94a3b8">6.9%</text>
+
+                <text x="12" y="235" font-size="9.5" font-weight="800" fill="#2dd4bf">2회차</text>
+                <rect x="48" y="227" width="124" height="9" rx="4.5" fill="#151f30" />
+                <rect x="48" y="227" width="102" height="9" rx="4.5" fill="#2dd4bf" />
+                <text x="212" y="235" text-anchor="end" font-size="10.5" font-weight="800" fill="#2dd4bf">82%</text>
+
+                <!-- Right: Winner r22 Card -->
+                <rect x="236" y="182" width="224" height="64" rx="10" fill="rgba(52, 211, 153, 0.09)" stroke="rgba(52, 211, 153, 0.42)" />
+                <circle cx="253" cy="204" r="5" fill="#34d399" />
+                <text x="265" y="208" font-size="13.5" font-weight="800" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">design_04_r22</text>
+                <text x="250" y="231" font-size="11" font-weight="700" fill="#cbd5e1">PAE <tspan fill="#34d399" font-weight="800">9.39</tspan> · 3관문 전원 통과</text>
+              </svg>
+</g>
+</svg>

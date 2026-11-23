@@ -21,14 +21,7 @@ RFdiffusion3 → LigandMPNN → AlphaFold2 initial guess, Colab T4.
 
 [1·2회차 설계 애니메이션](./report/summary-report-findings.html#findings) · [최종 후보와 양성 대조군 6종의 3D 구조·서열 비교](./report/summary-report-findings.html#candidate)
 
-<details>
-<summary>결과 그림 보기</summary>
-
-![세 집단의 pae_interaction 분포](docs/figures/pae-overview.svg)
-
-![design_04_r22 예측 구조](docs/figures/design04-r22.svg)
-
-</details>
+![1회차 160 → 126 → 63 → 0개, 2회차 50 → 50 → 47 → 1개](docs/figures/design-rounds-report.svg)
 
 ## 문제와 선택
 
@@ -50,7 +43,7 @@ RFdiffusion3 → LigandMPNN → AlphaFold2 initial guess, Colab T4.
 | [inputs/](inputs/) | 공개 설계 구조·서열·실험 라벨·설계 사양 |
 | [results/](results/) | 실행 하나당 폴더 하나. 설정·입력 해시·지표·구조·로그 |
 | [diagnostics/](diagnostics/) | 조건 비교 실험 |
-| [docs/figures/](docs/figures/) | 위 두 그림. `python src/figures.py`로 결과에서 재생성 |
+| [docs/figures/](docs/figures/) | 결과 그래프와 예측 구조 그림 |
 
 | 문서 | 내용 |
 | --- | --- |
