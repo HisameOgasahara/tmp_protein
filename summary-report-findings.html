@@ -897,7 +897,6 @@
         <a href="#design">설계 &amp; 관문</a>
         <a href="#findings">설계 결과</a>
         <a href="#candidate">최종 후보</a>
-        <a href="#scope">범위</a>
       </nav>
     </div>
   </header>
@@ -909,7 +908,7 @@
       <div class="hero-grid">
         <div>
           <div class="hero-tag">AI 단백질 설계 · 채점기 교정 · Colab T4</div>
-          <h1>표적 TrkA에 붙는<br /><span>맞춤 결합체</span>를 AI로 설계하다</h1>
+          <h1>TrkA 결합 후보<br /><span>AI 설계·구조 예측 실습</span></h1>
         </div>
 
         <div class="hero-visual">
@@ -1584,6 +1583,112 @@
 
     <!-- SECTION 4: Scope -->
     <section id="candidate">
+      <style>
+        #candidate .spotlight { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+        #candidate .r22-viewport { height: clamp(460px, 56vh, 620px); min-height: 460px; }
+        #candidate #r22-canvas { touch-action: none; }
+        #candidate #r22-canvas.is-pan-mode { cursor: grab; }
+        #candidate #r22-canvas.is-pan-mode.is-dragging { cursor: grabbing; }
+        #r22-labels { transition: opacity 0.2s ease; }
+        #r22-labels.r22-detail-hidden { opacity: 0; pointer-events: none; }
+
+        .r22-badge-count { font-size: 11px; font-weight: 600; color: var(--ink-2); background: var(--surface-2); border: 1px solid var(--border); padding: 2px 9px; border-radius: 999px; letter-spacing: -0.01em; }
+        .r22-swatch-amber { width: 14px; height: 4px; border-radius: 99px; background: var(--amber); display: inline-block; vertical-align: middle; margin-right: 5px; }
+
+        .r22-gallery-labels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 6; transition: opacity 0.2s ease; }
+        .r22-gallery-labels.hidden { opacity: 0; }
+        .r22-glabel { position: absolute; left: 0; top: 0; pointer-events: auto; display: inline-flex; flex-direction: column; align-items: center; gap: 1px; padding: 5px 10px; border-radius: 10px; background: rgba(9, 15, 25, 0.86); backdrop-filter: blur(8px); border: 1px solid var(--border-strong); color: var(--ink); font-family: inherit; cursor: pointer; white-space: nowrap; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.42); transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, opacity 0.16s ease; will-change: transform; }
+        .r22-glabel:hover { border-color: var(--amber-border); background: rgba(21, 31, 48, 0.94); }
+        .r22-glabel.is-own { border-color: var(--teal-border); background: rgba(10, 27, 34, 0.92); box-shadow: 0 6px 20px rgba(45, 212, 191, 0.16); }
+        .r22-glabel.is-own:hover { border-color: var(--teal); }
+        .r22-glabel.is-focused { border-color: var(--amber); box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.35), 0 8px 22px rgba(0, 0, 0, 0.48); }
+        .r22-glabel.is-own.is-focused { border-color: var(--teal); box-shadow: 0 0 0 1px rgba(45, 212, 191, 0.42), 0 8px 22px rgba(45, 212, 191, 0.22); }
+        .r22-glabel-top { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; }
+        .r22-glabel-dot { width: 7px; height: 7px; border-radius: 99px; background: var(--amber); flex: none; }
+        .r22-glabel.is-own .r22-glabel-dot { background: var(--teal); }
+        .r22-glabel-tag { font-size: 10px; font-weight: 700; color: var(--teal); background: var(--teal-soft); border: 1px solid var(--teal-border); padding: 0 5px; border-radius: 999px; line-height: 1.5; }
+        .r22-glabel-sub { font-size: 10.5px; color: var(--ink-muted); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; line-height: 1.2; }
+
+        .cmp-card { min-width: 0; }
+        .cmp-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+        .cmp-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--teal); margin-bottom: 4px; }
+        .cmp-title { font-size: clamp(18px, 2.2vw, 22px); font-weight: 800; letter-spacing: -0.025em; color: var(--ink); line-height: 1.25; }
+        .cmp-subtitle { font-size: 13px; color: var(--ink-muted); margin-top: 4px; }
+
+        .cmp-kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 20px; }
+        .cmp-kpi { background: linear-gradient(180deg, rgba(21, 31, 48, 0.72), rgba(15, 22, 35, 0.92)); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; }
+        .cmp-kpi-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+        .cmp-kpi-label { font-size: 12px; font-weight: 600; color: var(--ink-2); }
+        .cmp-kpi-dir { font-size: 10.5px; color: var(--ink-muted); }
+        .cmp-kpi-val { font-size: 26px; font-weight: 800; letter-spacing: -0.035em; line-height: 1.1; font-variant-numeric: tabular-nums; color: var(--teal); }
+        .cmp-kpi-val.sky { color: var(--sky); }
+        .cmp-kpi-val.emerald { color: var(--emerald); }
+        .cmp-kpi-unit { font-size: 13px; font-weight: 600; color: var(--ink-muted); margin-left: 3px; }
+        .cmp-kpi-foot { display: flex; align-items: center; justify-content: space-between; gap: 6px; flex-wrap: wrap; padding-top: 8px; border-top: 1px solid var(--border); font-size: 11.5px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+
+        .cmp-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-md); background: rgba(9, 14, 24, 0.58); }
+        .cmp-table { border-collapse: collapse; width: 100%; font-size: 13.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+        .cmp-table th, .cmp-table td { padding: 11px 14px; text-align: right; border-bottom: 1px solid var(--border); vertical-align: middle; }
+        .cmp-table tbody tr:last-child td { border-bottom: none; }
+        .cmp-table th:first-child, .cmp-table td:first-child { text-align: left; }
+        .cmp-table thead th { font-size: 12px; font-weight: 700; color: var(--ink-2); background: rgba(21, 31, 48, 0.65); letter-spacing: -0.01em; }
+        .cmp-th-sub { display: block; font-size: 10.5px; font-weight: 500; color: var(--ink-muted); margin-top: 2px; }
+        .cmp-table tbody tr { transition: background 0.16s ease; }
+        .cmp-table tbody tr.cmp-binder-row:hover { background: rgba(148, 163, 184, 0.06); }
+        .cmp-table tbody tr.selected { background: rgba(251, 191, 36, 0.09); box-shadow: inset 3px 0 0 var(--amber); }
+        .cmp-table tbody tr.selected td:first-child { color: #fde68a; }
+        .cmp-table tbody tr.cmp-own { background: var(--teal-soft); box-shadow: inset 3px 0 0 var(--teal); }
+        .cmp-name-cell { display: inline-flex; align-items: center; gap: 8px; }
+        .cmp-row-dot { width: 8px; height: 8px; border-radius: 99px; background: var(--amber); flex: none; }
+        .cmp-own .cmp-row-dot { background: var(--teal); }
+        .cmp-row-name { font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+        .cmp-own .cmp-row-name { color: var(--teal); }
+        .cmp-own-tag { font-size: 10.5px; font-weight: 700; color: var(--teal); background: rgba(45, 212, 191, 0.14); border: 1px solid var(--teal-border); padding: 1px 7px; border-radius: 999px; }
+        .cmp-focus-btn { margin-left: 4px; background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--border); border-radius: 6px; padding: 2px 7px; font: 600 11px/1.4 inherit; cursor: pointer; transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease; }
+        .cmp-focus-btn:hover { border-color: var(--teal-border); color: var(--teal); background: var(--teal-soft); }
+        .cmp-metric-cell { display: inline-flex; flex-direction: column; align-items: flex-end; gap: 4px; min-width: 72px; }
+        .cmp-num { font-weight: 600; color: var(--ink); }
+        .cmp-own .cmp-num { font-weight: 800; color: var(--ink); }
+        .cmp-num.is-best { color: var(--emerald); font-weight: 800; }
+        .cmp-own .cmp-num.is-best { color: var(--teal); }
+        .cmp-bar-track { width: 68px; height: 3px; border-radius: 99px; background: rgba(148, 163, 184, 0.16); overflow: hidden; }
+        .cmp-bar-fill { height: 100%; border-radius: 99px; background: rgba(251, 191, 36, 0.72); }
+        .cmp-own .cmp-bar-fill { background: var(--teal); }
+        .cmp-id-val { font-weight: 700; color: var(--ink-2); }
+        .cmp-own .cmp-id-val { color: var(--ink-muted); font-weight: 500; }
+
+        .cmp-seq-section { margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--border); }
+        .cmp-seq-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 12px; }
+        .cmp-seq-title-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        #cmp-seq-title { font-size: 16px; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); }
+        .cmp-seq-badge { font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; color: #fde68a; background: var(--amber-soft); border: 1px solid var(--amber-border); padding: 2px 10px; border-radius: 999px; }
+        .cmp-note { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: var(--ink-muted); font-size: 12.5px; margin: 0 0 10px; }
+        .cmp-match-chip { display: inline-block; padding: 1px 7px; border-radius: 5px; font-size: 11.5px; font-weight: 700; color: #99f6e4; background: #14383b; border: 1px solid rgba(45, 212, 191, 0.28); }
+
+        @media (max-width: 860px) {
+          .cmp-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 640px) {
+          #candidate .r22-viewport { height: 520px; min-height: 460px; }
+          .r22-glabel { padding: 3px 7px; border-radius: 8px; }
+          .r22-glabel-top { font-size: 11px; gap: 4px; }
+          .r22-glabel-sub { display: none; }
+          .cmp-kpi { padding: 12px 13px; }
+          .cmp-kpi-val { font-size: 21px; }
+          .cmp-table th, .cmp-table td { padding: 9px 10px; font-size: 12.5px; }
+          .cmp-bar-track { width: 52px; }
+          .cmp-seq-head { flex-direction: column; align-items: stretch; }
+        }
+        .seq-scroll {overflow-x:auto;max-width:100%;border:1px solid var(--border);border-radius:6px;background:var(--surface)}
+        .seq-scroll .seq-seven {border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;font-size:clamp(11px,2.2vw,13px)}
+        .seq-seven th,.seq-seven td {padding:5px clamp(8px,1.6vw,12px);white-space:nowrap;text-align:left;border-bottom:1px solid var(--border)}
+        .seq-seven tbody>tr:last-child>* {border-bottom:0}
+        .seq-seven th {position:sticky;left:0;z-index:1;background:var(--surface);color:var(--ink-2);font-weight:600;border-right:1px solid var(--border)}
+        .seq-seven td>code {display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-variant-ligatures:none;letter-spacing:.05em;color:var(--ink-2)}
+        .seq-seven td>code b {color:var(--teal);background:#14383b;font-weight:700}
+        .seq-seven tbody>tr:first-child>* {background:color-mix(in srgb,var(--teal) 12%,var(--surface));border-bottom-color:var(--teal)}
+        .seq-seven tbody>tr:first-child th {color:var(--teal)}
+      </style>
       <div class="sec-head">
         <div>
           <div class="sec-kicker">03 · FINAL CANDIDATE</div>
@@ -1592,28 +1697,31 @@
       </div>
 
       <div class="spotlight">
-        <!-- Interactive WebGL 3D Predicted Structure (design_04_r22) -->
+        <!-- Interactive WebGL 3D Gallery (Our Candidate + 6 Published Experimental Binders) -->
         <div class="card r22-card">
           <div class="r22-head">
             <div class="r22-title-group">
-              <div class="r22-title">AF2 예측 복합체 구조</div>
+              <div class="r22-title">AF2 예측 복합체 7종 갤러리</div>
               <span class="r22-badge-3d">WebGL 3D</span>
+              <span class="r22-badge-count">우리 후보 1 · 실험 결합체 6</span>
             </div>
             <div class="r22-legend">
-              <span><i class="r22-swatch-grad"></i>결합체 (N→C)</span>
+              <span><i class="r22-swatch-grad"></i>우리 후보 (N→C)</span>
+              <span><i class="r22-swatch-amber"></i>실험 결합체 6종</span>
               <span><i style="width:9px;height:9px;border-radius:2px;background:#64748b;display:inline-block;"></i>표적 TrkA</span>
               <span><i style="width:9px;height:9px;border-radius:99px;background:#fbbf24;display:inline-block;"></i>접점 3곳</span>
             </div>
           </div>
 
           <div class="r22-viewport" id="r22-vp">
-            <canvas id="r22-canvas" aria-label="design_04_r22와 표적 TrkA D5의 AF2 예측 3D 복합체 구조 WebGL 뷰어"></canvas>
+            <canvas id="r22-canvas" aria-label="우리 후보 design_04_r22와 기존 실험 결합체 6종의 표적 TrkA D5 복합체 7종 동시 3D WebGL 갤러리"></canvas>
 
             <div class="r22-labels" id="r22-labels"></div>
+            <div class="r22-gallery-labels" id="r22-gallery-labels" aria-label="7종 구조 바로 보기 라벨"></div>
 
             <div class="r22-hud-tl">
               <div class="r22-banner plddt" id="r22-hud-plddt">
-                <strong style="color:#7dd3fc;">AF2 잔기별 신뢰도 (pLDDT)</strong> · 결합체 평균 <strong>89.58</strong> · 표적 <strong>92.11</strong>
+                <strong style="color:#7dd3fc;">AF2 잔기별 신뢰도 (pLDDT)</strong> · 우리 후보 평균 <strong>89.58</strong> · 표적 <strong>92.11</strong>
                 <div class="r22-plddt-bar"><span>50</span><div class="r22-plddt-grad"></div><span>100</span></div>
               </div>
               <div class="r22-banner design" id="r22-hud-design">
@@ -1623,11 +1731,11 @@
 
             <div class="r22-tooltip" id="r22-tooltip"></div>
 
-            <div class="r22-hint">드래그 회전 · 스크롤 확대 · 더블클릭 초기화</div>
+            <div class="r22-hint">드래그 회전 · 우클릭/Shift 이동 · 스크롤/핀치 확대 · 라벨 클릭 초점 · 더블클릭 전체</div>
             <div class="r22-zoom-ctrl">
               <button type="button" class="r22-icon-btn" id="r22-zoom-in" title="확대">+</button>
               <button type="button" class="r22-icon-btn" id="r22-zoom-out" title="축소">−</button>
-              <button type="button" class="r22-icon-btn" id="r22-reset" title="시점 초기화" style="font-size:13px;">↺</button>
+              <button type="button" class="r22-icon-btn" id="r22-reset" title="전체 7종 시점 초기화" style="font-size:13px;">↺</button>
             </div>
 
             <div class="r22-fallback" id="r22-fallback">
@@ -1637,10 +1745,12 @@
 
           <div class="r22-controls">
             <div class="r22-btn-group" aria-label="카메라 시점">
-              <button type="button" class="r22-btn active" data-r22-preset="overview">전체</button>
+              <button type="button" class="r22-btn active" data-r22-preset="overview">전체 7종</button>
+              <button type="button" class="r22-btn" data-r22-preset="candidate">우리 후보</button>
               <button type="button" class="r22-btn" data-r22-preset="interface">접점 확대</button>
             </div>
             <div class="r22-btn-group" aria-label="3D 표현 옵션">
+              <button type="button" class="r22-btn" id="r22-opt-pan">이동 모드</button>
               <button type="button" class="r22-btn active" id="r22-opt-style">카툰 리본</button>
               <button type="button" class="r22-btn" id="r22-opt-plddt">pLDDT 색</button>
               <button type="button" class="r22-btn" id="r22-opt-design">설계 백본</button>
@@ -1651,101 +1761,44 @@
           </div>
         </div>
 
-        <!-- Scorecard -->
-        <div class="card" style="display:flex;flex-direction:column;justify-content:space-between;">
-          <div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-              <div style="font-size:16px;font-weight:800;">합격 성적표</div>
-              <span class="badge badge-emerald">3관문 전원 통과</span>
-            </div>
-
-            <div class="metric-list">
-              <div class="metric-row">
-                <div class="metric-top">
-                  <div><span class="metric-name">결합 확신도</span><span class="metric-code">pae_interaction</span></div>
-                  <div class="metric-score">9.389</div>
-                </div>
-                <div class="meter-track">
-                  <div class="meter-fill" style="width: 31.3%;"></div>
-                  <div class="meter-thresh" style="left: 33.3%;"></div>
-                </div>
-                <div class="metric-meta"><span>기준 &lt; 10</span><span>대조군 5.862</span></div>
-              </div>
-
-              <div class="metric-row">
-                <div class="metric-top">
-                  <div><span class="metric-name">구조 안정성</span><span class="metric-code">plddt_binder</span></div>
-                  <div class="metric-score">89.58</div>
-                </div>
-                <div class="meter-track">
-                  <div class="meter-fill" style="width: 89.6%;"></div>
-                  <div class="meter-thresh" style="left: 80%;"></div>
-                </div>
-                <div class="metric-meta"><span>기준 &gt; 80</span><span>대조군 93.30</span></div>
-              </div>
-
-              <div class="metric-row">
-                <div class="metric-top">
-                  <div><span class="metric-name">접힘 오차</span><span class="metric-code">binder_aligned_rmsd</span></div>
-                  <div class="metric-score">0.702 Å</div>
-                </div>
-                <div class="meter-track">
-                  <div class="meter-fill" style="width: 35.1%;"></div>
-                  <div class="meter-thresh" style="left: 50%;"></div>
-                </div>
-                <div class="metric-meta"><span>기준 &lt; 1.0 Å</span><span>대조군 0.615 Å</span></div>
-              </div>
-
-              <div class="metric-row">
-                <div class="metric-top">
-                  <div><span class="metric-name">설계 위치 오차</span><span class="metric-code">target_aligned_rmsd</span></div>
-                  <div class="metric-score">1.407 Å</div>
-                </div>
-                <div class="meter-track">
-                  <div class="meter-fill" style="width: 28.1%;"></div>
-                </div>
-                <div class="metric-meta"><span>의도한 자리 밀착</span><span>대조군(1.497 Å)보다 근접</span></div>
-              </div>
+        <div class="card cmp-card">
+          <div class="cmp-head">
+            <div>
+              <div class="cmp-kicker">정량 지표 · 서열 비교</div>
+              <h3 class="cmp-title">후보 vs. 양성 대조군 6종</h3>
+              <p class="cmp-subtitle">양성 대조군은 실험에서 TrkA에 결합한 단백질 6종입니다. (<a href="https://doi.org/10.6084/m9.figshare.22662094.v1">Watson 2023</a>)</p>
             </div>
           </div>
 
-          <div class="seq-box">
-            <div style="font-size:10.5px;color:#7c8da6;margin-bottom:4px;font-family:Pretendard,sans-serif;letter-spacing:0;">design_04_r22 서열 (73잔기)</div>
-            ALTAEEQAMIADATALVVYMNANAPRPFTREEMFAAARSYIRSLVRRKEIPELSEERIDALARLATERALALL
+          <div class="cmp-kpi-grid" id="cmp-kpis" aria-label="핵심 정량 지표 요약"></div>
+
+          <div class="cmp-table-wrap">
+            <table class="cmp-table">
+              <thead>
+                <tr>
+                  <th>후보 구조</th>
+                  <th>결합 PAE<span class="cmp-th-sub">↓ 낮을수록 유리</span></th>
+                  <th>결합체 pLDDT<span class="cmp-th-sub">↑ 높을수록 신뢰</span></th>
+                  <th>접힘 오차 (Å)<span class="cmp-th-sub">↓ 낮을수록 정밀</span></th>
+                  <th>설계 위치 오차 (Å)<span class="cmp-th-sub">↓ 낮을수록 정밀</span></th>
+                  <th>서열 일치율<span class="cmp-th-sub">우리 후보 대비</span></th>
+                </tr>
+              </thead>
+              <tbody id="cmp-rows"></tbody>
+            </table>
+          </div>
+
+          <div class="cmp-seq-section">
+            <h3 class="r22-title">아미노산 서열 정렬</h3>
+            <p class="cmp-note"><span class="cmp-match-chip">우리 후보와 같은 아미노산</span><span>– 정렬 공백</span></p>
+            <div class="seq-scroll" tabindex="0" role="region" aria-label="일곱 서열 가로 비교">
+              <table class="seq-seven" aria-label="우리 후보 기준 아미노산 서열 정렬"><tbody id="cmp-alignment"></tbody></table>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="scope">
-      <div class="sec-head">
-        <div>
-          <div class="sec-kicker">04 · SCOPE</div>
-          <h2 class="sec-title">검증 범위와 한계</h2>
-        </div>
-      </div>
-
-      <div class="scope-grid">
-        <div class="scope-card done">
-          <span class="badge badge-teal">확인 완료 (계산)</span>
-          <ul class="scope-list">
-            <li><span class="dot-ok">✓</span><span>3단계 AI 파이프라인 재현 및 채점기 교정</span></li>
-            <li><span class="dot-ok">✓</span><span>사이드체인 누락 원인 분리·자동 검증 추가</span></li>
-            <li><span class="dot-ok">✓</span><span>길이 고정으로 채점 처리량 2.4배 향상</span></li>
-            <li><span class="dot-ok">✓</span><span>3기준 통과 신규 후보 1건(<strong>design_04_r22</strong>) 확보</span></li>
-          </ul>
-        </div>
-
-        <div class="scope-card limit">
-          <span class="badge badge-amber">실험 필요 (범위 밖)</span>
-          <ul class="scope-list">
-            <li><span class="dot-warn">!</span><span>단백질 합성·정제 및 결합력(SPR/BLI) 측정 미수행</span></li>
-            <li><span class="dot-warn">!</span><span>공개 TrkA 기준, AI 필터 통과 후 실제 결합률 <strong>6.3% (6/95)</strong></span></li>
-            <li><span class="dot-warn">!</span><span>최종 의미: <strong>'실험에 올릴 자격을 통과한 후보 1건'</strong></span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
 
     <footer>
       <div>TrkA 단백질 결합체 AI 설계 · 핵심 요약</div>
@@ -1754,6 +1807,211 @@
 
   </main>
 
+  <script id="cmp-data" type="application/json">[{"name":"TrkA_10","ca":[-7.3,19.81,-7.29,-8.21,16.17,-7.97,-4.63,15.03,-7.38,-4.38,16.96,-4.09,-7.76,15.58,-2.94,-6.6,12.07,-3.33,-3.42,12.6,-1.61,-5.22,14.14,1.31,-7.79,11.43,1.28,-5.15,8.69,1.13,-3.25,10.39,4.06,-6.45,10.57,6.06,-7.18,6.95,5.61,-3.6,5.98,6.56,-4.16,7.98,9.72,-7.37,6.26,10.33,-5.84,2.84,9.61,-3.25,3.63,12.33,-5.95,4.44,14.7,-7.88,1.27,13.77,-4.76,-0.77,14.37,-4.42,0.7,17.83,-8.02,-0.15,18.53,-7.45,-3.66,17.2,-4.62,-4.24,19.78,-7.13,-3.8,22.6,-10.09,-5.61,20.91,-11.11,-9.28,20.57,-9.36,-11.21,17.78,-12.53,-11.19,15.65,-12.94,-7.38,16.05,-9.27,-6.83,15.33,-9.61,-8.79,12.12,-12.6,-6.76,10.96,-10.87,-3.51,11.78,-7.66,-4.52,9.99,-9.55,-5.72,6.91,-11.6,-2.58,6.92,-8.49,-0.48,7.07,-7.08,-2.37,4.08,-10.19,-1.92,2.02,-10.4,1.72,2.97,-6.77,2.24,1.85,-7.55,0.67,-1.46,-10.63,2.85,-1.86,-8.65,5.91,-0.9,-5.97,5.11,-3.48,-8.71,5.54,-6.09,-9.7,8.93,-4.68,-13.31,7.81,-3.87,-14.18,9.61,-0.57,-17.74,8.22,-0.68,-16.42,4.69,-1.19,-14.06,5.16,1.73,-16.93,6.4,4.05,-18.96,3.36,3.06,-16.12,1.02,3.85,-15.63,2.66,7.28,-19.31,2.55,8.07,-19.67,-1.07,6.98,-16.62,-2.0,9.04,-18.16,-0.24,12.11,-21.49,-2.13,11.64,-19.57,-5.44,11.54,-17.62,-4.63,14.68,-20.87,-3.59,16.42,-22.33,-6.96,15.41,-19.43,-8.65,17.24,-20.44,-6.91,20.48,-17.6,-4.18,20.5,-19.95,-1.11,20.27,-17.27,1.25,21.62,-14.72,0.19,19.08,-17.41,0.48,16.35,-18.36,3.97,17.42,-14.79,5.26,17.73,-13.7,3.64,14.46,-16.62,5.25,12.67,-16.42,8.73,14.3,-12.77,8.98,13.84,-12.86,7.62,10.26,-15.64,10.0,9.13,-14.12,12.97,10.79,-10.64,12.4,9.11,-12.31,11.83,5.71,-14.49,14.94,6.03,-11.47,16.95,7.06,-9.56,15.72,4.0,-12.56,16.67,1.74,-12.81,20.19,3.25,-9.04,20.74,2.81,-9.28,19.62,-0.77,-12.06,22.19,-1.47],"aligned":["-ALTAEEQAMIA-DATALVVYMNA-NA-P---R--PFTRE-EMFAAAR---SYIRSLV--RRKEIPEL-SEE--RIDALARL-ATERA-LALL","DRKRRRELLFSAVVEWAQFASELAKKASPETARVLQETAERALRAAARGDAEAVKEVVEEGAKEVAALGDEEAARRAREEGLELIERAEREAE"],"identity":25.8,"values":["4.418","94.841","0.726","1.921"]},{"name":"TrkA_17","ca":[-3.43,-30.23,10.76,-6.66,-29.09,12.52,-4.32,-26.93,14.55,-2.87,-25.26,11.35,-6.34,-24.55,10.02,-7.39,-23.02,13.33,-4.38,-20.89,13.41,-4.93,-19.74,9.98,-8.61,-18.97,10.6,-7.72,-17.07,13.66,-5.1,-15.07,11.75,-7.73,-14.0,9.26,-10.07,-12.91,11.94,-7.32,-11.0,13.66,-6.48,-9.35,10.37,-10.07,-8.18,9.95,-10.05,-6.78,13.45,-6.95,-4.8,12.76,-8.56,-3.46,9.56,-11.56,-2.31,11.6,-9.31,-0.6,14.1,-7.42,1.28,11.37,-10.73,2.23,9.69,-11.98,3.77,12.96,-8.71,5.65,13.5,-8.94,7.02,10.01,-12.58,7.88,10.41,-11.67,9.84,13.59,-9.16,11.88,11.61,-11.53,12.52,8.66,-15.32,12.08,9.46,-16.31,12.62,5.77,-15.11,9.05,4.89,-16.55,7.31,8.11,-19.5,5.69,6.3,-17.24,4.34,3.59,-14.72,3.02,6.18,-17.47,1.28,8.1,-18.57,-0.55,5.0,-15.05,-1.66,4.32,-14.56,-2.86,7.88,-17.82,-4.77,7.78,-16.96,-6.34,4.51,-13.53,-7.35,5.78,-15.13,-8.89,8.87,-17.6,-10.87,6.81,-14.91,-12.02,4.41,-12.62,-13.12,7.28,-15.46,-15.03,9.04,-16.35,-16.76,5.84,-12.74,-17.65,5.18,-12.31,-18.88,8.74,-15.44,-20.98,8.56,-14.42,-22.46,5.2,-10.96,-23.36,6.63,-12.35,-24.88,9.85,-15.05,-26.84,7.94,-12.38,-28.22,5.63,-14.74,-26.93,2.89,-13.33,-26.29,-0.74,-9.95,-24.36,-0.61,-11.48,-22.25,-3.32,-14.1,-20.6,-1.07,-11.38,-19.83,1.5,-9.2,-18.34,-1.23,-11.99,-16.22,-2.58,-12.96,-14.94,0.86,-9.26,-14.21,1.55,-8.97,-12.26,-1.62,-12.03,-10.22,-0.59,-10.38,-9.43,2.72,-7.23,-8.28,0.82,-9.28,-6.16,-1.41,-10.9,-4.52,1.57,-7.49,-3.9,2.91,-6.37,-2.27,-0.27,-9.4,-0.1,-0.35,-8.84,1.0,3.25,-5.18,1.8,2.41,-6.28,4.01,-0.41,-8.52,6.05,1.85,-5.93,5.96,4.49,-3.28,7.49,2.16,-5.7,10.11,0.9,-6.67,11.24,4.32,-3.04,11.51,5.31,-2.18,13.28,2.07,-4.95,15.89,2.57],"aligned":["-----ALTA-E--EQA-MIA-DA--TALVVYMNA-NAPRPFTREEMFAAARSYIRSL-VRRKEIPE-LSEE-RIDALARLATERALALL","SKEERERRAQELLEGAEKIARVAREVAEEDPSVAEELERIAER-AKEAAERAAKAILDGEREEEAERAEEELREAERELLRIYIRVKDA"],"identity":24.7,"values":["6.182","93.014","0.889","1.533"]},{"name":"TrkA_23","ca":[-39.13,0.22,16.01,-35.56,1.55,16.78,-35.07,-1.85,18.41,-36.05,-3.73,15.21,-33.59,-1.58,13.19,-30.72,-2.32,15.56,-31.48,-5.99,15.49,-31.61,-6.01,11.73,-28.33,-4.22,11.63,-26.76,-6.63,14.03,-28.01,-9.5,11.96,-26.65,-7.87,8.78,-23.34,-7.44,10.46,-23.17,-10.97,11.63,-24.07,-12.23,8.25,-21.3,-10.15,6.62,-18.74,-11.52,9.12,-19.95,-15.07,8.42,-19.53,-14.54,4.7,-15.98,-13.17,5.31,-15.1,-16.26,7.36,-16.29,-18.55,4.64,-14.32,-16.65,2.01,-11.2,-17.0,4.16,-11.79,-20.72,4.5,-12.07,-20.98,0.71,-8.94,-18.92,0.39,-6.86,-21.29,2.59,-7.56,-24.13,0.15,-7.35,-22.08,-3.11,-4.33,-21.43,-5.33,-2.49,-18.14,-4.75,-4.16,-16.49,-7.85,-7.67,-17.11,-6.26,-6.51,-16.69,-2.61,-5.36,-13.03,-2.98,-8.68,-11.63,-4.38,-10.64,-13.81,-1.85,-8.54,-12.45,1.08,-9.22,-8.84,-0.15,-12.89,-9.55,-0.49,-12.93,-10.96,3.05,-11.2,-7.91,4.47,-13.56,-5.56,2.65,-16.54,-7.48,4.18,-15.05,-7.11,7.69,-14.72,-3.41,7.11,-18.3,-3.35,5.86,-19.36,-5.09,9.06,-17.41,-2.68,11.42,-18.29,0.6,9.77,-21.88,1.32,8.57,-20.71,4.46,6.82,-18.43,2.45,4.6,-20.53,-0.73,4.38,-21.93,-0.04,0.92,-18.63,0.99,-0.7,-16.73,-1.85,1.13,-19.37,-4.4,0.08,-19.01,-3.3,-3.56,-15.29,-3.74,-3.35,-15.78,-7.15,-1.77,-18.05,-8.18,-4.68,-15.51,-6.98,-7.23,-12.74,-9.02,-5.68,-15.04,-12.01,-5.2,-15.96,-11.85,-8.9,-12.36,-11.65,-9.85,-11.69,-14.71,-7.64,-14.63,-16.52,-9.2,-13.18,-15.92,-12.7,-9.97,-17.71,-11.69,-11.51,-20.59,-9.59,-12.86,-23.93,-10.7,-16.67,-23.89,-11.59,-17.74,-25.49,-8.26,-15.7,-22.99,-6.22,-16.69,-20.08,-8.51,-20.43,-20.9,-7.91,-19.88,-20.89,-4.18,-17.89,-17.58,-4.26,-20.66,-15.9,-6.29,-23.29,-17.15,-3.88,-21.32,-15.67,-0.97,-20.87,-12.4,-2.84,-24.62,-12.25,-3.4,-25.31,-12.95,0.23,-22.96,-10.11,1.19,-24.83,-7.78,-1.16,-28.17,-8.71,0.31,-26.86,-8.17,3.84,-25.79,-4.68,3.06,-29.1,-3.79,1.22,-30.98,-4.76,4.23],"aligned":["---ALTAEE-QA---MIADATAL-VVYMNA---NA-P-RPFTREEMFAA-----ARSYIRSLVRRKE-IPEL-SEE---RIDALARLATERALALL","SEEEREEEERRAREELLEVAKELIEISKKAPEEVAEPLSKAAVALVIAAEDPETARSAAEIAVRYAEKAAELAPEEVAKRIRELAERARE-A-VER"],"identity":28.1,"values":["26.392","94.645","0.58","20.298"]},{"name":"TrkA_54","ca":[-21.69,-8.69,0.57,-24.04,-5.63,1.05,-22.22,-4.89,4.25,-18.78,-5.15,2.7,-20.01,-2.82,-0.07,-21.21,-0.28,2.56,-17.8,-0.38,4.29,-15.97,0.17,1.0,-18.41,2.93,0.05,-17.83,4.49,3.5,-14.03,4.37,3.02,-14.41,5.97,-0.41,-16.43,8.75,1.2,-13.59,9.22,3.7,-11.13,9.55,0.79,-13.33,12.17,-0.81,-13.56,14.13,2.48,-9.8,13.9,2.96,-9.18,15.35,-0.45,-11.5,18.19,0.23,-9.68,18.77,3.43,-6.37,18.73,1.66,-7.59,21.5,-0.76,-8.87,23.74,1.97,-5.98,23.34,4.41,-2.31,24.39,5.08,0.29,22.38,3.36,0.74,20.53,6.62,-2.96,19.72,6.79,-2.9,18.6,3.2,-0.18,16.21,4.24,-2.24,14.64,7.04,-5.4,14.68,4.96,-3.59,12.78,2.35,-2.36,10.31,4.97,-6.06,9.65,5.84,-6.9,9.07,2.17,-3.94,6.71,1.68,-4.8,4.61,4.75,-8.46,4.38,3.53,-7.26,3.25,0.07,-5.08,0.64,1.62,-7.91,-0.54,3.7,-10.13,-0.86,0.63,-7.42,-2.83,-1.2,-6.98,-5.1,1.84,-10.69,-5.69,2.39,-11.06,-6.67,-1.23,-8.25,-9.24,-0.72,-9.35,-10.31,2.72,-13.02,-9.64,3.18,-13.14,-11.99,6.21,-10.78,-9.6,8.05,-12.74,-6.4,7.17,-13.49,-5.61,10.8,-9.89,-5.79,11.96,-8.62,-3.93,8.88,-11.2,-1.07,9.35,-10.41,-0.7,13.07,-6.68,-0.52,12.55,-7.05,1.74,9.51,-9.52,3.97,11.37,-7.26,4.18,14.41,-4.39,5.26,12.28,-6.49,7.58,10.08,-7.91,9.3,13.25,-4.32,10.11,14.42,-3.77,11.83,11.08,-7.21,13.4,11.08,-6.48,15.05,14.47,-3.96,17.26,12.7,-6.47,18.6,10.11,-9.14,21.36,10.54,-11.69,18.86,9.25,-10.81,16.49,12.15,-14.36,16.29,13.44,-15.93,15.49,10.03,-13.24,12.93,9.18,-13.55,11.25,12.61,-17.29,11.06,12.31,-17.03,9.5,8.86,-14.47,7.0,10.14,-16.72,6.12,13.16,-19.56,5.39,10.75,-17.3,3.02,8.74,-16.19,1.29,11.91,-19.79,0.95,12.94,-20.71,-0.42,9.5,-17.83,-2.96,9.69,-18.98,-4.07,13.19,-22.48,-4.52,12.2],"aligned":["--ALTAEEQAMIA-DATALVVYMNANAP-RPFTREE--MFA--A-A---R--SYIRSLVR---RKEIPELSEERIDA-L-ARLATERALALL","EERLAAVIAGLEAVIALA-REAAKAGTPEEAYYAEEVAVVARLAIAEIRRHPEEARRIVRNAAAKAKEAAAKVKAAAELTAALDKVVAAAEA"],"identity":25.0,"values":["5.407","94.4","0.496","1.296"]},{"name":"TrkA_73","ca":[-6.63,13.92,4.63,-4.41,12.32,2.04,-3.1,9.78,4.5,-6.63,8.82,5.59,-7.73,8.32,2.02,-4.71,6.16,1.33,-5.56,4.06,4.38,-9.11,3.55,3.03,-7.78,2.47,-0.3,-5.32,0.11,1.27,-7.96,-1.35,3.46,-10.28,-1.7,0.51,-7.61,-3.5,-1.46,-7.05,-5.89,1.45,-10.76,-6.66,1.91,-11.24,-7.24,-1.84,-8.7,-10.01,-1.56,-10.9,-11.89,0.78,-12.71,-14.76,-0.88,-15.93,-13.95,0.89,-15.94,-10.28,-0.32,-18.82,-9.36,-2.6,-18.51,-5.62,-2.67,-16.25,-2.83,-1.34,-17.04,0.93,-1.48,-15.37,3.99,-0.2,-17.83,6.75,0.9,-16.35,9.81,2.6,-14.43,8.63,5.73,-16.07,5.21,5.64,-15.25,1.84,4.08,-18.29,-0.3,3.3,-17.82,-4.03,2.62,-20.31,-6.77,1.81,-19.11,-10.23,2.64,-20.77,-13.7,2.09,-20.22,-16.39,4.82,-16.78,-15.05,6.03,-14.49,-17.67,7.62,-13.22,-17.07,11.22,-9.94,-16.14,9.69,-11.54,-13.52,7.43,-13.41,-12.09,10.36,-10.27,-11.76,12.32,-8.63,-10.06,9.36,-11.56,-7.67,8.93,-11.43,-6.86,12.64,-7.75,-5.98,12.37,-8.33,-3.8,9.37,-11.19,-2.15,11.25,-9.0,-1.52,14.26,-6.28,-0.03,12.0,-8.84,2.27,10.33,-10.36,3.3,13.66,-6.9,4.47,14.85,-6.88,6.8,11.91,-10.45,8.1,12.75,-12.05,6.1,9.8,-14.99,3.7,9.9,-15.32,0.15,8.52,-18.89,-1.08,7.93,-19.21,-4.75,7.17,-22.54,-6.2,6.07,-23.02,-9.94,5.97,-25.16,-10.83,2.84],"aligned":["ALTAEEQAMIADATALVVYMNANAPRPFTREEMFAAARSYIRSLV-RRKEIPELSEERI-DALARLATERALALL","DEYRRLLLRLA-A-A----EIRRLP-STVRVEIEGDA---LRAEVTDPTEEERARIARIAAALARAGLTLEVREV"],"identity":21.3,"values":["5.705","92.417","0.398","2.305"]},{"name":"TrkA_88","ca":[-3.15,18.37,-6.84,-4.08,16.84,-3.37,-7.85,17.19,-3.28,-8.59,15.37,-6.53,-6.11,12.56,-5.65,-7.68,12.33,-2.21,-11.19,12.14,-3.69,-10.13,9.55,-6.21,-8.71,7.49,-3.38,-11.84,7.93,-1.32,-14.05,6.76,-4.11,-11.9,3.78,-4.54,-11.81,3.13,-0.88,-15.6,3.2,-0.95,-15.75,0.73,-3.81,-13.46,-1.7,-2.14,-15.38,-1.26,1.14,-18.58,-2.15,-0.69,-16.9,-5.17,-2.23,-15.82,-6.24,1.23,-19.31,-5.76,2.67,-20.81,-7.59,-0.28,-18.41,-10.47,0.22,-19.3,-10.61,3.97,-22.99,-10.28,3.19,-22.72,-13.4,0.98,-21.5,-15.33,4.04,-23.58,-13.61,6.79,-25.71,-10.38,6.23,-25.71,-9.61,9.97,-21.89,-9.72,9.98,-21.84,-7.35,6.98,-24.05,-4.87,8.86,-21.98,-5.04,11.95,-18.77,-4.62,9.87,-20.34,-1.67,8.09,-21.05,0.11,11.4,-17.5,-0.42,12.63,-16.12,0.79,9.28,-18.38,3.88,9.12,-17.46,4.86,12.63,-13.78,4.21,12.1,-13.68,6.19,8.86,-15.54,9.08,10.43,-13.09,9.13,13.34,-10.13,8.97,10.97,-11.5,11.86,8.93,-12.0,13.87,12.1,-8.38,13.24,13.14,-5.59,15.76,12.32,-2.85,13.36,13.21,-1.59,10.72,10.74,-0.45,8.5,13.63,-3.85,8.63,15.15,-5.48,7.81,11.8,-3.18,4.77,11.49,-4.2,3.65,15.01,-7.89,4.02,14.19,-7.38,1.94,11.01,-5.7,-0.74,13.13,-8.49,-0.79,15.63,-11.07,-1.09,12.91,-9.15,-3.9,11.29,-8.76,-5.79,14.65,-12.37,-5.4,15.55,-13.66,-6.64,12.17,-11.2,-9.56,11.94,-12.53,-10.89,15.32,-15.53,-12.09,13.55,-14.93,-11.82,9.69,-13.6,-14.91,7.88,-9.93,-14.69,6.73,-11.09,-14.98,3.12,-12.36,-11.34,3.18,-9.35,-9.83,5.25,-7.4,-8.76,2.14,-10.36,-6.72,0.95,-10.7,-5.14,4.39,-6.92,-4.53,4.47,-7.04,-2.79,1.1,-10.13,-0.67,2.0,-8.55,0.67,5.18,-5.23,1.33,3.4,-7.02,3.35,0.75,-8.87,5.28,3.5,-5.55,6.09,5.18,-3.98,7.25,1.95,-6.97,9.29,1.17,-6.66,10.82,4.63,-2.96,11.52,4.07,-3.5,13.1,0.65,-5.99,15.7,2.04,-3.31,16.97,4.3],"aligned":["-------AL--TAEE-QAMIADATALVVYMNA-NA----PRPFTR-E---EMFAAARSYIRSLVRRKEIPE-LSEERIDALAR-LATE-RALA-LL","SSERAAEALRRRAEEVRQEFLDALAEIDPELAERAKEILDEGVARMEASTDEEEAAR--IAEEVYR-EITEFAPPSVHPLLDRALLLELLAFAERR"],"identity":28.1,"values":["5.862","93.297","0.615","1.497"]}]</script>
+  <script>
+  (() => {
+    const items = JSON.parse(document.getElementById('cmp-data').textContent);
+    const OWN = { name: 'design_04_r22', values: ['9.389', '89.58', '0.702', '1.407'] };
+    const METRICS = [
+      { label: '결합 PAE', dir: '낮을수록 유리', unit: '', lowerBetter: true, accent: '', decimals: 2 },
+      { label: '결합체 pLDDT', dir: '높을수록 신뢰', unit: '', lowerBetter: false, accent: 'sky', decimals: 2 },
+      { label: '접힘 오차', dir: '낮을수록 정밀', unit: 'Å', lowerBetter: true, accent: 'emerald', decimals: 3 },
+      { label: '설계 위치 오차', dir: '낮을수록 정밀', unit: 'Å', lowerBetter: true, accent: '', decimals: 3 }
+    ];
+
+    const body = document.getElementById('cmp-rows');
+    const kpiRoot = document.getElementById('cmp-kpis');
+    const vpEl = document.getElementById('r22-vp');
+
+    function parseNum(v) {
+      if (v === null || v === undefined) return null;
+      const s = String(v).trim();
+      if (!s || s === '—' || s === '-') return null;
+      const n = Number.parseFloat(s.replace(/[^0-9eE.+-]/g, ''));
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function focusIn3D(slotIdx) {
+      if (typeof window.__r22FocusSlot === 'function') {
+        window.__r22FocusSlot(slotIdx);
+      }
+      if (vpEl) {
+        const rect = vpEl.getBoundingClientRect();
+        if (rect.top < 64 || rect.bottom > window.innerHeight) {
+          vpEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+    }
+
+
+    const colStats = METRICS.map((m, c) => {
+      const ownVal = parseNum(OWN.values[c]);
+      const expVals = items.map(it => parseNum(it.values[c])).filter(v => v !== null);
+      const allVals = [ownVal, ...expVals].filter(v => v !== null);
+      const maxVal = allVals.length ? Math.max(...allVals) : 1;
+      const bestVal = allVals.length ? (m.lowerBetter ? Math.min(...allVals) : Math.max(...allVals)) : null;
+      const expAvg = expVals.length ? expVals.reduce((a, b) => a + b, 0) / expVals.length : null;
+      return { ownVal, expAvg, expCount: expVals.length, maxVal, bestVal };
+    });
+
+    kpiRoot.replaceChildren();
+    METRICS.forEach((m, c) => {
+      const st = colStats[c];
+      const card = document.createElement('div');
+      card.className = 'cmp-kpi';
+
+      const top = document.createElement('div');
+      top.className = 'cmp-kpi-top';
+      const lbl = document.createElement('span');
+      lbl.className = 'cmp-kpi-label';
+      lbl.textContent = m.label;
+      const dir = document.createElement('span');
+      dir.className = 'cmp-kpi-dir';
+      dir.textContent = m.dir;
+      top.append(lbl, dir);
+
+      const val = document.createElement('div');
+      val.className = 'cmp-kpi-val' + (m.accent ? ' ' + m.accent : '');
+      val.textContent = OWN.values[c];
+      if (m.unit) {
+        const u = document.createElement('span');
+        u.className = 'cmp-kpi-unit';
+        u.textContent = m.unit;
+        val.append(u);
+      }
+
+      const foot = document.createElement('div');
+      foot.className = 'cmp-kpi-foot';
+      const avgSpan = document.createElement('span');
+      avgSpan.textContent = st.expAvg !== null
+        ? '실험군 평균 ' + st.expAvg.toFixed(m.decimals) + (m.unit ? ' ' + m.unit : '')
+        : '우리 후보 전용 지표';
+      foot.append(avgSpan);
+
+      card.append(top, val, foot);
+      kpiRoot.append(card);
+    });
+
+    function addRow(opts) {
+      const row = body.insertRow();
+      row.className = opts.className;
+
+      const nameCell = row.insertCell();
+      const nameWrap = document.createElement('span');
+      nameWrap.className = 'cmp-name-cell';
+      const dot = document.createElement('i');
+      dot.className = 'cmp-row-dot';
+      const nameText = document.createElement('span');
+      nameText.className = 'cmp-row-name';
+      nameText.textContent = opts.name;
+      nameWrap.append(dot, nameText);
+      if (opts.isOwn) {
+        const tag = document.createElement('span');
+        tag.className = 'cmp-own-tag';
+        tag.textContent = '우리 후보';
+        nameWrap.append(tag);
+      }
+      const btn3d = document.createElement('button');
+      btn3d.type = 'button';
+      btn3d.className = 'cmp-focus-btn';
+      btn3d.textContent = '3D 보기';
+      btn3d.title = opts.name + ' 3D 구조 초점 이동';
+      btn3d.addEventListener('click', (e) => {
+        e.stopPropagation();
+        focusIn3D(opts.slotIdx);
+      });
+      nameWrap.append(btn3d);
+      nameCell.append(nameWrap);
+
+      opts.values.forEach((raw, c) => {
+        const td = row.insertCell();
+        const wrap = document.createElement('span');
+        wrap.className = 'cmp-metric-cell';
+        const num = parseNum(raw);
+        const st = colStats[c];
+        const numEl = document.createElement('span');
+        numEl.className = 'cmp-num';
+        if (num !== null && st.bestVal !== null && Math.abs(num - st.bestVal) < 1e-6) {
+          numEl.classList.add('is-best');
+        }
+        numEl.textContent = raw;
+        wrap.append(numEl);
+        if (num !== null && st.maxVal > 0) {
+          const track = document.createElement('span');
+          track.className = 'cmp-bar-track';
+          const fill = document.createElement('span');
+          fill.className = 'cmp-bar-fill';
+          fill.style.width = Math.max(8, Math.min(100, Math.round((num / st.maxVal) * 100))) + '%';
+          track.append(fill);
+          wrap.append(track);
+        }
+        td.append(wrap);
+      });
+
+      const idCell = row.insertCell();
+      idCell.className = 'cmp-id-val';
+      idCell.textContent = opts.identityText;
+    }
+
+    function renderScores() {
+      body.replaceChildren();
+      addRow({
+        name: OWN.name,
+        values: OWN.values,
+        identityText: '기준',
+        isOwn: true,
+        slotIdx: 0,
+        className: 'cmp-own'
+      });
+      items.forEach((item, i) => {
+        addRow({
+          name: item.name,
+          values: item.values,
+          identityText: item.identity.toFixed(1) + '%',
+          isOwn: false,
+          slotIdx: i + 1,
+          className: 'cmp-binder-row'
+        });
+      });
+    }
+
+    // Anchor each existing pairwise alignment at the residues of the same reference.
+    const reference = items[0].aligned[0].replaceAll('-', '');
+    const widths = Array(reference.length + 1).fill(0);
+    const rows = items.map(({name, aligned: [anchor, partner]}) => {
+      const insertions = widths.map(() => '');
+      let residues = '';
+      for (let i = 0; i < anchor.length; i++) {
+        if (anchor[i] === '-') insertions[residues.length] += partner[i];
+        else residues += partner[i];
+      }
+      insertions.forEach((part, i) => { widths[i] = Math.max(widths[i], part.length); });
+      return {name, residues, insertions};
+    });
+    rows.unshift({name: OWN.name, residues: reference, insertions: widths.map(() => '')});
+    const alignment = document.getElementById('cmp-alignment');
+    for (const [index, row] of rows.entries()) {
+      const tr = alignment.insertRow();
+      const label = document.createElement('th');
+      label.scope = 'row';
+      label.textContent = row.name;
+      tr.append(label);
+      const code = document.createElement('code');
+      for (let i = 0; i <= reference.length; i++) {
+        code.append(row.insertions[i].padEnd(widths[i], '-'));
+        if (i === reference.length) break;
+        const letter = row.residues[i];
+        if (index && letter === reference[i]) {
+          const mark = document.createElement('b');
+          mark.textContent = letter;
+          code.append(mark);
+        } else code.append(letter);
+      }
+      tr.insertCell().append(code);
+    }
+    renderScores();
+  })();
+  </script>
   <script id="r22-data" type="application/json">{"seqA":"ALTAEEQAMIADATALVVYMNANAPRPFTREEMFAAARSYIRSLVRRKEIPELSEERIDALARLATERALALL","seqB":"VSFPASVQLHTAVEMHHWCIPFSVDGQPAPSLRWLFNGSVLNETSFIFTEFLEPAANETVRHGCLRLNQPTHVNNGNYTLLAANPFGQASASIMAAFMDNP","rStartA":1,"rStartB":94,"ssA":"CCCHHHHHHHHHHHHHHHHHHHHCCCCCCHHHHHHHHHHHHHHHHHCCCCCCCCHHHHHHHHHHHHHHHHHHC","ssB":"CCCCCEEEECCCEECCCEEEEEEEECCCCCEEEEEECCEECCCCCCEEEEECCCCCCCCCEEEEEEECCCCCCCCEEEEEEEEECCEEEEEEEEECCCCCC","pred":{"A":{"ca":[-21.95,-15.29,5.76,-18.45,-13.73,5.75,-15.61,-15.96,7.01,-13.38,-14.59,9.77,-10.76,-14.32,7.08,-12.96,-12.34,4.73,-13.91,-10.04,7.6,-10.28,-9.44,8.33,-9.73,-8.71,4.62,-12.5,-6.26,4.52,-11.18,-4.55,7.56,-7.62,-4.42,6.17,-8.81,-3.2,2.74,-11.09,-0.59,4.41,-8.22,0.79,6.53,-5.91,0.95,3.56,-8.43,2.77,1.34,-9.27,5.3,4.14,-5.71,5.88,4.79,-4.88,6.44,1.16,-7.94,8.58,0.57,-6.89,10.78,3.51,-3.44,11.26,2.08,-4.35,11.59,-1.61,-4.1,15.1,-3.28,-7.87,14.71,-3.72,-10.4,12.59,-2.21,-10.83,9.16,-4.01,-14.01,8.65,-6.05,-16.16,5.66,-5.07,-14.7,3.87,-8.18,-11.13,4.65,-7.07,-11.9,3.42,-3.6,-13.31,0.19,-5.06,-10.26,-0.23,-7.32,-7.89,0.26,-4.36,-9.83,-2.19,-2.17,-10.06,-4.7,-4.95,-6.32,-4.44,-5.73,-5.47,-5.05,-2.12,-7.74,-8.11,-1.73,-6.36,-9.58,-4.98,-2.94,-9.18,-3.73,-3.85,-11.16,-0.57,-5.35,-13.95,-2.7,-2.36,-14.03,-5.15,-0.03,-14.56,-2.29,-1.99,-17.5,-0.98,-2.43,-15.67,2.29,-6.15,-16.48,1.92,-8.2,-19.17,0.25,-8.55,-18.87,-3.5,-11.44,-16.44,-4.05,-13.43,-16.11,-7.26,-13.15,-12.65,-9.03,-16.84,-12.18,-8.2,-16.12,-12.7,-4.48,-13.16,-10.33,-4.64,-15.46,-7.7,-6.19,-18.07,-8.34,-3.49,-15.58,-8.01,-0.65,-14.04,-4.94,-2.27,-17.49,-3.3,-2.48,-18.14,-4.0,1.15,-14.74,-2.6,2.09,-15.42,0.44,-0.09,-18.76,1.05,1.6,-17.26,0.76,5.03,-14.53,3.14,4.06,-17.06,5.68,2.79,-18.94,5.43,6.08,-15.79,6.23,8.09,-14.91,9.38,5.9],"co":[0.47,-0.614,-0.634,-0.269,-0.12,0.956,0.033,0.962,-0.271,0.304,0.944,0.128,0.591,0.778,-0.212,0.152,0.89,-0.429,0.013,1.0,-0.015,0.474,0.879,0.055,0.491,0.785,-0.378,0.091,0.935,-0.344,0.164,0.986,0.042,0.532,0.842,-0.089,0.291,0.828,-0.479,-0.005,0.958,-0.286,0.272,0.961,0.052,0.513,0.825,-0.236,0.179,0.864,-0.47,0.027,0.993,-0.114,0.346,0.938,0.02,0.425,0.798,-0.427,-0.018,0.897,-0.442,0.168,0.959,0.228,0.881,0.294,-0.37,-0.456,0.582,0.673,-0.254,0.961,0.112,0.466,-0.884,-0.041,-0.222,0.329,-0.918,-0.691,0.181,0.7,0.719,-0.624,0.307,0.346,-0.838,0.423,0.416,-0.908,-0.054,0.789,-0.6,0.134,0.554,-0.671,0.494,0.31,-0.907,0.286,0.58,-0.809,-0.093,0.738,-0.633,0.232,0.421,-0.791,0.445,0.271,-0.961,0.057,0.645,-0.76,-0.08,0.668,-0.701,0.249,0.287,-0.91,0.299,0.35,-0.919,-0.183,0.734,-0.679,0.017,0.475,-0.792,0.384,0.252,-0.966,0.057,0.554,-0.762,-0.336,0.653,-0.314,0.689,0.181,-0.74,0.647,-0.215,-0.098,0.972,0.534,-0.1,-0.84,-0.202,0.978,-0.046,-0.754,-0.53,0.387,0.745,0.198,-0.637,-0.003,0.617,0.787,0.012,0.929,0.369,-0.419,0.819,0.393,-0.231,0.609,0.759,0.112,0.743,0.66,-0.14,0.934,0.328,-0.418,0.741,0.525,-0.038,0.63,0.776,0.181,0.891,0.416,-0.238,0.917,0.319,-0.272,0.695,0.666,0.183,0.723,0.666,0.112,0.938,0.327,-0.326,0.848,0.417,-0.069,0.657,0.751,0.255,0.805,0.535,-0.088,0.969,0.232,-0.34,0.673,0.657,0.355,0.629,0.691,0.25,0.936,0.249],"p":[82.5,89.3,90.7,87.1,87.3,92.0,91.7,87.2,88.6,93.0,89.9,89.6,91.2,92.6,88.2,87.5,90.3,89.7,84.7,83.9,89.2,87.0,82.0,82.4,76.9,86.0,89.1,90.3,92.7,94.3,94.2,91.6,93.9,95.2,92.0,88.5,92.8,94.3,91.5,90.3,91.6,89.8,88.1,86.1,85.5,83.5,74.5,72.8,66.8,72.2,76.1,86.1,89.3,93.4,92.7,95.7,95.1,94.8,96.6,96.1,96.5,96.4,97.6,97.6,96.0,96.7,97.6,97.1,94.2,95.0,93.3,92.6,90.4],"d":[2.16,2.13,2.51,2.42,2.53,2.18,1.86,2.04,1.8,1.45,1.56,1.56,1.22,1.09,1.53,1.41,1.11,1.54,1.71,1.48,1.77,2.35,2.73,2.75,3.09,2.38,2.1,1.23,1.25,0.74,0.62,0.49,0.61,0.47,0.64,0.79,0.91,0.85,0.8,0.95,1.02,0.82,0.66,0.66,0.57,0.41,0.42,0.55,0.85,0.78,0.43,0.67,1.07,1.04,1.16,1.13,1.19,1.13,0.96,1.1,1.07,0.93,0.87,1.04,0.98,0.68,0.79,0.96,0.78,0.32,0.84,1.23,1.07]},"B":{"ca":[3.51,16.91,-18.96,6.98,15.63,-17.89,7.93,16.61,-14.3,10.37,15.69,-11.53,9.65,12.64,-9.26,7.99,13.27,-5.87,7.69,10.71,-3.08,6.02,10.59,0.27,6.03,7.98,3.07,3.24,7.45,5.65,3.2,6.08,9.16,3.46,2.23,9.23,0.11,0.51,9.77,-0.52,-2.88,11.24,-3.06,-4.82,9.16,-2.95,-8.42,7.97,0.64,-7.47,6.96,2.56,-4.58,8.25,2.43,-1.82,5.66,4.52,1.27,5.06,2.23,3.28,2.8,3.72,5.48,0.09,2.67,7.97,-2.62,4.79,8.57,-5.69,4.34,11.0,-8.55,6.29,11.84,-11.62,6.43,11.81,-15.37,8.03,9.7,-16.74,6.86,7.26,-13.98,9.73,7.09,-11.48,11.73,3.9,-10.78,11.48,2.87,-7.09,14.21,1.61,-4.7,13.98,0.87,-0.97,16.75,1.46,1.62,16.85,-0.05,5.07,19.07,1.82,7.48,20.89,3.31,4.59,21.48,0.0,2.74,19.8,-1.43,-0.21,16.66,-3.36,0.86,16.23,-6.36,-1.42,12.59,-7.33,-1.71,11.75,-10.81,-0.57,8.63,-12.96,-0.24,8.3,-11.45,3.31,9.13,-7.84,2.36,7.94,-6.44,-0.91,6.5,-3.4,-2.72,2.93,-3.46,-3.67,1.04,-0.95,-5.81,-2.61,-0.07,-5.61,-4.57,0.18,-8.75,-3.96,3.58,-10.25,-6.71,6.19,-9.88,-8.18,7.2,-13.36,-6.36,10.25,-14.96,-3.88,10.62,-12.1,-0.15,10.36,-12.38,0.13,9.71,-8.7,0.7,5.98,-7.73,-0.09,4.62,-4.28,1.34,1.55,-2.66,2.81,-0.12,0.3,6.0,-1.7,1.49,4.47,-4.89,2.82,6.08,-6.72,5.65,4.92,-10.25,6.54,5.3,-10.73,10.27,8.22,-8.33,10.82,10.34,-8.79,13.97,12.36,-6.3,16.09,15.18,-6.78,13.48,13.03,-5.05,10.96,12.82,-1.92,13.17,14.57,0.95,11.57,14.78,3.71,9.04,13.0,2.89,5.72,13.85,5.07,2.73,11.99,5.14,-0.62,13.86,6.47,-3.63,11.87,7.68,-6.65,13.98,8.36,-9.79,12.98,9.62,-13.11,15.12,11.47,-15.99,14.55,14.78,-14.16,16.12,13.67,-10.9,15.59,11.65,-7.69,13.23,12.21,-4.79,13.59,10.53,-1.36,11.43,10.03,1.68,12.33,8.38,5.03,10.3,7.02,7.88,11.14,5.44,11.19,9.22,2.11,11.58,8.9,0.29,14.84,7.06,-3.06,14.37,7.95,-4.88,17.57,9.54,-3.88,20.87,13.31,-4.95,21.33,13.46,-7.97,23.7],"co":[-0.297,-0.673,0.677,0.119,0.987,-0.105,-0.006,-0.991,-0.132,-0.933,0.228,0.277,0.604,0.713,0.356,-0.493,-0.738,-0.461,0.482,0.762,0.434,-0.458,-0.747,-0.482,0.014,0.906,0.424,0.606,-0.784,-0.138,-0.833,-0.22,-0.508,-0.267,0.384,0.884,0.469,-0.551,-0.69,-0.842,0.317,0.437,0.443,-0.453,0.774,0.483,-0.72,0.499,-0.67,0.729,-0.14,0.298,-0.502,-0.812,-0.375,0.582,0.721,0.421,-0.169,-0.891,0.586,0.581,0.565,-0.757,-0.527,-0.385,0.751,0.518,0.409,-0.86,-0.338,-0.383,0.926,0.037,0.376,-0.639,-0.749,-0.176,0.38,0.923,0.056,0.447,0.439,0.78,0.69,-0.469,-0.552,-0.756,-0.622,0.202,0.316,0.839,0.443,0.224,-0.861,-0.456,-0.064,0.935,0.348,0.664,-0.66,-0.35,-0.81,0.45,0.376,0.865,-0.451,-0.22,0.937,-0.227,0.267,0.641,0.305,-0.704,-0.938,0.05,0.344,0.455,-0.759,0.466,-0.549,0.398,-0.735,-0.138,-0.452,0.881,0.583,-0.513,-0.631,-0.687,0.712,-0.142,-0.996,0.071,0.06,-0.591,0.477,0.65,0.736,-0.267,-0.622,-0.639,0.305,0.707,0.021,-0.685,-0.728,-0.161,0.703,0.692,-0.393,-0.902,-0.179,0.649,0.477,-0.593,-0.354,0.588,0.727,-0.753,-0.507,-0.42,0.844,0.191,-0.502,-0.211,0.689,0.693,-0.015,0.993,0.117,0.067,-0.954,-0.294,0.808,-0.589,0.016,-0.901,-0.369,-0.228,0.757,0.411,0.508,-0.26,-0.679,-0.687,-0.176,0.695,0.697,0.101,-0.669,-0.736,-0.169,0.274,0.947,0.795,-0.356,-0.491,-0.781,0.229,0.581,0.908,-0.418,-0.007,0.742,-0.63,0.229,-0.726,-0.096,0.681,0.072,0.753,-0.655,0.404,0.915,-0.009,0.699,0.466,-0.542,-0.324,0.669,-0.669,0.943,-0.332,0.024,-0.979,0.188,-0.073,0.724,-0.521,-0.452,-0.5,0.828,0.253,0.305,-0.871,-0.386,-0.116,0.979,0.17,-0.319,-0.874,-0.366,0.236,0.957,0.17,-0.483,-0.797,-0.363,0.801,0.346,0.489,0.824,0.504,-0.261,0.284,0.878,0.384,-0.496,-0.775,-0.391,0.39,0.845,0.366,0.054,-0.959,-0.277,-0.178,0.96,0.217,0.18,-0.93,-0.321,-0.517,0.822,0.237,0.436,-0.834,-0.338,-0.904,0.355,0.24,0.917,-0.396,0.051,-0.933,0.267,0.239,-0.897,-0.368,0.245,0.828,0.455,-0.326,-0.065,-0.971,-0.232,-0.443,0.337,0.831,0.74,0.615,-0.274],"p":[72.0,90.3,93.1,94.2,96.0,96.5,96.7,96.2,95.6,92.0,91.3,90.5,87.8,87.4,80.4,82.5,86.3,91.3,93.2,95.2,93.9,94.8,94.7,95.0,94.7,93.6,94.1,93.5,93.6,95.4,96.4,97.6,97.7,98.1,98.2,97.8,97.6,95.3,97.5,96.9,96.4,94.3,92.2,92.0,87.4,88.3,93.5,93.8,95.0,92.3,91.1,86.5,80.9,81.3,76.0,75.4,75.3,82.4,87.3,90.1,91.8,91.7,93.8,93.8,95.9,93.3,94.1,91.3,88.5,92.0,92.2,91.1,92.5,95.2,95.6,96.4,97.8,98.0,98.2,98.3,98.0,97.7,97.1,96.9,96.7,94.3,94.1,97.1,97.1,97.6,97.2,98.0,97.4,96.7,93.7,92.1,89.4,89.4,83.8,78.0,62.0]}},"design":{"A":{"ca":[-24.08,-14.95,5.66,-20.41,-14.09,4.99,-17.79,-16.64,5.97,-15.15,-15.73,8.57,-12.59,-15.48,5.77,-14.79,-13.1,3.81,-15.37,-10.95,6.88,-11.62,-10.74,7.51,-10.99,-9.78,3.9,-13.65,-7.04,4.09,-12.19,-5.72,7.35,-8.65,-5.57,5.98,-9.76,-3.96,2.72,-11.81,-1.37,4.64,-8.92,-0.49,6.99,-6.59,-0.18,4.05,-8.9,2.15,2.13,-9.57,4.27,5.24,-5.84,4.59,5.91,-5.11,5.57,2.33,-7.9,8.12,2.28,-6.72,9.65,5.56,-3.1,9.95,4.45,-3.25,10.61,0.71,-2.83,14.16,-0.62,-6.07,13.71,-2.52,-8.91,11.59,-1.12,-10.01,8.66,-3.24,-13.37,8.65,-4.98,-15.88,5.86,-4.42,-14.8,4.11,-7.62,-11.15,4.37,-6.67,-11.88,2.94,-3.22,-13.69,0.04,-4.83,-10.79,-0.57,-7.2,-8.3,-0.42,-4.33,-10.34,-2.93,-2.31,-10.58,-5.29,-5.27,-6.83,-5.03,-5.91,-6.11,-5.74,-2.27,-8.33,-8.84,-2.14,-6.82,-10.13,-5.38,-3.35,-9.67,-3.9,-4.29,-11.62,-0.74,-5.57,-14.42,-2.93,-2.42,-14.43,-5.06,-0.26,-14.58,-1.94,-2.34,-17.5,-0.55,-3.21,-15.42,2.52,-6.9,-16.27,2.0,-8.61,-19.12,0.13,-9.17,-18.63,-3.56,-12.43,-16.78,-4.29,-14.4,-16.39,-7.52,-14.22,-13.02,-9.29,-17.89,-12.48,-8.48,-17.22,-13.03,-4.78,-14.21,-10.7,-4.83,-16.29,-8.02,-6.55,-19.06,-8.35,-3.96,-16.56,-8.15,-1.06,-14.88,-5.13,-2.62,-18.23,-3.39,-2.93,-19.08,-4.07,0.72,-15.64,-2.88,1.84,-16.08,0.31,-0.17,-19.51,1.01,1.34,-18.15,0.45,4.86,-15.14,2.68,4.22,-17.31,5.48,2.83,-19.7,5.26,5.76,-16.76,5.48,8.21,-15.28,8.51,6.4],"co":[0.26,-0.776,-0.574,-0.179,-0.08,0.981,0.158,0.966,-0.203,0.39,0.899,0.197,0.63,0.768,-0.112,0.311,0.891,-0.331,0.125,0.991,0.039,0.516,0.848,0.124,0.537,0.805,-0.25,0.195,0.947,-0.255,0.193,0.976,0.099,0.552,0.834,0.017,0.384,0.852,-0.356,0.098,0.976,-0.193,0.346,0.925,0.156,0.578,0.812,-0.081,0.231,0.914,-0.334,0.087,0.996,0.007,0.4,0.907,0.129,0.506,0.831,-0.229,-0.041,0.971,-0.235,0.237,0.884,0.402,0.895,0.419,-0.155,-0.693,0.485,0.533,-0.458,0.864,0.211,0.309,-0.918,-0.25,-0.228,0.467,-0.854,-0.615,0.117,0.78,0.603,-0.762,0.237,0.266,-0.892,0.366,0.283,-0.954,-0.1,0.674,-0.737,0.038,0.49,-0.773,0.404,0.225,-0.947,0.228,0.462,-0.879,-0.12,0.687,-0.706,0.172,0.379,-0.836,0.397,0.253,-0.966,0.055,0.59,-0.803,-0.086,0.663,-0.701,0.262,0.28,-0.917,0.284,0.397,-0.897,-0.195,0.678,-0.734,-0.031,0.513,-0.771,0.377,0.296,-0.946,0.132,0.626,-0.733,-0.265,0.564,-0.28,0.777,0.088,-0.686,0.722,-0.319,0.017,0.948,0.581,-0.081,-0.81,-0.39,0.921,0.0,-0.661,-0.69,0.296,0.718,0.277,-0.638,-0.162,0.626,0.762,0.026,0.925,0.379,-0.396,0.839,0.372,-0.27,0.666,0.695,0.098,0.763,0.638,-0.071,0.947,0.313,-0.363,0.785,0.502,-0.05,0.644,0.763,0.199,0.866,0.458,-0.102,0.935,0.338,-0.251,0.695,0.674,0.179,0.687,0.704,0.169,0.889,0.425,-0.24,0.867,0.437,-0.082,0.635,0.768,0.231,0.744,0.627,0.016,0.944,0.331,-0.298,0.759,0.579,0.158,0.615,0.772,0.29,0.876,0.385]}},"scHot":[{"ch":"B","r":108,"n":"MET","hot":1,"el":"CCCSC","xyz":[[-3.06,-4.82,9.16],[-3.43,-4.32,7.76],[-3.77,-2.84,7.71],[-4.16,-2.27,6.01],[-2.49,-2.16,5.32]],"b":[[0,1],[1,2],[2,3],[3,4]]},{"ch":"B","r":115,"n":"PHE","hot":1,"el":"CCCCCCCC","xyz":[[3.72,5.48,0.09],[5.06,4.96,-0.44],[4.91,3.9,-1.5],[5.04,2.55,-1.16],[4.66,4.24,-2.82],[4.9,1.56,-2.14],[4.52,3.25,-3.79],[4.65,1.92,-3.45]],"b":[[0,1],[1,2],[2,3],[2,4],[3,5],[4,6],[5,7],[6,7]]},{"ch":"B","r":145,"n":"LEU","hot":1,"el":"CCCCC","xyz":[[-2.61,-0.07,-5.61],[-3.26,0.94,-4.66],[-3.04,0.72,-3.17],[-3.66,1.86,-2.36],[-3.63,-0.62,-2.74]],"b":[[0,1],[1,2],[2,3],[2,4]]}],"scBind":[{"ch":"A","r":12,"n":"ASP","hot":0,"el":"CCCOO","xyz":[[-7.62,-4.42,6.17],[-6.74,-5.64,5.88],[-6.21,-6.31,7.14],[-6.32,-5.71,8.23],[-5.68,-7.43,7.03]],"b":[[0,1],[1,2],[2,3],[2,4]]},{"ch":"A","r":16,"n":"LEU","hot":0,"el":"CCCCC","xyz":[[-5.91,0.95,3.56],[-5.47,-0.24,2.7],[-4.48,0.06,1.58],[-3.14,0.48,2.16],[-4.32,-1.15,0.67]],"b":[[0,1],[1,2],[2,3],[2,4]]},{"ch":"A","r":19,"n":"TYR","hot":0,"el":"CCCCCCCCO","xyz":[[-5.71,5.88,4.79],[-4.68,4.83,5.23],[-3.31,5.4,5.5],[-2.33,5.4,4.51],[-2.99,5.93,6.75],[-1.06,5.92,4.76],[-1.73,6.45,7.01],[-0.77,6.44,6.01],[0.48,6.96,6.26]],"b":[[0,1],[1,2],[2,3],[2,4],[3,5],[4,6],[5,7],[6,7],[7,8]]},{"ch":"A","r":20,"n":"MET","hot":0,"el":"CCCSC","xyz":[[-4.88,6.44,1.16],[-4.92,5.35,0.08],[-3.89,4.25,0.28],[-3.76,3.14,-1.18],[-5.32,2.22,-1.03]],"b":[[0,1],[1,2],[2,3],[3,4]]},{"ch":"A","r":39,"n":"SER","hot":0,"el":"CCO","xyz":[[-6.32,-4.44,-5.73],[-5.6,-3.14,-6.1],[-4.21,-3.36,-6.28]],"b":[[0,1],[1,2]]},{"ch":"A","r":40,"n":"TYR","hot":0,"el":"CCCCCCCCO","xyz":[[-5.47,-5.05,-2.12],[-5.92,-4.17,-0.95],[-5.42,-4.63,0.39],[-6.28,-5.23,1.31],[-4.08,-4.48,0.75],[-5.83,-5.66,2.55],[-3.62,-4.91,1.99],[-4.5,-5.49,2.88],[-4.04,-5.92,4.11]],"b":[[0,1],[1,2],[2,3],[2,4],[3,5],[4,6],[5,7],[6,7],[7,8]]}],"landmarks":{"binderCenter":[-10.87,-3.6,0.0],"targetCenter":[7.86,2.6,-0.0],"interfaceCenter":[-1.98,0.12,1.24],"met108":[-3.06,-4.82,9.16],"phe115":[3.72,5.48,0.09],"leu145":[-2.61,-0.07,-5.61],"nTerm":[-21.95,-15.29,5.76],"cTerm":[-14.91,9.38,5.9]}}</script>
   <script>
   (function () {
@@ -2311,13 +2569,89 @@
       markers: buildMarkersMesh()
     };
 
+    const cmpRaw = JSON.parse(document.getElementById("cmp-data").textContent);
+    const cmpCoords = cmpRaw.map(item => unpackVec3(item.ca));
+    const comparisonMeshes = cmpCoords.map(pts =>
+      buildProteinMesh(pts, null, "", { mode: "tube", baseColor: [0.98, 0.72, 0.20], tubeRadius: 0.48, sub: 4 })
+    );
+
+    function computeBounds(pointGroups) {
+      let minX = Infinity, maxX = -Infinity;
+      let minY = Infinity, maxY = -Infinity;
+      let minZ = Infinity, maxZ = -Infinity;
+      for (const pts of pointGroups) {
+        for (let i = 0; i < pts.length; i++) {
+          const p = pts[i];
+          if (p[0] < minX) minX = p[0]; if (p[0] > maxX) maxX = p[0];
+          if (p[1] < minY) minY = p[1]; if (p[1] > maxY) maxY = p[1];
+          if (p[2] < minZ) minZ = p[2]; if (p[2] > maxZ) maxZ = p[2];
+        }
+      }
+      const center = [(minX + maxX) * 0.5, (minY + maxY) * 0.5, (minZ + maxZ) * 0.5];
+      let maxR2 = 0;
+      for (const pts of pointGroups) {
+        for (let i = 0; i < pts.length; i++) {
+          const p = pts[i];
+          const dx = p[0] - center[0], dy = p[1] - center[1], dz = p[2] - center[2];
+          const r2 = dx * dx + dy * dy + dz * dz;
+          if (r2 > maxR2) maxR2 = r2;
+        }
+      }
+      return {
+        min: [minX, minY, minZ],
+        max: [maxX, maxY, maxZ],
+        center,
+        radius: Math.sqrt(maxR2) + 3.2,
+        spanX: maxX - minX,
+        spanY: maxY - minY,
+        spanZ: maxZ - minZ
+      };
+    }
+
+    const gallerySlots = [
+      {
+        idx: 0,
+        name: "design_04_r22",
+        isOwn: true,
+        values: ["9.389", "89.58", "0.702", "1.407"],
+        meta: computeBounds([predB, predA]),
+        offset: [0, 0, 0]
+      },
+      ...cmpRaw.map((item, i) => ({
+        idx: i + 1,
+        name: item.name,
+        isOwn: false,
+        values: item.values,
+        identity: item.identity,
+        meta: computeBounds([predB, cmpCoords[i]]),
+        offset: [0, 0, 0]
+      }))
+    ];
+
+    const maxSpanX = Math.max(...gallerySlots.map(s => s.meta.spanX));
+    const maxSpanY = Math.max(...gallerySlots.map(s => s.meta.spanY));
+    const TAN_HALF_FOV = Math.tan(35 * Math.PI / 360);
+    let maxCamDist = 540;
+
+    function clampDist(d) {
+      return Math.max(14, Math.min(maxCamDist, d));
+    }
+
+    function mat4Translate(vp, ox, oy, oz) {
+      const out = new Float32Array(vp);
+      for (let r = 0; r < 4; r++) {
+        out[12 + r] = vp[r] * ox + vp[4 + r] * oy + vp[8 + r] * oz + vp[12 + r];
+      }
+      return out;
+    }
+
     // === Camera Presets & State ===
     const lm = DATA.landmarks;
     const PRESETS = {
       overview: {
-        target: [-0.6, -0.6, 0.5],
-        dist: 75,
-        quat: qNorm(qMul(qAxisAngle([0, 1, 0], -0.14), qAxisAngle([1, 0, 0], 0.08)))
+        target: [0, 0, 0],
+        dist: 240,
+        quat: qNorm(qMul(qAxisAngle([0, 1, 0], -0.10), qAxisAngle([1, 0, 0], 0.06)))
       },
       interface: {
         target: lm.interfaceCenter.slice(),
@@ -2326,6 +2660,79 @@
       }
     };
 
+    function computeGalleryLayout(vw, vh) {
+      const mobile = vw < 640;
+      const stepX = mobile ? Math.max(44, Math.ceil(maxSpanX + 8)) : Math.max(48, Math.ceil(maxSpanX + 12));
+      const stepY = mobile ? Math.max(46, Math.ceil(maxSpanY + 12)) : Math.max(50, Math.ceil(maxSpanY + 14));
+
+      gallerySlots[0].offset = [0, 0, 0];
+      for (let i = 0; i < 6; i++) {
+        if (mobile) {
+          const col = i % 2;
+          const row = Math.floor(i / 2);
+          gallerySlots[i + 1].offset = [
+            (col === 0 ? -0.54 : 0.54) * stepX,
+            -(row + 1.08) * stepY,
+            0
+          ];
+        } else {
+          const col = i % 3;
+          const row = Math.floor(i / 3);
+          gallerySlots[i + 1].offset = [
+            (col + 1.18) * stepX,
+            (row === 0 ? 0.55 : -0.55) * stepY,
+            0
+          ];
+        }
+      }
+
+      let minX = Infinity, maxX = -Infinity;
+      let minY = Infinity, maxY = -Infinity;
+      let minZ = Infinity, maxZ = -Infinity;
+      for (const slot of gallerySlots) {
+        const o = slot.offset, m = slot.meta;
+        if (o[0] + m.min[0] < minX) minX = o[0] + m.min[0];
+        if (o[0] + m.max[0] > maxX) maxX = o[0] + m.max[0];
+        if (o[1] + m.min[1] < minY) minY = o[1] + m.min[1];
+        if (o[1] + m.max[1] > maxY) maxY = o[1] + m.max[1];
+        if (o[2] + m.min[2] < minZ) minZ = o[2] + m.min[2];
+        if (o[2] + m.max[2] > maxZ) maxZ = o[2] + m.max[2];
+      }
+
+      const aspect = Math.max(0.45, vw / Math.max(1, vh));
+      const halfW = (maxX - minX) * 0.5 + 4;
+      const halfH = (maxY - minY) * 0.5 + (mobile ? 11 : 10);
+      const halfD = (maxZ - minZ) * 0.5 + 4;
+      const distH = (halfH * 1.18) / TAN_HALF_FOV + halfD;
+      const distW = (halfW * 1.14) / (TAN_HALF_FOV * aspect) + halfD;
+      const dist = Math.max(distH, distW);
+
+      PRESETS.overview = {
+        target: [(minX + maxX) * 0.5, (minY + maxY) * 0.5 - 3, (minZ + maxZ) * 0.5],
+        dist,
+        quat: qNorm(qMul(qAxisAngle([0, 1, 0], -0.10), qAxisAngle([1, 0, 0], 0.06)))
+      };
+      maxCamDist = Math.max(540, dist * 2.1);
+      return mobile;
+    }
+
+    function focusSlotPreset(idx, vw, vh) {
+      const slot = gallerySlots[idx] || gallerySlots[0];
+      const o = slot.offset, m = slot.meta;
+      const aspect = Math.max(0.5, vw / Math.max(1, vh));
+      const r = m.radius + 2.5;
+      const distH = (r * 1.40) / TAN_HALF_FOV;
+      const distW = (r * 1.30) / (TAN_HALF_FOV * aspect);
+      return {
+        target: [o[0] + m.center[0], o[1] + m.center[1] - 1.2, o[2] + m.center[2]],
+        dist: Math.max(54, Math.max(distH, distW)),
+        quat: qNorm(qMul(qAxisAngle([0, 1, 0], -0.14), qAxisAngle([1, 0, 0], 0.08)))
+      };
+    }
+
+    const initRect = canvas.getBoundingClientRect();
+    computeGalleryLayout(initRect.width > 100 ? initRect.width : 980, initRect.height > 100 ? initRect.height : 540);
+
     const state = {
       style: "cartoon",
       colorPlddt: false,
@@ -2333,7 +2740,10 @@
       showSidechains: true,
       showLabels: true,
       autoSpin: false,
+      panMode: false,
       preset: "overview",
+      focusedSlot: -1,
+      userMoved: false,
       cam: {
         target: PRESETS.overview.target.slice(),
         dist: PRESETS.overview.dist,
@@ -2342,6 +2752,94 @@
       anim: null,
       dirty: true
     };
+
+    const galleryLabelsRoot = document.getElementById("r22-gallery-labels");
+    const galleryLabelEls = gallerySlots.map(slot => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "r22-glabel" + (slot.isOwn ? " is-own" : "");
+      btn.title = slot.name + " 구조로 카메라 이동";
+
+      const top = document.createElement("span");
+      top.className = "r22-glabel-top";
+      const dot = document.createElement("i");
+      dot.className = "r22-glabel-dot";
+      const nameSpan = document.createElement("span");
+      nameSpan.textContent = slot.name;
+      top.append(dot, nameSpan);
+      if (slot.isOwn) {
+        const tag = document.createElement("span");
+        tag.className = "r22-glabel-tag";
+        tag.textContent = "우리 후보";
+        top.append(tag);
+      }
+
+      const sub = document.createElement("span");
+      sub.className = "r22-glabel-sub";
+      sub.textContent = "PAE " + slot.values[0] + " · pLDDT " + slot.values[1];
+
+      btn.append(top, sub);
+      btn.addEventListener("click", () => focusGallerySlot(slot.idx));
+      galleryLabelsRoot.append(btn);
+      return btn;
+    });
+
+    function updateGalleryLabels(vpMat, up, vw, vh) {
+      if (!galleryLabelsRoot) return;
+      galleryLabelsRoot.classList.toggle("hidden", !state.showLabels);
+      if (!state.showLabels) return;
+
+      const compact = vw < 640;
+      const topSafe = 44;
+      const bottomSafe = 44;
+      const placed = [];
+
+      for (let i = 0; i < gallerySlots.length; i++) {
+        const slot = gallerySlots[i];
+        const el = galleryLabelEls[i];
+        const c = [
+          slot.offset[0] + slot.meta.center[0],
+          slot.offset[1] + slot.meta.center[1],
+          slot.offset[2] + slot.meta.center[2]
+        ];
+        const anchor = vAdd(c, vScale(up, -(slot.meta.radius * 0.94)));
+        const p = projectPoint(vpMat, anchor, vw, vh);
+        if (!p || p.sx < -90 || p.sx > vw + 90 || p.sy < -70 || p.sy > vh + 70) {
+          el.style.opacity = "0";
+          el.style.pointerEvents = "none";
+          continue;
+        }
+
+        const w = el.offsetWidth || (compact ? 86 : 128);
+        const h = el.offsetHeight || (compact ? 24 : 38);
+        const padX = Math.max(8, w * 0.5 + 6);
+        const x = Math.max(padX, Math.min(vw - padX, p.sx));
+        const y = Math.max(topSafe + h * 0.5, Math.min(vh - bottomSafe - h * 0.5, p.sy + h * 0.35));
+        placed.push({ el, x, y, w, h, idx: i });
+      }
+
+      placed.sort((a, b) => (a.y - b.y) || (a.idx - b.idx));
+      for (let i = 0; i < placed.length; i++) {
+        const a = placed[i];
+        for (let j = 0; j < i; j++) {
+          const b = placed[j];
+          const overlapX = (a.w + b.w) * 0.5 + 6 - Math.abs(a.x - b.x);
+          const overlapY = (a.h + b.h) * 0.5 + 4 - Math.abs(a.y - b.y);
+          if (overlapX > 0 && overlapY > 0) {
+            a.y = Math.min(vh - bottomSafe - a.h * 0.5, b.y + (a.h + b.h) * 0.5 + 4);
+          }
+        }
+      }
+
+      for (let i = 0; i < placed.length; i++) {
+        const item = placed[i];
+        const tx = Math.round(item.x - item.w * 0.5);
+        const ty = Math.round(item.y - item.h * 0.5);
+        item.el.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+        item.el.style.opacity = "1";
+        item.el.style.pointerEvents = "auto";
+      }
+    }
 
     function animateCamTo(preset, durMs = 520) {
       state.anim = {
@@ -2366,8 +2864,7 @@
     }
 
     function makeViewAndEye(cam, aspect) {
-      const aspectScale = aspect < 1.15 ? (1.15 / Math.max(aspect, 0.65)) : 1.0;
-      const effDist = cam.dist * aspectScale;
+      const effDist = cam.dist;
       const r = qRot(cam.quat, [1, 0, 0]);
       const u = qRot(cam.quat, [0, 1, 0]);
       const b = qRot(cam.quat, [0, 0, 1]);
@@ -2454,15 +2951,32 @@
 
     // === Canvas Resize ===
     let cssW = 500, cssH = 400, dpr = 1;
+    let layoutMode = null;
+    let layoutW = 0, layoutH = 0;
+    function syncGalleryLayout(vw, vh) {
+      const prevMode = layoutMode;
+      const mobile = computeGalleryLayout(vw, vh);
+      layoutMode = mobile ? "mobile" : "desktop";
+      const sizeShifted = Math.abs(vw - layoutW) > 28 || Math.abs(vh - layoutH) > 28;
+      if ((prevMode !== layoutMode || sizeShifted) && state.preset === "overview" && !state.userMoved) {
+        state.cam.target = PRESETS.overview.target.slice();
+        state.cam.dist = PRESETS.overview.dist;
+        state.cam.quat = PRESETS.overview.quat.slice();
+        state.anim = null;
+      }
+      layoutW = vw;
+      layoutH = vh;
+    }
     function resize() {
       const rect = canvas.getBoundingClientRect();
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       cssW = Math.max(100, Math.round(rect.width));
       cssH = Math.max(100, Math.round(rect.height));
       const bw = Math.round(cssW * dpr), bh = Math.round(cssH * dpr);
-      if (canvas.width !== bw || canvas.height !== bh) {
+      if (canvas.width !== bw || canvas.height !== bh || layoutMode === null) {
         canvas.width = bw;
         canvas.height = bh;
+        syncGalleryLayout(cssW, cssH);
         state.dirty = true;
       }
     }
@@ -2535,18 +3049,31 @@
       const light1 = vNorm(vAdd(vAdd(vScale(right, 0.42), vScale(up, 0.60)), vScale(back, 0.68)));
       const light2 = vNorm(vAdd(vAdd(vScale(right, -0.58), vScale(up, -0.30)), vScale(back, 0.56)));
 
-      gl.uniform3fv(LOC.uCamPos, eye);
+      const fogStart = effDist > 95 ? effDist + effDist * 0.75 + 90 : effDist + 24;
+      const fogEnd = fogStart + (effDist > 95 ? 280 : 75);
       gl.uniform3fv(LOC.uLight1, light1);
       gl.uniform3fv(LOC.uLight2, light2);
-      gl.uniform1f(LOC.uFogStart, effDist + 14);
-      gl.uniform1f(LOC.uFogEnd, effDist + 62);
+      gl.uniform1f(LOC.uFogStart, fogStart);
+      gl.uniform1f(LOC.uFogEnd, fogEnd);
 
-      const proj = makePerspective(35 * Math.PI / 180, aspect, 0.5, 260);
+      const nearPlane = Math.max(0.5, effDist * 0.004);
+      const farPlane = Math.max(960, effDist + 560);
+      const proj = makePerspective(35 * Math.PI / 180, aspect, nearPlane, farPlane);
       const vpMat = mat4Mul(proj, view);
-      gl.uniformMatrix4fv(LOC.uViewProj, false, vpMat);
       lastVpMat = vpMat;
 
       const lib = MESHES[state.style];
+
+      for (let i = 0; i < comparisonMeshes.length; i++) {
+        const [ox, oy, oz] = gallerySlots[i + 1].offset;
+        gl.uniformMatrix4fv(LOC.uViewProj, false, mat4Translate(vpMat, ox, oy, oz));
+        gl.uniform3f(LOC.uCamPos, eye[0] - ox, eye[1] - oy, eye[2] - oz);
+        drawOpaque(lib.target);
+        drawOpaque(comparisonMeshes[i]);
+      }
+
+      gl.uniformMatrix4fv(LOC.uViewProj, false, vpMat);
+      gl.uniform3fv(LOC.uCamPos, eye);
       drawOpaque(state.colorPlddt ? lib.targetPlddt : lib.target);
       drawOpaque(state.colorPlddt ? lib.binderPlddt : lib.binder);
 
@@ -2559,6 +3086,11 @@
       if (state.showDesign) {
         drawTranslucent(MESHES.design, 0.66, 0.12);
       }
+
+      if (labelsRoot) {
+        labelsRoot.classList.toggle("r22-detail-hidden", !state.showLabels || effDist > 115);
+      }
+      updateGalleryLabels(vpMat, up, cssW, cssH);
 
       updateLabels(vpMat);
     }
@@ -2590,25 +3122,71 @@
       return best;
     }
 
-    // === Pointer & Wheel Interaction ===
+    // === Pointer, Multi-Touch & Wheel Interaction ===
     let dragMode = null;
     let lastX = 0, lastY = 0;
+    const activePointers = new Map();
+    let pinchDist = 0, pinchMidX = 0, pinchMidY = 0;
+
+    function panCameraBy(dx, dy) {
+      const panScale = (2 * state.cam.dist * TAN_HALF_FOV) / Math.max(1, cssH);
+      const r = qRot(state.cam.quat, [1, 0, 0]);
+      const u = qRot(state.cam.quat, [0, 1, 0]);
+      state.cam.target = vAdd(state.cam.target, vAdd(vScale(r, -dx * panScale), vScale(u, dy * panScale)));
+    }
+
+    function getTwoPointerMetrics() {
+      const pts = Array.from(activePointers.values());
+      const dx = pts[1].x - pts[0].x;
+      const dy = pts[1].y - pts[0].y;
+      return {
+        dist: Math.max(1, Math.hypot(dx, dy)),
+        midX: (pts[0].x + pts[1].x) * 0.5,
+        midY: (pts[0].y + pts[1].y) * 0.5
+      };
+    }
 
     canvas.addEventListener("pointerdown", (e) => {
       canvas.setPointerCapture(e.pointerId);
-      dragMode = (e.button === 2 || e.shiftKey) ? "pan" : "orbit";
-      lastX = e.clientX;
-      lastY = e.clientY;
+      activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
       state.anim = null;
+      state.userMoved = true;
       if (state.autoSpin) {
         state.autoSpin = false;
         document.getElementById("r22-opt-spin").classList.remove("active");
       }
       tooltipEl.style.display = "none";
+      canvas.classList.add("is-dragging");
+      if (activePointers.size >= 2) {
+        dragMode = "pinch";
+        const m = getTwoPointerMetrics();
+        pinchDist = m.dist;
+        pinchMidX = m.midX;
+        pinchMidY = m.midY;
+      } else {
+        dragMode = (e.button === 2 || e.button === 1 || e.shiftKey || state.panMode) ? "pan" : "orbit";
+        lastX = e.clientX;
+        lastY = e.clientY;
+      }
     });
 
     canvas.addEventListener("pointermove", (e) => {
       const rect = canvas.getBoundingClientRect();
+      if (activePointers.has(e.pointerId)) {
+        activePointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      }
+      if (dragMode === "pinch" && activePointers.size >= 2) {
+        const m = getTwoPointerMetrics();
+        if (pinchDist > 1) {
+          state.cam.dist = clampDist(state.cam.dist * (pinchDist / m.dist));
+        }
+        panCameraBy(m.midX - pinchMidX, m.midY - pinchMidY);
+        pinchDist = m.dist;
+        pinchMidX = m.midX;
+        pinchMidY = m.midY;
+        state.dirty = true;
+        return;
+      }
       if (dragMode) {
         const dx = e.clientX - lastX;
         const dy = e.clientY - lastY;
@@ -2620,10 +3198,7 @@
           const qX = qAxisAngle([1, 0, 0], -dy * sens);
           state.cam.quat = qNorm(qMul(state.cam.quat, qMul(qY, qX)));
         } else {
-          const panScale = state.cam.dist * 0.0014;
-          const r = qRot(state.cam.quat, [1, 0, 0]);
-          const u = qRot(state.cam.quat, [0, 1, 0]);
-          state.cam.target = vAdd(state.cam.target, vAdd(vScale(r, -dx * panScale), vScale(u, dy * panScale)));
+          panCameraBy(dx, dy);
         }
         state.dirty = true;
         return;
@@ -2661,15 +3236,35 @@
       }
     });
 
-    canvas.addEventListener("pointerup", () => { dragMode = null; });
-    canvas.addEventListener("pointerleave", () => { dragMode = null; tooltipEl.style.display = "none"; });
+    function endPointer(e) {
+      activePointers.delete(e.pointerId);
+      if (activePointers.size === 1) {
+        const rem = Array.from(activePointers.values())[0];
+        dragMode = state.panMode ? "pan" : "orbit";
+        lastX = rem.x;
+        lastY = rem.y;
+      } else if (activePointers.size === 0) {
+        dragMode = null;
+        canvas.classList.remove("is-dragging");
+      }
+    }
+    canvas.addEventListener("pointerup", endPointer);
+    canvas.addEventListener("pointercancel", endPointer);
+    canvas.addEventListener("pointerleave", () => {
+      if (activePointers.size === 0) {
+        dragMode = null;
+        canvas.classList.remove("is-dragging");
+      }
+      tooltipEl.style.display = "none";
+    });
     canvas.addEventListener("contextmenu", (e) => e.preventDefault());
 
     canvas.addEventListener("wheel", (e) => {
       e.preventDefault();
       state.anim = null;
+      state.userMoved = true;
       const factor = Math.exp(e.deltaY * 0.0012);
-      state.cam.dist = Math.max(16, Math.min(135, state.cam.dist * factor));
+      state.cam.dist = clampDist(state.cam.dist * factor);
       state.dirty = true;
     }, { passive: false });
 
@@ -2683,23 +3278,46 @@
       document.querySelectorAll("[data-r22-preset]").forEach(b => {
         b.classList.toggle("active", b.dataset.r22Preset === state.preset);
       });
+      document.getElementById("r22-opt-pan").classList.toggle("active", state.panMode);
+      canvas.classList.toggle("is-pan-mode", state.panMode);
       document.getElementById("r22-opt-style").textContent = state.style === "cartoon" ? "카툰 리본" : "Cα 궤적";
       document.getElementById("r22-opt-plddt").classList.toggle("active-sky", state.colorPlddt);
       document.getElementById("r22-opt-design").classList.toggle("active-violet", state.showDesign);
       document.getElementById("r22-opt-sc").classList.toggle("active-amber", state.showSidechains);
       document.getElementById("r22-opt-labels").classList.toggle("active", state.showLabels);
       document.getElementById("r22-opt-spin").classList.toggle("active", state.autoSpin);
+      galleryLabelEls.forEach((el, idx) => {
+        el.classList.toggle("is-focused", state.focusedSlot === idx);
+      });
       hudPlddt.classList.toggle("show", state.colorPlddt);
       hudDesign.classList.toggle("show", state.showDesign);
       state.dirty = true;
     }
 
+    function focusGallerySlot(idx) {
+      state.focusedSlot = idx;
+      state.preset = idx === 0 ? "candidate" : "";
+      state.userMoved = true;
+      animateCamTo(focusSlotPreset(idx, cssW, cssH));
+      syncUI();
+    }
+    window.__r22FocusSlot = focusGallerySlot;
+
     function applyPreset(name) {
       state.preset = name;
       if (name === "interface") {
+        state.focusedSlot = 0;
+        state.userMoved = true;
         state.showSidechains = true;
         animateCamTo(PRESETS.interface);
+      } else if (name === "candidate") {
+        state.focusedSlot = 0;
+        state.userMoved = true;
+        animateCamTo(focusSlotPreset(0, cssW, cssH));
       } else {
+        state.focusedSlot = -1;
+        state.userMoved = false;
+        computeGalleryLayout(cssW, cssH);
         animateCamTo(PRESETS.overview);
       }
       syncUI();
@@ -2709,6 +3327,10 @@
       btn.addEventListener("click", () => applyPreset(btn.dataset.r22Preset));
     });
 
+    document.getElementById("r22-opt-pan").addEventListener("click", () => {
+      state.panMode = !state.panMode;
+      syncUI();
+    });
     document.getElementById("r22-opt-style").addEventListener("click", () => {
       state.style = state.style === "cartoon" ? "tube" : "cartoon";
       syncUI();
@@ -2736,12 +3358,14 @@
 
     document.getElementById("r22-zoom-in").addEventListener("click", () => {
       state.anim = null;
-      state.cam.dist = Math.max(16, state.cam.dist * 0.82);
+      state.userMoved = true;
+      state.cam.dist = clampDist(state.cam.dist * 0.80);
       state.dirty = true;
     });
     document.getElementById("r22-zoom-out").addEventListener("click", () => {
       state.anim = null;
-      state.cam.dist = Math.min(135, state.cam.dist * 1.22);
+      state.userMoved = true;
+      state.cam.dist = clampDist(state.cam.dist * 1.25);
       state.dirty = true;
     });
     document.getElementById("r22-reset").addEventListener("click", () => applyPreset("overview"));
