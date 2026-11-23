@@ -1,0 +1,20 @@
+{
+  "pass_thresholds": {
+    "pae_interaction": 10.0,
+    "plddt_binder": 80.0,
+    "binder_aligned_rmsd": 2.0
+  },
+  "binders": {
+    "count": 0
+  },
+  "non_binders": {
+    "count": 75,
+    "pae_interaction": {
+      "min": 4.263,
+      "median": 5.412,
+      "max": 26.918,
+      "mean": 6.401293333333334
+    },
+    "passes_filter": 71
+  }
+}
