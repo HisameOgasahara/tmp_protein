@@ -1388,6 +1388,9 @@
             border-top: 1px solid var(--border);
           }
         }
+        #rounds-toggle { padding: 8px 14px; border: 1px solid var(--teal-border); border-radius: 9px; background: var(--teal-soft); color: var(--teal); cursor: pointer; font: inherit; font-size: 14px; font-weight: 700; }
+        #rounds-player iframe { display: block; width: 100%; height: clamp(360px, 62vw, 680px); border: 1px solid var(--border); border-radius: 16px; }
+        #findings:has(#rounds-toggle[aria-expanded="true"]) > :is(.fg-board, .fg-bridge) { display: none; }
       </style>
 
       <div class="sec-head">
@@ -1395,7 +1398,29 @@
           <div class="sec-kicker">02 · DESIGN RESULTS</div>
           <h2 class="sec-title">1·2회차 설계 결과</h2>
         </div>
+        <button type="button" id="rounds-toggle" aria-controls="rounds-player" aria-expanded="false">▶ 설계 과정 보기</button>
       </div>
+      <div id="rounds-player" hidden></div>
+      <script>
+        (() => {
+          const toggle = document.getElementById('rounds-toggle');
+          const player = document.getElementById('rounds-player');
+          toggle.addEventListener('click', () => {
+            const opening = player.hidden;
+            if (opening) {
+              const frame = document.createElement('iframe');
+              frame.title = '1·2회차 설계 과정 애니메이션';
+              frame.src = 'design-rounds.html?t=0';
+              player.append(frame);
+            } else {
+              player.replaceChildren();
+            }
+            player.hidden = !opening;
+            toggle.setAttribute('aria-expanded', String(opening));
+            toggle.textContent = opening ? '닫기' : '▶ 설계 과정 보기';
+          });
+        })();
+      </script>
 
       <article class="fg-board fg-zone">
         <div class="fg-bar">
